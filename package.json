@@ -1,6 +1,9 @@
 {
   "name": "demo-line-nuxt",
   "version": "1.0.0",
+  "engines": {
+    "yarn": "1.22.5"
+  },
   "private": true,
   "scripts": {
     "dev": "nuxt",
