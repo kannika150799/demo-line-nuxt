@@ -1,8 +1,23 @@
 <template>
-  <div class="profile">
-    <img v-if="profile.profileImage == ''" src="~/assets/IMG.jpg" alt="" />
-    <img v-else :src="profile.profileImage" alt="" />
-    <p>displayName: {{ profile.displayName }}</p>
+  <div>
+    <div class="profile">
+      <img v-if="profile.profileImage == ''" src="~/assets/IMG.jpg" alt="" />
+      <img v-else :src="profile.profileImage" alt="" />
+      <p class="display-name">{{ profile.displayName }}</p>
+    </div>
+    <div>
+      <template>
+        <p>Name:&nbsp;</p>
+        <a-input placeholder="Name" />
+        <p>Nickname:&nbsp;</p>
+        <a-input placeholder="Nickname" />
+        <p>Position:&nbsp;</p>
+        <a-input placeholder="Position" />
+      </template>
+    </div>
+  </div>
+</template>
+    </div>
   </div>
 </template>
 
@@ -29,7 +44,7 @@ export default {
       profile: {
         profileImage: "",
         displayName: "Display Name",
-        userId: ""
+        userId: "",
       },
     };
   },
@@ -38,12 +53,17 @@ export default {
 
 <style scoped>
 .profile {
-  margin: 40px 0px 30px;
+  margin-top: 40px;
   text-align: center;
 }
 img {
   width: 25%;
   border-radius: 50%;
+  margin-bottom: 30px;
 }
-
+.display-name {
+  font-size: 16px;
+  font-weight: 600;
+  font-family: inherit;
+}
 </style>
