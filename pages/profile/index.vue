@@ -28,12 +28,7 @@ export default {
   },
   data(){    
     return { 
-      profileImage: '',     
-      form: {
-        firstname: this.$store.getters.getRegister.firstname,
-        lastname: this.$store.getters.getRegister.lastname,
-        gender: this.$store.getters.getRegister.gender       
-      },      
+      profileImage: ''    
     }
   }
 }
