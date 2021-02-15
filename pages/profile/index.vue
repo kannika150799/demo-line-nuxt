@@ -1,15 +1,12 @@
 <template>
-  <div>
+  <div class="profile">
     <img v-if="profile.profileImage == ''" src="~/assets/IMG.jpg" alt="" />
     <img v-else :src="profile.profileImage" alt="" />
-    <p>userID: {{ profile.userId }}</p>
     <p>displayName: {{ profile.displayName }}</p>
   </div>
 </template>
 
 <script>
-// import liff from '@line/liff';
-
 export default {
   mounted() {
     liff
@@ -21,7 +18,6 @@ export default {
           liff.getProfile().then((profile) => {
             this.profile.profileImage = profile.pictureUrl;
             this.profile.displayName = profile.displayName;
-            this.profile.userId = profile.userId;
           });
         } else {
           liff.login();
@@ -40,8 +36,14 @@ export default {
 };
 </script>
 
-<style scopeD>
+<style scoped>
+.profile {
+  margin: 40px 0px 30px;
+  text-align: center;
+}
 img {
   width: 25%;
+  border-radius: 50%;
 }
+
 </style>
