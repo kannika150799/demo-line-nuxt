@@ -14,6 +14,7 @@
         <p>Position:&nbsp;</p>
         <a-input placeholder="Position" />
       </template>
+      <a-button type="primary"> Register </a-button>
     </div>
   </div>
 </template>
