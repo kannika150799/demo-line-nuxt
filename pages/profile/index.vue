@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="profile">
+      <!-- <img src="~/assets/IMG.jpg" alt="" /> -->
       <img v-if="profile.profileImage == ''" src="~/assets/IMG.jpg" alt="" />
       <img v-else :src="profile.profileImage" alt="" />
       <p class="display-name">{{profile.displayName}}</p>
@@ -8,15 +9,15 @@
     <div class="container-input">
       <template>
         <div class="box-input">
-          <p class="text-input name">Name:</p>
+          <p class="text-input name">Name</p>
           <a-input placeholder="Name" />
         </div>
         <div class="box-input">
-          <p class="text-input">Nickname:</p>
+          <p class="text-input">Nickname&nbsp;</p>
           <a-input placeholder="Nickname" />
         </div>
         <div class="box-input">
-          <p class="text-input position">Position:</p>
+          <p class="text-input position">Position</p>
           <a-input placeholder="Position" />
         </div>
       </template>
@@ -71,7 +72,11 @@ img {
   margin-bottom: 40px;
 }
 .register-button {
-  margin-top: 20px;
+  margin-top: 25px;
+  height: 44px;
+  width: 120px;
+  font-size: 16px;
+  font-weight: 400;
 }
 .container-input {
   text-align: -webkit-center;
@@ -83,13 +88,14 @@ img {
 }
 .text-input {
   margin: 0px;
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: 600;
   align-self: center;
 }
 .name {
-  margin-right: 23px;
+  margin-right: 34px;
 }
 .position {
-  margin-right: 12px;
+  margin-right: 20px;
 }
 </style>
