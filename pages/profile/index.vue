@@ -3,21 +3,24 @@
     <div class="profile">
       <img v-if="profile.profileImage == ''" src="~/assets/IMG.jpg" alt="" />
       <img v-else :src="profile.profileImage" alt="" />
-      <p class="display-name">{{ profile.displayName }}</p>
+      <p class="display-name">{{profile.displayName}}</p>
     </div>
-    <div>
+    <div class="container-input">
       <template>
-        <p>Name:&nbsp;</p>
-        <a-input placeholder="Name" />
-        <p>Nickname:&nbsp;</p>
-        <a-input placeholder="Nickname" />
-        <p>Position:&nbsp;</p>
-        <a-input placeholder="Position" />
+        <div class="box-input">
+          <p class="text-input name">Name:&nbsp;</p>
+          <a-input placeholder="Name" />
+        </div>
+        <div class="box-input">
+          <p class="text-input">Nickname:&nbsp;</p>
+          <a-input placeholder="Nickname" />
+        </div>
+        <div class="box-input">
+          <p class="text-input position">Position:&nbsp;</p>
+          <a-input placeholder="Position" />
+        </div>
       </template>
-      <a-button type="primary"> Register </a-button>
-    </div>
-  </div>
-</template>
+      <a-button class="register-button" type="primary"> Register </a-button>
     </div>
   </div>
 </template>
@@ -54,17 +57,40 @@ export default {
 
 <style scoped>
 .profile {
-  margin-top: 40px;
+  /* margin-top: 40px; */
   text-align: center;
 }
 img {
   width: 25%;
   border-radius: 50%;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 .display-name {
   font-size: 16px;
   font-weight: 600;
   font-family: inherit;
+  margin-bottom: 40px;
+}
+.register-button {
+  margin-top: 20px;
+}
+.container-input {
+  text-align: -webkit-center;
+}
+.box-input {
+  display: flex;
+  margin-bottom: 15px;
+  width: 300px;
+}
+.text-input {
+  margin: 0px;
+  font-size: 14px;
+  align-self: center;
+}
+.name {
+  margin-right: 23px;
+}
+.position {
+  margin-right: 12px;
 }
 </style>
