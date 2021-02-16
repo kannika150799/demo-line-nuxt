@@ -57,7 +57,6 @@ export default {
 
 <style scoped>
 .profile {
-  /* margin-top: 40px; */
   text-align: center;
 }
 img {
