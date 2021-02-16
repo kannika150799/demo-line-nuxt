@@ -8,15 +8,15 @@
     <div class="container-input">
       <template>
         <div class="box-input">
-          <p class="text-input name">Name:&nbsp;</p>
+          <p class="text-input name">Name:</p>
           <a-input placeholder="Name" />
         </div>
         <div class="box-input">
-          <p class="text-input">Nickname:&nbsp;</p>
+          <p class="text-input">Nickname:</p>
           <a-input placeholder="Nickname" />
         </div>
         <div class="box-input">
-          <p class="text-input position">Position:&nbsp;</p>
+          <p class="text-input position">Position:</p>
           <a-input placeholder="Position" />
         </div>
       </template>
