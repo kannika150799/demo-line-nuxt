@@ -74,5 +74,8 @@ export default {
     text-align: center;
     font-size: 20px;
 }
+.disabled-date {
+  margin-top: 10px;
+}
 
 </style>

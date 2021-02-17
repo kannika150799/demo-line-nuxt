@@ -27,33 +27,33 @@
 </template>
 
 <script>
-export default {
-  mounted() {
-    liff
-      .init({
-        liffId: "1655660869-VoKZDYDO",
-      })
-      .then(() => {
-        if (liff.isLoggedIn()) {
-          liff.getProfile().then((profile) => {
-            this.profile.profileImage = profile.pictureUrl;
-            this.profile.displayName = profile.displayName;
-          });
-        } else {
-          liff.login();
-        }
-      });
-  },
-  data() {
-    return {
-      profile: {
-        profileImage: "",
-        displayName: "Display Name",
-        userId: "",
-      },
-    };
-  },
-};
+// export default {
+//   mounted() {
+//     liff
+//       .init({
+//         liffId: "1655660869-VoKZDYDO",
+//       })
+//       .then(() => {
+//         if (liff.isLoggedIn()) {
+//           liff.getProfile().then((profile) => {
+//             this.profile.profileImage = profile.pictureUrl;
+//             this.profile.displayName = profile.displayName;
+//           });
+//         } else {
+//           liff.login();
+//         }
+//       });
+//   },
+//   data() {
+//     return {
+//       profile: {
+//         profileImage: "",
+//         displayName: "Display Name",
+//         userId: "",
+//       },
+//     };
+//   },
+// };
 </script>
 
 <style scoped>

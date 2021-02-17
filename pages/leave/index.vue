@@ -62,8 +62,13 @@ export default {
     font-weight: 600;
   font-family: inherit;
 }
-/* .date-leave {
-    width: 210px;
-} */
+
+.send-button {
+  width: 100px;
+  height: 44px;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 20px;
+}
 
 </style>
