@@ -9,7 +9,11 @@
     <div class="container-input">
       <template>
         <div class="box-input">
+<<<<<<< HEAD
           <p class="text-input name">Name8</p>
+=======
+          <p class="text-input name">Name7</p>
+>>>>>>> 9c6e2f208c139ee73edbd4c440575e2e4ee0754f
           <a-input placeholder="Name" />
         </div>
         <div class="box-input">
