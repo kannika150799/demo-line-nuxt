@@ -4,12 +4,12 @@
       <!-- <img src="~/assets/IMG.jpg" alt="" /> -->
       <img v-if="profile.profileImage == ''" src="~/assets/IMG.jpg" alt="" />
       <img v-else :src="profile.profileImage" alt="" />
-      <p class="display-name">{{ profile.displayName }}</p>
+      <p class="display-name">{{profile.displayName}}</p>
     </div>
     <div class="container-input">
       <template>
         <div class="box-input">
-          <p class="text-input name">Name8</p>
+          <p class="text-input name">Name910111</p>
           <a-input placeholder="Name" />
         </div>
         <div class="box-input">
