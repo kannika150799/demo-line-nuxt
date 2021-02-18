@@ -17,7 +17,7 @@
           <a-input placeholder="Nickname" />
         </div>
         <div class="box-input">
-          <p class="text-input position">Position</p>
+          <p class="text-input position">Position77777</p>
           <a-input placeholder="Position" />
         </div>
       </template>
