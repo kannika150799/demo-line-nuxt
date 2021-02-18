@@ -9,7 +9,7 @@
     <div class="container-input">
       <template>
         <div class="box-input">
-          <p class="text-input name">Name</p>
+          <p class="text-input name">Name3</p>
           <a-input placeholder="Name" />
         </div>
         <div class="box-input">
