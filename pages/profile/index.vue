@@ -19,7 +19,7 @@
           v-model="profile.nickname" />
         </div>
         <div class="box-input">
-          <p class="text-input position">Position</p>
+          <p class="text-input position">Positions</p>
           <a-input placeholder="Position"
           v-model="profile.position" />
         </div>
