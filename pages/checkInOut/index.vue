@@ -10,11 +10,6 @@
 <script>
 const moment = require("moment");
 
-const showDay = "DD/MM/YYYY";
-const showTime = "h:mm:ss a";
-
-// this.ld_time = moment().format(showTime);
-// ld_day = moment().format(showDay);
 export default {
   data() {
     return {
