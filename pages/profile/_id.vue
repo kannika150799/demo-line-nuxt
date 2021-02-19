@@ -66,6 +66,9 @@ export default {
       const res = await axios.get(`http://localhost:3030/api/get/user/${this.profile.userId}`)
       this.user = res.data
       console.log('mmmmm', this.user);
+    },
+    editUser () {
+      console.log('mmmmm', this.profile)
     }
   }
 };
