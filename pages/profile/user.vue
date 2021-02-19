@@ -10,15 +10,15 @@
       <template>
         <div class="box-input">
           <p class="text-input name">Name</p>
-          <p class="text-input name">Name</p>
+          <p class="text-input name">Name {{profile.name}}</p>
         </div>
         <div class="box-input">
           <p class="text-input">Nickname&nbsp;</p>
-          <p class="text-input name">Nickname</p>
+          <p class="text-input name">Nickname {{profile.nickname}}</p>
         </div>
         <div class="box-input">
           <p class="text-input position">Position</p>
-          <p class="text-input name">Position </p>
+          <p class="text-input name">Position {{profile.position}}</p>
         </div>
       </template>
       <a-button class="edit-button" type="primary" @click="editUser"> Edit </a-button>
@@ -61,8 +61,9 @@ export default {
   },
   methods:{
     async getData () {
-      const res = await axios.get(`http://localhost:3030/api/get/user/${this.profile.userId}`)
+      const res = await axios.get(`http://localhost:3030/api/get/user/${profile.userId}`)
       this.profile = res.data
+      console.log(this.profile);
     }
   }
 };
