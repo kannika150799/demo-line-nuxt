@@ -52,7 +52,7 @@ export default {
       profile: {
         profileImage: "",
         displayName: "",
-        userId: this.$route.params.userId,
+        userId: "",
         name:"",
         nickname:"",
         position:""
@@ -64,7 +64,7 @@ export default {
     async getData () {
       const res = await axios.get(`http://localhost:3030/api/get/user/${this.profile.userId}`)
       this.profile = res.data
-      console.log(this.profile);
+      console.log(res.data);
     }
   }
 };
