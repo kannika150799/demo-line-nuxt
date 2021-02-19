@@ -63,7 +63,7 @@ export default {
   methods:{
     register(){
       this.$axios.post('http://localhost:3030/api/post/user',this.profile)
-      this.$router.push('/profile/user')
+      this.$router.push(`/profile/${this.profile.userId}`)
       console.log(this.profile);
     }
   }

@@ -45,17 +45,18 @@ export default {
           liff.login();
         }
       });
-      this.getData()
+    this.getData()
   },
   data() {
     return {
       profile: {
         profileImage: "",
         displayName: "",
-        userId: "",
+        userId: this.$route.params.userId,
         name:"",
         nickname:"",
         position:""
+        
       },
     };
   },
