@@ -48,25 +48,25 @@ export default {
         }
       });
   }
-//   data() {
-//     return {
-//       profile: {
-//         profileImage: "",
-//         displayName: "",
-//         userId: "",
-//         name:"",
-//         nickname:"",
-//         position:""
-//       },
-//     };
-//   },
-//   methods:{
-//     register(){
-//       this.$axios.post('http://localhost:3030/api/post/user',this.profile)
-//       console.log(this.profile);
-//     }
-//   }
-// };
+  // data() {
+  //   return {
+  //     profile: {
+  //       profileImage: "",
+  //       displayName: "",
+  //       userId: "",
+  //       name:"",
+  //       nickname:"",
+  //       position:""
+  //     },
+  //   };
+  // },
+  // methods:{
+  //   register(){
+  //     this.$axios.post('http://localhost:3030/api/post/user',this.profile)
+  //     console.log(this.profile);
+  //   }
+  // }
+};
 </script>
 
 <style scoped>
