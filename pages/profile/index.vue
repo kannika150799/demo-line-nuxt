@@ -10,24 +10,27 @@
       <template>
         <div class="box-input">
           <p class="text-input name">Name910111</p>
-          <a-input placeholder="Name" />
+          <a-input placeholder="Name"
+          v-model="profile.name" />
         </div>
         <div class="box-input">
           <p class="text-input">Nickname&nbsp;</p>
-          <a-input placeholder="Nickname" />
+          <a-input placeholder="Nickname"
+          v-model="profile.nickname" />
         </div>
         <div class="box-input">
           <p class="text-input position">Position77777</p>
-          <a-input placeholder="Position" />
+          <a-input placeholder="Position"
+          v-model="profile.position" />
         </div>
       </template>
-      <a-button class="register-button" type="primary"> Register </a-button>
+      <a-button class="register-button" type="primary" @click="regigter"> Register </a-button>
     </div>
   </div>
 </template>
 
 <script>
-// export default {
+export default {
 //   mounted() {
 //     liff
 //       .init({
@@ -44,16 +47,24 @@
 //         }
 //       });
 //   },
-//   data() {
-//     return {
-//       profile: {
-//         profileImage: "",
-//         displayName: "Display Name",
-//         userId: "",
-//       },
-//     };
-//   },
-// };
+  data() {
+    return {
+      profile: {
+        profileImage: "",
+        displayName: "Display Name",
+        userId: "",
+        name:"",
+        nickname:"",
+        position:""
+      },
+    };
+  },
+  methods:{
+    register(){
+      this.$axios.post('http://localhost:3030/api/post/user',this.profile)
+    }
+  }
+};
 </script>
 
 <style scoped>
