@@ -4,12 +4,12 @@
       <!-- <img src="~/assets/IMG.jpg" alt="" /> -->
       <img v-if="profile.profileImage == ''" src="~/assets/IMG.jpg" alt="" />
       <img v-else :src="profile.profileImage" alt="" />
-      <p class="display-name">{{profile.displayName}}</p>
+      <p class="display-name">{{profile.userId}}</p>
     </div>
     <div class="container-input">
       <template>
         <div class="box-input">
-          <p class="text-input name">Name910111</p>
+          <p class="text-input name">Name</p>
           <a-input placeholder="Name"
           v-model="profile.name" />
         </div>
@@ -19,39 +19,40 @@
           v-model="profile.nickname" />
         </div>
         <div class="box-input">
-          <p class="text-input position">Position77777</p>
+          <p class="text-input position">Position</p>
           <a-input placeholder="Position"
           v-model="profile.position" />
         </div>
       </template>
-      <a-button class="register-button" type="primary" @click="regigter"> Register </a-button>
+      <a-button class="register-button" type="primary" @click="register"> Register </a-button>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-//   mounted() {
-//     liff
-//       .init({
-//         liffId: "1655660869-VoKZDYDO",
-//       })
-//       .then(() => {
-//         if (liff.isLoggedIn()) {
-//           liff.getProfile().then((profile) => {
-//             this.profile.profileImage = profile.pictureUrl;
-//             this.profile.displayName = profile.displayName;
-//           });
-//         } else {
-//           liff.login();
-//         }
-//       });
-//   },
+  mounted() {
+    liff
+      .init({
+        liffId: "1655660869-VoKZDYDO",
+      })
+      .then(() => {
+        if (liff.isLoggedIn()) {
+          liff.getProfile().then((profile) => {
+            this.profile.profileImage = profile.pictureUrl;
+            this.profile.displayName = profile.displayName;
+            this.profile.userId = profile.userId;
+          });
+        } else {
+          liff.login();
+        }
+      });
+  },
   data() {
     return {
       profile: {
         profileImage: "",
-        displayName: "Display Name",
+        displayName: "",
         userId: "",
         name:"",
         nickname:"",
@@ -62,6 +63,7 @@ export default {
   methods:{
     register(){
       this.$axios.post('http://localhost:3030/api/post/user',this.profile)
+      console.log(this.profile);
     }
   }
 };
