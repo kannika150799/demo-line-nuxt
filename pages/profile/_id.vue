@@ -69,7 +69,7 @@ export default {
       console.log('mmmmm', this.user);
     },
     editUser () {
-      console.log('mmmmm', this.profile)
+      console.log('ttttttt', this.profile)
       console.log('mmmmm', this.user);
     }
   }
