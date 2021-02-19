@@ -30,6 +30,7 @@
 import axios from 'axios'
 export default {
   mounted() {
+    
     liff
       .init({
         liffId: "1655660869-VoKZDYDO",
@@ -41,11 +42,12 @@ export default {
             this.profile.displayName = profile.displayName;
             this.profile.userId = profile.userId;
           });
+          this.getData()
         } else {
           liff.login();
         }
       });
-    this.getData()
+    
   },
   data() {
     return {
