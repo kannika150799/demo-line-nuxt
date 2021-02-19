@@ -58,13 +58,14 @@ export default {
         position:""
         
       },
+      user: null
     };
   },
   methods:{
     async getData () {
       const res = await axios.get(`http://localhost:3030/api/get/user/${this.profile.userId}`)
-      this.profile = res.data
-      console.log(res.data);
+      this.user = res.data
+      console.log(this.user);
     }
   }
 };
