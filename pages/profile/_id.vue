@@ -65,10 +65,12 @@ export default {
     async getData () {
       const res = await axios.get(`http://localhost:3030/api/get/user/${this.profile.userId}`)
       this.user = res.data
+      this.profile = res.data
       console.log('mmmmm', this.user);
     },
     editUser () {
       console.log('mmmmm', this.profile)
+      console.log('mmmmm', this.user);
     }
   }
 };
