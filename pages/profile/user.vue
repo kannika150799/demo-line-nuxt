@@ -21,12 +21,13 @@
           <p class="text-input name">Position </p>
         </div>
       </template>
-      <a-button class="edit-button" type="primary"> Edit </a-button>
+      <a-button class="edit-button" type="primary" @click="editUser"> Edit </a-button>
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   mounted() {
     liff
@@ -44,6 +45,7 @@ export default {
           liff.login();
         }
       });
+      this.getData()
   },
   data() {
     return {
@@ -57,6 +59,12 @@ export default {
       },
     };
   },
+  methods:{
+    async getData () {
+      const res = await axios.get(`http://localhost:3030/api/get/user/${this.profile.userId}`)
+      this.profile = res.data
+    }
+  }
 };
 </script>
 
