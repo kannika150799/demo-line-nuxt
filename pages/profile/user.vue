@@ -1,10 +1,10 @@
 <template>
   <div>
     <div class="profile">
-      <img src="~/assets/IMG.jpg" alt="" />
-      <!-- <img v-if="profile.profileImage == ''" src="~/assets/IMG.jpg" alt="" /> -->
-      <!-- <img v-else :src="profile.profileImage" alt="" /> -->
-      <p class="display-name">display-name</p>
+      <!-- <img src="~/assets/IMG.jpg" alt="" /> -->
+      <img v-if="profile.profileImage == ''" src="~/assets/IMG.jpg" alt="" />
+      <img v-else :src="profile.profileImage" alt="" />
+      <p class="display-name">{{profile.displayName}}</p>
     </div>
     <div class="container-input">
       <template>
@@ -27,33 +27,37 @@
 </template>
 
 <script>
-// export default {
-//   mounted() {
-//     liff
-//       .init({
-//         liffId: "1655660869-VoKZDYDO",
-//       })
-//       .then(() => {
-//         if (liff.isLoggedIn()) {
-//           liff.getProfile().then((profile) => {
-//             this.profile.profileImage = profile.pictureUrl;
-//             this.profile.displayName = profile.displayName;
-//           });
-//         } else {
-//           liff.login();
-//         }
-//       });
-//   },
-//   data() {
-//     return {
-//       profile: {
-//         profileImage: "",
-//         displayName: "Display Name",
-//         userId: "",
-//       },
-//     };
-//   },
-// };
+export default {
+  mounted() {
+    liff
+      .init({
+        liffId: "1655660869-VoKZDYDO",
+      })
+      .then(() => {
+        if (liff.isLoggedIn()) {
+          liff.getProfile().then((profile) => {
+            this.profile.profileImage = profile.pictureUrl;
+            this.profile.displayName = profile.displayName;
+            this.profile.userId = profile.userId;
+          });
+        } else {
+          liff.login();
+        }
+      });
+  },
+  data() {
+    return {
+      profile: {
+        profileImage: "",
+        displayName: "",
+        userId: "",
+        name:"",
+        nickname:"",
+        position:""
+      },
+    };
+  },
+};
 </script>
 
 <style scoped>

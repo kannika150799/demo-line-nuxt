@@ -4,7 +4,7 @@
       <!-- <img src="~/assets/IMG.jpg" alt="" /> -->
       <img v-if="profile.profileImage == ''" src="~/assets/IMG.jpg" alt="" />
       <img v-else :src="profile.profileImage" alt="" />
-      <p class="display-name">{{profile.userId}}</p>
+      <p class="display-name">{{profile.displayName}}</p>
     </div>
     <div class="container-input">
       <template>
@@ -19,7 +19,7 @@
           v-model="profile.nickname" />
         </div>
         <div class="box-input">
-          <p class="text-input position">Positions</p>
+          <p class="text-input position">Position</p>
           <a-input placeholder="Position"
           v-model="profile.position" />
         </div>
@@ -63,6 +63,7 @@ export default {
   methods:{
     register(){
       this.$axios.post('http://localhost:3030/api/post/user',this.profile)
+      this.$router.push('/profile/user')
       console.log(this.profile);
     }
   }
