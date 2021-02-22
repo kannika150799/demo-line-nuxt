@@ -105,16 +105,13 @@ export default {
   },
   methods: {
     async makeGetRequest() {
-      let res = await axios.get(
-        `http://localhost:3030/api/get/user/${this.profile.userId}`
-      );
+      let res = await axios.get(`http://localhost:3030/api/get/user/${this.profile.userId}`);
       this.profile = res.data;
       console.log("get", this.profile);
     },
     handleChange(value) {
       this.show = value;
       console.log(`selected ${value}`);
-      console.log(this.photo);
     },
     filterOption(input, option) {
       return option.componentOptions.children[0].text
