@@ -3,7 +3,7 @@
     <p class="text-head">ใบลา</p>
     <div class="containar-detail">
       <div>
-        <!-- <p class="text">ชื่อ&nbsp;{{ profile.name }}</p> -->
+        <p class="text">ชื่อ&nbsp;{{ profile.name }}</p>
       </div>
       <div class="container-head">
         <p class="text-leave text">หัวข้อการลา</p>
@@ -68,23 +68,23 @@
 <script>
 import axios from "axios";
 export default {
-  // mounted() {
-  //   liff
-  //     .init({
-  //       liffId: "1655660869-VoKZDYDO",
-  //     })
-  //     .then(() => {
-  //       if (liff.isLoggedIn()) {
-  //         liff.getProfile().then((profile) => {
-  //           this.profile.profileImage = profile.pictureUrl;
-  //           this.profile.userId = profile.userId;
-  //           this.makeGetRequest();
-  //         });
-  //       } else {
-  //         liff.login();
-  //       }
-  //     });
-  // },
+  mounted() {
+    liff
+      .init({
+        liffId: "1655660869-VoKZDYDO",
+      })
+      .then(() => {
+        if (liff.isLoggedIn()) {
+          liff.getProfile().then((profile) => {
+            this.profile.profileImage = profile.pictureUrl;
+            this.leave.userId = profile.userId;
+            this.makeGetRequest();
+          });
+        } else {
+          liff.login();
+        }
+      });
+  },
   data() {
     return {
       profile: {
@@ -92,7 +92,7 @@ export default {
       },
       leave:{
         id:'fffffff1',
-        userId:'mmmmm',
+        userId:'',
         leaveType:'',
         reson:'',
         startValue:'',
@@ -127,6 +127,7 @@ export default {
     handleChange(value) {
       this.show = value;
       console.log(`selected ${value}`);
+      this.leave.leaveType=value;
     },
     filterOption(input, option) {
       return option.componentOptions.children[0].text
