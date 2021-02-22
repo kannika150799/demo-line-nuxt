@@ -5,16 +5,16 @@
       <template>
         <div class="box-input">
           <p class="text-input">ชื่อกิจกรรม</p>
-          <a-input class="input" placeholder="ชื่อกิจกรรม" />
+          <a-input class="input" >ชื่อกิจกรรม</a-input>
         </div>
       </template>
       <div class="select-date">
         <p class="text-input">วันที่</p>
         <div>
-          <a-date-picker @change="onChange" />
+          <a-date-picker @change="onChange">xx/xx/xxxx</a-date-picker>
         </div>
       </div>
-      <a-button class="add-button" type="primary" @click="addCalendar"> Add </a-button>
+      <a-button class="add-button" type="primary" @click="confirmCalendar"> confirm </a-button>
     </div>
   </div>
 </template>
@@ -25,8 +25,8 @@ export default {
     onChange(date, dateString) {
       console.log(date, dateString);
     },
-    addCalendar () {
-      this.$router.push('/calendar/listCalendar')
+    confirmCalendar () {
+        this.$router.push('/calendar/listCalendar')
     }
   },
 };
