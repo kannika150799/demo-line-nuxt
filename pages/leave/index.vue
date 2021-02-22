@@ -3,11 +3,25 @@
     <p class="text-head">ใบลา</p>
     <div class="containar-detail">
       <div>
-        <p class="text">ชื่อ&nbsp;{{profile.name}}</p>
+        <p class="text">ชื่อ&nbsp;{{ profile.name }}</p>
       </div>
       <div class="container-head">
         <p class="text-leave text">หัวข้อการลา</p>
-        <leaveTopic />
+        <div>
+          <a-select
+            show-search
+            placeholder="หัวข้อการลา"
+            option-filter-prop="children"
+            style="width: 120px"
+            :filter-option="filterOption"
+            class="breed_select"
+            @change="handleChange"
+          >
+            <a-select-option v-for="author in authors" :key="author">
+              {{ author }}
+            </a-select-option>
+          </a-select>
+        </div>
       </div>
       <div>
         <p class="text">หมายเหตุการลา</p>
@@ -21,7 +35,29 @@
       </div>
       <div class="container-date">
         <p class="text-leave text">วันที่ลา</p>
-        <div class="date-leave"><dateLeave /></div>
+        <div class="date-leave">
+          <div class="container-date">
+            <a-date-picker
+              v-model="startValue"
+              :disabled-date="disabledStartDate"
+              show-time
+              format="YYYY-MM-DD"
+              placeholder="Start"
+              class="disabled-date"
+              @openChange="handleStartOpenChange"
+            />
+            <a-date-picker
+              v-model="endValue"
+              :disabled-date="disabledEndDate"
+              show-time
+              format="YYYY-MM-DD"
+              placeholder="End"
+              :open="endOpen"
+              class="disabled-date"
+              @openChange="handleEndOpenChange"
+            />
+          </div>
+        </div>
       </div>
     </div>
     <div><a-button class="send-button" type="primary"> Send </a-button></div>
@@ -30,13 +66,7 @@
 
 <script>
 import axios from "axios";
-import leaveTopic from "~/components/leaveTopic";
-import dateLeave from "~/components/dateLeave";
 export default {
-  components: {
-    leaveTopic,
-    dateLeave,
-  },
   mounted() {
     liff
       .init({
@@ -57,15 +87,61 @@ export default {
   data() {
     return {
       profile: {
-        name: ""
+        name: "",
       },
+      authors: ["ลากิจ", "ลาป่วย", "ลาบวช", "ลาพักร้อน", "ลาคลอด", "อื่นๆ"],
+      startValue: null,
+      endValue: null,
+      endOpen: false,
     };
+  },
+  watch: {
+    startValue(val) {
+      console.log('startValue', val);
+    },
+    endValue(val) {
+      console.log('endValue', val);
+    },
   },
   methods: {
     async makeGetRequest() {
-      let res = await axios.get(`http://localhost:3030/api/get/user/${this.profile.userId}`);
+      let res = await axios.get(
+        `http://localhost:3030/api/get/user/${this.profile.userId}`
+      );
       this.profile = res.data;
       console.log("get", this.profile);
+    },
+    handleChange(value) {
+      this.show = value;
+      console.log(`selected ${value}`);
+      console.log(this.photo);
+    },
+    filterOption(input, option) {
+      return option.componentOptions.children[0].text
+        .toLowerCase()
+        .includes(input.toLowerCase());
+    },
+    disabledStartDate(startValue) {
+      const endValue = this.endValue;
+      if (!startValue || !endValue) {
+        return false;
+      }
+      return startValue.valueOf() > endValue.valueOf();
+    },
+    disabledEndDate(endValue) {
+      const startValue = this.startValue;
+      if (!endValue || !startValue) {
+        return false;
+      }
+      return startValue.valueOf() >= endValue.valueOf();
+    },
+    handleStartOpenChange(open) {
+      if (!open) {
+        this.endOpen = true;
+      }
+    },
+    handleEndOpenChange(open) {
+      this.endOpen = open;
     },
   },
 };
@@ -104,5 +180,16 @@ export default {
   font-size: 16px;
   font-weight: 600;
   margin-top: 20px;
+}
+.container-date {
+    width: 200px;
+}
+.span {
+    margin: 5px 0px 5px;
+    text-align: center;
+    font-size: 20px;
+}
+.disabled-date {
+  margin-top: 10px;
 }
 </style>
