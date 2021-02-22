@@ -44,7 +44,6 @@ export default {
             this.profile.displayName = profile.displayName;
             this.profile.userId = profile.userId;
           });
-          this.getData()
         } else {
           liff.login();
         }
