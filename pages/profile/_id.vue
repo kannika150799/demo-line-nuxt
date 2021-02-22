@@ -2,34 +2,34 @@
   <div>
     <div class="profile">
       <!-- <img src="~/assets/IMG.jpg" alt="" /> -->
-      <img v-if="profile.profileImage == ''" src="~/assets/IMG.jpg" alt="" />
-      <img v-else :src="profile.profileImage" alt="" />
-      <p class="display-name">{{profile.displayName}}</p>
+      <img v-if="pf_line.profileImage == ''" src="~/assets/IMG.jpg" alt="" />
+      <img v-else :src="pf_line.profileImage" alt="" />
+      <p class="display-name">{{ pf_line.displayName }}</p>
     </div>
     <div class="container-input">
       <template>
         <div class="box-input">
           <p class="text-input name">Name</p>
-          <a-input placeholder="Name"
-          v-model="profile.name" />
+          <p class="text-input name">{{ profile.name }}</p>
         </div>
         <div class="box-input">
           <p class="text-input">Nickname&nbsp;</p>
-          <a-input placeholder="Nickname"
-          v-model="profile.nickname" />
+          <p class="text-input name">{{ profile.nickname }}</p>
         </div>
         <div class="box-input">
           <p class="text-input position">Position</p>
-          <a-input placeholder="Position"
-          v-model="profile.position" />
+          <p class="text-input name">{{ profile.position }}</p>
         </div>
       </template>
-      <a-button class="register-button" type="primary" @click="register"> Register </a-button>
+      <a-button class="edit-button" type="primary" @click="editUser">
+        Edit
+      </a-button>
     </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
   mounted() {
     liff
@@ -39,10 +39,10 @@ export default {
       .then(() => {
         if (liff.isLoggedIn()) {
           liff.getProfile().then((profile) => {
-            this.profile.profileImage = profile.pictureUrl;
-            this.profile.displayName = profile.displayName;
+            this.pf_line.profileImage = profile.pictureUrl;
+            this.pf_line.displayName = profile.displayName;
             this.profile.userId = profile.userId;
-            console.log(this.profile.userId);
+            this.makeGetRequest();
           });
         } else {
           liff.login();
@@ -51,23 +51,30 @@ export default {
   },
   data() {
     return {
-      profile: {
+      pf_line: {
         profileImage: "",
-        displayName: "",
+        displayName: ""
+      },
+      profile: {
         userId: "",
-        name:"",
-        nickname:"",
-        position:""
+        name: "",
+        nickname: "",
+        position: ""
       },
     };
   },
-  methods:{
-    register(){
-      this.$axios.post('http://localhost:3030/api/post/user',this.profile)
-      this.$router.push(`/profile/${this.profile.userId}`)
-      console.log(this.profile);
-    }
-  }
+  methods: {
+    editUser() {
+      this.$router.push(`/profile/modify`)
+    },
+    async makeGetRequest() {
+      let res = await axios.get(
+        `http://localhost:3030/api/get/user/${this.profile.userId}`
+      );
+      this.profile = res.data;
+      console.log("get", this.profile);
+    },
+  },
 };
 </script>
 
@@ -86,7 +93,7 @@ img {
   font-family: inherit;
   margin-bottom: 40px;
 }
-.register-button {
+.edit-button {
   margin-top: 25px;
   height: 44px;
   width: 120px;
