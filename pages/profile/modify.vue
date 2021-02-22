@@ -10,15 +10,15 @@
       <template>
         <div class="box-input">
           <p class="text-input name">Name</p>
-          <a-input v-model="profile.name">wwwww{{ profile.name }}</a-input>
+          <a-input v-model="profile.name">{{ profile.name }}</a-input>
         </div>
         <div class="box-input">
           <p class="text-input">Nickname&nbsp;</p>
-          <a-input v-model="profile.nickname" >rrrr</a-input>
+          <a-input v-model="profile.nickname" >{{ profile.Nickname }}</a-input>
         </div>
         <div class="box-input">
           <p class="text-input position">Position</p>
-          <a-input v-model="profile.position" >ttttt</a-input>
+          <a-input v-model="profile.position" >{{ profile.position }}</a-input>
         </div>
       </template>
       <a-button class="confirm-button" type="primary" @click="confirm"> Confirm </a-button>
