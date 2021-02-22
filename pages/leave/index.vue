@@ -24,7 +24,7 @@
         </div>
       </div>
       <div>
-        <p class="text">หมายเหตุการลา</p>
+        <p class="text">หมายเหตุของการลา</p>
         <template>
           <a-textarea
             placeholder="หมายเหตุการลา"
