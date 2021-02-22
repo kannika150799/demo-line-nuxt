@@ -76,8 +76,8 @@ export default {
     },
     async makeGetRequest() {
       let res = await axios.get(`http://localhost:3030/api/get/user/${this.profile.userId}`);
-      let data = res.data;
-      console.log('get',data);
+      this.profile = res.data;
+      console.log('get',this.profile);
     },
   }
 };
