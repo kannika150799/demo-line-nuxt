@@ -43,12 +43,13 @@ export default {
             this.profile.profileImage = profile.pictureUrl;
             this.profile.displayName = profile.displayName;
             this.profile.userId = profile.userId;
+            this.makeGetRequest()
           });
         } else {
           liff.login();
         }
       });
-    this.makeGetRequest()
+    
   },
   data() {
     return {
@@ -76,9 +77,8 @@ export default {
     async makeGetRequest() {
       let res = await axios.get(`http://localhost:3030/api/get/user/${this.profile.userId}`);
       let data = res.data;
-      console.log(data);
+      console.log('get',data);
     },
-    makeGetRequest(){}
   }
 };
 </script>
