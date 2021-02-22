@@ -10,7 +10,9 @@
       </template>
       <div class="select-date">
         <p class="text-input">วันที่</p>
-        <checkDate />
+        <div>
+          <a-date-picker @change="onChange" />
+        </div>
       </div>
       <a-button class="add-button" type="primary"> Add </a-button>
     </div>
@@ -18,20 +20,21 @@
 </template>
 
 <script>
-import checkDate from "~/components/checkDate";
 export default {
-  components: {
-    checkDate,
+  methods: {
+    onChange(date, dateString) {
+      console.log(date, dateString);
+    },
   },
 };
 </script>
 
 <style scoped>
 .container-page-calendar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px;
 }
 .text-head {
   font-size: 20px;
@@ -55,7 +58,7 @@ export default {
   display: flex;
 }
 .add-button {
-      height: 44px;
+  height: 44px;
   width: 120px;
   font-size: 16px;
   font-weight: 400;

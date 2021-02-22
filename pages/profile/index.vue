@@ -10,7 +10,7 @@
       <template>
         <div class="box-input">
           <p class="text-input name">Name</p>
-          <a-input placeholder="Name"
+          <a-input placeholder="Full name"
           v-model="profile.name" />
         </div>
         <div class="box-input">

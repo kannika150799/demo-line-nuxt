@@ -27,7 +27,6 @@ export default {
     return {
       startValue: null,
       endValue: null,
-      endOpen: false,
     };
   },
   watch: {

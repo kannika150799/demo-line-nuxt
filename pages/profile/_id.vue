@@ -73,8 +73,8 @@ export default {
       );
       this.profile = res.data;
       console.log("get", this.profile);
-    },
-  },
+    }
+  }
 };
 </script>
 
