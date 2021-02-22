@@ -29,6 +29,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import leaveTopic from "~/components/leaveTopic";
 import dateLeave from "~/components/dateLeave";
 export default {
