@@ -39,8 +39,8 @@ export default {
       .then(() => {
         if (liff.isLoggedIn()) {
           liff.getProfile().then((profile) => {
-            this.profile.profileImage = profile.pictureUrl;
-            this.profile.displayName = profile.displayName;
+            this.pf_line.profileImage = profile.pictureUrl;
+            this.pf_line.displayName = profile.displayName;
             this.profile.userId = profile.userId;
             this.makeGetRequest();
           });
