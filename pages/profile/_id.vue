@@ -55,13 +55,12 @@ export default {
       profile: {
         profileImage: "",
         displayName: "",
-        userId: "",
+        userId: this.$route.params.userId,
         name:"",
         nickname:"",
         position:""
         
-      },
-      user: null
+      }
     };
   },
   methods:{
@@ -73,7 +72,6 @@ export default {
     // },
     editUser () {
       console.log('ttttttt', this.profile)
-      console.log('mmmmm', this.user);
     },
     async makeGetRequest() {
       let res = await axios.get(`http://localhost:3030/api/get/user/${this.profile.userId}`);
