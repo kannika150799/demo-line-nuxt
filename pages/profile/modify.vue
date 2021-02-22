@@ -4,26 +4,27 @@
       <!-- <img src="~/assets/IMG.jpg" alt="" /> -->
       <img v-if="pf_line.profileImage == ''" src="~/assets/IMG.jpg" alt="" />
       <img v-else :src="pf_line.profileImage" alt="" />
-      <p class="display-name">{{ pf_line.displayName }}</p>
+      <p class="display-name">{{pf_line.displayName}}</p>
     </div>
     <div class="container-input">
       <template>
         <div class="box-input">
           <p class="text-input name">Name</p>
-          <p class="text-input name">{{ profile.name }}</p>
+          <a-input placeholder="{{ profile.name }}"
+          v-model="profile.name" />
         </div>
         <div class="box-input">
           <p class="text-input">Nickname&nbsp;</p>
-          <p class="text-input name">{{ profile.nickname }}</p>
+          <a-input placeholder="{{ profile.nickname }}"
+          v-model="profile.nickname" />
         </div>
         <div class="box-input">
           <p class="text-input position">Position</p>
-          <p class="text-input name">{{ profile.position }}</p>
+          <a-input placeholder="{{ profile.position }}"
+          v-model="profile.position" />
         </div>
       </template>
-      <a-button class="edit-button" type="primary" @click="editUser">
-        Edit
-      </a-button>
+      <a-button class="confirm-button" type="primary" @click="confirm"> Confirm </a-button>
     </div>
   </div>
 </template>
@@ -64,9 +65,6 @@ export default {
     };
   },
   methods: {
-    editUser() {
-      this.$router.push(`/profile/modify`)
-    },
     async makeGetRequest() {
       let res = await axios.get(
         `http://localhost:3030/api/get/user/${this.profile.userId}`
@@ -74,7 +72,12 @@ export default {
       this.profile = res.data;
       console.log("get", this.profile);
     },
-  },
+    confirm(){
+      this.$axios.put(`http://localhost:3030/api/edit/user/${this.profile.userId}`,this.profile)
+      this.$router.push(`/profile/${this.profile.userId}`)
+      console.log("put",this.profile);
+    }
+  }
 };
 </script>
 
@@ -93,7 +96,7 @@ img {
   font-family: inherit;
   margin-bottom: 40px;
 }
-.edit-button {
+.confirm-button {
   margin-top: 25px;
   height: 44px;
   width: 120px;
