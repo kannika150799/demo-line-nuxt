@@ -2,7 +2,7 @@
   <div class="container-Check">
     <p class="date" v-text="currentDate"></p>
     <p class="time" v-text="currentTime"></p>
-    <a-button class="check-button" type="primary"> Check in </a-button>
+    <a-button class="check-button" type="primary" @click="checkin"> Check in </a-button>
     <a-button class="check-button" type="primary"> Check out </a-button>
   </div>
 </template>
@@ -14,7 +14,14 @@ export default {
   data() {
     return {
       currentTime: null,
-      currentDate: null
+      currentDate: null,
+    inOut:{
+      // currentTime: currentTime,
+      // currentDate: currentDate,
+      currentTime:moment().format("LTS"),
+      currentDate:moment().format('dddd, l'),
+      idtime:"qwe"
+    }
     };
   },
   methods: {
@@ -24,6 +31,10 @@ export default {
     updateCurrentDate() {
       this.currentDate = moment().format('dddd, l');
     },
+    checkin(){
+    this.$axios.post('http://localhost:3030/api/post/inout',this.inOut)
+    console.log("data",this.inOut);
+    }
   },
   created() {
     this.currentTime = moment().format("LTS");

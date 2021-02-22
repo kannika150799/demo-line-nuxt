@@ -3,7 +3,7 @@
     <p class="text-head">ใบลา</p>
     <div class="containar-detail">
       <div>
-        <p class="text">ชื่อ&nbsp;{{ profile.name }}</p>
+        <!-- <p class="text">ชื่อ&nbsp;{{ profile.name }}</p> -->
       </div>
       <div class="container-head">
         <p class="text-leave text">หัวข้อการลา</p>
@@ -30,6 +30,7 @@
             placeholder="หมายเหตุการลา"
             :rows="2"
             style="width: 200px"
+            v-model="leave.reson"
           />
         </template>
       </div>
@@ -38,7 +39,7 @@
         <div class="date-leave">
           <div class="container-date">
             <a-date-picker
-              v-model="startValue"
+              v-model="leave.startValue"
               :disabled-date="disabledStartDate"
               show-time
               format="YYYY-MM-DD"
@@ -47,7 +48,7 @@
               @openChange="handleStartOpenChange"
             />
             <a-date-picker
-              v-model="endValue"
+              v-model="leave.endValue"
               :disabled-date="disabledEndDate"
               show-time
               format="YYYY-MM-DD"
@@ -60,34 +61,43 @@
         </div>
       </div>
     </div>
-    <div><a-button class="send-button" type="primary"> Send </a-button></div>
+    <div><a-button class="send-button" type="primary" @click="send"> Send </a-button></div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
 export default {
-  mounted() {
-    liff
-      .init({
-        liffId: "1655660869-VoKZDYDO",
-      })
-      .then(() => {
-        if (liff.isLoggedIn()) {
-          liff.getProfile().then((profile) => {
-            this.profile.profileImage = profile.pictureUrl;
-            this.profile.userId = profile.userId;
-            this.makeGetRequest();
-          });
-        } else {
-          liff.login();
-        }
-      });
-  },
+  // mounted() {
+  //   liff
+  //     .init({
+  //       liffId: "1655660869-VoKZDYDO",
+  //     })
+  //     .then(() => {
+  //       if (liff.isLoggedIn()) {
+  //         liff.getProfile().then((profile) => {
+  //           this.profile.profileImage = profile.pictureUrl;
+  //           this.profile.userId = profile.userId;
+  //           this.makeGetRequest();
+  //         });
+  //       } else {
+  //         liff.login();
+  //       }
+  //     });
+  // },
   data() {
     return {
       profile: {
         name: "",
+      },
+      leave:{
+        id:'fffffff1',
+        userId:'mmmmm',
+        leaveType:'',
+        reson:'',
+        startValue:'',
+        endValue:'',
+        status:"รออุมัติ"
       },
       authors: ["ลากิจ", "ลาป่วย", "ลาบวช", "ลาพักร้อน", "ลาคลอด", "อื่นๆ"],
       startValue: null,
@@ -108,6 +118,11 @@ export default {
       let res = await axios.get(`http://localhost:3030/api/get/user/${this.profile.userId}`);
       this.profile = res.data;
       console.log("get", this.profile);
+    },
+    send(){
+      this.$axios.post('http://localhost:3030/api/post/leave',this.leave)
+      // this.$router.push(`/profile/${this.profile.userId}`)
+      console.log("leave",this.leave);
     },
     handleChange(value) {
       this.show = value;
