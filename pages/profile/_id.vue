@@ -48,7 +48,7 @@ export default {
           liff.login();
         }
       });
-    
+    this.makeGetRequest()
   },
   data() {
     return {
