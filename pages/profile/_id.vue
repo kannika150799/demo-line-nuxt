@@ -4,24 +4,26 @@
       <!-- <img src="~/assets/IMG.jpg" alt="" /> -->
       <img v-if="profile.profileImage == ''" src="~/assets/IMG.jpg" alt="" />
       <img v-else :src="profile.profileImage" alt="" />
-      <p class="display-name">{{profile.displayName}}</p>
+      <p class="display-name">{{ profile.displayName }}</p>
     </div>
     <div class="container-input">
       <template>
         <div class="box-input">
           <p class="text-input name">Name</p>
-          <p class="text-input name">Name {{profile.name}}</p>
+          <p class="text-input name">Name {{ profile.name }}</p>
         </div>
         <div class="box-input">
           <p class="text-input">Nickname&nbsp;</p>
-          <p class="text-input name">Nickname {{profile.nickname}}</p>
+          <p class="text-input name">Nickname {{ profile.nickname }}</p>
         </div>
         <div class="box-input">
           <p class="text-input position">Position</p>
-          <p class="text-input name">Position {{profile.position}}</p>
+          <p class="text-input name">Position {{ profile.position }}</p>
         </div>
       </template>
-      <a-button class="edit-button" type="primary" @click="editUser"> Edit </a-button>
+      <a-button class="edit-button" type="primary" @click="editUser">
+        Edit
+      </a-button>
     </div>
   </div>
 </template>
@@ -64,16 +66,22 @@ export default {
     };
   },
   methods:{
-    async getData () {
-      const res = await axios.get(`http://localhost:3030/api/get/user/${this.profile.userId}`)
-      this.user = res.data
-      this.profile = res.data
-      console.log('mmmmm', this.user);
-    },
+    // async getData () {
+    //   const res = await axios.get(`http://localhost:3030/api/get/user/${this.profile.userId}`)
+    //   this.user = res.data
+    //   this.profile = res.data
+    //   console.log('mmmmm', this.user);
+    // },
     editUser () {
       console.log('ttttttt', this.profile)
       console.log('mmmmm', this.user);
-    }
+    },
+    async makeGetRequest() {
+      let res = await axios.get(`http://localhost:3030/api/get/user/${this.profile.userId}`);
+      let data = res.data;
+      console.log(data);
+    },
+    makeGetRequest(){}
   }
 };
 </script>
