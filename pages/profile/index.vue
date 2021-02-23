@@ -39,10 +39,10 @@ export default {
       .then(() => {
         if (liff.isLoggedIn()) {
           liff.getProfile().then((profile) => {
-            this.isDone();
             this.profile.profileImage = profile.pictureUrl;
             this.profile.displayName = profile.displayName;
             this.profile.userId = profile.userId;
+            this.isDone();
             console.log(this.profile.userId);
           });
         } else {
