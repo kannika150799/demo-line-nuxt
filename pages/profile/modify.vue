@@ -64,13 +64,13 @@ export default {
   methods: {
     async makeGetRequest() {
       let res = await axios.get(
-        `http://localhost:3030/api/get/user/${this.profile.userId}`
+        `https://db-back.herokuapp.com/api/get/user/${this.profile.userId}`
       );
       this.profile = res.data;
       console.log("get", this.profile);
     },
     confirm(){
-      this.$axios.put(`http://localhost:3030/api/edit/user/${this.profile.userId}`,this.profile)
+      this.$axios.put(`https://db-back.herokuapp.com/api/edit/user/${this.profile.userId}`,this.profile)
       this.$router.push(`/profile/${this.profile.userId}`)
       console.log("put",this.profile);
     }

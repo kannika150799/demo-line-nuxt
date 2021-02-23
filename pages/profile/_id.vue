@@ -69,7 +69,7 @@ export default {
     },
     async makeGetRequest() {
       let res = await axios.get(
-        `http://localhost:3030/api/get/user/${this.profile.userId}`
+        `https://db-back.herokuapp.com/api/get/user/${this.profile.userId}`
       );
       this.profile = res.data;
       console.log("get", this.profile);

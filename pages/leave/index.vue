@@ -119,13 +119,13 @@ export default {
   methods: {
     async makeGetRequest() {
       let res = await axios.get(
-        `http://localhost:3030/api/get/user/${this.leave.userId}`
+        `https://db-back.herokuapp.com/api/get/user/${this.leave.userId}`
       );
       this.profile = res.data;
       console.log("get", this.profile);
     },
     send() {
-      this.$axios.post("http://localhost:3030/api/post/leave", this.leave);
+      this.$axios.post("https://db-back.herokuapp.com/api/post/leave", this.leave);
       this.$router.push("/leave/status");
       console.log("leave", this.leave);
     },

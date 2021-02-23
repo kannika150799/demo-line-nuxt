@@ -64,14 +64,14 @@ export default {
   },
   methods:{
     isDone(){
-      this.$axios.get(`http://localhost:3030/api/get/user/${this.profile.userId}`).then((res) => {
+      this.$axios.get(`https://db-back.herokuapp.com/api/get/user/${this.profile.userId}`).then((res) => {
         if(res.data != null){
           this.$router.push('/profile/_id');
         }
       });
     },
     register(){
-      this.$axios.post('http://localhost:3030/api/post/user',this.profile)
+      this.$axios.post('https://db-back.herokuapp.com/api/post/user',this.profile)
       this.$router.push(`/profile/${this.profile.userId}`)
       console.log(this.profile);
     }
