@@ -154,14 +154,14 @@ export default {
       }
       return startValue.valueOf() >= endValue.valueOf();
     },
-    handleStartOpenChange(open) {
-      if (!open) {
-        this.endOpen = true;
-      }
-    },
-    handleEndOpenChange(open) {
-      this.endOpen = open;
-    },
+    // handleStartOpenChange(open) {
+    //   if (!open) {
+    //     this.endOpen = true;
+    //   }
+    // },
+    // handleEndOpenChange(open) {
+    //   this.endOpen = open;
+    // },
   },
 };
 </script>
