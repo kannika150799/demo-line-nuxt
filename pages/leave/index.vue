@@ -106,7 +106,7 @@ export default {
       authors: ["ลากิจ", "ลาป่วย", "ลาบวช", "ลาพักร้อน", "ลาคลอด", "อื่นๆ"],
       startValue: null,
       endValue: null,
-      endOpen: false,
+      // endOpen: false,
     };
   },
   watch: {
@@ -159,9 +159,9 @@ export default {
     //     this.endOpen = true;
     //   }
     // },
-    // handleEndOpenChange(open) {
-    //   this.endOpen = open;
-    // },
+    handleEndOpenChange(open) {
+      this.endOpen = open;
+    },
   },
 };
 </script>
