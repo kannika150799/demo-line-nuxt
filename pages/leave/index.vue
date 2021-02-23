@@ -84,7 +84,9 @@ export default {
               this.leave.userId = profile.userId;
               this.makeGetRequest();
             });
-          } 
+          } else {
+            liff.login();
+          }
         });
     },
   data() {
