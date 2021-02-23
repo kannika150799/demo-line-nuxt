@@ -179,7 +179,6 @@ export default {
 }
 .containar-title {
   display: flex;
-  flex-direction: column;
 }
 .text-head {
   font-size: 20px;
