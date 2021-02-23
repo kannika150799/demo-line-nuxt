@@ -114,13 +114,6 @@ export default {
     },
   },
   methods: {
-    isDone(){
-      this.$axios.get(`http://localhost:3030/api/get/user/${this.leave.userId}`).then((res) => {
-        if(res.data != null){
-          this.$router.push('profile/modify');
-        }
-      });
-    },
     async makeGetRequest() {
       let res = await axios.get(`http://localhost:3030/api/get/user/${this.leave.userId}`);
       this.profile = res.data;
