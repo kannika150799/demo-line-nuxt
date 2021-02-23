@@ -66,7 +66,7 @@ export default {
     isDone(){
       this.$axios.get(`http://localhost:3030/api/get/user/${this.profile.userId}`).then((res) => {
         if(res.data != null){
-          this.$router.push('/profile/modify');
+          this.$router.push('/profile/_id');
         }
       });
     },
