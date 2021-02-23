@@ -72,29 +72,30 @@
 <script>
 import axios from "axios";
 export default {
-    mounted() {
-      liff
-        .init({
-          liffId: "1655660869-VoKZDYDO",
-        })
-        .then(() => {
-          if (liff.isLoggedIn()) {
-            liff.getProfile().then((profile) => {
-              this.profile.profileImage = profile.pictureUrl;
-              this.leave.userId = profile.userId;
-              this.makeGetRequest();
-            });
-          } else {
-            liff.login();
-          }
-        });
-    },
+  //   mounted() {
+  //     liff
+  //       .init({
+  //         liffId: "1655660869-VoKZDYDO",
+  //       })
+  //       .then(() => {
+  //         if (liff.isLoggedIn()) {
+  //           liff.getProfile().then((profile) => {
+  //             this.profile.profileImage = profile.pictureUrl;
+  //             this.leave.userId = profile.userId;
+  //             this.makeGetRequest();
+  //           });
+  //         } else {
+  //           liff.login();
+  //         }
+  //       });
+  //   },
   data() {
     return {
       profile: {
         name: "",
       },
       leave: {
+        id: "fffffff1",
         userId: "",
         leaveType: "",
         reson: "",
