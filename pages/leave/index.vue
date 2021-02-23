@@ -2,8 +2,9 @@
   <div class="container-page-leave">
     <p class="text-head">ใบลา</p>
     <div class="containar-detail">
-      <div>
-        <p class="text txt-title">ชื่อ&nbsp;{{ profile.name }}</p>
+      <div class="containar-title">
+        <p class="text txt-title">ชื่อ&nbsp;</p>
+        <p class="text txt-title">{{ profile.name }}</p>
       </div>
       <div class="container-head">
         <p class="text-leave text txt-title">หัวข้อการลา</p>
@@ -175,6 +176,10 @@ export default {
 }
 .containar-detail {
   width: 220px;
+}
+.containar-title {
+  display: flex;
+  flex-direction: column;
 }
 .text-head {
   font-size: 20px;
