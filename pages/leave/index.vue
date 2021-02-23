@@ -114,6 +114,13 @@ export default {
     },
   },
   methods: {
+    isDone(){
+      this.$axios.get(`http://localhost:3030/api/get/user/${this.leave.userId}`).then((res) => {
+        if(res.data != null){
+          this.$router.push('profile/modify');
+        }
+      });
+    },
     async makeGetRequest() {
       let res = await axios.get(`http://localhost:3030/api/get/user/${this.leave.userId}`);
       this.profile = res.data;
@@ -121,7 +128,7 @@ export default {
     },
     send(){
       this.$axios.post('http://localhost:3030/api/post/leave',this.leave)
-      // this.$router.push(`/profile/${this.profile.userId}`)
+      this.$router.push('/leave/status')
       console.log("leave",this.leave);
     },
     handleChange(value) {
