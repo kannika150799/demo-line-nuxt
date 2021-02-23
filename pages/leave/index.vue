@@ -78,13 +78,13 @@ export default {
           liffId: "1655660869-VoKZDYDO",
         })
         .then(() => {
-          if (liff.isLoggedIn()) {
+          // if (liff.isLoggedIn()) {
             liff.getProfile().then((profile) => {
               this.profile.profileImage = profile.pictureUrl;
               this.leave.userId = profile.userId;
               this.makeGetRequest();
             });
-          } 
+          // } 
         });
     },
   data() {
