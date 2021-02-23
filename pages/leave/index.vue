@@ -54,7 +54,6 @@
               show-time
               format="YYYY-MM-DD"
               placeholder="End"
-              :open="endOpen"
               class="disabled-date"
               @openChange="handleEndOpenChange"
             />
@@ -106,7 +105,7 @@ export default {
       authors: ["ลากิจ", "ลาป่วย", "ลาบวช", "ลาพักร้อน", "ลาคลอด", "อื่นๆ"],
       startValue: null,
       endValue: null,
-      // endOpen: false,
+
     };
   },
   watch: {
@@ -154,14 +153,7 @@ export default {
       }
       return startValue.valueOf() >= endValue.valueOf();
     },
-    // handleStartOpenChange(open) {
-    //   if (!open) {
-    //     this.endOpen = true;
-    //   }
-    // },
-    handleEndOpenChange(open) {
-      this.endOpen = open;
-    },
+
   },
 };
 </script>

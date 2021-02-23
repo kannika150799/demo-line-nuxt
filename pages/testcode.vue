@@ -2,8 +2,9 @@
   <div class="container-page-leave">
     <p class="text-head">ใบลา</p>
     <div class="containar-detail">
-      <div>
-        <p class="text txt-title">ชื่อ&nbsp;kannika{{ profile.name }}</p>
+      <div class="containar-title">
+        <p class="text txt-title">ชื่อ&nbsp;</p>
+        <p class="text txt-title">{{ profile.name }}</p>
       </div>
       <div class="container-head">
         <p class="text-leave text txt-title">หัวข้อการลา</p>
@@ -53,7 +54,7 @@
               show-time
               format="YYYY-MM-DD"
               placeholder="End"
-              :open="endOpen"
+              
               class="disabled-date"
               @openChange="handleEndOpenChange"
             />
@@ -72,30 +73,29 @@
 <script>
 import axios from "axios";
 export default {
-  //   mounted() {
-  //     liff
-  //       .init({
-  //         liffId: "1655660869-VoKZDYDO",
-  //       })
-  //       .then(() => {
-  //         if (liff.isLoggedIn()) {
-  //           liff.getProfile().then((profile) => {
-  //             this.profile.profileImage = profile.pictureUrl;
-  //             this.leave.userId = profile.userId;
-  //             this.makeGetRequest();
-  //           });
-  //         } else {
-  //           liff.login();
-  //         }
-  //       });
-  //   },
+    // mounted() {
+    //   liff
+    //     .init({
+    //       liffId: "1655660869-nvMGoZo6",
+    //     })
+    //     .then(() => {
+    //       if (liff.isLoggedIn()) {
+    //         liff.getProfile().then((profile) => {
+    //           this.profile.profileImage = profile.pictureUrl;
+    //           this.leave.userId = profile.userId;
+    //           this.makeGetRequest();
+    //         });
+    //       } else {
+    //         liff.login();
+    //       }
+    //     });
+    // },
   data() {
     return {
       profile: {
         name: "",
       },
       leave: {
-        id: "fffffff1",
         userId: "",
         leaveType: "",
         reson: "",
@@ -106,7 +106,7 @@ export default {
       authors: ["ลากิจ", "ลาป่วย", "ลาบวช", "ลาพักร้อน", "ลาคลอด", "อื่นๆ"],
       startValue: null,
       endValue: null,
-      endOpen: false,
+      
     };
   },
   watch: {
@@ -120,13 +120,13 @@ export default {
   methods: {
     async makeGetRequest() {
       let res = await axios.get(
-        `http://localhost:3030/api/get/user/${this.leave.userId}`
+        `https://db-back.herokuapp.com/api/get/user/${this.leave.userId}`
       );
       this.profile = res.data;
       console.log("get", this.profile);
     },
     send() {
-      this.$axios.post("http://localhost:3030/api/post/leave", this.leave);
+      this.$axios.post("https://db-back.herokuapp.com/api/post/leave", this.leave);
       this.$router.push("/leave/status");
       console.log("leave", this.leave);
     },
@@ -154,14 +154,14 @@ export default {
       }
       return startValue.valueOf() >= endValue.valueOf();
     },
-    handleStartOpenChange(open) {
-      if (!open) {
-        this.endOpen = true;
-      }
-    },
-    handleEndOpenChange(open) {
-      this.endOpen = open;
-    },
+    // handleStartOpenChange(open) {
+    //   if (!open) {
+    //     this.endOpen = true;
+    //   }
+    // },
+    // handleEndOpenChange(open) {
+    //   this.endOpen = open;
+    // },
   },
 };
 </script>
@@ -176,6 +176,9 @@ export default {
 }
 .containar-detail {
   width: 220px;
+}
+.containar-title {
+  display: flex;
 }
 .text-head {
   font-size: 20px;
