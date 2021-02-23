@@ -3,7 +3,7 @@
     <p class="text-head">ใบลา</p>
     <div class="containar-detail">
       <div>
-        <p class="text txt-title">ชื่อ&nbsp;kannika{{ profile.name }}</p>
+        <p class="text txt-title">ชื่อ&nbsp;{{ profile.name }}</p>
       </div>
       <div class="container-head">
         <p class="text-leave text txt-title">หัวข้อการลา</p>
