@@ -40,19 +40,19 @@
         <div class="date-leave">
           <div class="container-date box-date">
             <a-date-picker
-              v-model="leave.startValue"
+              v-model="startValue"
               :disabled-date="disabledStartDate"
               show-time
-              format="YYYY-MM-DD"
+              format="DD-MM-YYYY"
               placeholder="Start"
               class="disabled-date"
               @openChange="handleStartOpenChange"
             />
             <a-date-picker
-              v-model="leave.endValue"
+              v-model="endValue"
               :disabled-date="disabledEndDate"
               show-time
-              format="YYYY-MM-DD"
+              format="DD-MM-YYYY"
               placeholder="End"
               class="disabled-date"
               @openChange="handleEndOpenChange"
@@ -141,6 +141,7 @@ export default {
     },
     disabledStartDate(startValue) {
       const endValue = this.endValue;
+      this.leave.startValue = startValue;
       if (!startValue || !endValue) {
         return false;
       }
@@ -148,6 +149,7 @@ export default {
     },
     disabledEndDate(endValue) {
       const startValue = this.startValue;
+      this.leave.endValue = endValue;
       if (!endValue || !startValue) {
         return false;
       }
