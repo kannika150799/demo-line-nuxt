@@ -103,6 +103,7 @@ export default {
       this.show = value
       console.log(`selected ${value}`)
       console.log(this.photo)
+      this.leave.leaveType = value
     },
     filterOption (input, option) {
       return (
