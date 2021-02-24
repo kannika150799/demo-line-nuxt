@@ -21,21 +21,21 @@
 
 <script>
 export default {
-  // mounted() {
-  //   liff
-  //     .init({
-  //       liffId: "1655660869-VoKZDYDO",
-  //     })
-  //     .then(() => {
-  //       if (liff.isLoggedIn()) {
-  //         liff.getProfile().then((profile) => {
-  //           this.calendar.userId = profile.userId;
-  //         });
-  //       } else {
-  //         liff.login();
-  //       }
-  //     });
-  // },
+  mounted() {
+    liff
+      .init({
+        liffId: "1655660869-VoKZDYDO",
+      })
+      .then(() => {
+        if (liff.isLoggedIn()) {
+          liff.getProfile().then((profile) => {
+            this.calendar.userId = profile.userId;
+          });
+        } else {
+          liff.login();
+        }
+      });
+  },
   data() {
     return {
       calendar: {
@@ -55,7 +55,7 @@ export default {
 
     },
     addCalendar () {
-      this.$axios.post('http://localhost:3030/api/post/calendar',this.calendar)
+      this.$axios.post('https://db-back.herokuapp.com/api/post/calendar',this.calendar)
       this.$router.push('/calendar/listCalendar')
     }
   },
