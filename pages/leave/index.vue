@@ -2,12 +2,11 @@
   <div class="container-page-leave">
     <p class="text-head">ใบลา</p>
     <div class="containar-detail">
-      <div class="containar-title">
-        <p class="text txt-title">ชื่อ&nbsp;</p>
-        <p class="text txt-title">{{ profile.name }}</p>
+      <div>
+        <p class="text">ชื่อ&nbsp;{{ profile.name }}</p>
       </div>
       <div class="container-head">
-        <p class="text-leave text txt-title">หัวข้อการลา</p>
+        <p class="text-leave text">หัวข้อการลา</p>
         <div>
           <a-select
             show-search
@@ -38,84 +37,124 @@
       <div class="container-date">
         <p class="text-leave text">วันที่ลา</p>
         <div class="date-leave">
-          <div class="container-date box-date">
-            <a-date-picker format="DD/MM/YYYY" @change="onChangeStart" />
-            <a-date-picker format="DD/MM/YYYY" @change="onChangeEnd" />
+          <div class="container-date">
+            <a-date-picker
+              v-model="leave.startValue"
+              :disabled-date="disabledStartDate"
+              show-time
+              format="DD-MM-YYYY"
+              placeholder="Start"
+              class="disabled-date"
+              @openChange="handleStartOpenChange"
+            />
+            <a-date-picker
+              v-model="leave.endValue"
+              :disabled-date="disabledEndDate"
+              show-time
+              format="DD-MM-YYYY"
+              placeholder="End"
+              :open="endOpen"
+              class="disabled-date"
+              @openChange="handleEndOpenChange"
+            />
           </div>
         </div>
       </div>
     </div>
-    <div>
-      <a-button class="send-button" type="primary" @click="send">
-        Send
-      </a-button>
-    </div>
+    <div><a-button class="send-button" type="primary" @click="send"> Send </a-button></div>
   </div>
 </template>
 
 <script>
-const moment = require("moment");
 import axios from "axios";
 export default {
-    mounted() {
-      liff
-        .init({
-          liffId: "1655660869-nvMGoZo6",
-        })
-        .then(() => {
-          if (liff.isLoggedIn()) {
-            liff.getProfile().then((profile) => {
-              this.profile.profileImage = profile.pictureUrl;
-              this.leave.userId = profile.userId;
-              this.makeGetRequest();
-            });
-          } else {
-            liff.login();
-          }
-        });
-    },
+  mounted() {
+    liff
+      .init({
+        liffId: "1655660869-VoKZDYDO",
+      })
+      .then(() => {
+        if (liff.isLoggedIn()) {
+          liff.getProfile().then((profile) => {
+            this.profile.profileImage = profile.pictureUrl;
+            this.leave.userId = profile.userId;
+            this.makeGetRequest();
+          });
+        } else {
+          liff.login();
+        }
+      });
+  },
   data() {
     return {
       profile: {
         name: "",
       },
-      leave: {
-        userId: "",
-        leaveType: "",
-        reson: "",
-        startValue: "",
-        endValue: "",
-        dateStart: "",
-        dateEnd: "",
-        status: "รออุมัติ",
+      leave:{
+        id:'fffffff1',
+        userId:'',
+        leaveType:'',
+        reson:'',
+        startValue:'',
+        endValue:'',
+        status:"รออุมัติ"
       },
       authors: ["ลากิจ", "ลาป่วย", "ลาบวช", "ลาพักร้อน", "ลาคลอด", "อื่นๆ"],
+      startValue: null,
+      endValue: null,
+      endOpen: false,
     };
+  },
+  watch: {
+    startValue(val) {
+      console.log('startValue', val);
+    },
+    endValue(val) {
+      console.log('endValue', val);
+    },
   },
   methods: {
     async makeGetRequest() {
-      let res = await axios.get(
-        `https://db-back.herokuapp.com/api/get/user/${this.leave.userId}`
-      );
+      let res = await axios.get(`http://localhost:3030/api/get/user/${this.profile.userId}`);
       this.profile = res.data;
       console.log("get", this.profile);
     },
-    onChangeStart(date, dateString) {
-      console.log(date, dateString);
-      this.leave.startValue = dateString;
-      this.leave.dateStart = date;
-
+    send(){
+      this.$axios.post('http://localhost:3030/api/post/leave',this.leave)
+      // this.$router.push(`/profile/${this.profile.userId}`)
+      console.log("leave",this.leave);
     },
-    onChangeEnd(date, dateString) {
-      console.log(date, dateString);
-      this.leave.endValue = dateString;
-      this.leave.dateEnd = date;
-
+    handleChange(value) {
+      this.show = value;
+      console.log(`selected ${value}`);
+      this.leave.leaveType=value;
     },
-    send() {
-      this.$axios.post("https://db-back.herokuapp.com/api/post/leave", this.leave);
-      this.$router.push("/leave/status");
-      console.log("leave", this.leave);
+    filterOption(input, option) {
+      return option.componentOptions.children[0].text
+        .toLowerCase()
+        .includes(input.toLowerCase());
+    },
+    disabledStartDate(startValue) {
+      const endValue = this.endValue;
+      if (!startValue || !endValue) {
+        return false;
+      }
+      return startValue.valueOf() > endValue.valueOf();
+    },
+    disabledEndDate(endValue) {
+      const startValue = this.startValue;
+      if (!endValue || !startValue) {
+        return false;
+      }
+      return startValue.valueOf() >= endValue.valueOf();
+    },
+    handleStartOpenChange(open) {
+      if (!open) {
+        this.endOpen = true;
+      }
+    },
+    handleEndOpenChange(open) {
+      this.endOpen = open;
     },
   },
 };
@@ -127,13 +166,9 @@ export default {
   flex-direction: column;
   align-items: center;
   margin-top: 15px;
-  font-family: inherit;
 }
 .containar-detail {
-  width: 220px;
-}
-.containar-title {
-  display: flex;
+  width: 250px;
 }
 .text-head {
   font-size: 20px;
@@ -144,39 +179,28 @@ export default {
 }
 .text-leave {
   align-self: center;
+  margin: 0px;
 }
 .text {
   font-size: 16px;
   font-weight: 600;
-  margin: 0;
+  font-family: inherit;
 }
-.txt-title {
-    margin:0px 5px 20px 0px;
-}
-.textarea {
-    margin: 5px 0px 20px;
-    width: 220px;
-    resize: none;
-}
+
 .send-button {
   width: 100px;
   height: 44px;
   font-size: 16px;
   font-weight: 600;
-  margin-top: 40px;
+  margin-top: 20px;
 }
 .container-date {
-  width: 220px;
-}
-.box-date {
-    display: flex;
-    flex-direction: column;
-    
+    width: 200px;
 }
 .span {
-  margin: 5px 0px 5px;
-  text-align: center;
-  font-size: 20px;
+    margin: 5px 0px 5px;
+    text-align: center;
+    font-size: 20px;
 }
 .disabled-date {
   margin-top: 10px;
