@@ -29,7 +29,7 @@
         <template>
           <a-textarea
             placeholder="หมายเหตุการลา"
-            :rows="2"
+            :rows="3"
             class="textarea"
             v-model="leave.reson"
           />
