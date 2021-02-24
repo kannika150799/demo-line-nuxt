@@ -39,24 +39,8 @@
         <p class="text-leave text">วันที่ลา</p>
         <div class="date-leave">
           <div class="container-date box-date">
-            <a-date-picker
-              v-model="startValue"
-              :disabled-date="disabledStartDate"
-              show-time
-              format="DD-MM-YYYY"
-              placeholder="Start"
-              class="disabled-date"
-              @openChange="handleStartOpenChange"
-            />
-            <a-date-picker
-              v-model="endValue"
-              :disabled-date="disabledEndDate"
-              show-time
-              format="DD-MM-YYYY"
-              placeholder="End"
-              class="disabled-date"
-              @openChange="handleEndOpenChange"
-            />
+            <a-date-picker format="DD/MM/YYYY" @change="onChangeStart" />
+            <a-date-picker format="DD/MM/YYYY" @change="onChangeEnd" />
           </div>
         </div>
       </div>
@@ -70,6 +54,7 @@
 </template>
 
 <script>
+const moment = require("moment");
 import axios from "axios";
 export default {
     mounted() {
@@ -100,21 +85,12 @@ export default {
         reson: "",
         startValue: "",
         endValue: "",
+        dateStart: "",
+        dateEnd: "",
         status: "รออุมัติ",
       },
       authors: ["ลากิจ", "ลาป่วย", "ลาบวช", "ลาพักร้อน", "ลาคลอด", "อื่นๆ"],
-      startValue: null,
-      endValue: null,
-
     };
-  },
-  watch: {
-    startValue(val) {
-      console.log("startValue", val);
-    },
-    endValue(val) {
-      console.log("endValue", val);
-    },
   },
   methods: {
     async makeGetRequest() {
@@ -124,38 +100,23 @@ export default {
       this.profile = res.data;
       console.log("get", this.profile);
     },
+    onChangeStart(date, dateString) {
+      console.log(date, dateString);
+      this.leave.startValue = dateString;
+      this.leave.dateStart = date;
+
+    },
+    onChangeEnd(date, dateString) {
+      console.log(date, dateString);
+      this.leave.endValue = dateString;
+      this.leave.dateEnd = date;
+
+    },
     send() {
       this.$axios.post("https://db-back.herokuapp.com/api/post/leave", this.leave);
       this.$router.push("/leave/status");
       console.log("leave", this.leave);
     },
-    handleChange(value) {
-      this.show = value;
-      console.log(`selected ${value}`);
-      this.leave.leaveType = value;
-    },
-    filterOption(input, option) {
-      return option.componentOptions.children[0].text
-        .toLowerCase()
-        .includes(input.toLowerCase());
-    },
-    disabledStartDate(startValue) {
-      const endValue = this.endValue;
-      this.leave.startValue = startValue;
-      if (!startValue || !endValue) {
-        return false;
-      }
-      return startValue.valueOf() > endValue.valueOf();
-    },
-    disabledEndDate(endValue) {
-      const startValue = this.startValue;
-      this.leave.endValue = endValue;
-      if (!endValue || !startValue) {
-        return false;
-      }
-      return startValue.valueOf() >= endValue.valueOf();
-    },
-
   },
 };
 </script>

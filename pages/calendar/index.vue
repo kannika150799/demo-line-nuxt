@@ -5,13 +5,13 @@
       <template>
         <div class="box-input">
           <p class="text-input">ชื่อกิจกรรม</p>
-          <a-input class="input" placeholder="ชื่อกิจกรรม" />
+          <a-input class="input" placeholder="ชื่อกิจกรรม" v-model="calendar.activity"/>
         </div>
       </template>
       <div class="select-date">
         <p class="text-input">วันที่</p>
         <div>
-          <a-date-picker @change="onChange" />
+          <a-date-picker format="DD/MM/YYYY" @change="onChange" />
         </div>
       </div>
       <a-button class="add-button" type="primary" @click="addCalendar"> Add </a-button>
@@ -21,11 +21,41 @@
 
 <script>
 export default {
+  // mounted() {
+  //   liff
+  //     .init({
+  //       liffId: "1655660869-VoKZDYDO",
+  //     })
+  //     .then(() => {
+  //       if (liff.isLoggedIn()) {
+  //         liff.getProfile().then((profile) => {
+  //           this.calendar.userId = profile.userId;
+  //         });
+  //       } else {
+  //         liff.login();
+  //       }
+  //     });
+  // },
+  data() {
+    return {
+      calendar: {
+        id: "",
+        userId: "",
+        activity: "",
+        dateActivity: "",
+        date:""
+      }
+    };
+  },
   methods: {
     onChange(date, dateString) {
       console.log(date, dateString);
+      this.calendar.dateActivity = dateString;
+      this.calendar.date = date;
+
     },
     addCalendar () {
+      this.$axios.post('http://localhost:3030/api/post/calendar',this.calendar)
       this.$router.push('/calendar/listCalendar')
     }
   },
