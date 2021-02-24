@@ -99,16 +99,26 @@ export default {
       this.profile = res.data;
       console.log("get", this.profile);
     },
-    onChangeStart(date, dateString) {
-      console.log(date, dateString);
-      this.leave.startValue = dateString;
-      this.leave.dateStart = date;
+    handleChange (value) {
+      this.show = value
+      console.log(`selected ${value}`)
+      console.log(this.photo)
+    },
+    filterOption (input, option) {
+      return (
+        option.componentOptions.children[0].text.toLowerCase().includes(input.toLowerCase())
+      )
+    },
+    onChangeStart(date1, dateString1) {
+      console.log(date1, dateString1);
+      this.leave.startValue = dateString1;
+      this.leave.dateStart = date1;
 
     },
-    onChangeEnd(date, dateString) {
-      console.log(date, dateString);
-      this.leave.endValue = dateString;
-      this.leave.dateEnd = date;
+    onChangeEnd(date2, dateString2) {
+      console.log(date2, dateString2);
+      this.leave.endValue = dateString2;
+      this.leave.dateEnd = date2;
 
     },
     send() {
