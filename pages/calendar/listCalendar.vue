@@ -49,7 +49,7 @@ export default {
     },
     deleteList() {
       this.$axios.delete(`https://db-back.herokuapp.com/api/delete/calendar/${obj.id}`);
-      console.log('delete',this.calendars.id);
+      console.log('delete', obj.id);
     },
   },
 };
