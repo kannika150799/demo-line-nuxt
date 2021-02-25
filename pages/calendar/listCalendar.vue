@@ -2,6 +2,7 @@
   <div>
     <p>กิจกรรม</p>
     <div v-for="calendar in calendars" :key="calendar.id">
+      <p>id: {{ calendar.id }}</p>
       <p>กิจกรรม: {{ calendar.activity }}</p>
       <p>วันที่: {{ calendar.dateActivity }}</p>
       <div>
@@ -46,8 +47,8 @@ export default {
       console.log("id::", id);
     },
     deleteList() {
-      this.$axios.delete(`https://db-back.herokuapp.com/api/delete/calendar/${this.id}`);
-      console.log("delete", this.id);
+      this.$axios.delete(`https://db-back.herokuapp.com/api/delete/calendar/${this.calendar.id}`);
+      console.log("delete", this.calendar.id);
     },
   },
 };
