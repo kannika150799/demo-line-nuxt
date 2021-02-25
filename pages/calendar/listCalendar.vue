@@ -42,12 +42,12 @@ export default {
       console.log("get", this.calendars);
     },
     editList () {
-      this.$router.push(`/calendar/${this.calendars.id}`)
-      console.log("id::", this.calendars.id);
+      this.$router.push(`/calendar/${id}`)
+      console.log("id::", id);
     },
     deleteList() {
-      this.$axios.delete(`https://db-back.herokuapp.com/api/delete/calendar/${this.calendars.id}`);
-      console.log("delete", this.calendars.id);
+      this.$axios.delete(`https://db-back.herokuapp.com/api/delete/calendar/${this.id}`);
+      console.log("delete", this.id);
     },
   },
 };
