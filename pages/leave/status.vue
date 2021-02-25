@@ -20,7 +20,7 @@ export default {
       .then(() => {
         if (liff.isLoggedIn()) {
           liff.getProfile().then((profile) => {
-            this.leave.userId = profile.userId;
+            this.leaves.userId = profile.userId;
             this.getData();
           });
         } else {
