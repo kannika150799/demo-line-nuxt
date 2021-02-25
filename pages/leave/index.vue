@@ -85,7 +85,7 @@ export default {
         endValue: "",
         dateStart: "",
         dateEnd: "",
-        status: "รออุมัติ",
+        status: "รออนุมัติ",
       },
       authors: ["ลากิจ", "ลาป่วย", "ลาบวช", "ลาพักร้อน", "ลาคลอด", "อื่นๆ"],
     };
