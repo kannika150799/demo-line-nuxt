@@ -6,10 +6,10 @@
       <p>กิจกรรม: {{ calendar.activity }}</p>
       <p>วันที่: {{ calendar.dateActivity }}</p>
       <div>
-        <a-button class="edit-button" type="primary" @click="editList">
+        <a-button class="edit-button" type="primary" @click="editList(calendar.id)">
           Edit
         </a-button>
-        <a-button class="delete-button" type="primary" @click="deleteList">
+        <a-button class="delete-button" type="primary" @click="deleteList(calendar.id)">
           Delete
         </a-button>
       </div>
@@ -25,7 +25,7 @@ export default {
   },
   data() {
     return {
-      calendars: null,
+      calendars: [],
       // id: this.$route.params.id
       // calendars: {
       //   activity: "",
@@ -42,13 +42,13 @@ export default {
       this.calendars = res.data;
       console.log("get", this.calendars);
     },
-    editList () {
+    editList (id) {
       this.$router.push(`/calendar/${id}`)
       console.log("id::", id);
     },
-    deleteList() {
-      this.$axios.delete(`https://db-back.herokuapp.com/api/delete/calendar/${calendar.id}`);
-      console.log("delete", calendar.id);
+    deleteList(id) {
+      this.$axios.delete(`https://db-back.herokuapp.com/api/delete/calendar/${id}`);
+      console.log("delete", id);
     },
   },
 };
