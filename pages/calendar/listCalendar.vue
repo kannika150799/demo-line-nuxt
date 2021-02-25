@@ -43,8 +43,12 @@ export default {
       this.calendars = res.data;
       console.log("get", this.calendars);
     },
+    editList () {
+      this.$router.push(`/photos/${this.calendars.id}`)
+    },
     deleteList() {
       this.$axios.delete(`https://db-back.herokuapp.com/api/delete/calendar/${this.calendars.id}`);
+      console.log('delete',this.calendars.id);
     },
   },
 };
