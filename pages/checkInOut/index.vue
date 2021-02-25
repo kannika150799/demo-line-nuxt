@@ -2,8 +2,12 @@
   <div class="container-Check">
     <p class="date" v-text="currentDate"></p>
     <p class="time" v-text="currentTime"></p>
-    <a-button class="check-button" type="primary" @click="checkin"> Check in </a-button>
-    <a-button class="check-button" type="primary"> Check out </a-button>
+    <a-button class="check-button" type="primary" @click="checkIn">
+      Check in
+    </a-button>
+    <a-button class="check-button" type="primary" @click="checkOut">
+      Check out
+    </a-button>
   </div>
 </template>
 
@@ -15,39 +19,43 @@ export default {
     return {
       currentTime: null,
       currentDate: null,
-    inOut:{
-      // currentTime: currentTime,
-      // currentDate: currentDate,
-      currentTime:moment().format("LTS"),
-      currentDate:moment().format('dddd, l'),
-      idtime:"qwe"
-    }
+      inOut: {
+        momentTime: "",
+        momentDate: "",
+        idtime: "qwe",
+      },
     };
+  },
+  created() {
+    // this.currentTime = moment().format("LTS");
+    setInterval(() => this.updateCurrentTime(), 1 * 1000);
+    // this.currenDate = moment().format('dddd, l');
+    setInterval(() => this.updateCurrentDate(), 200);
   },
   methods: {
     updateCurrentTime() {
       this.currentTime = moment().format("LTS");
+      this.inOut.momentTime = this.currentTime;
     },
     updateCurrentDate() {
-      this.currentDate = moment().format('dddd, l');
+      this.currentDate = moment().format("dddd, l");
+      this.inOut.momentDate = this.currentDate;
     },
-    checkin(){
-    this.$axios.post('http://localhost:3030/api/post/inout',this.inOut)
-    console.log("data",this.inOut);
-    }
-  },
-  created() {
-    this.currentTime = moment().format("LTS");
-    setInterval(() => this.updateCurrentTime(), 1 * 1000);
-    this.currenDate = moment().format('dddd, l');
-    setInterval(() => this.updateCurrentDate(), 200);
+    checkIn() {
+      // this.$axios.post('http://localhost:3030/api/post/inout',this.inOut)
+      console.log("checkIn", this.inOut);
+    },
+    checkOut() {
+      // this.$axios.post('http://localhost:3030/api/post/inout',this.inOut)
+      console.log("checkOut", this.inOut);
+    },
   },
 };
 </script>
 
 <style scoped>
 .container-Check {
-    width: 100%;
+  width: 100%;
   margin-top: 30px;
   color: #000000;
   text-align: center;

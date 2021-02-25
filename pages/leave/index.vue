@@ -102,7 +102,6 @@ export default {
     handleChange (value) {
       this.show = value
       console.log(`selected ${value}`)
-      console.log(this.photo)
       this.leave.leaveType = value
     },
     filterOption (input, option) {
@@ -112,14 +111,14 @@ export default {
     },
     onChangeStart(date1, dateString1) {
       console.log(date1, dateString1);
-      this.leave.startValue = dateString1;
-      this.leave.dateStart = date1;
+      this.leave.startValue = date1;
+      this.leave.dateStart = dateString1;
 
     },
     onChangeEnd(date2, dateString2) {
       console.log(date2, dateString2);
-      this.leave.endValue = dateString2;
-      this.leave.dateEnd = date2;
+      this.leave.endValue = date2;
+      this.leave.dateEnd = dateString2;
 
     },
     send() {
