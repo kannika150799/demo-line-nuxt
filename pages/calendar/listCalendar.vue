@@ -24,15 +24,15 @@ export default {
   },
   data() {
     return {
-      // calendars: null,
+      calendars: null,
       // id: this.$route.params.id
-      calendars: {
-        activity: "",
-        date: "",
-        dateActivity: "",
-        id: "",
-        userId: ""
-      },
+      // calendars: {
+      //   activity: "",
+      //   date: "",
+      //   dateActivity: "",
+      //   id: "",
+      //   userId: ""
+      // },
     };
   },
   methods: {
@@ -42,11 +42,12 @@ export default {
       console.log("get", this.calendars);
     },
     editList () {
-      this.$router.push(`/photos/${calendars.id}`)
+      this.$router.push(`/calendar/${this.calendars.id}`)
+      console.log("id::", this.calendars.id);
     },
     deleteList() {
-      this.$axios.delete(`https://db-back.herokuapp.com/api/delete/calendar/${calendars.id}`);
-      console.log("delete", calendars.id);
+      this.$axios.delete(`https://db-back.herokuapp.com/api/delete/calendar/${this.calendars.id}`);
+      console.log("delete", this.calendars.id);
     },
   },
 };
