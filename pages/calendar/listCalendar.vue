@@ -25,6 +25,7 @@ export default {
   data() {
     return {
       calendars: null,
+      id: this.$route.params.id
       // calendars: {
       //   userId: "",
       //   leaveType: "",
@@ -44,10 +45,10 @@ export default {
       console.log("get", this.calendars);
     },
     editList () {
-      this.$router.push(`/photos/${this.calendars.id}`)
+      this.$router.push(`/photos/${obj.id}`)
     },
     deleteList() {
-      this.$axios.delete(`https://db-back.herokuapp.com/api/delete/calendar/${this.calendars.id}`);
+      this.$axios.delete(`https://db-back.herokuapp.com/api/delete/calendar/${obj.id}`);
       console.log('delete',this.calendars.id);
     },
   },
