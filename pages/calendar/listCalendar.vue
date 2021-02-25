@@ -1,9 +1,9 @@
 <template>
   <div>
-      <p>กิจกรรม</p>
-    <div>
-      <p>กิจกรรม: (ชื่อกิจกรรม)</p>
-      <p>วันที่: (วันที่)</p>
+    <p>กิจกรรม</p>
+    <div v-for="calendar in calendars" :key="calendar.id">
+      <p>กิจกรรม: {{ calendar.activity }}</p>
+      <p>วันที่: {{ calendar.dateActivity }}</p>
       <div>
         <a-button class="edit-button" type="primary" @click="editList">
           Edit
@@ -17,16 +17,35 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
-  data() {
-    return {};
+  mounted() {
+    this.getData();
   },
-  mounted() {},
+  data() {
+    return {
+      calendars: null,
+      // calendars: {
+      //   userId: "",
+      //   leaveType: "",
+      //   reson: "",
+      //   startValue: "",
+      //   endValue: "",
+      //   dateStart: "",
+      //   dateEnd: "",
+      //   status: "",
+      // },
+    };
+  },
   methods: {
-    editList() {
-        this.$router.push('/calendar/editCalendar')
+    async getData() {
+      const res = await axios.get("https://db-back.herokuapp.com/api/get/calendar");
+      this.calendars = res.data;
+      console.log("get", this.calendars);
     },
-    deleteList() {}
+    deleteList() {
+      this.$axios.delete(`https://db-back.herokuapp.com/api/delete/calendar/${this.calendars.id}`);
+    },
   },
 };
 </script>
