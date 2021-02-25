@@ -13,6 +13,49 @@
 </template>
 
 <script>
+import axios from "axios";
+export default {
+  mounted() {
+    liff
+      .init({
+        liffId: "1655660869-nvMGoZo6",
+      })
+      .then(() => {
+        if (liff.isLoggedIn()) {
+          liff.getProfile().then((profile) => {
+            this.leaves.userId = profile.userId;
+            this.getData();
+          });
+        } else {
+          liff.login();
+        }
+      });
+  },
+  data() {
+    return {
+      // leaves: null
+      leaves: {
+        userId: "",
+        leaveType: "",
+        reson: "",
+        startValue: "",
+        endValue: "",
+        dateStart: "",
+        dateEnd: "",
+        status: "",
+      },
+    };
+  },
+  methods: {
+    async getData() {
+      const res = await axios.get(
+        `https://db-back.herokuapp.com/api/get/leaveByUser/${this.leaves.userId}`
+      );
+      this.leaves = res.data;
+      console.log("get", this.leaves);
+    },
+  },
+};
 </script>
 
 <style scoped>
