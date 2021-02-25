@@ -2,10 +2,10 @@
   <div class="container-Check">
     <p class="date" v-text="currentDate"></p>
     <p class="time" v-text="currentTime"></p>
-    <a-button class="check-button" type="primary" @click="checkIn">
+    <a-button class="check-button" type="primary" v-model="onCheck" @click="checkIn">
       Check in
     </a-button>
-    <a-button class="check-button" type="primary" @click="checkOut">
+    <a-button class="check-button" type="primary" v-model="outCheck" @click="checkOut">
       Check out
     </a-button>
   </div>
@@ -24,6 +24,8 @@ export default {
         momentDate: "",
         idtime: "qwe",
       },
+      onCheck: true,
+      outCheck: false
     };
   },
   created() {
@@ -43,6 +45,7 @@ export default {
     },
     checkIn() {
       // this.$axios.post('http://localhost:3030/api/post/inout',this.inOut)
+      
       console.log("checkIn", this.inOut);
     },
     checkOut() {
