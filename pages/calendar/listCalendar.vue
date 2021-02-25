@@ -47,8 +47,8 @@ export default {
       console.log("id::", id);
     },
     deleteList() {
-      this.$axios.delete(`https://db-back.herokuapp.com/api/delete/calendar/${this.calendar.id}`);
-      console.log("delete", this.calendar.id);
+      this.$axios.delete(`https://db-back.herokuapp.com/api/delete/calendar/${calendar.id}`);
+      console.log("delete", calendar.id);
     },
   },
 };
