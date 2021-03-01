@@ -1,6 +1,6 @@
 <template>
   <div class="container-page-calendar">
-    <p class="text-head">Setting calendar</p>
+    <p class="text-head">Setting calendar id</p>
     <div class="container-input">
       <template>
         <div class="box-input">
