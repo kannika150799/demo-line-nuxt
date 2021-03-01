@@ -5,7 +5,7 @@
       <template>
         <div class="box-input">
           <p class="text-input">ชื่อกิจกรรม</p>
-          <a-input class="input" />
+          <a-input class="input" v-model="calendar.activity" />
           <!-- <a-input class="input" >ชื่อกิจกรรม</a-input> -->
         </div>
       </template>
