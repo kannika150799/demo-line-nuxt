@@ -54,7 +54,8 @@ export default {
   width: 200px;
 }
 .text-input {
-  margin: 0px;
+  margin: 0px 10px 0px 0px;
+  
   font-size: 16px;
   font-weight: 600;
   align-self: center;

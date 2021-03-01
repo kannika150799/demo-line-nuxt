@@ -47,13 +47,14 @@ export default {
         dateStart: "",
         dateEnd: "",
         status: "",
-        id: ""
+        id: "",
+        name: ""
       },
     };
   },
   methods: {
     async getData() {
-      const res = await axios.get(`https://db-back.herokuapp.com/api/get/leaveByUser/${this.leaves.userId}`);
+      const res = await axios.get('https://db-back.herokuapp.com/api/get/approve');
       this.leaves = res.data;
       console.log("get", this.leaves);
     },
