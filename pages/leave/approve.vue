@@ -50,6 +50,7 @@ export default {
         id: "",
         name: "",
       },
+      status:""
     };
   },
   methods: {
@@ -59,17 +60,17 @@ export default {
       console.log("get", this.leaves);
     },
     approve(id) {
-      this.leaves.status = "อนุญาติ";
-      this.$axios.put(`https://db-back.herokuapp.com/api/updateStatus/${id}`,this.leaves.status);
+      this.status = "อนุญาติ";
+      this.$axios.put(`https://db-back.herokuapp.com/api/updateStatus/${id}`,this.status);
       console.log("id", id);
-      console.log("status", this.leaves.status);
+      console.log("status", this.status);
       // this.putApprove(id);
     },
-    disapproval(id) {
-      this.leaves.status = "ไม่อนุญาติ";
-      this.$axios.put(`https://db-back.herokuapp.com/api/updateStatus/${id}`,this.leaves.status);
-      // this.putApprove(id);
-    },
+    // disapproval(id) {
+    //   this.leaves.status = "ไม่อนุญาติ";
+    //   this.$axios.put(`https://db-back.herokuapp.com/api/updateStatus/${id}`,this.leaves.status);
+    //   // this.putApprove(id);
+    // },
     // putApprove(id) {
     //   this.$axios.put(`https://db-back.herokuapp.com/api/updateStatus/${id}`,this.leaves);
     //   console.log("put", this.leaves);
