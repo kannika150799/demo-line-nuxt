@@ -5,7 +5,7 @@
       <template>
         <div class="box-input">
           <p class="text-input">ชื่อกิจกรรม</p>
-          <a-input class="input" v-model="calendar.activity" placeholder="ชื่อกิจกรรม"/>
+          <a-input class="input" />
           <!-- <a-input class="input" >ชื่อกิจกรรม</a-input> -->
         </div>
       </template>
@@ -23,10 +23,9 @@
 </template>
 
 <script>
-import axios from "axios";
+
 export default {
-  methods: {
-    data () {
+  data () {
     return {
       id: this.$route.params.id,
       calendar: {
@@ -36,6 +35,7 @@ export default {
       }
     }
   },
+  methods: {
     onChange(date, dateString) {
       console.log(date, dateString);
       this.calendar.dateActivity = dateString;
@@ -45,7 +45,6 @@ export default {
       this.$axios.put(`https://db-back.herokuapp.com/api/edit/calendar/${this.id}`,this.calendar)
       this.$router.push('/calendar/listCalendar')
       console.log("put",this.calendar);
-      
     },
     cancelCalendar () {
       this.$router.push('/calendar/listCalendar')
