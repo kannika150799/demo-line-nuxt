@@ -6,8 +6,12 @@
       <p>หัวข้อการลา: (หัวข้อการลา)</p>
       <p>หมายเหตุการลา: (หมายเหตุการลา)</p>
       <p>วันที่ลา: (xx/xx/xxxx - xx/xx/xxxx)</p>
-      <a-button class="approve-button" type="primary"> อนุมัติ </a-button>
-      <a-button class="approve-button" type="primary"> ไม่อนุมัติ </a-button>
+      <a-button class="approve-button" type="primary" @click="approve">
+        อนุมัติ
+      </a-button>
+      <a-button class="approve-button" type="primary" @click="disapproval">
+        ไม่อนุมัติ
+      </a-button>
     </div>
   </div>
 </template>
@@ -43,17 +47,27 @@ export default {
         dateStart: "",
         dateEnd: "",
         status: "",
+        id: ""
       },
     };
   },
   methods: {
     async getData() {
-      const res = await axios.get(
-        `https://db-back.herokuapp.com/api/get/leaveByUser/${this.leaves.userId}`
-      );
+      const res = await axios.get(`https://db-back.herokuapp.com/api/get/leaveByUser/${this.leaves.userId}`);
       this.leaves = res.data;
       console.log("get", this.leaves);
     },
+    approve () {
+      this.leaves.status = "อนุญาติ"
+      this.$axios.put(`https://db-back.herokuapp.com/api/edit/calendar/${this.leaves.id}`,this.leaves)
+      console.log("put",this.leaves);
+    },
+    disapproval () {
+      this.leaves.status = "ไม่อนุญาติ"
+      this.$axios.put(`https://db-back.herokuapp.com/api/edit/calendar/${this.leaves.id}`,this.leaves)
+      console.log("put",this.leaves);
+    }
+
   },
 };
 </script>
