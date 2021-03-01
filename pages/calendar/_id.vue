@@ -27,16 +27,21 @@ export default {
   methods: {
     data () {
     return {
-      id: this.$route.params.id
+      id: this.$route.params.id,
+      calendar: {
+        activity: '',
+        dateActivity: '',
+        date: ''
+      }
     }
   },
     onChange(date, dateString) {
       console.log(date, dateString);
     },
     confirmCalendar () {
-      this.$axios.put(`https://db-back.herokuapp.com/api/edit/calendar/${this.id}`)
+      this.$axios.put(`https://db-back.herokuapp.com/api/edit/calendar/${this.id}`,this.calendar)
       this.$router.push('/calendar/listCalendar')
-      // console.log("put",this.profile);
+      console.log("put",this.calendar);
       
     },
     cancelCalendar () {
@@ -75,6 +80,7 @@ export default {
   display: flex;
 }
 .button {
+  margin-top: 15px;
   height: 44px;
   width: 120px;
   font-size: 16px;
