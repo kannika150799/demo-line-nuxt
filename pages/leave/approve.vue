@@ -62,7 +62,7 @@ export default {
       this.leaves.status = "อนุญาต";
       this.$axios.put(`https://db-back.herokuapp.com/api/updateStatus/${id}`,this.leaves.status);
       console.log("id", id);
-      console.log("status", this.leaves.status);
+      console.log("status", this.leaves);
       // this.putApprove(id);
     },
     // disapproval(id) {
