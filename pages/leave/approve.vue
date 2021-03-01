@@ -59,21 +59,20 @@ export default {
       console.log("get", this.leaves);
     },
     approve(id) {
-      this.leaves.status = "อนุญาต";
-      this.$axios.put(`https://db-back.herokuapp.com/api/updateStatus/${id}`, {status: this.leaves.status});
-      console.log("id", id);
-      console.log("status", this.leaves);
-      // this.putApprove(id);
+      this.leaves.status = "อนุมัติ";
+      // this.$axios.put(`https://db-back.herokuapp.com/api/updateStatus/${id}`, {status: this.leaves.status});
+      // console.log("id", id);
+      // console.log("status", this.leaves);
+      this.putApprove(id);
     },
-    // disapproval(id) {
-    //   this.leaves.status = "ไม่อนุญาติ";
-    //   this.$axios.put(`https://db-back.herokuapp.com/api/updateStatus/${id}`,this.leaves.status);
-    //   // this.putApprove(id);
-    // },
-    // putApprove(id) {
-    //   this.$axios.put(`https://db-back.herokuapp.com/api/updateStatus/${id}`,this.leaves);
-    //   console.log("put", this.leaves);
-    // },
+    disapproval(id) {
+      this.leaves.status = "ไม่อนุมัติ";
+      // this.$axios.put(`https://db-back.herokuapp.com/api/updateStatus/${id}`, {status: this.leaves.status});
+      this.putApprove(id);
+    },
+    putApprove(id) {
+      this.$axios.put(`https://db-back.herokuapp.com/api/updateStatus/${id}`, {status: this.leaves.status});
+    },
   },
 };
 </script>
