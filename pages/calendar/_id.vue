@@ -5,7 +5,7 @@
       <template>
         <div class="box-input">
           <p class="text-input">ชื่อกิจกรรม</p>
-          <a-input class="input" placeholder="ชื่อกิจกรรม"/>
+          <a-input class="input" v-model="calendar.activity" placeholder="ชื่อกิจกรรม"/>
           <!-- <a-input class="input" >ชื่อกิจกรรม</a-input> -->
         </div>
       </template>
@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   methods: {
     data () {
@@ -37,6 +38,7 @@ export default {
   },
     onChange(date, dateString) {
       console.log(date, dateString);
+      this.calendar.dateActivity = dateString;
       this.calendar.date = date;
     },
     confirmCalendar () {
