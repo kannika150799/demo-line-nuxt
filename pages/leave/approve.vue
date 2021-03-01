@@ -2,10 +2,10 @@
   <div class="container-page-status">
     <p class="text-head">Approve leaving</p>
     <div class="box-card" v-for="leave in leaves" :key="leave.userId">
-      <p>ชื่อ: {{leave.name}}</p>
-      <p>หัวข้อการลา: {{leave.leaveType}}</p>
-      <p>หมายเหตุการลา: {{leave.reson}}</p>
-      <p>วันที่ลา: {{leave.dateStart}} - {{leave.dateEnd}}</p>
+      <p>ชื่อ: {{ leave.name }}</p>
+      <p>หัวข้อการลา: {{ leave.leaveType }}</p>
+      <p>หมายเหตุการลา: {{ leave.reson }}</p>
+      <p>วันที่ลา: {{ leave.dateStart }} - {{ leave.dateEnd }}</p>
       <a-button class="approve-button" type="primary" @click="approve">
         อนุมัติ
       </a-button>
@@ -48,27 +48,28 @@ export default {
         dateEnd: "",
         status: "",
         id: "",
-        name: ""
+        name: "",
       },
     };
   },
   methods: {
     async getData() {
-      const res = await axios.get('https://db-back.herokuapp.com/api/get/approve');
+      const res = await axios.get("https://db-back.herokuapp.com/api/get/approve");
       this.leaves = res.data;
       console.log("get", this.leaves);
     },
-    approve () {
-      this.leaves.status = "อนุญาติ"
-      this.$axios.put(`https://db-back.herokuapp.com/api/edit/calendar/${this.leaves.id}`,this.leaves)
-      console.log("put",this.leaves);
+    approve() {
+      this.leaves.status = "อนุญาติ";
+      this.putApprove();
     },
-    disapproval () {
-      this.leaves.status = "ไม่อนุญาติ"
-      this.$axios.put(`https://db-back.herokuapp.com/api/edit/calendar/${this.leaves.id}`,this.leaves)
-      console.log("put",this.leaves);
-    }
-
+    disapproval() {
+      this.leaves.status = "ไม่อนุญาติ";
+      this.putApprove();
+    },
+    putApprove() {
+      this.$axios.put(`https://db-back.herokuapp.com/api/edit/calendar/${this.leaves.id}`,this.leaves);
+      console.log("put", this.leaves);
+    },
   },
 };
 </script>
