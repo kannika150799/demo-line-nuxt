@@ -30,6 +30,7 @@ export default {
       id: this.$route.params.id,
       calendar: {
         activity: '',
+        dataActivity: '',
         date: ''
       }
     }
