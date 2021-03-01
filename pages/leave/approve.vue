@@ -67,7 +67,7 @@ export default {
       this.putApprove(id);
     },
     putApprove(id) {
-      this.$axios.put(`https://db-back.herokuapp.com/api/edit/calendar/${id}`,this.leaves);
+      this.$axios.put(`https://db-back.herokuapp.com/api/updateStatus/${id}`,this.leaves);
       console.log("put", this.leaves);
     },
   },
