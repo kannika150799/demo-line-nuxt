@@ -30,14 +30,12 @@ export default {
       id: this.$route.params.id,
       calendar: {
         activity: '',
-        dateActivity: '',
         date: ''
       }
     }
   },
     onChange(date, dateString) {
       console.log(date, dateString);
-      this.calendar.dateActivity = dateString;
       this.calendar.date = date;
     },
     confirmCalendar () {
