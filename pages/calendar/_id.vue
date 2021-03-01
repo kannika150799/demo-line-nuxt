@@ -5,16 +5,19 @@
       <template>
         <div class="box-input">
           <p class="text-input">ชื่อกิจกรรม</p>
-          <a-input class="input" >ชื่อกิจกรรม</a-input>
+          <a-input class="input" placeholder="ชื่อกิจกรรม"/>
+          <!-- <a-input class="input" >ชื่อกิจกรรม</a-input> -->
         </div>
       </template>
       <div class="select-date">
         <p class="text-input">วันที่</p>
         <div>
-          <a-date-picker @change="onChange">xx/xx/xxxx</a-date-picker>
+          <a-date-picker format="DD/MM/YYYY" @change="onChange"/>
+          <!-- <a-date-picker @change="onChange">xx/xx/xxxx</a-date-picker> -->
         </div>
       </div>
-      <a-button class="add-button" type="primary" @click="confirmCalendar"> confirm </a-button>
+      <a-button class="button" type="primary" @click="confirmCalendar"> Confirm </a-button>
+      <a-button class="button" type="danger" @click="cancelCalendar"> Cancel </a-button>
     </div>
   </div>
 </template>
@@ -22,11 +25,22 @@
 <script>
 export default {
   methods: {
+    data () {
+    return {
+      id: this.$route.params.id
+    }
+  },
     onChange(date, dateString) {
       console.log(date, dateString);
     },
     confirmCalendar () {
-        this.$router.push('/calendar/listCalendar')
+      this.$axios.put(`https://db-back.herokuapp.com/api/edit/calendar/${this.id}`)
+      this.$router.push('/calendar/listCalendar')
+      // console.log("put",this.profile);
+      
+    },
+    cancelCalendar () {
+      this.$router.push('/calendar/listCalendar')
     }
   },
 };
@@ -60,7 +74,7 @@ export default {
 .select-date {
   display: flex;
 }
-.add-button {
+.button {
   height: 44px;
   width: 120px;
   font-size: 16px;
