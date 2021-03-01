@@ -60,13 +60,14 @@ export default {
     },
     approve(id) {
       this.leaves.status = "อนุญาติ";
-      this.$axios.put(`https://db-back.herokuapp.com/api/updateStatus/${id}`,this.leaves);
+      this.$axios.put(`https://db-back.herokuapp.com/api/updateStatus/${id}`,this.leaves.status);
       console.log("id", id);
+      console.log("status", this.leaves.status);
       // this.putApprove(id);
     },
     disapproval(id) {
       this.leaves.status = "ไม่อนุญาติ";
-      this.$axios.put(`https://db-back.herokuapp.com/api/updateStatus/${id}`,this.leaves);
+      this.$axios.put(`https://db-back.herokuapp.com/api/updateStatus/${id}`,this.leaves.status);
       // this.putApprove(id);
     },
     // putApprove(id) {
