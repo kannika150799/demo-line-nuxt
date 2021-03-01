@@ -1,11 +1,11 @@
 <template>
   <div class="container-page-status">
     <p class="text-head">Approve leaving</p>
-    <div class="box-card">
-      <p>ชื่อ: (ชื่อ)</p>
-      <p>หัวข้อการลา: (หัวข้อการลา)</p>
-      <p>หมายเหตุการลา: (หมายเหตุการลา)</p>
-      <p>วันที่ลา: (xx/xx/xxxx - xx/xx/xxxx)</p>
+    <div class="box-card" v-for="leave in leaves" :key="leave.userId">
+      <p>ชื่อ: {{leave.name}}</p>
+      <p>หัวข้อการลา: {{leave.leaveType}}</p>
+      <p>หมายเหตุการลา: {{leave.reson}}</p>
+      <p>วันที่ลา: {{leave.dateStart}} - {{leave.dateEnd}}</p>
       <a-button class="approve-button" type="primary" @click="approve">
         อนุมัติ
       </a-button>
