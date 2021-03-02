@@ -50,7 +50,6 @@ export default {
           this.isActiveIn = true;
           this.isActiveOut =  false;
         }
-
       });
     },
     updateCurrentTime() {
