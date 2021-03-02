@@ -5,12 +5,12 @@
       <template>
         <div class="box-input">
           <p class="text-input">ชื่อกิจกรรม</p>
-          <a-input class="input" v-model="calendars.activity"></a-input>
+          <a-input class="input" v-model="calendars.activity">{{calendars.activity}}</a-input>
         </div>
-        <div class="box-input">
+        <!-- <div class="box-input">
           <p class="text-input">ชื่อกิจกรรม</p>
           <p class="text-input">{{calendars.activity}}</p>
-        </div>
+        </div> -->
       </template>
       <div class="select-date">
         <p class="text-input">วันที่</p>
