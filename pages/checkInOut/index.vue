@@ -54,6 +54,7 @@ export default {
     isDone(){
       this.$axios.get(`https://db-back.herokuapp.com/api/get/check/${this.inOut.userId}`).then((res) => {
         if(res.data != null){
+          console.log('res', res.data);
           this.isActiveIn = false;
           this.isActiveOut =  true;
         }else {
