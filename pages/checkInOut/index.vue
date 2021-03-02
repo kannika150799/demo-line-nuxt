@@ -65,11 +65,11 @@ export default {
     },
     updateCurrentTimeIn() {
       this.currentTimeIn = moment().format("LTS");
-      this.inOut.timeIn = this.currentTimeIn;
+      // this.inOut.timeIn = this.currentTimeIn;
     },
     updateCurrentTimeOut() {
       this.currentTime = moment().format("LTS");
-      this.inOut.timeOut = this.currentTime;
+      // this.inOut.timeOut = this.currentTime;
     },
     updateCurrentDate() {
       this.currentDate = moment().format("dddd, l");
@@ -83,12 +83,15 @@ export default {
     checkIn() {
       this.$axios.post('https://db-back.herokuapp.com/api/post/checkIn',this.inOut)
       this.$nuxt.refresh()
+      this.inOut.timeIn = this.currentTimeIn;
       // this.isActiveIn = true
       // this.isActiveOut = false
       console.log("checkIn", this.inOut);
     },
     checkOut() {
       // this.$axios.post('http://localhost:3030/api/post/inout',this.inOut)
+      // this.$nuxt.refresh()
+      this.inOut.timeOut = this.currentTime;
       // this.isActiveIn = false
       // this.isActiveOut = true
       console.log("checkOut", this.inOut);
