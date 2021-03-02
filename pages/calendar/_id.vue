@@ -13,10 +13,8 @@
         </div> -->
       </template>
       <div class="select-date">
-        <p class="text-input">วันที่</p>
-        <div>
-          <a-date-picker format="DD/MM/YYYY" @change="onChange" >{{calendars.dateActivity}}</a-date-picker>
-        </div>
+        <p class="text-input">วันที่เดิม</p>
+        <p >{{calendars.dateActivity่}}</p>
       </div>
       <div class="select-date">
         <p class="text-input">วันที่</p>
