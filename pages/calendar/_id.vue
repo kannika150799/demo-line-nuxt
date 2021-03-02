@@ -51,7 +51,7 @@ export default {
       this.calendars.date = date;
     },
     async getData() {
-      const res = await axios.get(`https://db-back.herokuapp.com/api/get/calendar/1/${id}`);
+      const res = await axios.get(`https://db-back.herokuapp.com/api/get/calendar/1/${this.id}`);
       this.calendars = res.data;
       console.log("get", this.calendars);
     },
