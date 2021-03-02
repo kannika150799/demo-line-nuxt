@@ -32,7 +32,7 @@ export default {
   mounted() {
     liff
       .init({
-        liffId: "1655660869-VoKZDYDO",
+        liffId: "1655660869-WGeG202o",
       })
       .then(() => {
         if (liff.isLoggedIn()) {
@@ -53,12 +53,12 @@ export default {
   methods: {
     isDone(){
       this.$axios.get(`https://db-back.herokuapp.com/api/get/check/${this.inOut.userId}`).then((res) => {
-        if(res.data == null){
-          this.isActiveIn = true;
-          this.isActiveOut =  false;
-        }else {
-          this.isActiveIn = false;
+        if(res.data != null){
+         this.isActiveIn = false;
           this.isActiveOut =  true;
+        }else {
+           this.isActiveIn = true;
+          this.isActiveOut =  false;
         }
 
       });
@@ -82,6 +82,7 @@ export default {
     },
     checkIn() {
       this.$axios.post('https://db-back.herokuapp.com/api/post/checkIn',this.inOut)
+      this.$nuxt.refresh()
       // this.isActiveIn = true
       // this.isActiveOut = false
       console.log("checkIn", this.inOut);
