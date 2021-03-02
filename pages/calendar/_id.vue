@@ -12,7 +12,7 @@
           <p class="text-input">{{calendars.activity}}</p>
         </div> -->
       </template>
-      <div class="select-date">
+      <div class="select-date"> 
         <p class="text-input">วันที่เดิม</p>
         <p >{{calendars.dateActivity่}}</p>
       </div>

@@ -21,6 +21,8 @@ export default {
       currentDate: null,
       inOut: {
         momentTime: "",
+        momentTimeFormat1: "",
+        momentTimeFormat2: "",
         momentDate: "",
         idtime: "qwe",
       },
@@ -41,7 +43,11 @@ export default {
     },
     updateCurrentDate() {
       this.currentDate = moment().format("dddd, l");
+      this.currentDateFormat1 = moment().format();
+      this.currentDateFormat2 = moment().format("l");
       this.inOut.momentDate = this.currentDate;
+      this.inOut.momentDateFormat1 = this.currentDateFormat1;
+      this.inOut.momentDateFormat2 = this.currentDateFormat2;
     },
     checkIn() {
       // this.$axios.post('http://localhost:3030/api/post/inout',this.inOut)
