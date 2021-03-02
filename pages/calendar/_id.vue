@@ -5,50 +5,64 @@
       <template>
         <div class="box-input">
           <p class="text-input">ชื่อกิจกรรม</p>
-          <a-input class="input" v-model="calendar.activity" >{{calendar.activity}}</a-input>
-          <!-- <a-input class="input" >ชื่อกิจกรรม</a-input> -->
+          <a-input class="input" v-model="calendars.activity"></a-input>
+        </div>
+        <div class="box-input">
+          <p class="text-input">ชื่อกิจกรรม</p>
+          <p class="text-input">{{calendars.activity}}</p>
         </div>
       </template>
       <div class="select-date">
         <p class="text-input">วันที่</p>
         <div>
-          <a-date-picker format="DD/MM/YYYY" @change="onChange"/>
-          <!-- <a-date-picker @change="onChange">xx/xx/xxxx</a-date-picker> -->
+          <a-date-picker format="DD/MM/YYYY" @change="onChange" />
         </div>
       </div>
-      <a-button class="button" type="primary" @click="confirmCalendar"> Confirm </a-button>
-      <a-button class="button" type="danger" @click="cancelCalendar"> Cancel </a-button>
+      <a-button class="button" type="primary" @click="confirmCalendar">
+        Confirm
+      </a-button>
+      <a-button class="button" type="danger" @click="cancelCalendar">
+        Cancel
+      </a-button>
     </div>
   </div>
 </template>
 
 <script>
-
+import axios from "axios";
 export default {
-  data () {
+  data() {
     return {
       id: this.$route.params.id,
-      calendar: {
-        activity: '',
-        dataActivity: '',
-        date: ''
-      }
-    }
+      calendars: {
+        activity: "",
+        dataActivity: "",
+        date: "",
+      },
+    };
+  },
+  mounted() {
+    this.getData();
   },
   methods: {
     onChange(date, dateString) {
       console.log(date, dateString);
-      this.calendar.dateActivity = dateString;
-      this.calendar.date = date;
+      this.calendars.dateActivity = dateString;
+      this.calendars.date = date;
     },
-    confirmCalendar () {
-      this.$axios.put(`https://db-back.herokuapp.com/api/edit/calendar/${this.id}`,this.calendar)
-      this.$router.push('/calendar/listCalendar')
-      console.log("put",this.calendar);
+    async getData() {
+      const res = await axios.get(`https://db-back.herokuapp.com/api/get/calendar/1/${id}`);
+      this.calendars = res.data;
+      console.log("get", this.calendars);
     },
-    cancelCalendar () {
-      this.$router.push('/calendar/listCalendar')
-    }
+    confirmCalendar() {
+      this.$axios.put(`https://db-back.herokuapp.com/api/edit/calendar/${this.id}`,this.calendar);
+      this.$router.push("/calendar/listCalendar");
+      console.log("put", this.calendars);
+    },
+    cancelCalendar() {
+      this.$router.push("/calendar/listCalendar");
+    },
   },
 };
 </script>
