@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import axios from "axios";
 const moment = require("moment");
 export default {
   data() {
@@ -52,18 +53,28 @@ export default {
   },
   methods: {
     isDone(){
-      this.$axios.get(`https://db-back.herokuapp.com/api/get/check/${this.inOut.userId}`).then((res) => {
-        if(res.data != null){
+      let res = await axios.get(`https://db-back.herokuapp.com/api/get/check/${this.inOut.userId}`);
+      if(res.data != null){
           console.log('res1', res.data);
           this.isActiveIn = false;
           this.isActiveOut =  true;
-        }else if (res.data == null) {
+        }else if(res.data == null) {
           console.log('res2', res.data);
           this.isActiveIn = true;
           this.isActiveOut =  false;
         }
+      // this.$axios.get(`https://db-back.herokuapp.com/api/get/check/${this.inOut.userId}`).then((res) => {
+      //   if(res.data != null){
+      //     console.log('res1', res.data);
+      //     this.isActiveIn = false;
+      //     this.isActiveOut =  true;
+      //   }else if(res.data == null) {
+      //     console.log('res2', res.data);
+      //     this.isActiveIn = true;
+      //     this.isActiveOut =  false;
+      //   }
 
-      });
+      // });
     },
     updateCurrentTimeIn() {
       this.currentTimeIn = moment().format("LTS");

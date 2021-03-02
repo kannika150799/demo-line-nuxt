@@ -68,9 +68,7 @@ export default {
       this.$router.push(`/profile/modify`)
     },
     async makeGetRequest() {
-      let res = await axios.get(
-        `https://db-back.herokuapp.com/api/get/user/${this.profile.userId}`
-      );
+      let res = await axios.get(`https://db-back.herokuapp.com/api/get/user/${this.profile.userId}`);
       this.profile = res.data;
       console.log("get", this.profile);
     }
