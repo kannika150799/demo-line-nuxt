@@ -56,12 +56,12 @@ export default {
       let res = await axios.get(`https://db-back.herokuapp.com/api/get/check/${this.inOut.userId}`);
       if(res.data == null){
           console.log('res1', res.data);
-          this.isActiveIn = false;
-          this.isActiveOut =  true;
-        }else if(res.data != null) {
-          console.log('res2', res.data);
           this.isActiveIn = true;
           this.isActiveOut =  false;
+        }else if(res.data != null) {
+          console.log('res2', res.data);
+          this.isActiveIn = false;
+          this.isActiveOut =  true;
         }
       // this.$axios.get(`https://db-back.herokuapp.com/api/get/check/${this.inOut.userId}`).then((res) => {
       //   if(res.data != null){
