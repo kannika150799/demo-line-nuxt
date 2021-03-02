@@ -52,7 +52,7 @@ export default {
     setInterval(() => this.updateCurrentDate(), 200);
   },
   methods: {
-    isDone(){
+    async isDone(){
       let res = await axios.get(`https://db-back.herokuapp.com/api/get/check/${this.inOut.userId}`);
       if(res.data != null){
           console.log('res1', res.data);
