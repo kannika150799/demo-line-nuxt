@@ -25,8 +25,8 @@ export default {
         dateShow: "",
         dateGet: "",
       },      
-      isActiveIn: '',
-      isActiveOut: ''
+      isActiveIn: null,
+      isActiveOut: null
     };
   },
   mounted() {
@@ -81,17 +81,19 @@ export default {
       this.inOut.dateGet = this.currentDateFormat2;
     },
     checkIn() {
+      this.inOut.timeIn = this.currentTimeIn;
       this.$axios.post('https://db-back.herokuapp.com/api/post/checkIn',this.inOut)
       this.$nuxt.refresh()
-      this.inOut.timeIn = this.currentTimeIn;
+      
       // this.isActiveIn = true
       // this.isActiveOut = false
       console.log("checkIn", this.inOut);
     },
     checkOut() {
+      this.inOut.timeOut = this.currentTime;
       // this.$axios.post('http://localhost:3030/api/post/inout',this.inOut)
       // this.$nuxt.refresh()
-      this.inOut.timeOut = this.currentTime;
+      
       // this.isActiveIn = false
       // this.isActiveOut = true
       console.log("checkOut", this.inOut);
