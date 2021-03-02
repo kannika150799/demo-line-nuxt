@@ -26,9 +26,12 @@ export default {
         momentDate: "",
         idtime: "qwe",
       },
-      isActiveIn: false,
-      isActiveOut: true
+      // isActiveIn: false,
+      // isActiveOut: true
     };
+  },
+  mounted() {
+    this.isDone();
   },
   created() {
     // this.currentTime = moment().format("LTS");
@@ -37,6 +40,19 @@ export default {
     setInterval(() => this.updateCurrentDate(), 200);
   },
   methods: {
+    isDone(){
+      //ยังใช้ไม่ได้
+      this.$axios.get(`https://db-back.herokuapp.com/api/get/user/${this.profile.userId}`).then((res) => {
+        if(res.data == null){
+          this.isActiveIn = false;
+          this.isActiveOut =  true;
+        }else {
+          this.isActiveIn = true;
+          this.isActiveOut =  false;
+        }
+
+      });
+    },
     updateCurrentTime() {
       this.currentTime = moment().format("LTS");
       this.inOut.momentTime = this.currentTime;
@@ -51,14 +67,14 @@ export default {
     },
     checkIn() {
       // this.$axios.post('http://localhost:3030/api/post/inout',this.inOut)
-      this.isActiveIn = true
-      this.isActiveOut = false
+      // this.isActiveIn = true
+      // this.isActiveOut = false
       console.log("checkIn", this.inOut);
     },
     checkOut() {
       // this.$axios.post('http://localhost:3030/api/post/inout',this.inOut)
-      this.isActiveIn = false
-      this.isActiveOut = true
+      // this.isActiveIn = false
+      // this.isActiveOut = true
       console.log("checkOut", this.inOut);
     },
   },

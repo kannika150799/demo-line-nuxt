@@ -1,73 +1,109 @@
 <template>
-  <div class="container-page-calendar">
-    <p class="text-head">Setting calendar id</p>
-    <div class="container-input">
-      <template>
-        <div class="box-input">
-          <p class="text-input">ชื่อกิจกรรม</p>
-          <a-input class="input">ชื่อกิจกรรม</a-input>
-        </div>
-      </template>
-      <div class="select-date">
-        <p class="text-input">วันที่</p>
-        <div>
-          <a-date-picker format="DD/MM/YYYY" @change="onChange"/>
-          <!-- <a-date-picker @change="onChange">xx/xx/xxxx</a-date-picker> -->
-        </div>
-      </div>
-      <a-button class="add-button" type="primary" @click="confirmCalendar"> Confirm </a-button>
-      <a-button class="add-button" type="danger" @click="confirmCalendar"> Cancel </a-button>
-    </div>
+  <div class="container-Check">
+    <p class="date" v-text="currentDate"></p>
+    <p class="time" v-text="currentTime"></p>
+    <a-button :disabled="isActiveIn" class="check-button" type="primary" @click="checkIn">
+      Check in
+    </a-button>
+    <a-button :disabled="isActiveIn" class="check-button" type="primary" @click="checkOut">
+      Check out
+    </a-button>
   </div>
 </template>
 
 <script>
+const moment = require("moment");
+
 export default {
+  data() {
+    return {
+      currentTime: null,
+      currentDate: null,
+      inOut: {
+        momentTime: "",
+        momentTimeFormat1: "",
+        momentTimeFormat2: "",
+        momentDate: "",
+        idtime: "qwe",
+      },
+      isActiveIn: '',
+      isActiveOut: ''
+    };
+  },
+  mounted() {
+    this.isDone();
+  },
+  created() {
+    // this.currentTime = moment().format("LTS");
+    setInterval(() => this.updateCurrentTime(), 1 * 1000);
+    // this.currenDate = moment().format('dddd, l');
+    setInterval(() => this.updateCurrentDate(), 200);
+  },
   methods: {
-    onChange(date, dateString) {
-      console.log(date, dateString);
+    isDone(){
+      //ยังใช้ไม่ได้
+      this.$axios.get(`https://db-back.herokuapp.com/api/get/user/${this.profile.userId}`).then((res) => {
+        if(res.data == null){
+          this.isActiveIn = false;
+          this.isActiveOut =  true;
+        }else {
+          this.isActiveIn = true;
+          this.isActiveOut =  false;
+        }
+
+      });
     },
-    confirmCalendar () {
-        this.$router.push('/calendar/listCalendar')
-    }
+    updateCurrentTime() {
+      this.currentTime = moment().format("LTS");
+      this.inOut.momentTime = this.currentTime;
+    },
+    updateCurrentDate() {
+      this.currentDate = moment().format("dddd, l");
+      this.currentDateFormat1 = moment().format();
+      this.currentDateFormat2 = moment().format("l");
+      this.inOut.momentDate = this.currentDate;
+      this.inOut.momentDateFormat1 = this.currentDateFormat1;
+      this.inOut.momentDateFormat2 = this.currentDateFormat2;
+    },
+    checkIn() {
+      // this.$axios.post('http://localhost:3030/api/post/inout',this.inOut)
+      // this.isActiveIn = true
+      // this.isActiveOut = false
+      console.log("checkIn", this.inOut);
+    },
+    checkOut() {
+      // this.$axios.post('http://localhost:3030/api/post/inout',this.inOut)
+      // this.isActiveIn = false
+      // this.isActiveOut = true
+      console.log("checkOut", this.inOut);
+    },
   },
 };
 </script>
 
 <style scoped>
-.container-page-calendar {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 30px;
+.container-Check {
+  width: 100%;
+  margin-top: 30px;
+  color: #000000;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  transform: translate(-50%, -50%);
+  text-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0);
 }
-.text-head {
-  font-size: 20px;
+.date {
+  font-size: 30px;
   font-weight: 600;
 }
-.box-input {
-  display: flex;
-  margin-bottom: 15px;
-  width: 300px;
-}
-.input {
-  width: 200px;
-}
-.text-input {
-  margin: 0px 10px 0px 0px;
-  
-  font-size: 16px;
+.time {
+  margin-top: 60px;
+  font-size: 60px;
   font-weight: 600;
-  align-self: center;
 }
-.select-date {
-  display: flex;
-}
-.add-button {
+.check-button {
+  width: 100px;
   height: 44px;
-  width: 120px;
-  font-size: 16px;
-  font-weight: 400;
-  margin-top: 15px;
 }
 </style>
