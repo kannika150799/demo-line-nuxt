@@ -1,7 +1,7 @@
 <template>
   <div class="container-Check">
     <p class="date" v-text="currentDate"></p>
-    <p class="time" v-text="currentTime"></p>
+    <p class="time" v-text="currentTimeIn"></p>
     <a-button :disabled="isActiveIn" class="check-button" type="primary" @click="checkIn">
       Check in
     </a-button>
@@ -13,36 +13,46 @@
 
 <script>
 const moment = require("moment");
-
 export default {
   data() {
     return {
-      currentTime: null,
+      currentTimeIn: null,
       currentDate: null,
       inOut: {
-        momentTime: "",
-        momentTimeFormat1: "",
-        momentTimeFormat2: "",
-        momentDate: "",
-        idtime: "qwe",
-      },
-      // isActiveIn: false,
-      // isActiveOut: true
+        userId: "",
+        timeIn: "",
+        timeOut: "",
+        dateShow: "",
+        dateGet: "",
+      },      
+      isActiveIn: '',
+      isActiveOut: ''
     };
   },
   mounted() {
-    this.isDone();
+    liff
+      .init({
+        liffId: "1655660869-VoKZDYDO",
+      })
+      .then(() => {
+        if (liff.isLoggedIn()) {
+          liff.getProfile().then((profile) => {
+            this.inOut.userId = profile.userId;
+            this.isDone();
+          });
+        } else {
+          liff.login();
+        }
+      });
   },
   created() {
-    // this.currentTime = moment().format("LTS");
-    setInterval(() => this.updateCurrentTime(), 1 * 1000);
-    // this.currenDate = moment().format('dddd, l');
+    setInterval(() => this.updateCurrentTimeIn(), 1 * 1000);
+    setInterval(() => this.updateCurrentTimeOut(), 1 * 1000);
     setInterval(() => this.updateCurrentDate(), 200);
   },
   methods: {
     isDone(){
-      //ยังใช้ไม่ได้
-      this.$axios.get(`https://db-back.herokuapp.com/api/get/user/${this.profile.userId}`).then((res) => {
+      this.$axios.get(`https://db-back.herokuapp.com/api/get/check/${this.inOut.userId}`).then((res) => {
         if(res.data == null){
           this.isActiveIn = false;
           this.isActiveOut =  true;
@@ -53,20 +63,25 @@ export default {
 
       });
     },
-    updateCurrentTime() {
+    updateCurrentTimeIn() {
+      this.currentTimeIn = moment().format("LTS");
+      this.inOut.timeIn = this.currentTimeIn;
+    },
+    updateCurrentTimeOut() {
       this.currentTime = moment().format("LTS");
-      this.inOut.momentTime = this.currentTime;
+      this.inOut.timeOut = this.currentTime;
     },
     updateCurrentDate() {
       this.currentDate = moment().format("dddd, l");
       this.currentDateFormat1 = moment().format();
       this.currentDateFormat2 = moment().format("l");
+
       this.inOut.momentDate = this.currentDate;
-      this.inOut.momentDateFormat1 = this.currentDateFormat1;
-      this.inOut.momentDateFormat2 = this.currentDateFormat2;
+      this.inOut.dateShow = this.currentDateFormat1;
+      this.inOut.dateGet = this.currentDateFormat2;
     },
     checkIn() {
-      // this.$axios.post('http://localhost:3030/api/post/inout',this.inOut)
+      this.$axios.post('https://db-back.herokuapp.com/api/post/checkIn',this.inOut)
       // this.isActiveIn = true
       // this.isActiveOut = false
       console.log("checkIn", this.inOut);
