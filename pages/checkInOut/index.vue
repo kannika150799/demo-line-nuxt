@@ -92,13 +92,12 @@ export default {
       this.inOut.timeIn = this.currentTimeIn;
       this.$axios.post('https://db-back.herokuapp.com/api/post/checkIn',this.inOut)
       console.log("checkIn", this.inOut);
-      // window.location.reload()
+      window.location.reload()
     },
     checkOut() {
       this.inOut.timeOut = this.currentTime;
       this.$axios.put(`https://db-back.herokuapp.com/api/update/checkout/${this.inOut.userId}`,{timeOut: this.inOut.timeOut})
       window.location.reload()
-      // this.status = "Check out สำเร็จ"
       console.log("checkOut", this.inOut);
     },
   },
