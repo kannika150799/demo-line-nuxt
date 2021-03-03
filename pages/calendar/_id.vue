@@ -61,7 +61,6 @@ export default {
     },
     confirmCalendar() {
       this.$axios.put(`https://db-back.herokuapp.com/api/edit/calendar/${this.id}`,this.calendars);
-      window.location.reload()
       this.$router.push("/calendar/listCalendar");
       console.log("put", this.calendars);
     },
