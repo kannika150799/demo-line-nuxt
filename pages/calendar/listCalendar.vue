@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <p>กิจกรรม</p>
+    <p class="text-head">กิจกรรม</p>
     <div
       class="container container-activity"
       v-for="calendar in calendars"
@@ -76,10 +76,15 @@ export default {
   flex-direction: column;
   align-items: center;
 }
+.text-head {
+  font-size: 18px;
+  font-weight: 600;
+}
 .container-activity {
   width: 300px;
-  margin-bottom: 15px;
-  border-bottom-color: black;
+  font-size: 18px;
+  padding: 20px 0px;
+  border-bottom: 1px solid black;
 }
 .activity {
   width: 200px;
