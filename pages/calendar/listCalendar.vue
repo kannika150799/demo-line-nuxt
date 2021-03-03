@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <p>กิจกรรม</p>
-    <div v-for="calendar in calendars" :key="calendar.id">
+    <div class="container-activity" v-for="calendar in calendars" :key="calendar.id">
       <p class="activity">กิจกรรม: {{ calendar.activity }}</p>
       <p>วันที่: {{ calendar.dateActivity }}</p>
       <div>
@@ -25,13 +25,13 @@ export default {
   data() {
     return {
       // calendars: [],
-      // calendars: {
-      //   activity: "",
-      //   date: "",
-      //   dateActivity: "",
-      //   id: "",
-      //   userId: ""
-      // },
+      calendars: {
+        activity: "",
+        date: "",
+        dateActivity: "",
+        id: "",
+        userId: ""
+      },
     };
   },
   methods: {
