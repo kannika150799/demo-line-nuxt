@@ -13,7 +13,8 @@
         </div> -->
       </template>
       <div class="select-date"> 
-        <p class="text-input">วันที่เดิม {{calendars.dateActivity่}}</p>
+        <p class="text-input">วันที่เดิม</p>
+        <a-input v-model="calendars.dateActivity่">{{calendars.dateActivity่}}</a-input>
       </div>
       <div class="select-date">
         <p class="text-input">วันที่</p>
