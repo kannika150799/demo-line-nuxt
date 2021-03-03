@@ -103,7 +103,7 @@ export default {
     },
     checkOut() {
       this.inOut.timeOut = this.currentTime;
-      this.$axios.post(`https://db-back.herokuapp.com/api/update/checkout/${this.inOut.userId}`,{timeOut: this.inOut.timeOut})
+      this.$axios.put(`https://db-back.herokuapp.com/api/update/checkout/${this.inOut.userId}`,{timeOut: this.inOut.timeOut})
       window.location.reload()
       // this.status = "Check out สำเร็จ"
       console.log("checkOut", this.inOut);
