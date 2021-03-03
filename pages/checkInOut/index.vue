@@ -96,19 +96,15 @@ export default {
     checkIn() {
       this.inOut.timeIn = this.currentTimeIn;
       this.$axios.post('https://db-back.herokuapp.com/api/post/checkIn',this.inOut)
-      this.$nuxt.refresh()
-      
-      // this.isActiveIn = true
-      // this.isActiveOut = false
+      this.$router.app.refresh()
+      // this.$nuxt.refresh()
       console.log("checkIn", this.inOut);
     },
     checkOut() {
       this.inOut.timeOut = this.currentTime;
       // this.$axios.post('http://localhost:3030/api/post/inout',this.inOut)
       // this.$nuxt.refresh()
-      
-      // this.isActiveIn = false
-      // this.isActiveOut = true
+      //เพิ่ม status
       console.log("checkOut", this.inOut);
     },
   },
