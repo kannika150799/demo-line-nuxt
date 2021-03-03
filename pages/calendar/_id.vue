@@ -14,7 +14,7 @@
       </template>
       <div class="select-date"> 
         <p class="text-input">วันที่เดิม</p>
-        <p >{{calendars.dataActivity่}}</p>
+        <a-date-picker v-model="calendars.dataActivity">{{calendars.dataActivity}}</a-date-picker>
       </div>
       <div class="select-date">
         <p class="text-input">วันที่</p>
