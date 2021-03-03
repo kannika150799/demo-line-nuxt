@@ -2,8 +2,22 @@
   <div class="container-page-status">
     <p class="text-head">Report check-in/check-out</p>
     <div class="select-date">
-      <p>วันที่</p>
-      <checkDate />
+      <p>เดือน</p>
+      <div>
+          <a-select
+            show-search
+            placeholder="เลือกเดือน"
+            option-filter-prop="children"
+            style="width: 120px"
+            :filter-option="filterOption"
+            class="breed_select"
+            @change="handleChange"
+          >
+            <a-select-option v-for="author in authors" :key="author">
+              {{ author }}
+            </a-select-option>
+          </a-select>
+        </div>
     </div>
 
     <div class="box-card">
@@ -17,11 +31,25 @@
 </template>
 
 <script>
-import checkDate from "~/components/checkDate";
+
 export default {
-  components: {
-    checkDate
-  },
+data () {
+  return {
+    authors: ["ทั้งหมด", "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"],
+  }
+},
+  methods: {
+    handleChange (value) {
+      this.show = value
+      console.log(`selected ${value}`)
+      console.log(this.photo)
+    },
+    filterOption (input, option) {
+      return (
+        option.componentOptions.children[0].text.toLowerCase().includes(input.toLowerCase())
+      )
+    }
+  }
 };
 </script>
 
