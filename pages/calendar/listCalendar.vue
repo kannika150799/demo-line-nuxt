@@ -40,6 +40,7 @@ export default {
     async getData() {
       const res = await axios.get("https://db-back.herokuapp.com/api/get/calendar");
       this.calendars = res.data;
+      window.location.reload()
       console.log("get", this.calendars);
     },
     editList (id) {
