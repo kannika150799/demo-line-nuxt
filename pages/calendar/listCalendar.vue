@@ -38,7 +38,6 @@ export default {
   },
   methods: {
     async getData() {
-      window.location.reload()
       const res = await axios.get("https://db-back.herokuapp.com/api/get/calendar");
       this.calendars = res.data;
       console.log("get", this.calendars);
