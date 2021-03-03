@@ -55,7 +55,6 @@ export default {
       console.log("get", this.calendars);
     },
     editList(id) {
-      // this.$router.push(`/calendar/editCalendar/${id}`)
       this.$router.push(`/calendar/${id}`);
       console.log("id::", id);
     },

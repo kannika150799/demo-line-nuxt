@@ -65,8 +65,10 @@ export default {
       this.$axios.put(
         `https://db-back.herokuapp.com/api/edit/calendar/${this.id}`,
         this.calendars
-      );
-      this.$router.push("/calendar/listCalendar");
+      ).then(()=>{
+        this.$router.push("/calendar/listCalendar");
+      });
+      
       console.log("put", this.calendars);
     },
     cancelCalendar() {
