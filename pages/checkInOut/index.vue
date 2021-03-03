@@ -98,8 +98,8 @@ export default {
     checkIn() {
       this.inOut.timeIn = this.currentTimeIn;
       this.$axios.post('https://db-back.herokuapp.com/api/post/checkIn',this.inOut)
-      window.location.reload()
       console.log("checkIn", this.inOut);
+      // window.location.reload()
     },
     checkOut() {
       this.inOut.timeOut = this.currentTime;
