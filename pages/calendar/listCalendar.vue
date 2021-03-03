@@ -1,9 +1,8 @@
 <template>
-  <div>
+  <div class="container">
     <p>กิจกรรม</p>
-    <div v-for="calendar in calendars" :key="calendar.id">
-      <p>id: {{ calendar.id }}</p>
-      <p>กิจกรรม: {{ calendar.activity }}</p>
+    <div class="container-activity" v-for="calendar in calendars" :key="calendar.id">
+      <p class="activity">กิจกรรม: {{ calendar.activity }}</p>
       <p>วันที่: {{ calendar.dateActivity }}</p>
       <div>
         <a-button class="edit-button" type="primary" @click="editList(calendar.id)">
@@ -25,7 +24,7 @@ export default {
   },
   data() {
     return {
-      calendars: [],
+      // calendars: [],
       // calendars: {
       //   activity: "",
       //   date: "",
@@ -42,6 +41,7 @@ export default {
       console.log("get", this.calendars);
     },
     editList (id) {
+      // this.$router.push(`/calendar/editCalendar/${id}`)
       this.$router.push(`/calendar/${id}`)
       console.log("id::", id);
     },
@@ -55,4 +55,13 @@ export default {
 </script>
 
 <style scoped>
+.container {
+    text-align-last: center;
+}
+.container-activity {
+  width: 300px;
+}
+.activity {
+  width: 200px;
+}
 </style>
