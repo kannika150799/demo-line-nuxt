@@ -5,29 +5,29 @@
       <template>
         <div class="box-input">
           <p class="text-input">ชื่อกิจกรรม</p>
-          <a-input class="input" v-model="calendars.activity">{{calendars.activity}}</a-input>
+          <a-input class="input" v-model="calendars.activity">{{
+            calendars.activity
+          }}</a-input>
         </div>
-        <!-- <div class="box-input">
-          <p class="text-input">ชื่อกิจกรรม</p>
-          <p class="text-input">{{calendars.activity}}</p>
-        </div> -->
       </template>
-      <div class="select-date"> 
+      <!-- <div class="select-date"> 
         <p class="text-input">วันที่เดิม</p>
         <p>{{calendars.dateActivity}}</p>
-      </div>
+      </div> -->
       <div class="select-date">
         <p class="text-input">วันที่</p>
-        <div>
+        <div class="date-picker">
           <a-date-picker format="DD/MM/YYYY" @change="onChange" />
         </div>
       </div>
-      <a-button class="button" type="primary" @click="confirmCalendar">
-        Confirm
-      </a-button>
-      <a-button class="button" type="danger" @click="cancelCalendar">
-        Cancel
-      </a-button>
+      <div>
+        <a-button class="button" type="primary" @click="confirmCalendar">
+          Confirm
+        </a-button>
+        <a-button class="button" type="danger" @click="cancelCalendar">
+          Cancel
+        </a-button>
+      </div>
     </div>
   </div>
 </template>
@@ -55,12 +55,17 @@ export default {
       this.calendars.date = date;
     },
     async getData() {
-      const res = await axios.get(`https://db-back.herokuapp.com/api/get/calendar/1/${this.id}`);
+      const res = await axios.get(
+        `https://db-back.herokuapp.com/api/get/calendar/1/${this.id}`
+      );
       this.calendars = res.data;
       console.log("get", this.calendars);
     },
     confirmCalendar() {
-      this.$axios.put(`https://db-back.herokuapp.com/api/edit/calendar/${this.id}`,this.calendars);
+      this.$axios.put(
+        `https://db-back.herokuapp.com/api/edit/calendar/${this.id}`,
+        this.calendars
+      );
       this.$router.push("/calendar/listCalendar");
       console.log("put", this.calendars);
     },
@@ -92,9 +97,13 @@ export default {
 }
 .text-input {
   margin: 0px;
+  margin-right: 10px;
   font-size: 16px;
   font-weight: 600;
   align-self: center;
+}
+.date-picker {
+  margin-right: 40px;
 }
 .select-date {
   display: flex;
