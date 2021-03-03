@@ -14,7 +14,7 @@
       </template>
       <div class="select-date"> 
         <p class="text-input">วันที่เดิม</p>
-        <a-date-picker format="DD/MM/YYYY" >{{calendars.dataActivity}}</a-date-picker>
+        <a-date-picker format="DD/MM/YYYY" >{{calendars.dateActivity}}</a-date-picker>
       </div>
       <div class="select-date">
         <p class="text-input">วันที่</p>
@@ -40,7 +40,7 @@ export default {
       id: this.$route.params.id,
       calendars: {
         activity: "",
-        dataActivity: "",
+        dateActivity: "",
         date: "",
       },
     };
