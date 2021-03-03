@@ -8,6 +8,7 @@
     <a-button :disabled="isActiveOut" class="check-button" type="primary" @click="checkOut">
       Check out
     </a-button>
+    <p>{{this.status}}</p>
   </div>
 </template>
 
@@ -27,7 +28,8 @@ export default {
         dateGet: "",
       },      
       isActiveIn: null,
-      isActiveOut: null
+      isActiveOut: null,
+      status: ""
     };
   },
   mounted() {
@@ -101,9 +103,9 @@ export default {
     },
     checkOut() {
       this.inOut.timeOut = this.currentTime;
-      // this.$axios.post('http://localhost:3030/api/post/inout',this.inOut)
+      this.$axios.post(`https://db-back.herokuapp.com/api/update/checkout/${this.inOut.userId}`,{timeOut: this.inOut.timeOut})
       window.location.reload()
-      //เพิ่ม status
+      this.status = "Check out สำเร็จ"
       console.log("checkOut", this.inOut);
     },
   },
