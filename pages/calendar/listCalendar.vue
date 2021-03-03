@@ -26,7 +26,6 @@ export default {
   data() {
     return {
       calendars: [],
-      // id: this.$route.params.id
       // calendars: {
       //   activity: "",
       //   date: "",
@@ -38,9 +37,10 @@ export default {
   },
   methods: {
     async getData() {
+
       const res = await axios.get("https://db-back.herokuapp.com/api/get/calendar");
       this.calendars = res.data;
-      window.location.reload()
+      
       console.log("get", this.calendars);
     },
     editList (id) {
