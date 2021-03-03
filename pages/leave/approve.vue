@@ -72,6 +72,7 @@ export default {
     },
     putApprove(id) {
       this.$axios.put(`https://db-back.herokuapp.com/api/updateStatus/${id}`, {status: this.leaves.status});
+      window.location.reload()
     },
   },
 };
