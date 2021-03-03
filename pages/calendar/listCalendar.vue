@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <p>กิจกรรม</p>
-    <div class="container-activity" v-for="calendar in calendars" :key="calendar.id">
+    <div v-for="calendar in calendars" :key="calendar.id">
       <p class="activity">กิจกรรม: {{ calendar.activity }}</p>
       <p>วันที่: {{ calendar.dateActivity }}</p>
       <div>
