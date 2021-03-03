@@ -39,11 +39,7 @@ export default {
     async getData() {
       const res = await axios.get("https://db-back.herokuapp.com/api/get/calendar");
       this.calendars = res.data;
-      this.roloadWindow()
       console.log("get", this.calendars);
-    },
-    roloadWindow () {
-      window.location.reload()
     },
     editList (id) {
       this.$router.push(`/calendar/${id}`)
