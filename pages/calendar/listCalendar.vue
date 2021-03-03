@@ -2,7 +2,7 @@
   <div class="container">
     <p>กิจกรรม</p>
     <div
-      class="container-activity"
+      class="container container-activity"
       v-for="calendar in calendars"
       :key="calendar.id"
     >
@@ -10,15 +10,15 @@
       <p>วันที่: {{ calendar.dateActivity }}</p>
       <div>
         <a-button
-          class="edit-button"
+          class="button"
           type="primary"
           @click="editList(calendar.id)"
         >
           Edit
         </a-button>
         <a-button
-          class="delete-button"
-          type="primary"
+          class="button"
+          type="danger"
           @click="deleteList(calendar.id)"
         >
           Delete
@@ -78,12 +78,15 @@ export default {
 }
 .container-activity {
   width: 300px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin-bottom: 15px;
+  border-bottom-color: black;
 }
 .activity {
   width: 200px;
   text-align: center;
+}
+.button {
+  width: 100px;
+  height: 44px;
 }
 </style>
