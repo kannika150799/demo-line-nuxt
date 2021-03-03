@@ -14,7 +14,7 @@
       </template>
       <div class="select-date"> 
         <p class="text-input">วันที่เดิม</p>
-        <a-date-picker format="DD/MM/YYYY" >{{calendars.dateActivity}}</a-date-picker>
+        <p>{{calendars.dateActivity}}</p>
       </div>
       <div class="select-date">
         <p class="text-input">วันที่</p>
