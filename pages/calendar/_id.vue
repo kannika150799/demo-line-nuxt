@@ -10,10 +10,10 @@
           }}</a-input>
         </div>
       </template>
-      <!-- <div class="select-date"> 
-        <p class="text-input">วันที่เดิม</p>
-        <p>{{calendars.dateActivity}}</p>
-      </div> -->
+      <div class="select-date"> 
+        <p class="text-input">วันที่เดิม&nbsp;{{calendars.dateActivity}}</p>
+        <!-- <p>{{calendars.dateActivity}}</p> -->
+      </div>
       <div class="select-date">
         <p class="text-input">วันที่</p>
         <div class="date-picker">
@@ -62,10 +62,7 @@ export default {
       console.log("get", this.calendars);
     },
     confirmCalendar() {
-      this.$axios.put(
-        `https://db-back.herokuapp.com/api/edit/calendar/${this.id}`,
-        this.calendars
-      ).then(()=>{
+      this.$axios.put(`https://db-back.herokuapp.com/api/edit/calendar/${this.id}`,this.calendars).then(()=>{
         this.$router.push("/calendar/listCalendar");
       });
       
