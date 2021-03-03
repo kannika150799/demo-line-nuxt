@@ -96,7 +96,8 @@ export default {
     checkIn() {
       this.inOut.timeIn = this.currentTimeIn;
       this.$axios.post('https://db-back.herokuapp.com/api/post/checkIn',this.inOut)
-      this.$router.app.refresh()
+      window.location.reload()
+      // this.$router.app.refresh()
       // this.$nuxt.refresh()
       console.log("checkIn", this.inOut);
     },
