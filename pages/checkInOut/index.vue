@@ -2,7 +2,7 @@
   <div class="container-Check">
     <p class="date" v-text="currentDate"></p>
     <p class="time" v-text="currentTimeIn"></p>
-    <div class="box-bt">
+    
       <a-button
         :disabled="isActiveIn"
         class="check-button"
@@ -19,7 +19,7 @@
       >
         Check out
       </a-button>
-    </div>
+    
   </div>
 </template>
 
@@ -143,14 +143,10 @@ export default {
   font-size: 60px;
   font-weight: 600;
 }
-.box-bt {
-  width: 270;
-  display: flex;
-  justify-content: space-between;
-}
 .check-button {
   width: 120px;
   height: 55px;
+  margin: 0px 10px;
   font-size: 16px;
   font-weight: 600;
 }
