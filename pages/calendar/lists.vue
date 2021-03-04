@@ -3,7 +3,7 @@
     <p class="text-head">กิจกรรม</p>
     <div class="container container-activity" v-for="calendar in calendars" :key="calendar.id" >
       <p class="activity">กิจกรรม: {{ calendar.activity }}</p>
-      <p>วันที่: {{ calendar.dateActivity }}</p>
+      <p class="date-activity" >วันที่: {{ calendar.dateActivity }}</p>
     </div>
   </div>
 </template>
@@ -42,18 +42,20 @@ export default {
   align-items: center;
 }
 .text-head {
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 600;
 }
 .container-activity {
-  width: 300px;
+width: 300px;
   font-size: 18px;
   padding: 20px 0px;
   border-bottom: 1px solid black;
 }
 .activity {
-  width: 200px;
   text-align: center;
+}
+.date-activity {
+    margin: 0px;
 }
 .button {
   width: 100px;
