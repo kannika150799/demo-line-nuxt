@@ -19,7 +19,7 @@
             <a-date-picker format="DD/MM/YYYY" @change="onChange" />
           </div>
         </div>
-        <a-button class="add-button button" type="primary" @click="addCalendar">
+        <a-button class="add-button button" type="success" @click="addCalendar">
           Add
         </a-button>
       </div>
