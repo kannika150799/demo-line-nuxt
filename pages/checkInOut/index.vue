@@ -127,6 +127,7 @@ export default {
   margin-top: 30px;
   color: #000000;
   text-align: center;
+  text-align: -webkit-center;
   position: absolute;
   left: 50%;
   top: 30%;
@@ -143,9 +144,8 @@ export default {
   font-weight: 600;
 }
 .box-bt {
-  width: 255;
+  width: 270;
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
 }
 .check-button {
