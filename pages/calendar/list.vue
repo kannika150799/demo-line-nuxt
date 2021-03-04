@@ -1,0 +1,193 @@
+<template>
+  <div>
+
+    <div class="container-page-calendar">
+      <p class="text-head">Setting calendar</p>
+      <div class="container-input">
+        <template>
+          <div class="box-input">
+            <p class="text-input">ชื่อกิจกรรม</p>
+            <a-input
+              class="input"
+              placeholder="ชื่อกิจกรรม"
+              v-model="calendar.activity"
+            />
+          </div>
+        </template>
+        <div class="select-date">
+          <p class="text-input">วันที่</p>
+          <div>
+            <a-date-picker format="DD/MM/YYYY" @change="onChange" />
+          </div>
+        </div>
+        <a-button class="add-button" type="primary" @click="addCalendar">
+          Add
+        </a-button>
+      </div>
+    </div>
+
+    <div class="container-list">
+    <p class="text-head">กิจกรรม</p>
+    <div
+      class="container container-activity"
+      v-for="calendar in calendars"
+      :key="calendar.id"
+    >
+      <p class="activity">กิจกรรม: {{ calendar.activity }}</p>
+      <p>วันที่: {{ calendar.dateActivity }}</p>
+      <div>
+        <a-button
+          class="list-button"
+          type="primary"
+          @click="editList(calendar.id)"
+        >
+          Edit
+        </a-button>
+        <a-button
+          class="list-button"
+          type="danger"
+          @click="deleteList(calendar.id)"
+        >
+          Delete
+        </a-button>
+      </div>
+    </div>
+  </div>
+
+  </div>
+</template>
+
+<script>
+import axios from "axios";
+export default {
+  mounted() {
+    liff
+      .init({
+        liffId: "1655660869-VoKZDYDO",
+      })
+      .then(() => {
+        if (liff.isLoggedIn()) {
+          liff.getProfile().then((profile) => {
+            this.calendar.userId = profile.userId;
+            this.getData();
+          });
+        } else {
+          liff.login();
+        }
+      });
+  },
+  data() {
+    return {
+      calendar: {
+        id: "",
+        userId: "",
+        activity: "",
+        dateActivity: "",
+        date: "",
+      },
+      calendars: {
+        activity: "",
+        date: "",
+        dateActivity: "",
+        id: "",
+        userId: "",
+      },
+    };
+  },
+  methods: {
+    //add list
+    onChange(date, dateString) {
+      console.log(date, dateString);
+      this.calendar.dateActivity = dateString;
+      this.calendar.date = date;
+    },
+    addCalendar() {
+      this.$axios.post(
+        "https://db-back.herokuapp.com/api/post/calendar",
+        this.calendar
+      );
+      this.$router.push("/calendar/listCalendar");
+    },
+    //show list
+    async getData() {
+      const res = await axios.get(
+        "https://db-back.herokuapp.com/api/get/calendar"
+      );
+      this.calendars = res.data;
+      console.log("get", this.calendars);
+    },
+    editList(id) {
+      this.$router.push(`/calendar/${id}`);
+      console.log("id::", id);
+    },
+    deleteList(id) {
+      this.$axios.delete(
+        `https://db-back.herokuapp.com/api/delete/calendar/${id}`
+      );
+      window.location.reload();
+      console.log("delete", id);
+    },
+  },
+};
+</script>
+
+<style scoped>
+.container-page-calendar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px;
+}
+.text-head {
+  font-size: 20px;
+  font-weight: 600;
+}
+.box-input {
+  display: flex;
+  margin-bottom: 15px;
+  width: 300px;
+}
+.input {
+  width: 200px;
+}
+.text-input {
+  margin: 0px;
+  font-size: 16px;
+  font-weight: 600;
+  align-self: center;
+}
+.select-date {
+  display: flex;
+}
+.add-button {
+  height: 44px;
+  width: 120px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+/* show list */
+.container-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.text-head {
+  font-size: 18px;
+  font-weight: 600;
+}
+.container-activity {
+  width: 300px;
+  font-size: 18px;
+  padding: 20px 0px;
+  border-bottom: 1px solid black;
+}
+.activity {
+  width: 200px;
+  text-align: center;
+}
+.list-button {
+  width: 100px;
+  height: 44px;
+}
+</style>
