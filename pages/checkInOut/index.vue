@@ -2,10 +2,20 @@
   <div class="container-Check">
     <p class="date" v-text="currentDate"></p>
     <p class="time" v-text="currentTimeIn"></p>
-    <a-button :disabled="isActiveIn" class="check-button" type="primary" @click="checkIn">
+    <a-button
+      :disabled="isActiveIn"
+      class="check-button"
+      type="primary"
+      @click="checkIn"
+    >
       Check in
     </a-button>
-    <a-button :disabled="isActiveOut" class="check-button" type="primary" @click="checkOut">
+    <a-button
+      :disabled="isActiveOut"
+      class="check-button"
+      type="danger"
+      @click="checkOut"
+    >
       Check out
     </a-button>
   </div>
@@ -25,10 +35,10 @@ export default {
         timeOut: "",
         dateShow: "",
         dateGet: "",
-      },      
+      },
       isActiveIn: null,
       isActiveOut: null,
-      status: ""
+      status: "",
     };
   },
   mounted() {
@@ -53,21 +63,23 @@ export default {
     setInterval(() => this.updateCurrentDate(), 200);
   },
   methods: {
-    async isDone(){
-      let res = await axios.get(`https://db-back.herokuapp.com/api/get/check/${this.inOut.userId}`);
-      if(res.data == null){
-          console.log('res1', res.data);
-          this.isActiveIn = false;
+    async isDone() {
+      let res = await axios.get(
+        `https://db-back.herokuapp.com/api/get/check/${this.inOut.userId}`
+      );
+      if (res.data == null) {
+        console.log("res1", res.data);
+        this.isActiveIn = false;
+        this.isActiveOut = true;
+      } else if (res.data != null) {
+        console.log("res2", res.data);
+        if (res.data.timeOut != "") {
+          this.isActiveIn = true;
           this.isActiveOut = true;
-      }else if(res.data != null) {
-          console.log('res2', res.data);
-          if(res.data.timeOut != ""){
-            this.isActiveIn = true;
-            this.isActiveOut = true;
-          }else {
-            this.isActiveIn = true;
-            this.isActiveOut = false;
-          } 
+        } else {
+          this.isActiveIn = true;
+          this.isActiveOut = false;
+        }
       }
     },
     updateCurrentTimeIn() {
@@ -87,14 +99,20 @@ export default {
     },
     checkIn() {
       this.inOut.timeIn = this.currentTimeIn;
-      this.$axios.post('https://db-back.herokuapp.com/api/post/checkIn',this.inOut)
+      this.$axios.post(
+        "https://db-back.herokuapp.com/api/post/checkIn",
+        this.inOut
+      );
       console.log("checkIn", this.inOut);
-      window.location.reload()
+      window.location.reload();
     },
     checkOut() {
       this.inOut.timeOut = this.currentTime;
-      this.$axios.put(`https://db-back.herokuapp.com/api/update/checkout/${this.inOut.userId}`,{timeOut: this.inOut.timeOut})
-      window.location.reload()
+      this.$axios.put(
+        `https://db-back.herokuapp.com/api/update/checkout/${this.inOut.userId}`,
+        { timeOut: this.inOut.timeOut }
+      );
+      window.location.reload();
       console.log("checkOut", this.inOut);
     },
   },
@@ -125,5 +143,7 @@ export default {
 .check-button {
   width: 100px;
   height: 44px;
+  font-size: 18px;
+  font-weight: 600;
 }
 </style>

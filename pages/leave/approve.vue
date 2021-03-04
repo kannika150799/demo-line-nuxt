@@ -9,7 +9,7 @@
       <a-button class="approve-button" type="primary" @click="approve(leave.id)">
         อนุมัติ
       </a-button>
-      <a-button class="approve-button" type="primary" @click="disapproval(leave.id)">
+      <a-button class="approve-button" type="danger" @click="disapproval(leave.id)">
         ไม่อนุมัติ
       </a-button>
     </div>
