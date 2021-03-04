@@ -12,6 +12,7 @@
 import axios from "axios";
 export default {
   mounted() {
+    liff.init({ liffId: "1655660869-6kk2MEMO", })
     this.getData();
   },
   data() {

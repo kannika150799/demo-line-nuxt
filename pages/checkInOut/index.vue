@@ -22,6 +22,7 @@
 </template>
 
 <script>
+
 import axios from "axios";
 const moment = require("moment");
 export default {
