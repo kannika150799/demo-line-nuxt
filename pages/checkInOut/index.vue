@@ -2,27 +2,28 @@
   <div class="container-Check">
     <p class="date" v-text="currentDate"></p>
     <p class="time" v-text="currentTimeIn"></p>
-    <a-button
-      :disabled="isActiveIn"
-      class="check-button"
-      type="primary"
-      @click="checkIn"
-    >
-      Check in
-    </a-button>
-    <a-button
-      :disabled="isActiveOut"
-      class="check-button"
-      type="danger"
-      @click="checkOut"
-    >
-      Check out
-    </a-button>
+    <div class="box-bt">
+      <a-button
+        :disabled="isActiveIn"
+        class="check-button"
+        type="primary"
+        @click="checkIn"
+      >
+        Check in
+      </a-button>
+      <a-button
+        :disabled="isActiveOut"
+        class="check-button"
+        type="danger"
+        @click="checkOut"
+      >
+        Check out
+      </a-button>
+    </div>
   </div>
 </template>
 
 <script>
-
 import axios from "axios";
 const moment = require("moment");
 export default {
@@ -141,8 +142,14 @@ export default {
   font-size: 60px;
   font-weight: 600;
 }
+.box-bt {
+  width: 255;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 .check-button {
-  width: 150px;
+  width: 120px;
   height: 55px;
   font-size: 16px;
   font-weight: 600;
