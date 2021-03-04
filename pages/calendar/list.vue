@@ -132,7 +132,6 @@ export default {
 
 <style scoped>
 .container-page-calendar {
-    width: 300px;
   padding: 30px 0px;
   margin: 15px 0px;
   border-bottom: 1px solid black;
