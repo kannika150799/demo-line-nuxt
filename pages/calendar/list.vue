@@ -165,6 +165,7 @@ export default {
 .add-button {
   align-self: center;
   margin: 20px 0px 0px;
+  color: aliceblue;
   background-color: rgb(45, 209, 146);
   border-color: transparent;
 }
