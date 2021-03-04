@@ -56,22 +56,22 @@
 <script>
 import axios from "axios";
 export default {
-    mounted() {
-      liff
-        .init({
-          liffId: "1655660869-nvMGoZo6",
-        })
-        .then(() => {
-          if (liff.isLoggedIn()) {
-            liff.getProfile().then((profile) => {
-              this.leave.userId = profile.userId;
-              this.makeGetRequest();
-            });
-          } else {
-            liff.login();
-          }
-        });
-    },
+  mounted() {
+    liff
+      .init({
+        liffId: "1655660869-nvMGoZo6",
+      })
+      .then(() => {
+        if (liff.isLoggedIn()) {
+          liff.getProfile().then((profile) => {
+            this.leave.userId = profile.userId;
+            this.makeGetRequest();
+          });
+        } else {
+          liff.login();
+        }
+      });
+  },
   data() {
     return {
       profile: {
@@ -98,30 +98,31 @@ export default {
       this.profile = res.data;
       console.log("get", this.profile);
     },
-    handleChange (value) {
-      this.show = value
-      console.log(`selected ${value}`)
-      this.leave.leaveType = value
+    handleChange(value) {
+      this.show = value;
+      console.log(`selected ${value}`);
+      this.leave.leaveType = value;
     },
-    filterOption (input, option) {
-      return (
-        option.componentOptions.children[0].text.toLowerCase().includes(input.toLowerCase())
-      )
+    filterOption(input, option) {
+      return option.componentOptions.children[0].text
+        .toLowerCase()
+        .includes(input.toLowerCase());
     },
     onChangeStart(date1, dateString1) {
       console.log(date1, dateString1);
       this.leave.startValue = date1;
       this.leave.dateStart = dateString1;
-
     },
     onChangeEnd(date2, dateString2) {
       console.log(date2, dateString2);
       this.leave.endValue = date2;
       this.leave.dateEnd = dateString2;
-
     },
     send() {
-      this.$axios.post("https://db-back.herokuapp.com/api/post/leave", this.leave);
+      this.$axios.post(
+        "https://db-back.herokuapp.com/api/post/leave",
+        this.leave
+      );
       this.$router.push("/leave/status");
       console.log("leave", this.leave);
     },
@@ -159,12 +160,12 @@ export default {
   margin: 0;
 }
 .txt-title {
-    margin:0px 5px 20px 0px;
+  margin: 0px 5px 20px 0px;
 }
 .textarea {
-    margin: 5px 0px 20px;
-    width: 220px;
-    resize: none;
+  margin: 5px 0px 20px;
+  width: 220px;
+  resize: none;
 }
 .send-button {
   width: 100px;
@@ -175,14 +176,12 @@ export default {
 }
 .container-date {
   width: 220px;
-  height: 70px;
-  display: flex;
-  justify-content: space-between;
 }
 .box-date {
-    display: flex;
-    flex-direction: column;
-    
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .span {
   margin: 5px 0px 5px;
