@@ -63,13 +63,14 @@ export default {
     },
     confirmCalendar() {
       this.$axios.put(`https://db-back.herokuapp.com/api/edit/calendar/${this.id}`,this.calendars).then(()=>{
-        this.$router.push("/calendar/listCalendar");
+        // this.$router.push("/calendar/listCalendar");
+        this.$router.push("/calendar/list");
       });
-      
       console.log("put", this.calendars);
     },
     cancelCalendar() {
-      this.$router.push("/calendar/listCalendar");
+      // this.$router.push("/calendar/listCalendar");
+      this.$router.push("/calendar/list");
     },
   },
 };

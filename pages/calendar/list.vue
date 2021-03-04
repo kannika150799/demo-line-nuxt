@@ -1,17 +1,12 @@
 <template>
   <div>
-
     <div class="container-page-calendar">
       <p class="text-head">Setting calendar</p>
       <div class="container-input">
         <template>
           <div class="box-input">
             <p class="text-input">ชื่อกิจกรรม</p>
-            <a-input
-              class="input"
-              placeholder="ชื่อกิจกรรม"
-              v-model="calendar.activity"
-            />
+            <a-input class="input" placeholder="ชื่อกิจกรรม" v-model="calendar.activity" />
           </div>
         </template>
         <div class="select-date">
@@ -27,33 +22,16 @@
     </div>
 
     <div class="container-list">
-    <p class="text-head">กิจกรรม</p>
-    <div
-      class="container container-activity"
-      v-for="calendar in calendars"
-      :key="calendar.id"
-    >
-      <p class="activity">กิจกรรม: {{ calendar.activity }}</p>
-      <p>วันที่: {{ calendar.dateActivity }}</p>
-      <div>
-        <a-button
-          class="list-button"
-          type="primary"
-          @click="editList(calendar.id)"
-        >
-          Edit
-        </a-button>
-        <a-button
-          class="list-button"
-          type="danger"
-          @click="deleteList(calendar.id)"
-        >
-          Delete
-        </a-button>
+      <p class="text-head">กิจกรรม</p>
+      <div class="container container-activity" v-for="calendar in calendars" :key="calendar.id" >
+        <p class="activity">กิจกรรม: {{ calendar.activity }}</p>
+        <p>วันที่: {{ calendar.dateActivity }}</p>
+        <div>
+          <a-button class="list-button" type="primary" @click="editList(calendar.id)" > Edit </a-button>
+          <a-button class="list-button" type="danger" @click="deleteList(calendar.id)" > Delete </a-button>
+        </div>
       </div>
     </div>
-  </div>
-
   </div>
 </template>
 
@@ -102,11 +80,12 @@ export default {
       this.calendar.date = date;
     },
     addCalendar() {
-      this.$axios.post(
-        "https://db-back.herokuapp.com/api/post/calendar",
-        this.calendar
-      );
-      this.$router.push("/calendar/listCalendar");
+      this.$axios
+        .post("https://db-back.herokuapp.com/api/post/calendar", this.calendar)
+        .then(() => {
+          window.location.reload();
+        });
+      //   this.$router.push("/calendar/listCalendar");
     },
     //show list
     async getData() {
@@ -183,7 +162,7 @@ export default {
   border-bottom: 1px solid black;
 }
 .activity {
-  width: 200px;
+  width: 260px;
   text-align: center;
 }
 .list-button {
