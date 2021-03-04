@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container-page-calendar">
+    <div class="container-page-calendar container">
       <p class="text-head">Setting calendar</p>
       <div class="container-input">
         <template>
@@ -21,7 +21,7 @@
       </div>
     </div>
 
-    <div class="container-list">
+    <div class="container">
       <p class="text-head">กิจกรรม</p>
       <div class="container container-activity" v-for="calendar in calendars" :key="calendar.id" >
         <p class="activity">กิจกรรม: {{ calendar.activity }}</p>
@@ -112,9 +112,9 @@ export default {
 
 <style scoped>
 .container-page-calendar {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center; */
   margin: 30px;
 }
 .text-head {
@@ -146,7 +146,7 @@ export default {
 }
 
 /* show list */
-.container-list {
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -161,10 +161,10 @@ export default {
   padding: 20px 0px;
   border-bottom: 1px solid black;
 }
-.activity {
+/* .activity {
   width: 260px;
   text-align: center;
-}
+} */
 .list-button {
   width: 100px;
   height: 44px;
