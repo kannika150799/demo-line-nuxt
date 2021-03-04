@@ -93,6 +93,7 @@ export default {
   border: 2px solid navy;
   padding: 10px;
   border-radius: 10px;
+  margin-bottom: 10px;
 }
 .approve-button {
   width: 100px;
