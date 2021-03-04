@@ -144,7 +144,7 @@ export default {
 .check-button {
   width: 100px;
   height: 44px;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
 }
 </style>

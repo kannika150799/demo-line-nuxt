@@ -165,7 +165,7 @@ export default {
 .add-button {
   align-self: center;
   margin: 20px 0px 0px;
-  color: rgb(71, 250, 116);
+  background-color: rgb(71, 250, 116);
 }
 .button {
   height: 44px;
