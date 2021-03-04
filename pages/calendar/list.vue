@@ -132,7 +132,8 @@ export default {
 
 <style scoped>
 .container-page-calendar {
-  margin: 30px 0px;
+  padding: 30px 0px;
+  border-bottom: 1px solid black;
 }
 .container-input {
   display: flex;
@@ -149,7 +150,7 @@ export default {
 }
 .input {
   margin-left: 10px;
-  width: 200px;
+  width: 180px;
 }
 .text-input {
   margin: 0px 5px 0px;
@@ -177,10 +178,10 @@ export default {
   flex-direction: column;
   align-items: center;
 }
-.text-head {
+/* .text-head {
   font-size: 18px;
   font-weight: 600;
-}
+} */
 .container-activity {
   width: 300px;
   font-size: 18px;
