@@ -6,7 +6,11 @@
         <template>
           <div class="box-input">
             <p class="text-input">ชื่อกิจกรรม</p>
-            <a-input class="input" placeholder="ชื่อกิจกรรม" v-model="calendar.activity" />
+            <a-input
+              class="input"
+              placeholder="ชื่อกิจกรรม"
+              v-model="calendar.activity"
+            />
           </div>
         </template>
         <div class="select-date">
@@ -23,12 +27,28 @@
 
     <div class="container">
       <p class="text-head">กิจกรรม</p>
-      <div class="container container-activity" v-for="calendar in calendars" :key="calendar.id" >
+      <div
+        class="container container-activity"
+        v-for="calendar in calendars"
+        :key="calendar.id"
+      >
         <p class="activity">กิจกรรม: {{ calendar.activity }}</p>
         <p>วันที่: {{ calendar.dateActivity }}</p>
         <div>
-          <a-button class="list-button" type="primary" @click="editList(calendar.id)" > Edit </a-button>
-          <a-button class="list-button" type="danger" @click="deleteList(calendar.id)" > Delete </a-button>
+          <a-button
+            class="list-button"
+            type="primary"
+            @click="editList(calendar.id)"
+          >
+            Edit
+          </a-button>
+          <a-button
+            class="list-button"
+            type="danger"
+            @click="deleteList(calendar.id)"
+          >
+            Delete
+          </a-button>
         </div>
       </div>
     </div>
@@ -116,6 +136,10 @@ export default {
   flex-direction: column;
   align-items: center; */
   margin: 30px 0px;
+}
+.container-input {
+  display: flex;
+  flex-direction: column;
 }
 .text-head {
   font-size: 20px;
