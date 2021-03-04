@@ -19,7 +19,7 @@
             <a-date-picker format="DD/MM/YYYY" @change="onChange" />
           </div>
         </div>
-        <a-button class="add-button" type="primary" @click="addCalendar">
+        <a-button class="add-button button" type="primary" @click="addCalendar">
           Add
         </a-button>
       </div>
@@ -36,14 +36,14 @@
         <p>วันที่: {{ calendar.dateActivity }}</p>
         <div>
           <a-button
-            class="list-button"
+            class="button"
             type="primary"
             @click="editList(calendar.id)"
           >
             Edit
           </a-button>
           <a-button
-            class="list-button"
+            class="button"
             type="danger"
             @click="deleteList(calendar.id)"
           >
@@ -132,9 +132,6 @@ export default {
 
 <style scoped>
 .container-page-calendar {
-  /* display: flex;
-  flex-direction: column;
-  align-items: center; */
   margin: 30px 0px;
 }
 .container-input {
@@ -151,10 +148,11 @@ export default {
   width: 300px;
 }
 .input {
+  margin-left: 10px;
   width: 200px;
 }
 .text-input {
-  margin: 0px;
+  margin: 0px 5px 0px;
   font-size: 16px;
   font-weight: 600;
   align-self: center;
@@ -163,12 +161,14 @@ export default {
   display: flex;
 }
 .add-button {
+  align-self: center;
+  margin: 20px 0px;
+}
+.button {
   height: 44px;
   width: 120px;
   font-size: 16px;
   font-weight: 400;
-  align-self: center;
-  margin: 10px 0px;
 }
 
 /* show list */
@@ -190,8 +190,8 @@ export default {
 .activity {
   text-align: center;
 }
-.list-button {
+/* .list-button {
   width: 100px;
   height: 44px;
-}
+} */
 </style>
