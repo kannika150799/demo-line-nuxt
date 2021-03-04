@@ -10,7 +10,7 @@
           </div>
         </template>
         <div class="select-date">
-          <p class="text-input">วันที่</p>
+          <p class="text-input">วันที่กิจกรรม</p>
           <div>
             <a-date-picker format="DD/MM/YYYY" @change="onChange" />
           </div>
@@ -115,7 +115,7 @@ export default {
   /* display: flex;
   flex-direction: column;
   align-items: center; */
-  margin: 30px;
+  margin: 30px 0px;
 }
 .text-head {
   font-size: 20px;
@@ -143,6 +143,8 @@ export default {
   width: 120px;
   font-size: 16px;
   font-weight: 400;
+  align-self: center;
+  margin: 10px 0px;
 }
 
 /* show list */
@@ -161,10 +163,9 @@ export default {
   padding: 20px 0px;
   border-bottom: 1px solid black;
 }
-/* .activity {
-  width: 260px;
+.activity {
   text-align: center;
-} */
+}
 .list-button {
   width: 100px;
   height: 44px;
