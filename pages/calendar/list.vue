@@ -19,7 +19,7 @@
             <a-date-picker format="DD/MM/YYYY" @change="onChange" />
           </div>
         </div>
-        <a-button class="add-button button" type="success" @click="addCalendar">
+        <a-button class="add-button button" @click="addCalendar">
           Add
         </a-button>
       </div>
@@ -165,6 +165,7 @@ export default {
 .add-button {
   align-self: center;
   margin: 20px 0px 0px;
+  color: rgb(71, 250, 116);
 }
 .button {
   height: 44px;

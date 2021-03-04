@@ -169,12 +169,15 @@ export default {
 .send-button {
   width: 100px;
   height: 44px;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   margin-top: 40px;
 }
 .container-date {
   width: 220px;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
 }
 .box-date {
     display: flex;

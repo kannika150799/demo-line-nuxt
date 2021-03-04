@@ -8,7 +8,6 @@
     <a-button :disabled="isActiveOut" class="check-button" type="primary" @click="checkOut">
       Check out
     </a-button>
-    <!-- <p>{{this.status}}</p> -->
   </div>
 </template>
 
@@ -73,11 +72,9 @@ export default {
     },
     updateCurrentTimeIn() {
       this.currentTimeIn = moment().format("LTS");
-      // this.inOut.timeIn = this.currentTimeIn;
     },
     updateCurrentTimeOut() {
       this.currentTime = moment().format("LTS");
-      // this.inOut.timeOut = this.currentTime;
     },
     updateCurrentDate() {
       this.currentDate = moment().format("dddd, l");
@@ -114,7 +111,7 @@ export default {
   left: 50%;
   top: 30%;
   transform: translate(-50%, -50%);
-  text-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0);
+  /* text-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0); */
 }
 .date {
   font-size: 30px;
