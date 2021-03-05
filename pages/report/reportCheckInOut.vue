@@ -4,20 +4,20 @@
     <div class="select-date">
       <p>เดือน</p>
       <div>
-          <a-select
-            show-search
-            placeholder="เลือกเดือน"
-            option-filter-prop="children"
-            style="width: 120px"
-            :filter-option="filterOption"
-            class="breed_select"
-            @change="handleChange"
-          >
-            <a-select-option v-for="author in authors" :key="author">
-              {{ author }}
-            </a-select-option>
-          </a-select>
-        </div>
+        <a-select
+          show-search
+          placeholder="เลือกเดือน"
+          option-filter-prop="children"
+          style="width: 120px"
+          :filter-option="filterOption"
+          class="breed_select"
+          @change="handleChange"
+        >
+          <a-select-option v-for="author in authors" :key="author">
+            {{ author }}
+          </a-select-option>
+        </a-select>
+      </div>
     </div>
 
     <div class="box-card">
@@ -31,25 +31,50 @@
 </template>
 
 <script>
-
+import axios from "axios";
 export default {
-data () {
-  return {
-    authors: ["ทั้งหมด", "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"],
-  }
-},
+  data() {
+    return {
+      authors: [
+        "ทั้งหมด",
+        "มกราคม",
+        "กุมภาพันธ์",
+        "มีนาคม",
+        "เมษายน",
+        "พฤษภาคม",
+        "มิถุนายน",
+        "กรกฎาคม",
+        "สิงหาคม",
+        "กันยายน",
+        "ตุลาคม",
+        "พฤศจิกายน",
+        "ธันวาคม",
+      ],
+    };
+  },
+  mounted() {
+    liff.init({ liffId: "1655660869-Pbzr7e7X",})
+    this.getData();
+  },
   methods: {
-    handleChange (value) {
-      this.show = value
-      console.log(`selected ${value}`)
-      console.log(this.photo)
+    handleChange(value) {
+      this.show = value;
+      console.log(`selected ${value}`);
     },
-    filterOption (input, option) {
-      return (
-        option.componentOptions.children[0].text.toLowerCase().includes(input.toLowerCase())
-      )
-    }
-  }
+    filterOption(input, option) {
+      return option.componentOptions.children[0].text
+        .toLowerCase()
+        .includes(input.toLowerCase());
+    },
+    async getData() {
+      const res = await axios.get(
+        `https://db-back.herokuapp.com/get/user1/${this.authors}`
+      );
+      // this.leaves = res.data;
+      // console.log("get", this.leaves);
+      console.log("get", res.data);
+    },
+  },
 };
 </script>
 
@@ -70,6 +95,6 @@ data () {
   border-radius: 10px;
 }
 .select-date {
-    display: flex;
-} 
+  display: flex;
+}
 </style>
