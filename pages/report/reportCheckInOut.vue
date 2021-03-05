@@ -50,7 +50,7 @@ export default {
         "พฤศจิกายน",
         "ธันวาคม",
       ],
-      info: {}
+      // info: {}
 
     };
   },
@@ -62,9 +62,9 @@ export default {
       const res = axios.get(
         `https://db-back.herokuapp.com/get/user1/${value}`
       ).then((res) => {
-        this.info = res.data;
+        // this.info = res.data;
         console.log(`selected ${value}`);
-        console.log("get", this.info);
+        console.log("get", res.data);
         }
       );
     },
