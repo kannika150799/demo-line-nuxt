@@ -50,6 +50,7 @@ export default {
         "พฤศจิกายน",
         "ธันวาคม",
       ],
+      month: ""
     };
   },
   mounted() {
@@ -59,6 +60,7 @@ export default {
   methods: {
     handleChange(value) {
       this.show = value;
+      this.month = value;
       console.log(`selected ${value}`);
     },
     filterOption(input, option) {
@@ -68,7 +70,7 @@ export default {
     },
     async getData() {
       const res = await axios.get(
-        `https://db-back.herokuapp.com/get/user1/${this.authors}`
+        `https://db-back.herokuapp.com/get/user1/${this.month}`
       );
       // this.leaves = res.data;
       // console.log("get", this.leaves);
