@@ -50,42 +50,29 @@ export default {
         "พฤศจิกายน",
         "ธันวาคม",
       ],
-      // select: {
-      //   month: ""
-      // }
+      info: []
+
     };
   },
   mounted() {
     liff.init({ liffId: "1655660869-Pbzr7e7X",})
-    // this.getData();
   },
   methods: {
     handleChange(value) {
-      // this.show = value;
-      // this.select.month = value;
       const res = axios.get(
         `https://db-back.herokuapp.com/get/user1/${value}`
       ).then((res) => {
+        this.info = res.data;
         console.log(`selected ${value}`);
-        console.log("get", res.data);
+        console.log("get", this.info);
         }
       );
-      
-      
     },
     filterOption(input, option) {
       return option.componentOptions.children[0].text
         .toLowerCase()
         .includes(input.toLowerCase());
     },
-    // async getData() {
-    //   const res = await axios.get(
-    //     `https://db-back.herokuapp.com/get/user1/${this.select.month}`
-    //   );
-    //   // this.leaves = res.data;
-    //   // console.log("get", this.leaves);
-    //   console.log("get", res.data);
-    // },
   },
 };
 </script>
