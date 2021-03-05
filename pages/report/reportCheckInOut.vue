@@ -65,9 +65,12 @@ export default {
       // this.select.month = value;
       const res = axios.get(
         `https://db-back.herokuapp.com/get/user1/${value}`
+      ).then((res) => {
+        console.log(`selected ${value}`);
+        console.log("get", res.data);
+        }
       );
-      console.log(`selected ${value}`);
-      console.log("get", res.data);
+      
       
     },
     filterOption(input, option) {
