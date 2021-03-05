@@ -63,7 +63,7 @@ export default {
     handleChange(value) {
       // this.show = value;
       // this.select.month = value;
-      const res = await axios.get(
+      const res = axios.get(
         `https://db-back.herokuapp.com/get/user1/${value}`
       );
       console.log(`selected ${value}`);
