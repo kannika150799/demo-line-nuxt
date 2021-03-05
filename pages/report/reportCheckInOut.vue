@@ -50,7 +50,7 @@ export default {
         "พฤศจิกายน",
         "ธันวาคม",
       ],
-      info: null
+      info: {}
 
     };
   },
