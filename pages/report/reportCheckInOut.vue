@@ -58,13 +58,20 @@ export default {
     liff.init({ liffId: "1655660869-Pbzr7e7X",})
   },
   methods: {
-    async handleChange(value) {
-      const res = await axios.get(
+    handleChange(value) {
+      const res = axios.get(
         `https://db-back.herokuapp.com/get/user1/${value}`
       )
-      this.info = await res.data;
-      console.log(`selected ${value}`);
-      console.log("get", this.info);
+      .then((res) => {
+        this.info = res.data;
+        console.log("get", this.info);
+        console.log(`selected ${value}`);
+        
+        }
+      );
+      // this.info = res.data;
+      // console.log(`selected ${value}`);
+      // console.log("get", this.info);
     },
     filterOption(input, option) {
       return option.componentOptions.children[0].text
