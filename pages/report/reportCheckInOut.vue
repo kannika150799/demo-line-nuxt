@@ -21,7 +21,7 @@
     </div>
 
     <div class="box-card" v-for="info in infos" :key="info">
-      <p>ชื่อ: {{info.name}}</p>
+      <p>ชื่อ: {{info.info.name}}</p>
       <div v-for="check in infos.inout" :key="check.inout">
         <p>date: {{check.dateGet}}</p>
         <p>check-in: {{check.timeIn}}</p>
@@ -65,8 +65,7 @@ export default {
       )
       .then((res) => {
         this.infos = res.data;
-        console.log("get1", res.data);
-        console.log("get2", this.infos);
+        console.log("get", this.infos);
         console.log(`selected ${value}`);
         }
       );
