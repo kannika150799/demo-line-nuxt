@@ -21,12 +21,13 @@
     </div>
 
     <div class="box-card" v-for="info in infos" :key="info">
-      <p>ชื่อ: {{info.info.name}}</p>
+      <p>ชื่อ: {{ info.info.name }}</p>
       <div v-for="check in info.inout" :key="check">
-        <p>length: {{info.inout.length}}</p>
-        <p>date: {{check.dateGet}}</p>
-        <p>check-in: {{check.timeIn}}</p>
-        <p>check-out: {{check.timeOut}}</p>
+        <p>date: {{ check.dateGet }}</p>
+        <div class="check-in-out">
+          <p>check-in: {{ check.timeIn }}</p>
+          <p>check-out: {{ check.timeOut }}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -52,24 +53,21 @@ export default {
         "พฤศจิกายน",
         "ธันวาคม",
       ],
-      infos: null
-
+      infos: null,
     };
   },
   mounted() {
-    liff.init({ liffId: "1655660869-Pbzr7e7X",})
+    liff.init({ liffId: "1655660869-Pbzr7e7X" });
   },
   methods: {
     handleChange(value) {
-      const res = axios.get(
-        `https://db-back.herokuapp.com/get/user1/${value}`
-      )
-      .then((res) => {
-        this.infos = res.data;
-        console.log("get", this.infos);
-        console.log(`selected ${value}`);
-        }
-      );
+      const res = axios
+        .get(`https://db-back.herokuapp.com/get/user1/${value}`)
+        .then((res) => {
+          this.infos = res.data;
+          console.log("get", this.infos);
+          console.log(`selected ${value}`);
+        });
     },
     filterOption(input, option) {
       return option.componentOptions.children[0].text
@@ -97,6 +95,9 @@ export default {
   border-radius: 10px;
 }
 .select-date {
+  display: flex;
+}
+.check-in-out {
   display: flex;
 }
 </style>
