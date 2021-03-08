@@ -51,10 +51,7 @@ export default {
         "พฤศจิกายน",
         "ธันวาคม",
       ],
-      infos: {
-        info: null,
-        inout: []
-      }
+      infos: null
 
     };
   },
@@ -68,7 +65,8 @@ export default {
       )
       .then((res) => {
         this.infos = res.data;
-        console.log("get", this.infos);
+        console.log("get1", res.data);
+        console.log("get2", this.infos);
         console.log(`selected ${value}`);
         
         }
