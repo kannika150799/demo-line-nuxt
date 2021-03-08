@@ -20,9 +20,9 @@
       </div>
     </div>
 
-    <div class="box-card" v-for="info in infos" :key="info.userId">
+    <div class="box-card" v-for="info in infos" :key="info">
       <p>ชื่อ: {{info.name}}</p>
-      <div v-for="check in infos.inout" :key="check.inout.userId">
+      <div v-for="check in infos.inout" :key="check.inout">
         <p>date: {{check.dateGet}}</p>
         <p>check-in: {{check.timeIn}}</p>
         <p>check-out: {{check.timeOut}}</p>
@@ -68,12 +68,8 @@ export default {
         console.log("get1", res.data);
         console.log("get2", this.infos);
         console.log(`selected ${value}`);
-        
         }
       );
-      // this.info = res.data;
-      // console.log(`selected ${value}`);
-      // console.log("get", this.info);
     },
     filterOption(input, option) {
       return option.componentOptions.children[0].text
