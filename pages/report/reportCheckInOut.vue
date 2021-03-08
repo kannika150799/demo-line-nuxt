@@ -23,6 +23,7 @@
     <div class="box-card" v-for="info in infos" :key="info">
       <p>ชื่อ: {{info.info.name}}</p>
       <div v-for="check in info.inout" :key="check">
+        <p>length: {{info.inout.length}}</p>
         <p>date: {{check.dateGet}}</p>
         <p>check-in: {{check.timeIn}}</p>
         <p>check-out: {{check.timeOut}}</p>
