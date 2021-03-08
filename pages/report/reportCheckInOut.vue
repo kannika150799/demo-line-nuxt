@@ -50,7 +50,7 @@ export default {
         "พฤศจิกายน",
         "ธันวาคม",
       ],
-      // info: {}
+      info: null
 
     };
   },
@@ -58,15 +58,13 @@ export default {
     liff.init({ liffId: "1655660869-Pbzr7e7X",})
   },
   methods: {
-    handleChange(value) {
-      const res = axios.get(
+    async handleChange(value) {
+      const res = await axios.get(
         `https://db-back.herokuapp.com/get/user1/${value}`
-      ).then((res) => {
-        // this.info = res.data;
-        console.log(`selected ${value}`);
-        console.log("get", res.data);
-        }
-      );
+      )
+      this.info = await res.data;
+      console.log(`selected ${value}`);
+      console.log("get", this.info);
     },
     filterOption(input, option) {
       return option.componentOptions.children[0].text
