@@ -21,25 +21,13 @@
     </div>
 
     <div class="box-card" v-for="info in infos" :key="info">
-      <!-- <p>ชื่อ: {{ info.info.name }}</p> -->
       <p>{{ info.info.inout.length > 0 ? info.info.name : '' }}</p>
       <div v-for="check in info.info.inout" :key="check">
         <p>date: {{ check.dateGet }}</p>
-         <!-- v-for="(check, index) in info.inout" :key="index" -->
-        <!-- <p>date: {{ check.dateGet }}</p> -->
-        <!-- <p>date: {{ check.dateGet ? check.dateGet : "ไม่พบข้อมูล" }}</p> -->
-        <!-- <p>date: {{ info.inout.length > 0 ? check.dateGet : "ไม่พบข้อมูล" }}</p> -->
         <div class="space">
           <p>date: {{ check.timeIn }}</p>
           <p>date: {{ check.timeOut }}</p>
-          <!-- <p class="text">check-in: {{ check.timeIn ? check.timeIn : "ไม่พบข้อมูล" }}</p> -->
-          <!-- <p>check-out: {{ check.timeIn ? check.timeIn : "ไม่พบข้อมูล" }}</p> -->
-          <!-- <p class="text">check-in: {{ check.timeIn }}</p>
-          <p>check-out: {{ check.timeOut }}</p> -->
-          
         </div>
-        <!-- {{ info.inout.length > 0 ? 'hi': 'gg' }}
-        {{ infos }} -->
       </div>
     </div>
   </div>
