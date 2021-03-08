@@ -51,7 +51,10 @@ export default {
         "พฤศจิกายน",
         "ธันวาคม",
       ],
-      infos: null
+      infos: {
+        info: null,
+        inout: []
+      }
 
     };
   },
