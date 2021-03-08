@@ -24,10 +24,10 @@
       <p>ชื่อ: {{ info.info.name }}</p>
       <div v-for="check in info.inout" :key="check">
         <!-- <p>date: {{ check.dateGet }}</p> -->
-        <p>date: {{ check.dateGet ? check.dateGet : 'ไม่พบข้อมูล' }}</p>
+        <p>date: {{ check.dateGet ? check.dateGet : "ไม่พบข้อมูล" }}</p>
         <div class="space">
-          <p class="text">check-in: {{ check.timeIn ? check.timeIn : 'ไม่พบข้อมูล' }}</p>
-          <p>check-out: {{ check.timeIn ? check.timeIn : 'ไม่พบข้อมูล' }}</p>
+          <p class="text">check-in: {{ check.timeIn ? check.timeIn : "ไม่พบข้อมูล" }}</p>
+          <p>check-out: {{ check.timeIn ? check.timeIn : "ไม่พบข้อมูล" }}</p>
           <!-- <p class="text">check-in: {{ check.timeIn }}</p>
           <p>check-out: {{ check.timeOut }}</p> -->
         </div>
@@ -92,7 +92,7 @@ export default {
   font-size: 20px;
   font-weight: 600;
 }
-.text-month {
+.text {
   margin-right: 10px;
   font-size: 16px;
 
