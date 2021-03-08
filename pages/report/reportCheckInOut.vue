@@ -20,11 +20,12 @@
       </div>
     </div>
 
-    <div class="box-card">
-      <p>ชื่อ: (ชื่อ)</p>
-      <div>
-        <p>check-in: (xx:xx)</p>
-        <p>check-out: (xx:xx)</p>
+    <div class="box-card" v-for="info in infos" :key="info.userId">
+      <p>ชื่อ: {{info.name}}</p>
+      <div v-for="check in infos.inout" :key="check.inout.userId">
+        <p>date: {{check.dateGet}}</p>
+        <p>check-in: {{check.timeIn}}</p>
+        <p>check-out: {{check.timeOut}}</p>
       </div>
     </div>
   </div>
@@ -50,7 +51,7 @@ export default {
         "พฤศจิกายน",
         "ธันวาคม",
       ],
-      info: null
+      infos: null
 
     };
   },
@@ -63,8 +64,8 @@ export default {
         `https://db-back.herokuapp.com/get/user1/${value}`
       )
       .then((res) => {
-        this.info = res.data;
-        console.log("get", this.info);
+        this.infos = res.data;
+        console.log("get", this.infos);
         console.log(`selected ${value}`);
         
         }
