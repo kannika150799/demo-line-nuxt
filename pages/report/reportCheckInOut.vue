@@ -2,7 +2,7 @@
   <div class="container-page-status">
     <p class="text-head">Report check-in/check-out</p>
     <div class="select-date">
-      <p>เดือน</p>
+      <p class="text-month">เดือน</p>
       <div>
         <a-select
           show-search
@@ -89,10 +89,16 @@ export default {
   font-size: 20px;
   font-weight: 600;
 }
+.text-month {
+  margin-right: 5px;
+  font-size: 16px;
+  
+}
 .box-card {
-  border: 2px solid navy;
+  /* border: 2px solid navy; */
   padding: 10px;
-  border-radius: 10px;
+  /* border-radius: 10px; */
+  margin-bottom: 15px;
 }
 .select-date {
   display: flex;
