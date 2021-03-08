@@ -1,8 +1,8 @@
 <template>
   <div class="container-page-status">
     <p class="text-head">Report check-in/check-out</p>
-    <div class="select-date">
-      <p class="text-month">เดือน</p>
+    <div class="space">
+      <p class="text">เดือน</p>
       <div>
         <a-select
           show-search
@@ -24,8 +24,8 @@
       <p>ชื่อ: {{ info.info.name }}</p>
       <div v-for="check in info.inout" :key="check">
         <p>date: {{ check.dateGet }}</p>
-        <div class="check-in-out">
-          <p>check-in: {{ check.timeIn }}</p>
+        <div class="space">
+          <p class="text">check-in: {{ check.timeIn }}</p>
           <p>check-out: {{ check.timeOut }}</p>
         </div>
       </div>
@@ -90,9 +90,9 @@ export default {
   font-weight: 600;
 }
 .text-month {
-  margin-right: 5px;
+  margin-right: 10px;
   font-size: 16px;
-  
+
 }
 .box-card {
   /* border: 2px solid navy; */
@@ -100,10 +100,7 @@ export default {
   /* border-radius: 10px; */
   margin-bottom: 15px;
 }
-.select-date {
-  display: flex;
-}
-.check-in-out {
+.space {
   display: flex;
 }
 </style>
