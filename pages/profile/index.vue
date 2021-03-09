@@ -59,7 +59,7 @@ export default {
         name:"",
         nickname:"",
         position:"",
-        rank:""
+        rank:"Staff"
       },
     };
   },
