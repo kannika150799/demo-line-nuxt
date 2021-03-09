@@ -91,7 +91,7 @@ export default {
       this.currentTime = moment().format("LTS");
     },
     updateCurrentDate() {
-      this.currentDate = moment().format("dddd, l");
+      this.currentDate = moment().format("dddd, MMMM Do YYYY");
       this.currentDateFormat1 = moment().format();
       this.currentDateFormat2 = moment().format("l");
 

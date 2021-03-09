@@ -5,8 +5,8 @@
       <template>
         <div class="box-input">
           <p class="text-input">ชื่อกิจกรรม</p>
-          <a-input class="input" v-model="calendars.activity">{{
-            calendars.activity
+          <a-input class="input" v-model="calendar.activity">{{
+            calendar.activity
           }}</a-input>
         </div>
       </template>
@@ -43,6 +43,11 @@ export default {
         dateActivity: "",
         date: "",
       },
+      calendar: {
+        activity: "",
+        dateActivity: "",
+        date: "",
+      }
     };
   },
   mounted() {
@@ -51,8 +56,8 @@ export default {
   methods: {
     onChange(date, dateString) {
       console.log(date, dateString);
-      this.calendars.dateActivity = dateString;
-      this.calendars.date = date;
+      this.calendar.dateActivity = dateString;
+      this.calendar.date = date;
     },
     async getData() {
       const res = await axios.get(
@@ -62,11 +67,11 @@ export default {
       console.log("get", this.calendars);
     },
     confirmCalendar() {
-      this.$axios.put(`https://db-back.herokuapp.com/api/edit/calendar/${this.id}`,this.calendars).then(()=>{
+      this.$axios.put(`https://db-back.herokuapp.com/api/edit/calendar/${this.id}`,this.calendar).then(()=>{
         // this.$router.push("/calendar/listCalendar");
         this.$router.push("/calendar/list");
       });
-      console.log("put", this.calendars);
+      console.log("put", this.calendar);
     },
     cancelCalendar() {
       // this.$router.push("/calendar/listCalendar");
