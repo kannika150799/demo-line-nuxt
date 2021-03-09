@@ -23,7 +23,7 @@ export default {
     };
   },
   mounted() {
-    // liff.init({ liffId: "1655660869-Pbzr7e7X" });
+    liff.init({ liffId: "1655660869-NlbreJej" });
     this.getData();
   },
   methods: {
