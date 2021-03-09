@@ -66,7 +66,7 @@ export default {
   methods:{
     isDone(){
       this.$axios.get(`https://db-back.herokuapp.com/api/get/user/${this.profile.userId}`).then((res) => {
-        if(res.data != null){
+        if(res.data !== null || res.data !== undefined){
           this.$router.push('/profile/_id');
         }
       });
