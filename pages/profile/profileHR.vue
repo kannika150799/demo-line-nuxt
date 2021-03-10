@@ -34,7 +34,7 @@ export default {
   mounted() {
     liff
       .init({
-        liffId: "1655660869-9VQpzMzY",
+        liffId: "1655736391-enZgDWla",
       })
       .then(() => {
         if (liff.isLoggedIn()) {
@@ -72,7 +72,7 @@ export default {
       });
     },
     register(){
-      this.$axios.post('https://db-back.herokuapp.com/api/post/user',this.profile)
+      this.$axios.post('https://db-back.herokuapp.com/api/post/user/hr',this.profile)
       this.$router.push(`/profile/${this.profile.userId}`)
       console.log(this.profile);
     }
