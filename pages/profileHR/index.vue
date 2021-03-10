@@ -67,13 +67,13 @@ export default {
     isDone(){
       this.$axios.get(`https://db-back.herokuapp.com/api/get/user/${this.profile.userId}`).then((res) => {
         if(res.data != null){
-          this.$router.push('/profile/_id');
+          this.$router.push('/profileHR/_id');
         }
       });
     },
     register(){
       this.$axios.post('https://db-back.herokuapp.com/api/post/user/hr',this.profile)
-      this.$router.push(`/profile/${this.profile.userId}`)
+      this.$router.push(`/profileHR/${this.profile.userId}`)
       console.log(this.profile);
     }
   }

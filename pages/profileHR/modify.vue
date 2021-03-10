@@ -71,7 +71,7 @@ export default {
     },
     confirm(){
       this.$axios.put(`https://db-back.herokuapp.com/api/edit/user/${this.profile.userId}`,this.profile)
-      this.$router.push(`/profile/${this.profile.userId}`)
+      this.$router.push(`/profileHR/${this.profile.userId}`)
       console.log("put",this.profile);
     }
   }
