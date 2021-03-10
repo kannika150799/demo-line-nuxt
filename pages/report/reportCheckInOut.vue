@@ -22,11 +22,11 @@
 
     <div class="box-card" v-for="info in infos" :key="info">
       <p>{{ info.info.inout.length > 0 ? info.info.name : '' }}</p>
-      <div v-for="check in info.info.inout" :key="check">
-        <p>date: {{ check.dateGet }}</p>
+      <div class="box-check" v-for="check in info.info.inout" :key="check">
+        <p>วันที่: {{ check.dateGet }}</p>
         <div class="space">
-          <p>date: {{ check.timeIn }}</p>
-          <p>date: {{ check.timeOut }}</p>
+          <p>เข้า: {{ check.timeIn }}&nbsp;</p>
+          <p>&nbsp;ออก: {{ check.timeOut }}</p>
         </div>
       </div>
     </div>
@@ -100,9 +100,16 @@ font-size: 28px;
   /* border: 2px solid navy; */
   padding: 10px;
   /* border-radius: 10px; */
-  margin-bottom: 15px;
+  box-shadow: 3px 4px 13px rgb(188 229 238 / 20%),
+    3px 4px 13px rgb(168 223 216 / 16%);
+  border-radius: 5px;
+  margin-bottom: 30px;
+  width: 80%;
 }
 .space {
   display: flex;
+}
+.box-check {
+  margin: 10px;
 }
 </style>

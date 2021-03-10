@@ -1,7 +1,8 @@
 <template>
   <div class="container-Check">
+    
+    <p class="date " v-text="currentDate2"></p>
     <p class="date" v-text="currentDate"></p>
-    <p class="date" v-text="currentDate2"></p>
     <p class="time" v-text="currentTimeIn"></p>
 
     <a-button
@@ -148,7 +149,7 @@ export default {
 }
 .time {
   margin-top: 60px;
-  font-size: 60px;
+  font-size: 40px;
   font-weight: 600;
 }
 .check-button {
