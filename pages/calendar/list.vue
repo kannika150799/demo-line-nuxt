@@ -60,20 +60,20 @@
 import axios from "axios";
 export default {
   mounted() {
-    liff
-      .init({
-        liffId: "1655736391-6XYv2JDo",
-      })
-      .then(() => {
-        if (liff.isLoggedIn()) {
-          liff.getProfile().then((profile) => {
-            this.calendar.userId = profile.userId;
-            this.getData();
-          });
-        } else {
-          liff.login();
-        }
-      });
+    // liff
+    //   .init({
+    //     liffId: "1655736391-6XYv2JDo",
+    //   })
+    //   .then(() => {
+    //     if (liff.isLoggedIn()) {
+    //       liff.getProfile().then((profile) => {
+    //         this.calendar.userId = profile.userId;
+    //         this.getData();
+    //       });
+    //     } else {
+    //       liff.login();
+    //     }
+    //   });
   },
   data() {
     return {
@@ -139,10 +139,11 @@ export default {
 .container-input {
   display: flex;
   flex-direction: column;
+  width: 220px;
 }
 .text-head {
-font-size: 24px;
-    font-weight: 800;
+    font-size: 34px;
+    font-weight: 700;
 }
 .box-input {
   /* display: flex; */
@@ -152,18 +153,22 @@ font-size: 24px;
 .input {
   /* margin-left: 10px; */
   resize: none;
-  width: 180px;
+  /* width: 185px; */
   height: 50px;
 }
 .text-input {
   margin: 0px 0px 5px;
-  font-size: 16px;
+  font-size: 22px;
   font-weight: 600;
   align-self: center;
 }
 /* .select-date {
   display: flex;
+  flex-direction: column;
 } */
+.ant-calendar-picker-input {
+    width: 220px;
+}
 .add-button {
   align-self: center;
   margin: 40px 0px 0px;
@@ -206,6 +211,8 @@ font-size: 24px;
 }
 .activity {
   text-align: center;
+  font-size: 30px;
+    margin: 0px;
 }
 /* .list-button {
   width: 100px;
