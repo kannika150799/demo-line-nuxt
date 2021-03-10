@@ -1,7 +1,6 @@
 <template>
   <div class="container-Check">
-    <p class="date" v-text="currentDate"
-    ></p>
+    <p class="date" v-text="currentDate"></p>
     <p class="date" v-text="currentDate2"></p>
     <p class="time" v-text="currentTimeIn"></p>
     
@@ -109,18 +108,24 @@ export default {
       this.$axios.post(
         "https://db-back.herokuapp.com/api/post/checkIn",
         this.inOut
-      );
-      console.log("checkIn", this.inOut);
-      window.location.reload();
+      ).then((res) => {
+          window.location.reload();
+          console.log("checkIn", this.inOut);
+          console.log("res", res.data);
+        });
+      
+      
     },
     checkOut() {
       this.inOut.timeOut = this.currentTime;
       this.$axios.put(
         `https://db-back.herokuapp.com/api/update/checkout/${this.inOut.userId}`,
         { timeOut: this.inOut.timeOut }
-      );
-      window.location.reload();
+      ).then((res) => {
+          window.location.reload();
       console.log("checkOut", this.inOut);
+      console.log("res", res.data);
+        });
     },
   },
 };
