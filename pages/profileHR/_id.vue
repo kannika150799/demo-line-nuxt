@@ -4,24 +4,26 @@
       <!-- <img src="~/assets/IMG.jpg" alt="" /> -->
       <img v-if="pf_line.profileImage == ''" src="~/assets/IMG.jpg" alt="" />
       <img v-else :src="pf_line.profileImage" alt="" />
-      <p class="display-name">{{pf_line.displayName}}</p>
+      <p class="display-name">{{ pf_line.displayName }}</p>
     </div>
     <div class="container-input">
       <template>
         <div class="box-input">
           <p class="text-input name">Name</p>
-          <a-input v-model="profile.name">{{ profile.name }}</a-input>
+          <p class="text-input name">{{ profile.name }}</p>
         </div>
         <div class="box-input">
           <p class="text-input">Nickname&nbsp;</p>
-          <a-input v-model="profile.nickname" >{{ profile.Nickname }}</a-input>
+          <p class="text-input name">{{ profile.nickname }}</p>
         </div>
         <div class="box-input">
           <p class="text-input position">Position</p>
-          <a-input v-model="profile.position" >{{ profile.position }}</a-input>
+          <p class="text-input name">{{ profile.position }}</p>
         </div>
       </template>
-      <a-button class="confirm-button" type="primary" @click="confirm"> Confirm </a-button>
+      <a-button class="edit-button" type="primary" @click="editUser">
+        Edit
+      </a-button>
     </div>
   </div>
 </template>
@@ -32,7 +34,7 @@ export default {
   mounted() {
     liff
       .init({
-        liffId: "1655743042-JBp6ZRM1",
+        liffId: "1655736391-enZgDWla",
       })
       .then(() => {
         if (liff.isLoggedIn()) {
@@ -62,17 +64,13 @@ export default {
     };
   },
   methods: {
+    editUser() {
+      this.$router.push(`/profile/modify`)
+    },
     async makeGetRequest() {
-      let res = await axios.get(
-        `https://db-back.herokuapp.com/api/get/user/${this.profile.userId}`
-      );
+      let res = await axios.get(`https://db-back.herokuapp.com/api/get/user/${this.profile.userId}`);
       this.profile = res.data;
       console.log("get", this.profile);
-    },
-    confirm(){
-      this.$axios.put(`https://db-back.herokuapp.com/api/edit/user/${this.profile.userId}`,this.profile)
-      this.$router.push(`/profile/${this.profile.userId}`)
-      console.log("put",this.profile);
     }
   }
 };
@@ -93,7 +91,7 @@ img {
   font-family: inherit;
   margin-bottom: 40px;
 }
-.confirm-button {
+.edit-button {
   margin-top: 25px;
   height: 44px;
   width: 120px;
