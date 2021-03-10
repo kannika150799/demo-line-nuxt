@@ -1,34 +1,55 @@
 <template>
   <div>
     <div class="container-page-calendar container">
-      <p class="text-head">Setting calendar</p>
+      <p class="text-head">Setting Calendar</p>
       <div class="container-input">
         <template>
           <div class="box-input">
-            <p class="text-input">ชื่อกิจกรรม</p>
-            <a-input class="input" placeholder="ชื่อกิจกรรม" v-model="calendar.activity" />
+            <p class="text-input">Topic</p>
+
+            <a-textarea
+              class="input"
+              placeholder="Topic"
+              v-model="calendar.activity"
+            />
           </div>
         </template>
         <div class="select-date">
-          <p class="text-input">วันที่กิจกรรม</p>
+          <p class="text-input">Date</p>
           <div>
-            <a-date-picker format="DD/MM/YYYY" @change="onChange" />
+            <a-date-picker format="DD/MM/YYYY" @change="onChange" placeholder="DD/MM/YYYY" />
           </div>
         </div>
         <a-button class="add-button button" @click="addCalendar">
-          Add
+          ADD
         </a-button>
       </div>
     </div>
 
     <div class="container">
-      <p class="text-head">กิจกรรม</p>
-      <div class="container container-activity" v-for="calendar in calendars" :key="calendar.id" >
-        <p class="activity">กิจกรรม: {{ calendar.activity }}</p>
-        <p>วันที่: {{ calendar.dateActivity }}</p>
+      <!-- <p class="text-head">Special days</p> -->
+      <div
+        class="container container-activity"
+        v-for="calendar in calendars"
+        :key="calendar.id"
+      >
+        <p class="activity">{{ calendar.activity }}</p>
+        <p>{{ calendar.dateActivity }}</p>
         <div>
-          <a-button class="button" type="primary" @click="editList(calendar.id)" > Edit </a-button>
-          <a-button class="button" type="danger" @click="deleteList(calendar.id)" > Delete </a-button>
+          <a-button
+            class="button"
+            type="primary"
+            @click="editList(calendar.id)"
+          >
+            Edit
+          </a-button>
+          <a-button
+            class="button"
+            type="danger"
+            @click="deleteList(calendar.id)"
+          >
+            Delete
+          </a-button>
         </div>
       </div>
     </div>
@@ -80,14 +101,17 @@ export default {
       this.calendar.date = date;
     },
     addCalendar() {
-      this.$axios.post("https://db-back.herokuapp.com/api/post/calendar", this.calendar)
+      this.$axios
+        .post("https://db-back.herokuapp.com/api/post/calendar", this.calendar)
         .then(() => {
           window.location.reload();
         });
     },
     //show list
     async getData() {
-      const res = await axios.get( "https://db-back.herokuapp.com/api/get/calendar" );
+      const res = await axios.get(
+        "https://db-back.herokuapp.com/api/get/calendar"
+      );
       this.calendars = res.data;
       console.log("get", this.calendars);
     },
@@ -96,7 +120,9 @@ export default {
       console.log("id::", id);
     },
     deleteList(id) {
-      this.$axios.delete( `https://db-back.herokuapp.com/api/delete/calendar/${id}` );
+      this.$axios.delete(
+        `https://db-back.herokuapp.com/api/delete/calendar/${id}`
+      );
       window.location.reload();
       console.log("delete", id);
     },
@@ -108,40 +134,52 @@ export default {
 .container-page-calendar {
   padding: 30px 0px;
   margin: 15px 0px;
-  border-bottom: 1px solid black;
+  /* border-bottom: 1px solid black; */
 }
 .container-input {
   display: flex;
   flex-direction: column;
 }
 .text-head {
-  font-size: 20px;
-  font-weight: 600;
+font-size: 24px;
+    font-weight: 800;
 }
 .box-input {
-  display: flex;
+  /* display: flex; */
   margin-bottom: 15px;
-  width: 300px;
+  /* width: 300px; */
 }
 .input {
-  margin-left: 10px;
+  /* margin-left: 10px; */
+  resize: none;
   width: 180px;
+  height: 50px;
 }
 .text-input {
-  margin: 0px 5px 0px;
+  margin: 0px 0px 5px;
   font-size: 16px;
   font-weight: 600;
   align-self: center;
 }
-.select-date {
+/* .select-date {
   display: flex;
-}
+} */
 .add-button {
   align-self: center;
-  margin: 20px 0px 0px;
+  margin: 40px 0px 0px;
   color: aliceblue;
   background-color: rgb(45, 209, 146);
   border-color: transparent;
+}
+.ant-btn-primary {
+  background-color: transparent;
+  border-color: #1890ff;
+  color: #1890ff;
+}
+.ant-btn-danger {
+  color: #ff4d4f;
+  background-color: transparent;
+  border-color: #ff4d4f;
 }
 .button {
   height: 44px;
@@ -164,7 +202,7 @@ export default {
   width: 300px;
   font-size: 18px;
   padding: 20px 0px;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid rgb(170, 168, 168);
 }
 .activity {
   text-align: center;
