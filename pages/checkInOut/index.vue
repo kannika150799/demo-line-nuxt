@@ -1,6 +1,8 @@
 <template>
   <div class="container-Check">
-    <p class="date" v-text="currentDate"></p>
+    <p class="date" v-text="currentDate"
+    ></p>
+    <p class="date" v-text="currentDate2"></p>
     <p class="time" v-text="currentTimeIn"></p>
     
       <a-button
@@ -31,6 +33,7 @@ export default {
     return {
       currentTimeIn: null,
       currentDate: null,
+      currentDate2: null,
       inOut: {
         userId: "",
         timeIn: "",
@@ -46,7 +49,7 @@ export default {
   mounted() {
     liff
       .init({
-        liffId: "1655736391-da6W7Pjp",
+        liffId: "1655743042-1qqDlBON",
       })
       .then(() => {
         if (liff.isLoggedIn()) {
@@ -91,11 +94,13 @@ export default {
       this.currentTime = moment().format("LTS");
     },
     updateCurrentDate() {
-      this.currentDate = moment().format("dddd, MMMM Do YYYY");
+      this.currentDate = moment().format("dddd");
+      this.currentDate2 = moment().format("MMMM Do YYYY");
       this.currentDateFormat1 = moment().format();
       this.currentDateFormat2 = moment().format("l");
 
       this.inOut.momentDate = this.currentDate;
+      this.inOut.momentDate2 = this.currentDate2;
       this.inOut.dateShow = this.currentDateFormat1;
       this.inOut.dateGet = this.currentDateFormat2;
     },
