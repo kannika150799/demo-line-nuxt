@@ -167,7 +167,8 @@ export default {
   flex-direction: column;
 } */
 .ant-calendar-picker-input {
-    width: 220px;
+    width: 235px;
+    height: 35px;
 }
 .add-button {
   align-self: center;

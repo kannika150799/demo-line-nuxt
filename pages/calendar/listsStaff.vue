@@ -43,20 +43,23 @@ export default {
   align-items: center;
 }
 .text-head {
-  font-size: 22px;
-  font-weight: 600;
+  font-size: 34px;
+  font-weight: 700;
+  margin: 10px;
 }
 .container-activity {
-width: 300px;
+  width: 300px;
   font-size: 18px;
   padding: 20px 0px;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid rgb(170, 168, 168);
 }
 .activity {
   text-align: center;
+  font-size: 30px;
+  margin: 0px;
 }
 .date-activity {
-    margin: 0px;
+  margin: 0px;
 }
 .button {
   width: 100px;

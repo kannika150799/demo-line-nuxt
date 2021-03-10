@@ -1,17 +1,17 @@
 <template>
   <div class="container-page-leave">
-    <p class="text-head">ใบลา</p>
+    <p class="text-head">Leave</p>
     <div class="containar-detail">
       <div class="containar-title">
-        <p class="text txt-title">ชื่อ&nbsp;</p>
+        <p class="text txt-title">Name&nbsp;</p>
         <p class="text txt-title">{{ profile.name }}</p>
       </div>
       <div class="container-head">
-        <p class="text-leave text txt-title">หัวข้อการลา</p>
+        <p class="text-leave text">Leave Topic</p>
         <div>
           <a-select
             show-search
-            placeholder="หัวข้อการลา"
+            placeholder="Leave topic"
             option-filter-prop="children"
             style="width: 120px"
             :filter-option="filterOption"
@@ -25,10 +25,10 @@
         </div>
       </div>
       <div>
-        <p class="text">หมายเหตุของการลา</p>
+        <p class="text">Leave Note</p>
         <template>
           <a-textarea
-            placeholder="หมายเหตุการลา"
+            placeholder="Leave Note"
             :rows="2"
             class="textarea"
             v-model="leave.reson"
@@ -36,7 +36,7 @@
         </template>
       </div>
       <div class="container-date">
-        <p class="text-leave text">วันที่ลา</p>
+        <p class="text-leave text">Leave Date</p>
         <div class="date-leave">
           <div class="container-date box-date">
             <a-date-picker format="DD/MM/YYYY" @change="onChangeStart" />
@@ -139,32 +139,40 @@ export default {
   font-family: inherit;
 }
 .containar-detail {
-  width: 220px;
+  width: 240px;
+}
+.ant-calendar-picker-input {
+    width: 240px;
+    margin-bottom: 20px;
 }
 .containar-title {
   display: flex;
 }
 .text-head {
-  font-size: 20px;
-  font-weight: 900;
+  font-size: 34px;
+  font-weight: 700;
 }
-.container-head {
+/* .container-head {
   display: flex;
-}
+} */
 .text-leave {
   align-self: center;
 }
 .text {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
-  margin: 0;
+  margin: 10px 0px;
 }
 .txt-title {
-  margin: 0px 5px 20px 0px;
+  /* margin: 0px 5px 20px 0px; */
+}
+.ant-select-selection--single {
+
+    width: 138px;
 }
 .textarea {
   margin: 5px 0px 20px;
-  width: 220px;
+  width: 240px;
   resize: none;
 }
 .send-button {

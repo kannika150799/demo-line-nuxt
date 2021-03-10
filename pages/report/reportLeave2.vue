@@ -1,6 +1,6 @@
 <template>
   <div class="container-page-status">
-    <p class="text-head">Report requset for leave</p>
+    <p class="text-head">Report for leave</p>
     <div class="box-card" v-for="info in infos" :key="info">
       <p>{{ info.info.leave.length > 0 ? info.info.name : '' }}</p>
       <p>จำนวนการลา(อนุมัติ): {{info.info.numApprove}} ครั้ง</p>
@@ -23,7 +23,7 @@ export default {
     };
   },
   mounted() {
-    liff.init({ liffId: "1655736391-Dok3LZo2" });
+    // liff.init({ liffId: "1655736391-Dok3LZo2" });
     this.getData();
   },
   methods: {
@@ -46,8 +46,8 @@ export default {
   margin: 15px;
 }
 .text-head {
-  font-size: 20px;
-  font-weight: 600;
+    font-size: 34px;
+    font-weight: 700;
 }
 .box-card {
   /* border: 2px solid navy; */

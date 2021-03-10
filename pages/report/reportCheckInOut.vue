@@ -1,6 +1,6 @@
 <template>
   <div class="container-page-status">
-    <p class="text-head">Report check-in/check-out</p>
+    <p class="text-head">Report for check-in/out</p>
     <div class="space">
       <p class="text">เดือน</p>
       <div>
@@ -57,7 +57,7 @@ export default {
     };
   },
   mounted() {
-    liff.init({ liffId: "1655736391-Pm5DnWoE" });
+    // liff.init({ liffId: "1655736391-Pm5DnWoE" });
   },
   methods: {
     handleChange(value) {
@@ -86,13 +86,15 @@ export default {
   margin-top: 15px;
 }
 .text-head {
-  font-size: 20px;
-  font-weight: 600;
+font-size: 28px;
+    font-weight: 600;
 }
 .text {
   margin-right: 10px;
-  font-size: 16px;
-
+  font-size: 20px;
+}
+.ant-select-selection--single {
+    height: 36px;
 }
 .box-card {
   /* border: 2px solid navy; */
