@@ -46,7 +46,7 @@ export default {
   mounted() {
     liff
       .init({
-        liffId: "1655660869-WGeG202o",
+        liffId: "1655736391-da6W7Pjp",
       })
       .then(() => {
         if (liff.isLoggedIn()) {
