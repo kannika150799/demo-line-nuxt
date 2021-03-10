@@ -1,21 +1,22 @@
 <template>
   <div class="container-page-calendar">
-    <p class="text-head">Setting calendar id</p>
+    <p class="text-head">Setting calendar</p>
     <div class="container-input">
       <template>
         <div class="box-input">
-          <p class="text-input">ชื่อกิจกรรม</p>
-          <a-input class="input" v-model="calendars.activity">{{
-            calendars.activity
-          }}</a-input>
+          <p class="text-input">***&nbsp;{{ calendars.activity }}</p>
+        </div>
+        <div class="box-input">
+          <p class="text-input">Topic</p>
+          <a-input class="input" v-model="calendar.activity">{{ calendar.activity }}</a-input>
         </div>
       </template>
       <div class="select-date"> 
-        <p class="text-input">วันที่เดิม&nbsp;{{calendars.dateActivity}}</p>
+        <p class="text-input">***&nbsp;{{calendars.dateActivity}}</p>
         <!-- <p>{{calendars.dateActivity}}</p> -->
       </div>
       <div class="select-date">
-        <p class="text-input">วันที่</p>
+        <p class="text-input">Date</p>
         <div class="date-picker">
           <a-date-picker format="DD/MM/YYYY" @change="onChange" />
         </div>
