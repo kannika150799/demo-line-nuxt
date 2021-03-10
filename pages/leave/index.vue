@@ -123,7 +123,8 @@ export default {
         "https://db-back.herokuapp.com/api/post/leave",
         this.leave
       );
-      this.$router.push("/leave/status");
+      liff.closeWindow();
+      // this.$router.push("/leave/status");
       console.log("leave", this.leave);
     },
   },
