@@ -3,8 +3,16 @@
     <p class="text-head">Report for leave</p>
     <div class="box-card" v-for="info in infos" :key="info">
       <p>{{ info.info.leave.length > 0 ? info.info.name : '' }}</p>
-      <p>จำนวนการลา(อนุมัติ): {{info.info.numApprove}} ครั้ง</p>
-      <p>จำนวนการลา(ไม่อนุมัติ): {{info.info.numDisapproval}} ครั้ง</p>
+      <div class="box-num-approve">
+        <p>จำนวนการลา(อนุมัติ):&nbsp;</p>
+        <p>{{info.info.leave.length > 0 ? info.info.numApprove : '' }}</p>
+        <p>&nbsp;ครั้ง</p>
+      </div>
+      <div class="box-num-approve">
+        <p>จำนวนการลา(ไม่อนุมัติ):&nbsp;</p>
+        <p>{{info.info.leave.length > 0 ? info.info.numDisapproval : ''  }}</p>
+        <p>ครั้ง&nbsp;</p>
+      </div>
       <div v-for="check in info.info.leave" :key="check">
         <p>หัวข้อการลา: {{ check.leaveType }}</p>
         <p>วันที่ลา: {{check.dateStart}} - {{check.dateEnd}}</p>
@@ -44,6 +52,9 @@ export default {
   flex-direction: column;
   align-items: center;
   margin: 15px;
+}
+.box-num-approve {
+  display: flex;
 }
 .text-head {
     font-size: 34px;
