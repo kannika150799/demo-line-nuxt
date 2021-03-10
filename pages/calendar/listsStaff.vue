@@ -1,9 +1,13 @@
 <template>
   <div class="container">
-    <p class="text-head">กิจกรรม</p>
-    <div class="container container-activity" v-for="calendar in calendars" :key="calendar.id" >
-      <p class="activity">กิจกรรม: {{ calendar.activity }}</p>
-      <p class="date-activity" >วันที่: {{ calendar.dateActivity }}</p>
+    <p class="text-head">Topic</p>
+    <div
+      class="container container-activity"
+      v-for="calendar in calendars"
+      :key="calendar.id"
+    >
+      <p class="activity">{{ calendar.activity }}</p>
+      <p class="date-activity">{{ calendar.dateActivity }}</p>
     </div>
   </div>
 </template>
@@ -28,7 +32,9 @@ export default {
   },
   methods: {
     async getData() {
-      const res = await axios.get( "https://db-back.herokuapp.com/api/get/calendar" );
+      const res = await axios.get(
+        "https://db-back.herokuapp.com/api/get/calendar"
+      );
       this.calendars = res.data;
       console.log("get", this.calendars);
     },

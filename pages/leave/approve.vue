@@ -6,10 +6,18 @@
       <p>หัวข้อการลา: {{ leave.leaveType }}</p>
       <p>หมายเหตุการลา: {{ leave.reson }}</p>
       <p>วันที่ลา: {{ leave.dateStart }} - {{ leave.dateEnd }}</p>
-      <a-button class="approve-button" type="primary" @click="approve(leave.id)">
+      <a-button
+        class="approve-button"
+        type="primary"
+        @click="approve(leave.id)"
+      >
         อนุมัติ
       </a-button>
-      <a-button class="approve-button" type="danger" @click="disapproval(leave.id)">
+      <a-button
+        class="approve-button"
+        type="danger"
+        @click="disapproval(leave.id)"
+      >
         ไม่อนุมัติ
       </a-button>
     </div>
@@ -54,7 +62,9 @@ export default {
   },
   methods: {
     async getData() {
-      const res = await axios.get("https://db-back.herokuapp.com/api/get/approve");
+      const res = await axios.get(
+        "https://db-back.herokuapp.com/api/get/approve"
+      );
       this.leaves = res.data;
       console.log("get", this.leaves);
     },
@@ -71,8 +81,13 @@ export default {
       this.putApprove(id);
     },
     putApprove(id) {
-      this.$axios.put(`https://db-back.herokuapp.com/api/updateStatus/${id}`, {status: this.leaves.status});
-      window.location.reload()
+      this.$axios
+        .put(`https://db-back.herokuapp.com/api/updateStatus/${id}`, {
+          status: this.leaves.status,
+        })
+        .then((res) => {
+          window.location.reload();
+        });
     },
   },
 };

@@ -3,24 +3,23 @@
     <p class="date" v-text="currentDate"></p>
     <p class="date" v-text="currentDate2"></p>
     <p class="time" v-text="currentTimeIn"></p>
-    
-      <a-button
-        :disabled="isActiveIn"
-        class="check-button"
-        type="primary"
-        @click="checkIn"
-      >
-        Check in
-      </a-button>
-      <a-button
-        :disabled="isActiveOut"
-        class="check-button"
-        type="danger"
-        @click="checkOut"
-      >
-        Check out
-      </a-button>
-    
+
+    <a-button
+      :disabled="isActiveIn"
+      class="check-button"
+      type="primary"
+      @click="checkIn"
+    >
+      Check in
+    </a-button>
+    <a-button
+      :disabled="isActiveOut"
+      class="check-button"
+      type="danger"
+      @click="checkOut"
+    >
+      Check out
+    </a-button>
   </div>
 </template>
 
@@ -105,26 +104,25 @@ export default {
     },
     checkIn() {
       this.inOut.timeIn = this.currentTimeIn;
-      this.$axios.post(
-        "https://db-back.herokuapp.com/api/post/checkIn",
-        this.inOut
-      ).then((res) => {
+      this.$axios
+        .post("https://db-back.herokuapp.com/api/post/checkIn", this.inOut)
+        .then((res) => {
           window.location.reload();
           console.log("checkIn", this.inOut);
           console.log("res", res.data);
         });
-      
-      
     },
     checkOut() {
       this.inOut.timeOut = this.currentTime;
-      this.$axios.put(
-        `https://db-back.herokuapp.com/api/update/checkout/${this.inOut.userId}`,
-        { timeOut: this.inOut.timeOut }
-      ).then((res) => {
+      this.$axios
+        .put(
+          `https://db-back.herokuapp.com/api/update/checkout/${this.inOut.userId}`,
+          { timeOut: this.inOut.timeOut }
+        )
+        .then((res) => {
           window.location.reload();
-      console.log("checkOut", this.inOut);
-      console.log("res", res.data);
+          console.log("checkOut", this.inOut);
+          console.log("res", res.data);
         });
     },
   },

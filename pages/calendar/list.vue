@@ -17,7 +17,11 @@
         <div class="select-date">
           <p class="text-input">Date</p>
           <div>
-            <a-date-picker format="DD/MM/YYYY" @change="onChange" placeholder="DD/MM/YYYY" />
+            <a-date-picker
+              format="DD/MM/YYYY"
+              @change="onChange"
+              placeholder="DD/MM/YYYY"
+            />
           </div>
         </div>
         <a-button class="add-button button" @click="addCalendar">
@@ -120,11 +124,13 @@ export default {
       console.log("id::", id);
     },
     deleteList(id) {
-      this.$axios.delete(
-        `https://db-back.herokuapp.com/api/delete/calendar/${id}`
-      );
-      window.location.reload();
-      console.log("delete", id);
+      this.$axios
+        .delete(`https://db-back.herokuapp.com/api/delete/calendar/${id}`)
+        .then((res) => {
+          window.location.reload();
+          console.log("delete", id);
+          console.log("res", res.data);
+        });
     },
   },
 };
@@ -142,8 +148,8 @@ export default {
   width: 220px;
 }
 .text-head {
-    font-size: 34px;
-    font-weight: 700;
+  font-size: 34px;
+  font-weight: 700;
 }
 .box-input {
   /* display: flex; */
@@ -167,8 +173,8 @@ export default {
   flex-direction: column;
 } */
 .ant-calendar-picker-input {
-    width: 235px;
-    height: 35px;
+  width: 235px;
+  height: 35px;
 }
 .add-button {
   align-self: center;
@@ -213,7 +219,7 @@ export default {
 .activity {
   text-align: center;
   font-size: 30px;
-    margin: 0px;
+  margin: 0px;
 }
 /* .list-button {
   width: 100px;
