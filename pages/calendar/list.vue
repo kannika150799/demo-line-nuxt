@@ -60,20 +60,20 @@
 import axios from "axios";
 export default {
   mounted() {
-    // liff
-    //   .init({
-    //     liffId: "1655736391-6XYv2JDo",
-    //   })
-    //   .then(() => {
-    //     if (liff.isLoggedIn()) {
-    //       liff.getProfile().then((profile) => {
-    //         this.calendar.userId = profile.userId;
-    //         this.getData();
-    //       });
-    //     } else {
-    //       liff.login();
-    //     }
-    //   });
+    liff
+      .init({
+        liffId: "1655736391-6XYv2JDo",
+      })
+      .then(() => {
+        if (liff.isLoggedIn()) {
+          liff.getProfile().then((profile) => {
+            this.calendar.userId = profile.userId;
+            this.getData();
+          });
+        } else {
+          liff.login();
+        }
+      });
   },
   data() {
     return {
