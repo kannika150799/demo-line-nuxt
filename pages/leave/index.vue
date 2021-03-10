@@ -119,11 +119,12 @@ export default {
       this.leave.dateEnd = dateString2;
     },
     send() {
-      this.$axios.post(
-        "https://db-back.herokuapp.com/api/post/leave",
-        this.leave
-      );
-      liff.closeWindow();
+      this.$axios
+        .post("https://db-back.herokuapp.com/api/post/leave", this.leave)
+        .then((res) => {
+          liff.closeWindow();
+        });
+
       // this.$router.push("/leave/status");
       console.log("leave", this.leave);
     },
@@ -143,8 +144,8 @@ export default {
   width: 240px;
 }
 .ant-calendar-picker-input {
-    width: 240px;
-    margin-bottom: 20px;
+  width: 240px;
+  margin-bottom: 20px;
 }
 .containar-title {
   display: flex;
@@ -168,8 +169,7 @@ export default {
   /* margin: 0px 5px 20px 0px; */
 }
 .ant-select-selection--single {
-
-    width: 138px;
+  width: 138px;
 }
 .textarea {
   margin: 5px 0px 20px;
