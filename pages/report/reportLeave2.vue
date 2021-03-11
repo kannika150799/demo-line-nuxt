@@ -2,15 +2,16 @@
   <div class="container-page-status">
     <p class="text-head">รายงานการลา  </p>
     <div class="box-card" v-for="info in infos" :key="info">
-      <p>{{ info.info.leave.length > 0 ? info.info.name : "" }}</p>
+      <!-- <p>{{ info.info.leave.length > 0 ? info.info.name : "" }}</p> -->
+      <p>{{info.info.name}}</p>
       <div class="box-num-approve">
         <p>จำนวนการลา(อนุมัติ):&nbsp;</p>
-        <p>{{ info.info.leave.length > 0 ? info.info.numApprove : "" }}</p>
+        <p>{{ info.info.leave.length > 0 ? info.info.numApprove : "0" }}</p>
         <p>&nbsp;ครั้ง</p>
       </div>
       <div class="box-num-approve">
         <p>จำนวนการลา(ไม่อนุมัติ):&nbsp;</p>
-        <p>{{ info.info.leave.length > 0 ? info.info.numDisapproval : "" }}</p>
+        <p>{{ info.info.leave.length > 0 ? info.info.numDisapproval : "0" }}</p>
         <p>ครั้ง&nbsp;</p>
       </div>
       <div class="box-check" v-for="check in info.info.leave" :key="check">
@@ -65,8 +66,8 @@ export default {
   /* border: 2px solid navy; */
   padding: 10px;
   /* border-radius: 10px; */
-  box-shadow: 3px 4px 13px rgb(188 229 238 / 20%),
-    3px 4px 13px rgb(168 223 216 / 16%);
+  /* box-shadow: 3px 4px 13px rgb(188 229 238 / 20%),
+    3px 4px 13px rgb(168 223 216 / 16%); */
   border-radius: 5px;
   margin-bottom: 30px;
   width: 80%;
