@@ -3,53 +3,43 @@
     <p class="text-head">Setting calendar</p>
     <div class="container-input">
       <template>
-
+        
         <div class="box-input">
-          <p class="text-input">Topic</p>
-          <div class="select-date">
-            <p class="text-input" style="color: red">
-              ***&nbsp;{{ calendars.dateActivity }}
-            </p>
+            <p class="text-input">Topic</p>
+            <div class="select-date"> 
+              <p class="text-input" style="color:red">***&nbsp;{{calendars.dateActivity}}</p>
+              <!-- <p>{{calendars.dateActivity}}</p> -->
+            </div>
+            <a-textarea
+              class="input"
+              placeholder="Topic"
+              v-model="calendar.activity"
+            />
           </div>
-          <a-textarea
-            class="input"
-            placeholder="Topic"
-            v-model="calendar.activity"
-          />
-        </div>
-      </template>
 
+      </template>
+      
       <div class="select-date">
         <p class="text-input">Date</p>
-        <div class="select-date">
-          <p class="text-input" style="color: red">
-            ***&nbsp;{{ calendars.dateActivity }}
-          </p>
-          <!-- <p>{{calendars.dateActivity}}</p> -->
-        </div>
+        <div class="select-date"> 
+        <p class="text-input" style="color:red">***&nbsp;{{calendars.dateActivity}}</p>
+        <!-- <p>{{calendars.dateActivity}}</p> -->
+      </div>
         <div class="date-picker">
           <a-date-picker format="DD/MM/YYYY" @change="onChange" />
         </div>
       </div>
       <div>
-        <a-button
-          class="button btnconf"
-          type="primary"
-          @click="confirmCalendar"
-        >
-          <img
-            src="~/assets/6272187461582545599-16.png"
-            alt=""
-            style="margin-right: 10px"
-          />
+        <a-button class="button btnconf" type="primary" @click="confirmCalendar">
+          <img src="~/assets/6272187461582545599-16.png" alt="" 
+          style="margin-right:10px"
+          >
           Confirm
         </a-button>
         <a-button class="button btncanc" type="danger" @click="cancelCalendar">
-          <img
-            src="~/assets/2130497621541068760-16.png"
-            alt=""
-            style="margin-right: 10px"
-          />
+          <img src="~/assets/2130497621541068760-16.png" alt="" 
+          style="margin-right:10px"
+          >
           Cancel
         </a-button>
       </div>
