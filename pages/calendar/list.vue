@@ -14,14 +14,11 @@
             />
           </div>
         </template>
-        <div class="select-date">
+
+        <div>
           <p class="text-input">Date</p>
-          <div>
-            <a-date-picker
-              format="DD/MM/YYYY"
-              @change="onChange"
-              placeholder="DD/MM/YYYY"
-            />
+          <div class="select-date inputx">
+            <a-date-picker format="DD/MM/YYYY" @change="onChange" placeholder="DD/MM/YYYY" />
           </div>
         </div>
         <a-button class="add-button button" @click="addCalendar">
@@ -45,12 +42,18 @@
             type="primary"
             @click="editList(calendar.id)"
           >
+          <img src="~/assets/10171190771582793670-16.png" alt="" 
+          style="margin-right:10px"
+          >
             Edit
           </a-button>
           <a-button
             class="button"
             type="danger"
             @click="deleteList(calendar.id)"
+          >
+          <img src="~/assets/2130497621541068760-16.png" alt="" 
+          style="margin-right:10px"
           >
             Delete
           </a-button>
@@ -145,11 +148,12 @@ export default {
 .container-input {
   display: flex;
   flex-direction: column;
-  width: 220px;
+  width: 66%;
 }
 .text-head {
-  font-size: 34px;
-  font-weight: 700;
+    font-size: 34px;
+    font-weight: 700;
+    color: #1e2a78;
 }
 .box-input {
   /* display: flex; */
@@ -160,21 +164,26 @@ export default {
   /* margin-left: 10px; */
   resize: none;
   /* width: 185px; */
-  height: 50px;
+  /* height: 50px; */
 }
-.text-input {
+.ant-input{
+  border: 1px solid #1e2a78;
+}
+.inputx .ant-calendar-picker-input {
+  border: 1px solid #1e2a78;
+}.text-input {
   margin: 0px 0px 5px;
   font-size: 22px;
   font-weight: 600;
   align-self: center;
 }
-/* .select-date {
-  display: flex;
-  flex-direction: column;
-} */
+.select-date {
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* text-align: center; */
+}
 .ant-calendar-picker-input {
-  width: 235px;
-  height: 35px;
+    width: 220px;
 }
 .add-button {
   align-self: center;
@@ -185,13 +194,13 @@ export default {
 }
 .ant-btn-primary {
   background-color: transparent;
-  border-color: #1890ff;
+  border-color: transparent;
   color: #1890ff;
 }
 .ant-btn-danger {
   color: #ff4d4f;
   background-color: transparent;
-  border-color: #ff4d4f;
+  border-color: transparent;
 }
 .button {
   height: 44px;
@@ -211,15 +220,16 @@ export default {
   font-weight: 600;
 } */
 .container-activity {
-  width: 300px;
+  width: 80%;
   font-size: 18px;
   padding: 20px 0px;
-  border-bottom: 1px solid rgb(170, 168, 168);
+  /* border-bottom: 1px solid rgb(170, 168, 168); */
+  box-shadow:  3px 4px 13px  rgba(188, 229, 238, 0.2), 3px 4px 13px rgba(168, 223, 216, 0.156);
 }
 .activity {
   text-align: center;
   font-size: 30px;
-  margin: 0px;
+    margin: 0px;
 }
 /* .list-button {
   width: 100px;

@@ -1,7 +1,6 @@
 <template>
   <div class="container-Check">
-    
-    <p class="date " v-text="currentDate2"></p>
+    <p class="date" v-text="currentDate2"></p>
     <p class="date" v-text="currentDate"></p>
     <p class="time" v-text="currentTimeIn"></p>
 
@@ -148,15 +147,16 @@ export default {
   font-weight: 600;
 }
 .time {
-  margin-top: 60px;
+  margin: 0px 0px 60px;
   font-size: 40px;
   font-weight: 600;
 }
 .check-button {
-  width: 120px;
-  height: 55px;
-  margin: 0px 10px;
+  width: 100px;
+  height: 100px;
+  margin: 0 10px;
   font-size: 16px;
   font-weight: 600;
+  border-radius: 50%;
 }
 </style>

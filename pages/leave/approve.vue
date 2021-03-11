@@ -2,24 +2,18 @@
   <div class="container-page-status">
     <p class="text-head">Approve leaving</p>
     <div class="box-card" v-for="leave in leaves" :key="leave.userId">
-      <p>ชื่อ: {{ leave.name }}</p>
-      <p>หัวข้อการลา: {{ leave.leaveType }}</p>
-      <p>หมายเหตุการลา: {{ leave.reson }}</p>
-      <p>วันที่ลา: {{ leave.dateStart }} - {{ leave.dateEnd }}</p>
-      <a-button
-        class="approve-button"
-        type="primary"
-        @click="approve(leave.id)"
-      >
-        อนุมัติ
-      </a-button>
-      <a-button
-        class="approve-button"
-        type="danger"
-        @click="disapproval(leave.id)"
-      >
-        ไม่อนุมัติ
-      </a-button>
+      <p>Name {{ leave.name }}</p>
+      <p>Leave topic {{ leave.leaveType }}</p>
+      <p>Leave Note {{ leave.reson }}</p>
+      <p>Date {{ leave.dateStart }} - {{ leave.dateEnd }}</p>
+      <div class="btn">
+        <a-button class="approve-button" type="primary" @click="approve(leave.id)">
+        Approve
+        </a-button>
+        <a-button class="approve-button" type="danger" @click="disapproval(leave.id)">
+          Disapproval
+        </a-button>
+      </div>
     </div>
   </div>
 </template>
@@ -101,17 +95,34 @@ export default {
   margin-top: 15px;
 }
 .text-head {
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 1em;
+  color: #055B5C;
 }
 .box-card {
-  border: 2px solid navy;
+  border: 2px solid transparent;
+  box-shadow:  3px 4px 13px  rgba(188, 229, 238, 0.2), 3px 4px 13px rgba(168, 223, 216, 0.156);
   padding: 10px;
-  border-radius: 10px;
-  margin-bottom: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  width: 80%;
 }
 .approve-button {
   width: 100px;
   height: 44px;
+  margin: 15px 7px 0px;
+  box-shadow:  3px 4px 13px  rgba(11, 13, 14, 0.17), 3px 4px 13px rgba(168, 223, 216, 0.156);
+  padding: 10px;
+}
+p{
+  font-size: 20px;
+  margin: 0.25em;
+}
+.btn{
+  text-align-last: center;
+}
+.v-application {
+  background-color: #00a86b;
 }
 </style>
