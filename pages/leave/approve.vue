@@ -1,6 +1,6 @@
 <template>
   <div class="container-page-status">
-    <p class="text-head">Approve leaving</p>
+    <p class="text-head">Approve Leaving</p>
     <div class="box-card" v-for="leave in leaves" :key="leave.userId">
       <p>Name {{ leave.name }}</p>
       <p>Leave topic {{ leave.leaveType }}</p>
