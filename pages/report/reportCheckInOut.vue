@@ -103,7 +103,7 @@ font-size: 28px;
   /* box-shadow: 3px 4px 13px rgb(188 229 238 / 20%),
     3px 4px 13px rgb(168 223 216 / 16%); */
   border-radius: 5px;
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
   width: 80%;
 }
 .space {

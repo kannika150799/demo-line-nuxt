@@ -12,7 +12,7 @@
       <div class="box-num-approve">
         <p>จำนวนการลา(ไม่อนุมัติ):&nbsp;</p>
         <p>{{ info.info.leave.length > 0 ? info.info.numDisapproval : "0" }}</p>
-        <p>ครั้ง&nbsp;</p>
+        <p>&nbsp;ครั้ง</p>
       </div>
       <div class="box-check" v-for="check in info.info.leave" :key="check">
         <p>หัวข้อการลา: {{ check.leaveType }}</p>

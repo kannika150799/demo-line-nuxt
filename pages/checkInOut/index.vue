@@ -1,6 +1,6 @@
 <template>
   <div class="container-Check">
-    <p class="date" v-text="currentDate2"></p>
+    <p class="date text-date2" v-text="currentDate2"></p>
     <p class="date" v-text="currentDate"></p>
     <p class="time" v-text="currentTimeIn"></p>
 
@@ -130,6 +130,9 @@ export default {
 </script>
 
 <style scoped>
+.text-date2 {
+  margin-top: 20px;
+}
 .container-Check {
   width: 100%;
   margin-top: 30px;
@@ -152,11 +155,13 @@ export default {
   font-weight: 600;
 }
 .check-button {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 50px;
   margin: 0 10px;
   font-size: 16px;
   font-weight: 600;
-  border-radius: 50%;
+  border-radius: 27px;
+  box-shadow: 3px 4px 13px rgb(17 15 14 / 10%),
+    3px 4px 13px rgb(168 223 216 / 16%);
 }
 </style>
