@@ -102,9 +102,9 @@ export default {
 }
 .box-card {
   border: 2px solid transparent;
-  box-shadow:  3px 4px 13px  rgba(188, 229, 238, 0.2), 3px 4px 13px rgba(168, 223, 216, 0.156);
+  box-shadow: 3px 4px 13px rgb(17 15 14 / 20%), 3px 4px 13px rgb(168 223 216 / 16%);
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 10px;
   margin-bottom: 15px;
   width: 80%;
 }
@@ -116,7 +116,7 @@ export default {
   padding: 10px;
 }
 p{
-  font-size: 20px;
+  font-size: 16px;
   margin: 0.25em;
 }
 .btn{

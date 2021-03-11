@@ -2,10 +2,10 @@
   <div class="container-page-status">
     <p class="text-head">Status</p>
     <div class="box-card" v-for="leave in leaves" :key="leave.userId">
-      <p>หัวข้อการลา: {{leave.leaveType}}</p>
-      <p>หมายเหตุการลา: {{leave.reson}}</p>
-      <p>วันที่ลา: {{leave.dateStart}} - {{leave.dateEnd}}</p>
-      <p>{{leave.status}}</p>
+      <p>หัวข้อการลา: {{ leave.leaveType }}</p>
+      <p>หมายเหตุการลา: {{ leave.reson }}</p>
+      <p>วันที่ลา: {{ leave.dateStart }} - {{ leave.dateEnd }}</p>
+      <p>{{ leave.status }}</p>
     </div>
   </div>
 </template>
@@ -64,13 +64,20 @@ export default {
   margin-top: 15px;
 }
 .text-head {
-  font-size: 20px;
+  font-size: 34px;
   font-weight: 600;
 }
 .box-card {
-  border: 2px solid navy;
+  /* border: 2px solid navy;
   padding: 10px;
   border-radius: 10px;
-  margin-bottom: 15px;
+  margin-bottom: 15px; */
+  background-color: whitesmoke;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 3px 4px 13px rgb(17 15 14 / 20%),
+    3px 4px 13px rgb(168 223 216 / 16%);
+  width: 70%;
+  margin-bottom: 30px;
 }
 </style>
