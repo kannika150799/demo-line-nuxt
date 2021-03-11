@@ -7,7 +7,7 @@
         <div class="box-input">
             <p class="text-input">Topic</p>
             <div class="select-date"> 
-              <p class="text-input" style="color:red">***&nbsp;{{calendars.dateActivity}}</p>
+              <p class="text-input text-show" style="color:red">*&nbsp;{{calendars.activity}}</p>
               <!-- <p>{{calendars.dateActivity}}</p> -->
             </div>
             <a-textarea
@@ -20,7 +20,7 @@
       <div class="select-date">
         <p class="text-input">Date</p>
         <div class="select-date"> 
-        <p class="text-input" style="color:red">***&nbsp;{{calendars.dateActivity}}</p>
+        <p class="text-input text-show" style="color:red">*&nbsp;{{calendars.dateActivity}}</p>
         <!-- <p>{{calendars.dateActivity}}</p> -->
       </div>
         <div class="date-picker">
@@ -125,6 +125,9 @@ export default {
   font-weight: 600;
   align-self: center;
 }
+.text-show {
+  font-size: 14px;
+}
 .date-picker {
   margin-right: 40px;
 }
@@ -140,7 +143,7 @@ export default {
   width: 120px;
   font-size: 16px;
   font-weight: 400;
-  box-shadow:  3px 4px 13px  rgba(188, 229, 238, 0.2), 3px 4px 13px rgba(168, 223, 216, 0.156);
+  box-shadow:  3px 4px 13px  rgba(17, 15, 14, 0.2), 3px 4px 13px rgba(168, 223, 216, 0.156);
 }
 .btnconf{
 background-color: transparent;

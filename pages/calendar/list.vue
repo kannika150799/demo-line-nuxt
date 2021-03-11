@@ -42,7 +42,7 @@
             type="primary"
             @click="editList(calendar.id)"
           >
-          <img src="/assets/10171190771582793670-16.png" alt="" 
+          <img src="~/assets/10171190771582793670-16.png" alt="" 
           style="margin-right:10px"
           >
             Edit
@@ -224,7 +224,9 @@ export default {
   font-size: 18px;
   padding: 20px 0px;
   /* border-bottom: 1px solid rgb(170, 168, 168); */
-  box-shadow:  3px 4px 13px  rgba(188, 229, 238, 0.2), 3px 4px 13px rgba(168, 223, 216, 0.156);
+  box-shadow: 3px 4px 13px rgb(17 15 14 / 20%), 3px 4px 13px rgb(168 223 216 / 16%);
+    border-radius: 10px;
+    margin-bottom: 30px;
 }
 .activity {
   text-align: center;
