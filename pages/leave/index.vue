@@ -3,7 +3,7 @@
     <p class="text-head">Leave</p>
     <div class="containar-detail">
       <div class="containar-title">
-        <p class="text txt-title">Name&nbsp;</p>
+        <!-- <p class="text txt-title">Name&nbsp;</p> -->
         <p class="text txt-title">{{ profile.name }}</p>
       </div>
       <div class="container-head">
@@ -141,7 +141,12 @@ export default {
   font-family: inherit;
 }
 .containar-detail {
-  width: 240px;
+  width: 280px;
+  padding: 20px 20px 35px;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  box-shadow: 3px 4px 13px rgb(17 15 14 / 20%),
+    3px 4px 13px rgb(168 223 216 / 16%);
 }
 .ant-calendar-picker-input {
   width: 240px;
@@ -182,6 +187,9 @@ export default {
   font-size: 18px;
   font-weight: 600;
   margin-top: 40px;
+  border-radius: 25px;
+  box-shadow: 3px 4px 13px rgb(17 15 14 / 5%),
+    3px 4px 13px rgb(168 223 216 / 16%);
 }
 .container-date {
   width: 220px;
