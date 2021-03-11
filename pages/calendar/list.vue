@@ -200,7 +200,7 @@ export default {
 .ant-btn-danger {
   color: #ff4d4f;
   background-color: transparent;
-  border-color: transparent;
+  /* border-color: transparent; */
 }
 .button {
   height: 44px;
