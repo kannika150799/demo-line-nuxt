@@ -224,7 +224,7 @@ export default {
   font-size: 18px;
   padding: 20px 0px;
   /* border-bottom: 1px solid rgb(170, 168, 168); */
-  box-shadow: 3px 4px 13px rgb(17 15 14 / 20%), 3px 4px 13px rgb(168 223 216 / 16%);
+  box-shadow: 3px 4px 13px rgb(17 15 14 / 1%), 3px 4px 13px rgb(168 223 216 / 16%);
     border-radius: 10px;
     margin-bottom: 30px;
 }

@@ -143,7 +143,7 @@ export default {
   width: 120px;
   font-size: 16px;
   font-weight: 400;
-  box-shadow:  3px 4px 13px  rgba(17, 15, 14, 0.2), 3px 4px 13px rgba(168, 223, 216, 0.156);
+  /* box-shadow:  3px 4px 13px  rgba(17, 15, 14, 0.2), 3px 4px 13px rgba(168, 223, 216, 0.156); */
 }
 .btnconf{
 background-color: transparent;
