@@ -3,43 +3,29 @@
     <p class="text-head">Setting calendar</p>
     <div class="container-input">
       <template>
-        
         <div class="box-input">
-            <p class="text-input">Topic</p>
-            <div class="select-date"> 
-              <p class="text-input" style="color:red">***&nbsp;{{calendars.dateActivity}}</p>
-              <!-- <p>{{calendars.dateActivity}}</p> -->
-            </div>
-            <a-textarea
-              class="input"
-              placeholder="Topic"
-              v-model="calendar.activity"
-            />
-          </div>
-
+          <p class="text-input">***&nbsp;{{ calendars.activity }}</p>
+        </div>
+        <div class="box-input">
+          <p class="text-input">Topic</p>
+          <a-input class="input" v-model="calendar.activity">{{ calendar.activity }}</a-input>
+        </div>
       </template>
-      
-      <div class="select-date">
-        <p class="text-input">Date</p>
-        <div class="select-date"> 
-        <p class="text-input" style="color:red">***&nbsp;{{calendars.dateActivity}}</p>
+      <div class="select-date"> 
+        <p class="text-input">***&nbsp;{{calendars.dateActivity}}</p>
         <!-- <p>{{calendars.dateActivity}}</p> -->
       </div>
+      <div class="select-date">
+        <p class="text-input">Date</p>
         <div class="date-picker">
           <a-date-picker format="DD/MM/YYYY" @change="onChange" />
         </div>
       </div>
       <div>
-        <a-button class="button btnconf" type="primary" @click="confirmCalendar">
-          <img src="~/assets/6272187461582545599-16.png" alt="" 
-          style="margin-right:10px"
-          >
+        <a-button class="button" type="primary" @click="confirmCalendar">
           Confirm
         </a-button>
-        <a-button class="button btncanc" type="danger" @click="cancelCalendar">
-          <img src="~/assets/2130497621541068760-16.png" alt="" 
-          style="margin-right:10px"
-          >
+        <a-button class="button" type="danger" @click="cancelCalendar">
           Cancel
         </a-button>
       </div>
@@ -62,7 +48,7 @@ export default {
         activity: "",
         dateActivity: "",
         date: "",
-      },
+      }
     };
   },
   mounted() {
@@ -82,15 +68,10 @@ export default {
       console.log("get", this.calendars);
     },
     confirmCalendar() {
-      this.$axios
-        .put(
-          `https://db-back.herokuapp.com/api/edit/calendar/${this.id}`,
-          this.calendar
-        )
-        .then(() => {
-          // this.$router.push("/calendar/listCalendar");
-          this.$router.push("/calendar/list");
-        });
+      this.$axios.put(`https://db-back.herokuapp.com/api/edit/calendar/${this.id}`,this.calendar).then(()=>{
+        // this.$router.push("/calendar/listCalendar");
+        this.$router.push("/calendar/list");
+      });
       console.log("put", this.calendar);
     },
     cancelCalendar() {
@@ -109,26 +90,21 @@ export default {
   margin: 30px;
 }
 .text-head {
-  font-size: 34px;
-  font-weight: 700;
-  color: #1e2a78;
+  font-size: 20px;
+  font-weight: 600;
 }
 .box-input {
-  /* display: flex; */
+  display: flex;
   margin-bottom: 15px;
+  width: 300px;
 }
 .input {
-  width: 100%;
-  resize: none;
+  width: 200px;
 }
 .text-input {
-  /* margin: 0px;
+  margin: 0px;
   margin-right: 10px;
   font-size: 16px;
-  font-weight: 600;
-  align-self: center; */
-  margin: 0px 0px 5px;
-  font-size: 22px;
   font-weight: 600;
   align-self: center;
 }
@@ -136,28 +112,13 @@ export default {
   margin-right: 40px;
 }
 .select-date {
-  /* display: flex; */
-}
-.ant-input {
-  border: 1px solid #1e2a78;
+  display: flex;
 }
 .button {
-  margin-top: 40px;
+  margin-top: 15px;
   height: 44px;
   width: 120px;
   font-size: 16px;
   font-weight: 400;
-  box-shadow: 3px 4px 13px rgba(188, 229, 238, 0.2),
-    3px 4px 13px rgba(168, 223, 216, 0.156);
-}
-.btnconf {
-  background-color: transparent;
-  border-color: transparent;
-  color: #1890ff;
-}
-.btncanc {
-  color: #ff4d4f;
-  background-color: transparent;
-  border-color: transparent;
 }
 </style>
