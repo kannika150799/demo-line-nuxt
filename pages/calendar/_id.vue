@@ -3,20 +3,13 @@
     <p class="text-head">Setting calendar</p>
     <div class="container-input">
       <template>
-        <!-- <div class="box-input">
-          <p class="text-input">***&nbsp;{{ calendars.activity }}</p>
-        </div>
-        <div class="box-input">
-          <p class="text-input">Topic</p>
-          <a-input class="input" v-model="calendar.activity">{{ calendar.activity }}</a-input>
-        </div> -->
+
         <div class="box-input">
           <p class="text-input">Topic</p>
           <div class="select-date">
             <p class="text-input" style="color: red">
               ***&nbsp;{{ calendars.dateActivity }}
             </p>
-            <!-- <p>{{calendars.dateActivity}}</p> -->
           </div>
           <a-textarea
             class="input"
@@ -26,23 +19,6 @@
         </div>
       </template>
 
-      <!-- <div class="select-date"> 
-        <p class="text-input">***&nbsp;{{calendars.dateActivity}}</p>
-        
-      </div>
-      <div class="select-date">
-        <p class="text-input">Date</p>
-        <div class="date-picker">
-          <a-date-picker format="DD/MM/YYYY" @change="onChange" />
-        </div>
-      </div>
-      <div>
-        <a-button class="button" type="primary" @click="confirmCalendar">
-          Confirm
-        </a-button>
-        <a-button class="button" type="danger" @click="cancelCalendar">
-          Cancel
-        </a-button> -->
       <div class="select-date">
         <p class="text-input">Date</p>
         <div class="select-date">
