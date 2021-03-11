@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <p class="text-head">Topic</p>
+    <p class="text-head">Special Day</p>
     <div
       class="container container-activity"
       v-for="calendar in calendars"
