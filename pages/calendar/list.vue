@@ -42,7 +42,7 @@
             type="primary"
             @click="editList(calendar.id)"
           >
-          <img src="~/assets/10171190771582793670-16.png" alt="" 
+          <img src="/assets/10171190771582793670-16.png" alt="" 
           style="margin-right:10px"
           >
             Edit

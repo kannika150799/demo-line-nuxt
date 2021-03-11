@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="one-box">
     <div class="profile">
       <!-- <img src="~/assets/IMG.jpg" alt="" /> -->
       <img v-if="pf_line.profileImage == ''" src="~/assets/IMG.jpg" alt="" />
@@ -53,30 +53,35 @@ export default {
     return {
       pf_line: {
         profileImage: "",
-        displayName: ""
+        displayName: "",
       },
       profile: {
         userId: "",
         name: "",
         nickname: "",
-        position: ""
+        position: "",
       },
     };
   },
   methods: {
     editUser() {
-      this.$router.push(`/profile/modify`)
+      this.$router.push(`/profile/modify`);
     },
     async makeGetRequest() {
-      let res = await axios.get(`https://db-back.herokuapp.com/api/get/user/${this.profile.userId}`);
+      let res = await axios.get(
+        `https://db-back.herokuapp.com/api/get/user/${this.profile.userId}`
+      );
       this.profile = res.data;
       console.log("get", this.profile);
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style scoped>
+.one-box {
+  text-align: -webkit-center;
+}
 .profile {
   text-align: center;
 }
@@ -97,14 +102,21 @@ img {
   width: 120px;
   font-size: 16px;
   font-weight: 400;
+  border-radius: 41px;
+  box-shadow: 3px 4px 13px rgb(17 15 14 / 10%), 3px 4px 13px rgb(168 223 216 / 16%);
 }
 .container-input {
   text-align: -webkit-center;
+  width: 280px;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 3px 4px 13px rgb(17 15 14 / 20%), 3px 4px 13px rgb(168 223 216 / 16%);
 }
 .box-input {
   display: flex;
   margin-bottom: 15px;
-  width: 300px;
+  width: 280px;
 }
 .text-input {
   margin: 0px;
