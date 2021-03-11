@@ -147,12 +147,16 @@ export default {
 }
 .btnconf{
 background-color: transparent;
-  border-color: transparent;
+  /* border-color: transparent; */
   color: #1890ff;
+  border-radius: 10px;
 }
+
 .btncanc{
   color: #ff4d4f;
   background-color: transparent;
-  border-color: transparent;
+  /* border-color: transparent; */
+  border-radius: 10px;
+
 }
 </style>
