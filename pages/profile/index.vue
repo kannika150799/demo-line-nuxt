@@ -122,6 +122,9 @@ text-align: -webkit-center;
   margin-bottom: 15px;
   width: 300px;
 }
+.ant-input {
+  width: 160px;
+}
 .text-input {
   margin: 0px;
   font-size: 16px;
