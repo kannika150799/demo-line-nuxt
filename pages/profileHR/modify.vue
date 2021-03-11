@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="one-box">
     <div class="profile">
       <!-- <img src="~/assets/IMG.jpg" alt="" /> -->
       <img v-if="pf_line.profileImage == ''" src="~/assets/IMG.jpg" alt="" />
@@ -79,6 +79,9 @@ export default {
 </script>
 
 <style scoped>
+.one-box {
+  text-align: -webkit-center;
+}
 .profile {
   text-align: center;
 }
@@ -99,14 +102,24 @@ img {
   width: 120px;
   font-size: 16px;
   font-weight: 400;
+  border-radius: 41px;
+  box-shadow: 3px 4px 13px rgb(17 15 14 / 10%), 3px 4px 13px rgb(168 223 216 / 16%);
 }
 .container-input {
-  text-align: -webkit-center;
+text-align: -webkit-center;
+  width: 280px;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 3px 4px 13px rgb(17 15 14 / 20%), 3px 4px 13px rgb(168 223 216 / 16%);
 }
 .box-input {
   display: flex;
   margin-bottom: 15px;
-  width: 300px;
+  width: 280px;
+}
+.ant-input {
+  width: 160px;
 }
 .text-input {
   margin: 0px;
