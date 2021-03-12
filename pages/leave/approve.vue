@@ -22,20 +22,25 @@
 import axios from "axios";
 export default {
   mounted() {
-    liff
-      .init({
-        liffId: "1655736391-Xkb94MeP",
-      })
-      .then(() => {
-        if (liff.isLoggedIn()) {
-          liff.getProfile().then((profile) => {
-            this.leaves.userId = profile.userId;
-            this.getData();
-          });
-        } else {
-          liff.login();
-        }
-      });
+    // liff
+    //   .init({
+    //     liffId: "1655736391-Xkb94MeP",
+    //   })
+    //   .then(() => {
+    //     if (liff.isLoggedIn()) {
+    //       liff.getProfile().then((profile) => {
+    //         this.leaves.userId = profile.userId;
+    //         this.getData();
+    //       });
+    //     } else {
+    //       liff.login();
+    //     }
+    //   });
+    //  liff.init({liffId: "1655736391-Xkb94MeP"})
+     this.$nextTick(() => {
+      this.$nuxt.$loading.start()
+    })
+    this.getData();
   },
   data() {
     return {

@@ -1,9 +1,9 @@
 <template>
   <div class="container-page-status">
-    <p class="text-head">รายงานการลา  </p>
+    <p class="text-head">รายงานการลา</p>
     <div class="box-card" v-for="info in infos" :key="info">
       <!-- <p>{{ info.info.leave.length > 0 ? info.info.name : "" }}</p> -->
-      <p>{{info.info.name}}</p>
+      <p>{{ info.info.name }}</p>
       <div class="box-num-approve">
         <p>จำนวนการลา(อนุมัติ):&nbsp;</p>
         <p>{{ info.info.leave.length > 0 ? info.info.numApprove : "0" }}</p>
@@ -33,13 +33,12 @@ export default {
     };
   },
   mounted() {
-    this.$nextTick(() => {
-      this.$nuxt.$loading.start()
-      this.getData();
-      setTimeout(() => this.$nuxt.$loading.finish(), 500)
-    })
     // liff.init({ liffId: "1655736391-Dok3LZo2" });
-    // this.getData();
+    this.$nextTick(() => {
+      this.$nuxt.$loading.start();
+      // setTimeout(() => this.$nuxt.$loading.finish(), 3000)
+    });
+    this.getData();
   },
   methods: {
     // ...mapMutations({
@@ -48,13 +47,16 @@ export default {
     // }),
     async getData() {
       // await this.startLoading()
-      await axios.get("https://db-back.herokuapp.com/report/leave")
+      await axios
+        .get("https://db-back.herokuapp.com/report/leave")
         .then((res) => {
-          this.infos = res.data;
+          this.$nextTick(() => {
+             setTimeout(() => this.$nuxt.$loading.finish() , this.infos = res.data)
+            })
+          // this.infos = res.data;
           console.log("get", this.infos);
           // this.stopLoading()
-      });
-      
+        });
     },
   },
 };

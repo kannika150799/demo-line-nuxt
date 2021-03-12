@@ -7,17 +7,17 @@
 <script>
 export default {
   data: () => ({
-    loading: false
+    loading: false,
   }),
   methods: {
-    start () {
-      this.loading = true
+    start() {
+      this.loading = true;
     },
-    finish () {
-      this.loading = false
-    }
-  }
-}
+    finish() {
+      this.loading = false;
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -27,10 +27,14 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.8);
+  /* background: rgba(255, 255, 255, 0.8); */
   text-align: center;
-  padding-top: 200px;
+  /* padding-top: 200px; */
   font-size: 30px;
   font-family: sans-serif;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  background: whitesmoke;
 }
 </style>

@@ -17,15 +17,13 @@
 import axios from "axios";
 export default {
   async mounted() {
+
     // liff.init({ liffId: "1655743042-OEqZ9nlB", })
-    // await this.startLoading()
+    
     this.$nextTick(() => {
       this.$nuxt.$loading.start()
-      this.getData();
-      setTimeout(() => this.$nuxt.$loading.finish(), 500)
     })
-    // await this.getData()
-    // await this.stopLoading()
+    await this.getData()
   },
   data() {
     return {
@@ -45,12 +43,15 @@ export default {
     // }),
     async getData() {
       //await this.startLoading()
-      const res = await axios.get(
+      await axios.get(
         "https://db-back.herokuapp.com/api/get/calendar"
-      );
-      //await this.stopLoading()
-      this.calendars = res.data;
-      //await this.stopLoading()
+      ).then((res) => {
+            this.$nextTick(() => {
+              //  this.calendars = res.data;
+              // this.$nuxt.$loading.start()
+              setTimeout(() => this.$nuxt.$loading.finish() , this.calendars = res.data)
+            })
+      })
     },
   },
 };
