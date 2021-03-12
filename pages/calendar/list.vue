@@ -18,7 +18,11 @@
         <div>
           <p class="text-input">Date</p>
           <div class="select-date inputx">
-            <a-date-picker format="DD/MM/YYYY" @change="onChange" placeholder="DD/MM/YYYY" />
+            <a-date-picker
+              format="DD/MM/YYYY"
+              @change="onChange"
+              placeholder="DD/MM/YYYY"
+            />
           </div>
         </div>
         <a-button class="add-button button" @click="addCalendar">
@@ -42,9 +46,11 @@
             type="primary"
             @click="editList(calendar.id)"
           >
-          <img src="~/assets/10171190771582793670-16.png" alt="" 
-          style="margin-right:10px"
-          >
+            <img
+              src="~/assets/10171190771582793670-16.png"
+              alt=""
+              style="margin-right: 10px"
+            />
             Edit
           </a-button>
           <a-button
@@ -52,9 +58,11 @@
             type="danger"
             @click="deleteList(calendar.id)"
           >
-          <img src="~/assets/2130497621541068760-16.png" alt="" 
-          style="margin-right:10px"
-          >
+            <img
+              src="~/assets/2130497621541068760-16.png"
+              alt=""
+              style="margin-right: 10px"
+            />
             Delete
           </a-button>
         </div>
@@ -67,26 +75,27 @@
 import axios from "axios";
 export default {
   mounted() {
-    liff
-      .init({
-        liffId: "1655736391-6XYv2JDo",
-      })
-      .then(() => {
-        if (liff.isLoggedIn()) {
-          liff.getProfile().then((profile) => {
-            this.calendar.userId = profile.userId;
-            this.getData();
-          });
-        } else {
-          liff.login();
-        }
-      });
+    // liff.init({liffId: "1655736391-6XYv2JDo"})
+    // .then(() => {
+    //   if (liff.isLoggedIn()) {
+    //     liff.getProfile().then((profile) => {
+    //       this.calendar.userId = profile.userId;
+    //       this.getData();
+    //     });
+    //   } else {
+    //     liff.login();
+    //   }
+    // });
+    this.$nextTick(() => {
+      this.$nuxt.$loading.start();
+    });
+    this.getData();
   },
   data() {
     return {
       calendar: {
         id: "",
-        userId: "",
+        // userId: "",
         activity: "",
         dateActivity: "",
         date: "",
@@ -96,7 +105,7 @@ export default {
         date: "",
         dateActivity: "",
         id: "",
-        userId: "",
+        // userId: "",
       },
     };
   },
@@ -151,9 +160,9 @@ export default {
   width: 66%;
 }
 .text-head {
-    font-size: 34px;
-    font-weight: 700;
-    color: #1e2a78;
+  font-size: 34px;
+  font-weight: 700;
+  color: #1e2a78;
 }
 .box-input {
   /* display: flex; */
@@ -166,12 +175,13 @@ export default {
   /* width: 185px; */
   /* height: 50px; */
 }
-.ant-input{
+.ant-input {
   border: 1px solid #1e2a78;
 }
 .inputx .ant-calendar-picker-input {
   border: 1px solid #1e2a78;
-}.text-input {
+}
+.text-input {
   margin: 0px 0px 5px;
   font-size: 22px;
   font-weight: 600;
@@ -183,7 +193,7 @@ export default {
   /* text-align: center; */
 }
 .ant-calendar-picker-input {
-    width: 220px;
+  width: 220px;
 }
 .add-button {
   align-self: center;
@@ -224,14 +234,15 @@ export default {
   font-size: 18px;
   padding: 20px 0px;
   /* border-bottom: 1px solid rgb(170, 168, 168); */
-  box-shadow: 3px 4px 13px rgb(17 15 14 / 1%), 3px 4px 13px rgb(168 223 216 / 16%);
-    border-radius: 10px;
-    margin-bottom: 30px;
+  box-shadow: 3px 4px 13px rgb(17 15 14 / 1%),
+    3px 4px 13px rgb(168 223 216 / 16%);
+  border-radius: 10px;
+  margin-bottom: 30px;
 }
 .activity {
   text-align: center;
   font-size: 30px;
-    margin: 0px;
+  margin: 0px;
 }
 /* .list-button {
   width: 100px;

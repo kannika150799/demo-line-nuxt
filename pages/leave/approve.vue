@@ -1,7 +1,7 @@
 <template>
   <div class="container-page-status">
     <p class="text-head">Approve Leaving</p>
-    <div class="box-card" v-for="leave in leaves" :key="leave.userId">
+    <div class="box-card" v-for="leave in leaves" :key="leave.id">
       <p>Name {{ leave.name }}</p>
       <p>Leave topic {{ leave.leaveType }}</p>
       <p>Leave Note {{ leave.reson }}</p>
@@ -44,7 +44,7 @@ export default {
     //       liff.login();
     //     }
     //   });
-    liff.init({liffId: "1655736391-Xkb94MeP"})
+    // liff.init({liffId: "1655736391-Xkb94MeP"})
     this.$nextTick(() => {
       this.$nuxt.$loading.start();
     });
@@ -54,7 +54,7 @@ export default {
     return {
       // leaves: null
       leaves: {
-        userId: "",
+        // userId: "",
         leaveType: "",
         reson: "",
         startValue: "",
@@ -69,11 +69,15 @@ export default {
   },
   methods: {
     async getData() {
-      const res = await axios.get(
-        "https://db-back.herokuapp.com/api/get/approve"
-      );
-      this.leaves = res.data;
-      console.log("get", this.leaves);
+      const res = await axios.get("https://db-back.herokuapp.com/api/get/approve").then((res) => {
+          this.$nextTick(() => {
+              //  this.calendars = res.data;
+              // this.$nuxt.$loading.start()
+            setTimeout(() => this.$nuxt.$loading.finish() , (this.leaves = res.data))
+         })
+      })
+      // this.leaves = res.data;
+      // console.log("get", this.leaves);
     },
     approve(id) {
       this.leaves.status = "อนุมัติ";
@@ -92,7 +96,8 @@ export default {
         .put(`https://db-back.herokuapp.com/api/updateStatus/${id}`, {
           status: this.leaves.status,
         })
-        .then((res) => {
+        .then(() => {
+          
           window.location.reload();
         });
     },
