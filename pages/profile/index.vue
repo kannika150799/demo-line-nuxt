@@ -66,12 +66,22 @@ export default {
   },
   methods:{
     isDone(){
+      this.$nextTick(() => {
+      this.$nuxt.$loading.start()
       this.$axios.get(`https://db-back.herokuapp.com/api/get/user/${this.profile.userId}`).then((res) => {
         console.log(res.data);
         if(res.data != null || res.data != undefined){
           this.$router.push('/profile/_id');
         }
       });
+      setTimeout(() => this.$nuxt.$loading.finish(), 500)
+    })
+      // this.$axios.get(`https://db-back.herokuapp.com/api/get/user/${this.profile.userId}`).then((res) => {
+      //   console.log(res.data);
+      //   if(res.data != null || res.data != undefined){
+      //     this.$router.push('/profile/_id');
+      //   }
+      // });
     },
     register(){
       this.$axios.post('https://db-back.herokuapp.com/api/post/user',this.profile)

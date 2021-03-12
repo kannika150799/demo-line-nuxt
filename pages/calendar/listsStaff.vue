@@ -13,11 +13,19 @@
 </template>
 
 <script>
+// import {mapMutations} from 'vuex'
 import axios from "axios";
 export default {
-  mounted() {
-    liff.init({ liffId: "1655743042-OEqZ9nlB", })
-    this.getData();
+  async mounted() {
+    // liff.init({ liffId: "1655743042-OEqZ9nlB", })
+    // await this.startLoading()
+    this.$nextTick(() => {
+      this.$nuxt.$loading.start()
+      this.getData();
+      setTimeout(() => this.$nuxt.$loading.finish(), 500)
+    })
+    // await this.getData()
+    // await this.stopLoading()
   },
   data() {
     return {
@@ -31,12 +39,18 @@ export default {
     };
   },
   methods: {
+    // ...mapMutations({
+    //   startLoading: 'loading/startLoading',
+    //   stopLoading: 'loading/stopLoading'
+    // }),
     async getData() {
+      //await this.startLoading()
       const res = await axios.get(
         "https://db-back.herokuapp.com/api/get/calendar"
       );
+      //await this.stopLoading()
       this.calendars = res.data;
-      console.log("get", this.calendars);
+      //await this.stopLoading()
     },
   },
 };

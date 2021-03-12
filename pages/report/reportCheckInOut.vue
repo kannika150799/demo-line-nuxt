@@ -57,7 +57,7 @@ export default {
     };
   },
   mounted() {
-    liff.init({ liffId: "1655736391-Pm5DnWoE" });
+    // liff.init({ liffId: "1655736391-Pm5DnWoE" });
   },
   methods: {
     handleChange(value) {

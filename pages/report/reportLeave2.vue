@@ -24,6 +24,7 @@
 </template>
 
 <script>
+// import {mapMutations} from 'vuex'
 import axios from "axios";
 export default {
   data() {
@@ -32,17 +33,28 @@ export default {
     };
   },
   mounted() {
-    liff.init({ liffId: "1655736391-Dok3LZo2" });
-    this.getData();
+    this.$nextTick(() => {
+      this.$nuxt.$loading.start()
+      this.getData();
+      setTimeout(() => this.$nuxt.$loading.finish(), 500)
+    })
+    // liff.init({ liffId: "1655736391-Dok3LZo2" });
+    // this.getData();
   },
   methods: {
+    // ...mapMutations({
+    //   startLoading: 'loading/startLoading',
+    //   stopLoading: 'loading/stopLoading'
+    // }),
     async getData() {
-      const res = axios
-        .get("https://db-back.herokuapp.com/report/leave")
+      // await this.startLoading()
+      await axios.get("https://db-back.herokuapp.com/report/leave")
         .then((res) => {
           this.infos = res.data;
           console.log("get", this.infos);
-        });
+          // this.stopLoading()
+      });
+      
     },
   },
 };
@@ -66,8 +78,8 @@ export default {
   /* border: 2px solid navy; */
   padding: 10px;
   /* border-radius: 10px; */
-  /* box-shadow: 3px 4px 13px rgb(188 229 238 / 20%),
-    3px 4px 13px rgb(168 223 216 / 16%); */
+  box-shadow: 3px 4px 13px rgb(188 229 238 / 20%),
+    3px 4px 13px rgb(168 223 216 / 16%);
   border-radius: 5px;
   margin-bottom: 30px;
   width: 80%;

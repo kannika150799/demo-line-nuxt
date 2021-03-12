@@ -1,8 +1,27 @@
 <template>
   <div>
+    <!-- <div v-if="loading" class="loading-page">
+      <p>Loading...</p>
+    </div>
+    <div v-else >
+      <Nuxt />
+    </div> -->
     <Nuxt />
   </div>
 </template>
+
+<script>
+// import {mapState} from 'vuex'
+// export default {
+//   computed: {
+//     ...mapState({
+//       loading: state => state.loading.loading
+//     })
+//   },
+
+// }
+</script>
+
 
 <style>
 html {
