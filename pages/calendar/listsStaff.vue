@@ -18,7 +18,7 @@ import axios from "axios";
 export default {
   async mounted() {
 
-    // liff.init({ liffId: "1655743042-OEqZ9nlB", })
+    liff.init({ liffId: "1655743042-OEqZ9nlB" })
     
     this.$nextTick(() => {
       this.$nuxt.$loading.start()

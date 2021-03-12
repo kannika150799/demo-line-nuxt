@@ -7,10 +7,18 @@
       <p>Leave Note {{ leave.reson }}</p>
       <p>Date {{ leave.dateStart }} - {{ leave.dateEnd }}</p>
       <div class="btn">
-        <a-button class="approve-button" type="primary" @click="approve(leave.id)">
-        Approve
+        <a-button
+          class="approve-button"
+          type="primary"
+          @click="approve(leave.id)"
+        >
+          Approve
         </a-button>
-        <a-button class="approve-button" type="danger" @click="disapproval(leave.id)">
+        <a-button
+          class="approve-button"
+          type="danger"
+          @click="disapproval(leave.id)"
+        >
           Disapproval
         </a-button>
       </div>
@@ -36,10 +44,10 @@ export default {
     //       liff.login();
     //     }
     //   });
-    //  liff.init({liffId: "1655736391-Xkb94MeP"})
-     this.$nextTick(() => {
-      this.$nuxt.$loading.start()
-    })
+    liff.init({liffId: "1655736391-Xkb94MeP"})
+    this.$nextTick(() => {
+      this.$nuxt.$loading.start();
+    });
     this.getData();
   },
   data() {
@@ -103,11 +111,12 @@ export default {
   font-size: 34px;
   font-weight: 700;
   margin-bottom: 1em;
-  color: #055B5C;
+  color: #055b5c;
 }
 .box-card {
   border: 2px solid transparent;
-  box-shadow: 3px 4px 13px rgb(17 15 14 / 20%), 3px 4px 13px rgb(168 223 216 / 16%);
+  box-shadow: 3px 4px 13px rgb(17 15 14 / 20%),
+    3px 4px 13px rgb(168 223 216 / 16%);
   padding: 10px;
   border-radius: 10px;
   margin-bottom: 15px;
@@ -117,14 +126,15 @@ export default {
   width: 100px;
   height: 44px;
   margin: 15px 7px 0px;
-  box-shadow:  3px 4px 13px  rgba(11, 13, 14, 0.17), 3px 4px 13px rgba(168, 223, 216, 0.156);
+  box-shadow: 3px 4px 13px rgba(11, 13, 14, 0.17),
+    3px 4px 13px rgba(168, 223, 216, 0.156);
   padding: 10px;
 }
-p{
+p {
   font-size: 16px;
   margin: 0.25em;
 }
-.btn{
+.btn {
   text-align-last: center;
 }
 .v-application {
