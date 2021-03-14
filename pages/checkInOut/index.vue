@@ -77,7 +77,7 @@ export default {
       } else if (res.data != null) {
         console.log("res2", res.data);
         if (res.data.timeOut != "") {
-          this.isActiveIn = true;
+          this.isActiveIn = false;
           this.isActiveOut = true;
         } else {
           this.isActiveIn = true;

@@ -33,10 +33,9 @@ export default {
     };
   },
   mounted() {
-    liff.init({ liffId: "1655736391-Dok3LZo2" });
+    // liff.init({ liffId: "1655736391-Dok3LZo2" });
     this.$nextTick(() => {
       this.$nuxt.$loading.start();
-      // setTimeout(() => this.$nuxt.$loading.finish(), 3000)
     });
     this.getData();
   },
@@ -47,16 +46,14 @@ export default {
     // }),
     async getData() {
       // await this.startLoading()
-      await axios
-        .get("https://db-back.herokuapp.com/report/leave")
-        .then((res) => {
+      await axios.get("https://db-back.herokuapp.com/report/leave").then((res) => {
           this.$nextTick(() => {
              setTimeout(() => this.$nuxt.$loading.finish() , this.infos = res.data)
-            })
+          })
           // this.infos = res.data;
           console.log("get", this.infos);
           // this.stopLoading()
-        });
+      });
     },
   },
 };
