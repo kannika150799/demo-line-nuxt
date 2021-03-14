@@ -13,10 +13,9 @@
 <script>
 import axios from "axios";
 export default {
-  mounted() {
-    liff.init({liffId: "1655743042-do9lERxa",}).then(() => {
-      this.$nextTick(() => {
-        this.$nuxt.$loading.start();
+  async mounted() {
+   await liff.init({liffId: "1655743042-do9lERxa",})
+   await this.$nextTick(() => {this.$nuxt.$loading.start();}).then(() => {  
         if (liff.isLoggedIn()) {
           liff.getProfile().then((profile) => {
             this.leaves.userId = profile.userId;
@@ -25,16 +24,7 @@ export default {
         } else {
           liff.login();
         }
-      });
-      // if (liff.isLoggedIn()) {
-      //     liff.getProfile().then((profile) => {
-      //       this.leaves.userId = profile.userId;
-      //       this.getData();
-      //     });
-      //   } else {
-      //     liff.login();
-      //   }
-    });
+   });
   },
   data() {
     return {
@@ -53,11 +43,14 @@ export default {
   },
   methods: {
     async getData() {
-      const res = await axios.get(
-        `https://db-back.herokuapp.com/api/get/leaveByUser/${this.leaves.userId}`
-      );
-      this.leaves = res.data;
-      console.log("get", this.leaves);
+      await axios.get(
+        `https://db-back.herokuapp.com/api/get/leaveByUser/${this.leaves.userId}`).then((res) => {
+          this.$nextTick(() => {
+            setTimeout(() => this.$nuxt.$loading.finish(),(this.leaves = res.data));
+          });
+        });
+      // this.leaves = res.data;
+      // console.log("get", this.leaves);
     },
   },
 };

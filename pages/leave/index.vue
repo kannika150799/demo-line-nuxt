@@ -99,14 +99,9 @@ export default {
   },
   methods: {
     async makeGetRequest() {
-      await axios
-        .get(`https://db-back.herokuapp.com/api/get/user/${this.leave.userId}`)
-        .then((res) => {
+      await axios.get(`https://db-back.herokuapp.com/api/get/user/${this.leave.userId}`).then((res) => {
           this.$nextTick(() => {
-            setTimeout(
-              () => this.$nuxt.$loading.finish(),
-              (this.profile = res.data)
-            );
+            setTimeout(() => this.$nuxt.$loading.finish(),(this.profile = res.data));
           });
         });
       // this.profile = res.data;
