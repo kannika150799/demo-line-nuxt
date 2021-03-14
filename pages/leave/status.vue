@@ -15,19 +15,17 @@ import axios from "axios";
 export default {
   mounted() {
     liff.init({ liffId: "1655743042-do9lERxa" }).then(() => {
-      this.$nextTick(() => {
-        this.$nuxt.$loading.start();
+      this.$nextTick(async () => {
+        await this.$nuxt.$loading.start();
         if (liff.isLoggedIn()) {
-        liff.getProfile().then((profile) => {
-          this.leaves.userId = profile.userId;
-          this.getData();
-        });
-      } else {
-        liff.login();
-      }
+          liff.getProfile().then((profile) => {
+            this.leaves.userId = profile.userId;
+            this.getData();
+          });
+        } else {
+          liff.login();
+        }
       });
-
-      
     });
   },
   data() {
