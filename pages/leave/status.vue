@@ -15,8 +15,8 @@ import axios from "axios";
 export default {
   async mounted() {
    await liff.init({liffId: "1655743042-do9lERxa",})
-   await this.$nextTick(() => {this.$nuxt.$loading.start();}).then(() => {  
-        if (liff.isLoggedIn()) {
+   await this.$nextTick(() => {this.$nuxt.$loading.start();});
+         if (liff.isLoggedIn()) {
           liff.getProfile().then((profile) => {
             this.leaves.userId = profile.userId;
             this.getData();
@@ -24,7 +24,7 @@ export default {
         } else {
           liff.login();
         }
-   });
+   
   },
   data() {
     return {
@@ -46,7 +46,7 @@ export default {
       await axios.get(
         `https://db-back.herokuapp.com/api/get/leaveByUser/${this.leaves.userId}`).then((res) => {
           this.$nextTick(() => {
-            setTimeout(() => this.$nuxt.$loading.finish(),(this.leaves = res.data));
+            setTimeout(() => this.$nuxt.$loading.finish(), (this.leaves = res.data));
           });
         });
       // this.leaves = res.data;
