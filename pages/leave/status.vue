@@ -13,18 +13,20 @@
 <script>
 import axios from "axios";
 export default {
-  async mounted() {
-   await liff.init({liffId: "1655743042-do9lERxa",})
-   await this.$nextTick(() => {this.$nuxt.$loading.start();});
-         if (liff.isLoggedIn()) {
+  mounted() {
+    liff.init({liffId: "1655743042-do9lERxa",}).then(() => {
+    
+         
+        if (liff.isLoggedIn()) {
           liff.getProfile().then((profile) => {
+            this.$nextTick(() => {this.$nuxt.$loading.start();});
             this.leaves.userId = profile.userId;
             this.getData();
           });
         } else {
           liff.login();
         }
-   
+   });
   },
   data() {
     return {
