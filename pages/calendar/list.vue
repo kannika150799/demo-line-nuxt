@@ -75,7 +75,7 @@
 import axios from "axios";
 export default {
   mounted() {
-    // liff.init({liffId: "1655736391-6XYv2JDo"})
+    liff.init({liffId: "1655736391-6XYv2JDo"})
     // .then(() => {
     //   if (liff.isLoggedIn()) {
     //     liff.getProfile().then((profile) => {
@@ -95,7 +95,7 @@ export default {
     return {
       calendar: {
         id: "",
-        // userId: "",
+        userId: "",
         activity: "",
         dateActivity: "",
         date: "",
@@ -105,7 +105,7 @@ export default {
         date: "",
         dateActivity: "",
         id: "",
-        // userId: "",
+        userId: "",
       },
     };
   },
@@ -125,11 +125,16 @@ export default {
     },
     //show list
     async getData() {
-      const res = await axios.get(
+      await axios.get(
         "https://db-back.herokuapp.com/api/get/calendar"
-      );
-      this.calendars = res.data;
-      console.log("get", this.calendars);
+      ).then((res) => {
+          this.$nextTick(() => {
+              //  this.calendars = res.data;
+              // this.$nuxt.$loading.start()
+            setTimeout(() => this.$nuxt.$loading.finish() , (this.calendars = res.data))
+         })
+      })
+      // console.log("get", this.calendars);
     },
     editList(id) {
       this.$router.push(`/calendar/${id}`);
