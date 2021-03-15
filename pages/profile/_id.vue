@@ -1,12 +1,12 @@
 <template>
-  <div v-if="pf_line !== '' && profile !== ''" class="one-box">
+  <div v-if="pf_line !== ''" class="one-box">
     <div class="profile">
       <!-- <img src="~/assets/IMG.jpg" alt="" /> -->
       <img v-if="pf_line.profileImage == ''" src="~/assets/IMG.jpg" alt="" />
       <img v-else :src="pf_line.profileImage" alt="" />
       <p class="display-name">{{ pf_line.displayName }}</p>
     </div>
-    <div v-if="pf_line !== '' && profile !== ''" class="container-input">
+    <div v-if="profile !== ''" class="container-input">
       <template>
         <div class="box-input">
           <p class="text-input name">Name</p>
