@@ -1,5 +1,5 @@
 <template>
-  <div class="container-page-leave">
+  <div v-if="profile.length > 0" class="container-page-leave">
     <p class="text-head">Leave</p>
     <div class="containar-detail">
       <div class="containar-title">
@@ -58,17 +58,17 @@ import axios from "axios";
 export default {
   mounted() {
     liff.init({ liffId: "1655743042-4ne2Q9zE" }).then(() => {
-      this.$nextTick(() => {
-        this.$nuxt.$loading.start();
-        if (liff.isLoggedIn()) {
-          liff.getProfile().then((profile) => {
-            this.leave.userId = profile.userId;
-            this.makeGetRequest();
+      if (liff.isLoggedIn()) {
+        liff.getProfile().then((profile) => {
+          this.$nextTick(() => {
+            this.$nuxt.$loading.start();
           });
-        } else {
-          liff.login();
-        }
-      });
+          this.leave.userId = profile.userId;
+          this.makeGetRequest();
+        });
+      } else {
+        liff.login();
+      }
       // if (liff.isLoggedIn()) {
       //   liff.getProfile().then((profile) => {
       //     this.leave.userId = profile.userId;
@@ -99,9 +99,14 @@ export default {
   },
   methods: {
     async makeGetRequest() {
-      await axios.get(`https://db-back.herokuapp.com/api/get/user/${this.leave.userId}`).then((res) => {
+      await axios
+        .get(`https://db-back.herokuapp.com/api/get/user/${this.leave.userId}`)
+        .then((res) => {
           this.$nextTick(() => {
-            setTimeout(() => this.$nuxt.$loading.finish(),(this.profile = res.data));
+            setTimeout(
+              () => this.$nuxt.$loading.finish(),
+              (this.profile = res.data)
+            );
           });
         });
       // this.profile = res.data;

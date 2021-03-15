@@ -32,11 +32,7 @@
 <script>
 export default {
   mounted() {
-    liff
-      .init({
-        liffId: "1655743042-JBp6ZRM1",
-      })
-      .then(() => {
+    liff.init({liffId: "1655743042-JBp6ZRM1",}).then(() => {
         if (liff.isLoggedIn()) {
           liff.getProfile().then((profile) => {
             const vm = this
@@ -66,7 +62,6 @@ export default {
   },
   methods:{
     isDone(){
-      
       this.$axios.get(`https://db-back.herokuapp.com/api/get/user/${this.profile.userId}`).then((res) => {
         console.log(res.data);
         if(res.data != null || res.data != undefined){

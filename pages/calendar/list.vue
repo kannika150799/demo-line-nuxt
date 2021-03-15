@@ -75,7 +75,7 @@
 import axios from "axios";
 export default {
   mounted() {
-    // liff.init({liffId: "1655736391-6XYv2JDo"})
+    liff.init({liffId: "1655736391-6XYv2JDo"})
     // .then(() => {
     //   if (liff.isLoggedIn()) {
     //     liff.getProfile().then((profile) => {
@@ -86,9 +86,9 @@ export default {
     //     liff.login();
     //   }
     // });
-    // this.$nextTick(() => {
-    //   this.$nuxt.$loading.start();
-    // });
+    this.$nextTick(() => {
+      this.$nuxt.$loading.start();
+    });
     this.getData();
   },
   data() {
@@ -129,12 +129,7 @@ export default {
         .get("https://db-back.herokuapp.com/api/get/calendar")
         .then((res) => {
           this.$nextTick(() => {
-            //  this.calendars = res.data;
-            // this.$nuxt.$loading.start()
-            setTimeout(
-              () => this.$nuxt.$loading.finish(),
-              (this.calendars = res.data)
-            );
+            setTimeout(() => this.$nuxt.$loading.finish(),(this.calendars = res.data));
           });
         });
       // console.log("get", this.calendars);
@@ -158,8 +153,8 @@ export default {
 
 <style scoped>
 .container-page-calendar {
-  padding: 30px 0px;
-  margin: 15px 0px;
+  padding: 0px 0px 30px;
+  margin: 0px 0px 15px;
   /* border-bottom: 1px solid black; */
 }
 .container-input {
@@ -175,6 +170,14 @@ export default {
   font-size: 34px;
   font-weight: 700;
   color: #1e2a78;
+  width: 100%;
+  background-color: whitesmoke;
+  height: 110px;
+  /* margin: 0px; */
+  text-align: center;
+  padding: 25px;
+  box-shadow: 0px 4px 0px rgb(17 15 14 / 16%),
+    3px 4px 13px rgb(168 223 216 / 16%);
 }
 .box-input {
   /* display: flex; */
