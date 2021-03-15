@@ -1,5 +1,5 @@
 <template>
-  <div class="container-page-status">
+  <div v-if="leaves.length > 0" class="container-page-status">
     <p class="text-head">Status</p>
     <div class="box-card" v-for="leave in leaves" :key="leave.userId">
       <p>หัวข้อการลา: {{ leave.leaveType }}</p>

@@ -75,7 +75,7 @@
 import axios from "axios";
 export default {
   mounted() {
-    liff.init({liffId: "1655736391-6XYv2JDo"})
+    // liff.init({liffId: "1655736391-6XYv2JDo"})
     // .then(() => {
     //   if (liff.isLoggedIn()) {
     //     liff.getProfile().then((profile) => {
@@ -86,9 +86,9 @@ export default {
     //     liff.login();
     //   }
     // });
-    this.$nextTick(() => {
-      this.$nuxt.$loading.start();
-    });
+    // this.$nextTick(() => {
+    //   this.$nuxt.$loading.start();
+    // });
     this.getData();
   },
   data() {
@@ -181,7 +181,7 @@ export default {
   /* height: 50px; */
 }
 .ant-input {
-  border: 1px solid #1e2a78;
+  /* border: 1px solid #1e2a78; */
 }
 .inputx .ant-calendar-picker-input {
   border: 1px solid #1e2a78;
@@ -197,25 +197,33 @@ export default {
   /* flex-direction: column; */
   /* text-align: center; */
 }
-.ant-calendar-picker-input {
+/* .ant-calendar-picker-input {
   width: 220px;
-}
+} */
+/* .ant-calendar-picker-input {
+    outline: none;
+    width: 245px;
+    border: 2px solid red;
+} */
 .add-button {
   align-self: center;
   margin: 40px 0px 0px;
   color: aliceblue;
   background-color: rgb(45, 209, 146);
   border-color: transparent;
+  box-shadow: 3px 4px 13px rgb(17 15 14 / 20%), 3px 4px 13px rgb(168 223 216 / 16%);
 }
 .ant-btn-primary {
   background-color: transparent;
-  border-color: transparent;
+  /* border-color: transparent; */
   color: #1890ff;
+  box-shadow: 3px 4px 13px rgb(17 15 14 / 5%), 3px 4px 13px rgb(168 223 216 / 16%);
 }
 .ant-btn-danger {
   color: #ff4d4f;
   background-color: transparent;
   /* border-color: transparent; */
+  box-shadow: 3px 4px 13px rgb(17 15 14 / 5%), 3px 4px 13px rgb(168 223 216 / 16%);
 }
 .button {
   height: 44px;
@@ -239,7 +247,7 @@ export default {
   font-size: 18px;
   padding: 20px 0px;
   /* border-bottom: 1px solid rgb(170, 168, 168); */
-  box-shadow: 3px 4px 13px rgb(17 15 14 / 1%),
+  box-shadow: 3px 4px 13px rgb(17 15 14 / 16%),
     3px 4px 13px rgb(168 223 216 / 16%);
   border-radius: 10px;
   margin-bottom: 30px;
