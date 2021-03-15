@@ -1,5 +1,5 @@
 <template>
-  <div v-if="profile.profileImage !== ''" class="one-box">
+  <div v-if="profile" class="one-box">
     <div class="profile">
       <!-- <img src="~/assets/IMG.jpg" alt="" /> -->
       <img v-if="profile.profileImage == ''" src="~/assets/IMG.jpg" alt="" />
@@ -43,7 +43,7 @@ export default {
           vm.profile.displayName = profile.displayName;
           vm.profile.userId = profile.userId;
           // this.isDone();
-           vm.isDone();
+          vm.isDone();
           // console.log(profile.userId);
         });
       } else {

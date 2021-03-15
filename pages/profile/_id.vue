@@ -82,6 +82,7 @@ export default {
           this.$nextTick(() => {
             this.$nuxt.$loading.finish();
           });
+          this.profile = res.data;
         });
     },
   },
