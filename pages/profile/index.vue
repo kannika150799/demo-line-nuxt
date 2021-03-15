@@ -42,8 +42,9 @@ export default {
           vm.profile.profileImage = profile.pictureUrl;
           vm.profile.displayName = profile.displayName;
           vm.profile.userId = profile.userId;
-          vm.isDone();
-          console.log(profile.userId);
+          // this.isDone();
+           vm.isDone();
+          // console.log(profile.userId);
         });
       } else {
         this.$nextTick(() => {
