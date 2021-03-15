@@ -4,7 +4,7 @@
     <div class="containar-detail">
       <div  class="containar-title">
         <!-- <p class="text txt-title">Name&nbsp;</p> -->
-        <p v-text="profile.name == ''" class="text txt-title">{{ profile.name }}</p>
+        <p class="text txt-title">{{ profile.name }}</p>
       </div>
       <div class="container-head">
         <p class="text-leave text">Leave Topic</p>

@@ -45,8 +45,7 @@ export default {
   },
   methods: {
     async getData() {
-      await axios
-        .get(`https://db-back.herokuapp.com/api/get/leaveByUser/${this.leaves.userId}`).then((res) => {
+      await axios.get(`https://db-back.herokuapp.com/api/get/leaveByUser/${this.leaves.userId}`).then((res) => {
           this.$nextTick(() => {
             setTimeout(() => this.$nuxt.$loading.finish(),(this.leaves = res.data));
           });
