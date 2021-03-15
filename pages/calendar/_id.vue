@@ -10,11 +10,9 @@
               <p class="text-input text-show" style="color:red">*&nbsp;{{calendars.activity}}</p>
               <!-- <p>{{calendars.dateActivity}}</p> -->
             </div>
-            <a-textarea
-              class="input"
-              placeholder="Topic"
-              v-model="calendar.activity"
-            />
+            <!-- <a-textarea class="input" placeholder="Topic" v-model="calendar.activity">{{calendars.activity}}</a-textarea> -->
+            <a-input class="input">{{calendars.activity}}</a-input>
+            <!-- <a-input v-model="profile.nickname" >{{ profile.Nickname }}</a-input> -->
           </div>
       </template>
       <div class="select-date">
