@@ -74,10 +74,7 @@ export default {
       this.$router.push(`/profile/modify`);
     },
     async makeGetRequest() {
-      await axios
-        .get(
-          `https://db-back.herokuapp.com/api/get/user/${this.profile.userId}`
-        )
+      await axios.get(`https://db-back.herokuapp.com/api/get/user/${this.profile.userId}`)
         .then((res) => {
           this.$nextTick(() => {
             this.$nuxt.$loading.finish();

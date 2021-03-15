@@ -1,12 +1,12 @@
 <template>
-  <div class="one-box">
+  <div v-if="pf_line" class="one-box">
     <div class="profile">
       <!-- <img src="~/assets/IMG.jpg" alt="" /> -->
       <img v-if="pf_line.profileImage == ''" src="~/assets/IMG.jpg" alt="" />
       <img v-else :src="pf_line.profileImage" alt="" />
       <p class="display-name">{{ pf_line.displayName }}</p>
     </div>
-    <div class="container-input">
+    <div v-if="profile" class="container-input">
       <template>
         <div class="box-input">
           <p class="text-input name">Name</p>
@@ -32,47 +32,55 @@
 import axios from "axios";
 export default {
   mounted() {
-    liff
-      .init({
-        liffId: "1655736391-enZgDWla",
-      })
-      .then(() => {
-        if (liff.isLoggedIn()) {
-          liff.getProfile().then((profile) => {
-            this.pf_line.profileImage = profile.pictureUrl;
-            this.pf_line.displayName = profile.displayName;
-            this.profile.userId = profile.userId;
-            this.makeGetRequest();
-          });
-        } else {
-          liff.login();
-        }
-      });
+    this.$nextTick(() => {
+      this.$nuxt.$loading.start();
+    });
+    liff.init({ liffId: "1655736391-enZgDWla" }).then(() => {
+      if (liff.isLoggedIn()) {
+        liff.getProfile().then((profile) => {
+          this.pf_line.profileImage = profile.pictureUrl;
+          this.pf_line.displayName = profile.displayName;
+          this.profile.userId = profile.userId;
+          this.makeGetRequest();
+        });
+      } else {
+        this.$nextTick(() => {
+          this.$nuxt.$loading.finish();
+        });
+        liff.login();
+      }
+    });
   },
   data() {
     return {
       pf_line: {
         profileImage: "",
-        displayName: ""
+        displayName: "",
       },
       profile: {
         userId: "",
         name: "",
         nickname: "",
-        position: ""
+        position: "",
       },
     };
   },
   methods: {
     editUser() {
-      this.$router.push(`/profile/modify`)
+      this.$router.push(`/profile/modify`);
     },
     async makeGetRequest() {
-      let res = await axios.get(`https://db-back.herokuapp.com/api/get/user/${this.profile.userId}`);
-      this.profile = res.data;
-      console.log("get", this.profile);
-    }
-  }
+      await axios.get(`https://db-back.herokuapp.com/api/get/user/${this.profile.userId}`)
+        .then((res) => {
+          this.$nextTick(() => {
+            this.$nuxt.$loading.finish();
+          });
+          this.profile = res.data;
+        });
+      // this.profile = res.data;
+      // console.log("get", this.profile);
+    },
+  },
 };
 </script>
 
@@ -101,7 +109,8 @@ img {
   font-size: 16px;
   font-weight: 400;
   border-radius: 41px;
-  box-shadow: 3px 4px 13px rgb(17 15 14 / 10%), 3px 4px 13px rgb(168 223 216 / 16%);
+  box-shadow: 3px 4px 13px rgb(17 15 14 / 10%),
+    3px 4px 13px rgb(168 223 216 / 16%);
 }
 .container-input {
   text-align: -webkit-center;
@@ -109,7 +118,8 @@ img {
   background-color: whitesmoke;
   border-radius: 10px;
   padding: 20px;
-  box-shadow: 3px 4px 13px rgb(17 15 14 / 20%), 3px 4px 13px rgb(168 223 216 / 16%);
+  box-shadow: 3px 4px 13px rgb(17 15 14 / 20%),
+    3px 4px 13px rgb(168 223 216 / 16%);
 }
 .box-input {
   display: flex;
