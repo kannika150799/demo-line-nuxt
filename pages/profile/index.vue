@@ -99,7 +99,7 @@ img {
   font-size: 16px;
   font-weight: 600;
   font-family: inherit;
-  margin-bottom: 40px;
+  margin-bottom: 41px;
 }
 .register-button {
  margin-top: 25px;
