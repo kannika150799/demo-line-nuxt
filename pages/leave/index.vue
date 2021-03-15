@@ -1,5 +1,5 @@
 <template>
-  <div v-if="profile.name === ''" class="container-page-leave">
+  <div v-if="profile.name !== ''" class="container-page-leave">
     <p class="text-head">Leave</p>
     <div class="containar-detail">
       <div class="containar-title">
