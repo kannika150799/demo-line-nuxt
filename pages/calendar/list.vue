@@ -125,15 +125,18 @@ export default {
     },
     //show list
     async getData() {
-      await axios.get(
-        "https://db-back.herokuapp.com/api/get/calendar"
-      ).then((res) => {
+      await axios
+        .get("https://db-back.herokuapp.com/api/get/calendar")
+        .then((res) => {
           this.$nextTick(() => {
-              //  this.calendars = res.data;
-              // this.$nuxt.$loading.start()
-            setTimeout(() => this.$nuxt.$loading.finish() , (this.calendars = res.data))
-         })
-      })
+            //  this.calendars = res.data;
+            // this.$nuxt.$loading.start()
+            setTimeout(
+              () => this.$nuxt.$loading.finish(),
+              (this.calendars = res.data)
+            );
+          });
+        });
       // console.log("get", this.calendars);
     },
     editList(id) {
@@ -162,7 +165,11 @@ export default {
 .container-input {
   display: flex;
   flex-direction: column;
-  width: 66%;
+  width: 80%;
+  padding: 20px;
+  box-shadow: 3px 4px 13px rgb(17 15 14 / 20%),
+    3px 4px 13px rgb(168 223 216 / 16%);
+  border-radius: 5px;
 }
 .text-head {
   font-size: 34px;
@@ -211,19 +218,22 @@ export default {
   color: aliceblue;
   background-color: rgb(45, 209, 146);
   border-color: transparent;
-  box-shadow: 3px 4px 13px rgb(17 15 14 / 20%), 3px 4px 13px rgb(168 223 216 / 16%);
+  box-shadow: 3px 4px 13px rgb(17 15 14 / 20%),
+    3px 4px 13px rgb(168 223 216 / 16%);
 }
 .ant-btn-primary {
   background-color: transparent;
   /* border-color: transparent; */
   color: #1890ff;
-  box-shadow: 3px 4px 13px rgb(17 15 14 / 5%), 3px 4px 13px rgb(168 223 216 / 16%);
+  box-shadow: 3px 4px 13px rgb(17 15 14 / 5%),
+    3px 4px 13px rgb(168 223 216 / 16%);
 }
 .ant-btn-danger {
   color: #ff4d4f;
   background-color: transparent;
   /* border-color: transparent; */
-  box-shadow: 3px 4px 13px rgb(17 15 14 / 5%), 3px 4px 13px rgb(168 223 216 / 16%);
+  box-shadow: 3px 4px 13px rgb(17 15 14 / 5%),
+    3px 4px 13px rgb(168 223 216 / 16%);
 }
 .button {
   height: 44px;
@@ -249,7 +259,7 @@ export default {
   /* border-bottom: 1px solid rgb(170, 168, 168); */
   box-shadow: 3px 4px 13px rgb(17 15 14 / 16%),
     3px 4px 13px rgb(168 223 216 / 16%);
-  border-radius: 10px;
+  border-radius: 5px;
   margin-bottom: 30px;
 }
 .activity {
