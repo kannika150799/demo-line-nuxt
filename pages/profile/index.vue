@@ -31,12 +31,13 @@
 <script>
 export default {
   mounted() {
+    this.$nextTick(() => {
+      this.$nuxt.$loading.start();
+    });
+
     liff.init({ liffId: "1655743042-JBp6ZRM1" }).then(() => {
       if (liff.isLoggedIn()) {
         liff.getProfile().then((profile) => {
-          this.$nextTick(() => {
-            this.$nuxt.$loading.start();
-          });
           const vm = this;
           vm.profile.profileImage = profile.pictureUrl;
           vm.profile.displayName = profile.displayName;
@@ -45,6 +46,9 @@ export default {
           console.log(profile.userId);
         });
       } else {
+        this.$nextTick(() => {
+          this.$nuxt.$loading.finish();
+        });
         liff.login();
       }
     });
@@ -64,15 +68,20 @@ export default {
   },
   methods: {
     isDone() {
-      this.$axios.get(`https://db-back.herokuapp.com/api/get/user/${this.profile.userId}`).then((res) => {
+      this.$axios
+        .get(
+          `https://db-back.herokuapp.com/api/get/user/${this.profile.userId}`
+        )
+        .then((res) => {
           // console.log(res.data);
-          
+
           if (res.data != null || res.data != undefined) {
             this.$router.push("/profile/_id");
+          } else {
+            this.$nextTick(() => {
+              this.$nuxt.$loading.finish();
+            });
           }
-          this.$nextTick(() => {
-            setTimeout(() => this.$nuxt.$loading.finish(), res.data);
-          });
         });
     },
     register() {
