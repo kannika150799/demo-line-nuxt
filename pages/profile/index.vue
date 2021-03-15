@@ -71,7 +71,7 @@ export default {
             this.$router.push("/profile/_id");
           }
           this.$nextTick(() => {
-            setTimeout(() => this.$nuxt.$loading.finish(), 4000);
+            setTimeout(() => this.$nuxt.$loading.finish(), res.data);
           });
         });
     },
