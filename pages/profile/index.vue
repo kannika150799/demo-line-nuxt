@@ -66,12 +66,13 @@ export default {
     isDone() {
       this.$axios.get(`https://db-back.herokuapp.com/api/get/user/${this.profile.userId}`).then((res) => {
           // console.log(res.data);
-          this.$nextTick(() => {
-            setTimeout(() => this.$nuxt.$loading.finish(),(res.data != null || res.data != undefined));
-          });
+          
           if (res.data != null || res.data != undefined) {
             this.$router.push("/profile/_id");
           }
+          this.$nextTick(() => {
+            setTimeout(() => this.$nuxt.$loading.finish(), 3000);
+          });
         });
     },
     register() {
