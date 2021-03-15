@@ -45,20 +45,22 @@ export default {
     };
   },
   mounted() {
-    liff
-      .init({
-        liffId: "1655743042-1qqDlBON",
-      })
-      .then(() => {
-        if (liff.isLoggedIn()) {
-          liff.getProfile().then((profile) => {
-            this.inOut.userId = profile.userId;
-            this.isDone();
-          });
-        } else {
-          liff.login();
-        }
-      });
+    this.$nextTick(() => {
+      this.$nuxt.$loading.start();
+    });
+    liff.init({ liffId: "1655743042-1qqDlBON" }).then(() => {
+      if (liff.isLoggedIn()) {
+        liff.getProfile().then((profile) => {
+          this.inOut.userId = profile.userId;
+          this.isDone();
+        });
+      } else {
+        this.$nextTick(() => {
+          this.$nuxt.$loading.finish();
+        });
+        liff.login();
+      }
+    });
   },
   created() {
     setInterval(() => this.updateCurrentTimeIn(), 1 * 1000);
@@ -67,23 +69,26 @@ export default {
   },
   methods: {
     async isDone() {
-      let res = await axios.get(
-        `https://db-back.herokuapp.com/api/get/check/${this.inOut.userId}`
-      );
-      if (res.data == null) {
-        console.log("res1", res.data);
-        this.isActiveIn = false;
-        this.isActiveOut = true;
-      } else if (res.data != null) {
-        console.log("res2", res.data);
-        if (res.data.timeOut != "") {
-          this.isActiveIn = false;
-          this.isActiveOut = true;
-        } else {
-          this.isActiveIn = true;
-          this.isActiveOut = false;
-        }
-      }
+      await axios.get(`https://db-back.herokuapp.com/api/get/check/${this.inOut.userId}`)
+        .then((res) => {
+          this.$nextTick(() => {
+            setTimeout(() => this.$nuxt.$loading.finish(), 3000);
+          });
+          if (res.data == null) {
+            console.log("res1", res.data);
+            this.isActiveIn = false;
+            this.isActiveOut = true;
+          } else if (res.data != null) {
+            console.log("res2", res.data);
+            if (res.data.timeOut != "") {
+              this.isActiveIn = false;
+              this.isActiveOut = true;
+            } else {
+              this.isActiveIn = true;
+              this.isActiveOut = false;
+            }
+          }
+        });
     },
     updateCurrentTimeIn() {
       this.currentTimeIn = moment().format("LTS");
