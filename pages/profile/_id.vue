@@ -1,31 +1,29 @@
 <template>
-  <div  v-if="pf_line !== '' && profile !== ''">
-    <div class="one-box">
-      <div class="profile">
-        <!-- <img src="~/assets/IMG.jpg" alt="" /> -->
-        <img v-if="pf_line.profileImage == ''" src="~/assets/IMG.jpg" alt="" />
-        <img v-else :src="pf_line.profileImage" alt="" />
-        <p class="display-name">{{ pf_line.displayName }}</p>
-      </div>
-      <div class="container-input">
-        <template>
-          <div class="box-input">
-            <p class="text-input name">Name</p>
-            <p class="text-input name">{{ profile.name }}</p>
-          </div>
-          <div class="box-input">
-            <p class="text-input">Nickname&nbsp;</p>
-            <p class="text-input name">{{ profile.nickname }}</p>
-          </div>
-          <div class="box-input">
-            <p class="text-input position">Position</p>
-            <p class="text-input name">{{ profile.position }}</p>
-          </div>
-        </template>
-        <a-button class="edit-button" type="primary" @click="editUser">
-          Edit
-        </a-button>
-      </div>
+  <div v-if="pf_line !== '' && profile !== ''" class="one-box">
+    <div class="profile">
+      <!-- <img src="~/assets/IMG.jpg" alt="" /> -->
+      <img v-if="pf_line.profileImage == ''" src="~/assets/IMG.jpg" alt="" />
+      <img v-else :src="pf_line.profileImage" alt="" />
+      <p class="display-name">{{ pf_line.displayName }}</p>
+    </div>
+    <div v-if="pf_line !== '' && profile !== ''" class="container-input">
+      <template>
+        <div class="box-input">
+          <p class="text-input name">Name</p>
+          <p class="text-input name">{{ profile.name }}</p>
+        </div>
+        <div class="box-input">
+          <p class="text-input">Nickname&nbsp;</p>
+          <p class="text-input name">{{ profile.nickname }}</p>
+        </div>
+        <div class="box-input">
+          <p class="text-input position">Position</p>
+          <p class="text-input name">{{ profile.position }}</p>
+        </div>
+      </template>
+      <a-button class="edit-button" type="primary" @click="editUser">
+        Edit
+      </a-button>
     </div>
   </div>
 </template>
@@ -34,21 +32,21 @@
 import axios from "axios";
 export default {
   mounted() {
-    liff.init({ liffId: "1655743042-JBp6ZRM1" }).then(() => {
-      if (liff.isLoggedIn()) {
-        liff.getProfile().then((profile) => {
-          this.$nextTick(() => {
-            this.$nuxt.$loading.start();
+    liff.init({liffId: "1655743042-JBp6ZRM1",}).then(() => {
+        if (liff.isLoggedIn()) {
+          liff.getProfile().then((profile) => {
+            this.$nextTick(() => {
+              this.$nuxt.$loading.start();
+            });
+            this.pf_line.profileImage = profile.pictureUrl;
+            this.pf_line.displayName = profile.displayName;
+            this.profile.userId = profile.userId;
+            this.makeGetRequest();
           });
-          this.pf_line.profileImage = profile.pictureUrl;
-          this.pf_line.displayName = profile.displayName;
-          this.profile.userId = profile.userId;
-          this.makeGetRequest();
-        });
-      } else {
-        liff.login();
-      }
-    });
+        } else {
+          liff.login();
+        }
+      });
   },
   data() {
     return {
@@ -69,16 +67,9 @@ export default {
       this.$router.push(`/profile/modify`);
     },
     async makeGetRequest() {
-      await axios
-        .get(
-          `https://db-back.herokuapp.com/api/get/user/${this.profile.userId}`
-        )
-        .then((res) => {
+      await axios.get(`https://db-back.herokuapp.com/api/get/user/${this.profile.userId}`).then((res) => {
           this.$nextTick(() => {
-            setTimeout(
-              () => this.$nuxt.$loading.finish(),
-              (this.profile = res.data)
-            );
+            setTimeout(() => this.$nuxt.$loading.finish(),(this.profile = res.data));
           });
         });
       // this.profile = res.data;
