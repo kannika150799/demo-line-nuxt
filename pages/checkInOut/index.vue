@@ -72,7 +72,7 @@ export default {
       await axios.get(`https://db-back.herokuapp.com/api/get/check/${this.inOut.userId}`)
         .then((res) => {
           this.$nextTick(() => {
-            setTimeout(() => this.$nuxt.$loading.finish(), 3000);
+            setTimeout(() => this.$nuxt.$loading.finish(), 1000);
           });
           if (res.data == null) {
             console.log("res1", res.data);
