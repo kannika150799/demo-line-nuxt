@@ -32,13 +32,12 @@
 import axios from "axios";
 export default {
   mounted() {
-    liff
-      .init({
-        liffId: "1655743042-JBp6ZRM1",
-      })
-      .then(() => {
+    liff.init({liffId: "1655743042-JBp6ZRM1",}).then(() => {
         if (liff.isLoggedIn()) {
           liff.getProfile().then((profile) => {
+            this.$nextTick(() => {
+              this.$nuxt.$loading.start();
+            });
             this.pf_line.profileImage = profile.pictureUrl;
             this.pf_line.displayName = profile.displayName;
             this.profile.userId = profile.userId;
@@ -68,11 +67,13 @@ export default {
       this.$router.push(`/profile/modify`);
     },
     async makeGetRequest() {
-      let res = await axios.get(
-        `https://db-back.herokuapp.com/api/get/user/${this.profile.userId}`
-      );
-      this.profile = res.data;
-      console.log("get", this.profile);
+      await axios.get(`https://db-back.herokuapp.com/api/get/user/${this.profile.userId}`).then((res) => {
+          this.$nextTick(() => {
+            setTimeout(() => this.$nuxt.$loading.finish(),(this.profile = res.data));
+          });
+        });
+      // this.profile = res.data;
+      // console.log("get", this.profile);
     },
   },
 };
@@ -103,7 +104,8 @@ img {
   font-size: 16px;
   font-weight: 400;
   border-radius: 41px;
-  box-shadow: 3px 4px 13px rgb(17 15 14 / 10%), 3px 4px 13px rgb(168 223 216 / 16%);
+  box-shadow: 3px 4px 13px rgb(17 15 14 / 10%),
+    3px 4px 13px rgb(168 223 216 / 16%);
 }
 .container-input {
   text-align: -webkit-center;
@@ -111,7 +113,8 @@ img {
   background-color: whitesmoke;
   border-radius: 10px;
   padding: 20px;
-  box-shadow: 3px 4px 13px rgb(17 15 14 / 20%), 3px 4px 13px rgb(168 223 216 / 16%);
+  box-shadow: 3px 4px 13px rgb(17 15 14 / 20%),
+    3px 4px 13px rgb(168 223 216 / 16%);
 }
 .box-input {
   display: flex;

@@ -1,8 +1,8 @@
 <template>
-  <div class="container-page-leave">
+  <div v-if="profile.name === ''" class="container-page-leave">
     <p class="text-head">Leave</p>
     <div class="containar-detail">
-      <div  class="containar-title">
+      <div class="containar-title">
         <!-- <p class="text txt-title">Name&nbsp;</p> -->
         <p class="text txt-title">{{ profile.name }}</p>
       </div>
