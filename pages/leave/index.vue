@@ -1,7 +1,7 @@
 <template>
-  <div class="container-page-leave">
+  <div v-if="profile.length > 0" class="container-page-leave">
     <p class="text-head">Leave</p>
-    <div class="containar-detail">
+    <div v-if="profile.length > 0" class="containar-detail">
       <div class="containar-title">
         <!-- <p class="text txt-title">Name&nbsp;</p> -->
         <p class="text txt-title">{{ profile.name }}</p>
@@ -99,9 +99,7 @@ export default {
   },
   methods: {
     async makeGetRequest() {
-      await axios
-        .get(`https://db-back.herokuapp.com/api/get/user/${this.leave.userId}`)
-        .then((res) => {
+      await axios.get(`https://db-back.herokuapp.com/api/get/user/${this.leave.userId}`).then((res) => {
           this.$nextTick(() => {
             setTimeout(() => this.$nuxt.$loading.finish(),(this.profile = res.data));
           });
