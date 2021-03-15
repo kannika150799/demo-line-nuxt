@@ -1,5 +1,5 @@
 <template>
-  <div v-if="profile" class="one-box">
+  <div v-if="profile.name !== ''" class="one-box">
     <div class="profile">
       <!-- <img src="~/assets/IMG.jpg" alt="" /> -->
       <img v-if="profile.profileImage == ''" src="~/assets/IMG.jpg" alt="" />
