@@ -4,6 +4,10 @@
      url(~assets/font/static/Dosis-Medium.ttf) format("truetype");
 }
 /* @font-face {
+    font-family: "Dosis";
+    src: url(/assets/font/Nunito/Nunito-Bold.ttf) format("truetype");
+} */
+/* @font-face {
     font-family: "Nunito";
     src: local("/assets/font/Nunito/Nunito-Bold.ttf"),
      url(~assets/font/static/Nunito-Bold.ttf) format("truetype");
