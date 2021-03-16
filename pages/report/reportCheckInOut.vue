@@ -2,23 +2,44 @@
   <div class="container-page-status">
     <p class="text-head">Report for check-in/out</p>
     <div class="space">
-      <p class="text">เดือน</p>
+      <p class="text">Month</p>
       <div>
         <a-select
           show-search
-          placeholder="เลือกเดือน"
+          placeholder="Select a month"
           option-filter-prop="children"
           style="width: 120px"
           :filter-option="filterOption"
           class="breed_select"
-          @change="handleChange"
+          @change="handleChangeMonth"
         >
-          <a-select-option v-for="author in authors" :key="author">
-            {{ author }}
+          <a-select-option v-for="month in months" :key="month">
+            {{ month }}
           </a-select-option>
         </a-select>
       </div>
     </div>
+
+    <div class="space">
+      <p class="text">Year</p>
+      <div>
+        <a-select
+          show-search
+          placeholder="Select the year"
+          option-filter-prop="children"
+          style="width: 120px"
+          :filter-option="filterOption"
+          class="breed_select"
+          @change="handleChangeYear"
+        >
+          <a-select-option v-for="year in years" :key="year">
+            {{ year }}
+          </a-select-option>
+        </a-select>
+      </div>
+    </div>
+
+    <a-button @click="confirm">Confirm</a-button>
 
     <div class="box-card" v-for="info in infos" :key="info">
       <p>{{ info.info.inout.length > 0 ? info.info.name : '' }}</p>
@@ -38,42 +59,78 @@ import axios from "axios";
 export default {
   data() {
     return {
-      authors: [
-        "ทั้งหมด",
-        "มกราคม",
-        "กุมภาพันธ์",
-        "มีนาคม",
-        "เมษายน",
-        "พฤษภาคม",
-        "มิถุนายน",
-        "กรกฎาคม",
-        "สิงหาคม",
-        "กันยายน",
-        "ตุลาคม",
-        "พฤศจิกายน",
-        "ธันวาคม",
+      months: [
+        "All",
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ],
+      years: [
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025",
       ],
       infos: null,
+      select: {
+        monthValue: "",
+        yearValue: "",
+        allValue: ""
+      }
     };
   },
   mounted() {
-    liff.init({ liffId: "1655736391-Pm5DnWoE" });
+    // liff.init({ liffId: "1655736391-Pm5DnWoE" });
   },
   methods: {
-    handleChange(value) {
-      const res = axios
-        .get(`https://db-back.herokuapp.com/get/user1/${value}`)
-        .then((res) => {
-          this.infos = res.data;
-          console.log("get", this.infos);
-          console.log(`selected ${value}`);
-        });
+    //Month
+    handleChangeMonth(valueM) {
+      this.select.monthValue = valueM
+      console.log(valueM);
+      // axios.get(`https://db-back.herokuapp.com/get/user1/${value}`)
+      //   .then((res) => {
+      //     this.infos = res.data;
+      //     console.log("get", this.infos);
+      //     console.log(`selected ${value}`);
+      //   });
+    },
+    //Year
+    handleChangeYear(valueY) {
+      this.select.yearValue = valueY
+      console.log(valueY);
+      // axios.get(`https://db-back.herokuapp.com/get/user1/${value}`)
+      //   .then((res) => {
+      //     this.infos = res.data;
+      //     console.log("get", this.infos);
+      //     console.log(`selected ${value}`);
+      //   });
     },
     filterOption(input, option) {
       return option.componentOptions.children[0].text
         .toLowerCase()
         .includes(input.toLowerCase());
     },
+    confirm() {
+      this.select.allValue = `${this.select.monthValue}`+"S"+`${this.select.yearValue}`
+      console.log("ttt",this.select.allValue);
+      axios.get(`https://db-back.herokuapp.com/get/user1/${this.select.allValue}`)
+        .then((res) => {
+          this.infos = res.data;
+          // console.log("get", this.infos);
+          // console.log(`selected ${value}`);
+        });
+    }
+    
   },
 };
 </script>
