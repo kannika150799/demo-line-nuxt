@@ -1,12 +1,12 @@
 <template>
-  <div class="container-Check">
-    <p class="date text-date2" v-text="currentDate2"></p>
-    <p class="date" v-text="currentDate"></p>
+  <div class="container-Check bg">
+    <p class="date text-date2" v-text="currentDate"></p>
+    <!-- <p class="date" v-text="currentDate2"></p> -->
     <p class="time" v-text="currentTimeIn"></p>
 
     <a-button
       :disabled="isActiveIn"
-      class="check-button"
+      class="check-button btn1"
       type="primary"
       @click="checkIn"
     >
@@ -14,7 +14,7 @@
     </a-button>
     <a-button
       :disabled="isActiveOut"
-      class="check-button"
+      class="check-button btn2"
       type="danger"
       @click="checkOut"
     >
@@ -45,22 +45,22 @@ export default {
     };
   },
   mounted() {
-    this.$nextTick(() => {
-      this.$nuxt.$loading.start();
-    });
-    liff.init({ liffId: "1655743042-1qqDlBON" }).then(() => {
-      if (liff.isLoggedIn()) {
-        liff.getProfile().then((profile) => {
-          this.inOut.userId = profile.userId;
-          this.isDone();
-        });
-      } else {
-        this.$nextTick(() => {
-          this.$nuxt.$loading.finish();
-        });
-        liff.login();
-      }
-    });
+    // this.$nextTick(() => {
+    //   this.$nuxt.$loading.start();
+    // });
+    // liff.init({ liffId: "1655743042-1qqDlBON" }).then(() => {
+    //   if (liff.isLoggedIn()) {
+    //     liff.getProfile().then((profile) => {
+    //       this.inOut.userId = profile.userId;
+    //       this.isDone();
+    //     });
+    //   } else {
+    //     this.$nextTick(() => {
+    //       this.$nuxt.$loading.finish();
+    //     });
+    //     liff.login();
+    //   }
+    // });
   },
   created() {
     setInterval(() => this.updateCurrentTimeIn(), 1 * 1000);
@@ -69,7 +69,8 @@ export default {
   },
   methods: {
     async isDone() {
-      await axios.get(`https://db-back.herokuapp.com/api/get/check/${this.inOut.userId}`)
+      await axios
+        .get(`https://db-back.herokuapp.com/api/get/check/${this.inOut.userId}`)
         .then((res) => {
           this.$nextTick(() => {
             setTimeout(() => this.$nuxt.$loading.finish(), 1000);
@@ -97,7 +98,7 @@ export default {
       this.currentTime = moment().format("LTS");
     },
     updateCurrentDate() {
-      this.currentDate = moment().format("dddd");
+      this.currentDate = moment().format("dddd MMMM Do YYYY");
       this.currentDate2 = moment().format("MMMM Do YYYY");
       this.currentDateFormat1 = moment().format();
       this.currentDateFormat2 = moment().format("l");
@@ -135,38 +136,56 @@ export default {
 </script>
 
 <style scoped>
+.bg {
+  background: #0f3854;
+    background: radial-gradient(ellipse at center,  #0a2e38  0%, #000000 70%);
+    background-size: 100%;
+}
 .text-date2 {
   margin-top: 20px;
 }
 .container-Check {
   width: 100%;
-  margin-top: 30px;
-  color: #000000;
+  height: 100%;
+  /* margin-top: 30px; */
+  color: #e3e8ec;
   text-align: center;
   text-align: -webkit-center;
   position: absolute;
   left: 50%;
-  top: 30%;
+  top: 50%;
+  padding-top: 30px;
   transform: translate(-50%, -50%);
-  /* text-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0); */
+  text-shadow: 0 0 20px rgb(10 175 230), 0 0 20px rgb(10 175 230 / 0%);
 }
 .date {
+  font-family: Dosis;
   font-size: 30px;
   font-weight: 600;
 }
 .time {
+  font-family: Dosis;
   margin: 0px 0px 60px;
   font-size: 40px;
   font-weight: 600;
 }
 .check-button {
+  font-family: Dosis;
   width: 120px;
   height: 50px;
   margin: 0 10px;
   font-size: 16px;
   font-weight: 600;
   border-radius: 27px;
-  box-shadow: 3px 4px 13px rgb(17 15 14 / 10%),
-    3px 4px 13px rgb(168 223 216 / 16%);
+  border: 2px solid;
+      box-shadow: 3px 4px 13px rgb(255 255 255 / 10%), 3px 4px 13px rgb(168 223 216 / 20%);
+}
+.btn1 {
+  background-color: transparent;
+  color: blue;
+}
+.btn2 {
+  background-color: transparent;
+  color: red;
 }
 </style>

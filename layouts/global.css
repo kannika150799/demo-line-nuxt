@@ -1,0 +1,9 @@
+@font-face {
+    font-family: "Dosis";
+    src: local("/assets/font/static/Dosis-Medium.ttf"),
+     url(~assets/font/static/Dosis-Medium.ttf) format("truetype");
+}
+
+html {
+    font-family: "Dosis";
+}
