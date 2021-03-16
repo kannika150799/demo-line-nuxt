@@ -1,29 +1,61 @@
 <template>
-  <div v-if="profile.name !== ''" class="one-box">
-    <div class="profile">
-      <!-- <img src="~/assets/IMG.jpg" alt="" /> -->
-      <img v-if="profile.profileImage == ''" src="~/assets/IMG.jpg" alt="" />
-      <img v-else :src="profile.profileImage" alt="" />
-      <p class="display-name">{{ profile.displayName }}</p>
+  <div>
+    <div v-if="profile.name !== ''" class="one-box">
+      <!-- <div v-if="profile.name !== ''" class="one-box"> -->
+      <div class="profile">
+        <!-- <img src="~/assets/IMG.jpg" alt="" /> -->
+        <img v-if="profile.profileImage == ''" src="~/assets/IMG.jpg" alt="" />
+        <img v-else :src="profile.profileImage" alt="" />
+        <p class="display-name">{{ profile.displayName }}</p>
+      </div>
+      <div class="container-input">
+        <template>
+          <div class="box-input">
+            <p class="text-input name">Name</p>
+            <a-input placeholder="Full name" v-model="profile.name" />
+          </div>
+          <div class="box-input">
+            <p class="text-input">Nickname&nbsp;</p>
+            <a-input placeholder="Nickname" v-model="profile.nickname" />
+          </div>
+          <div class="box-input">
+            <p class="text-input position">Positions</p>
+            <a-input placeholder="Position" v-model="profile.position" />
+          </div>
+        </template>
+        <a-button class="register-button" type="primary" @click="register">
+          Register
+        </a-button>
+      </div>
     </div>
-    <div class="container-input">
-      <template>
-        <div class="box-input">
-          <p class="text-input name">Name</p>
-          <a-input placeholder="Full name" v-model="profile.name" />
-        </div>
-        <div class="box-input">
-          <p class="text-input">Nickname&nbsp;</p>
-          <a-input placeholder="Nickname" v-model="profile.nickname" />
-        </div>
-        <div class="box-input">
-          <p class="text-input position">Positions</p>
-          <a-input placeholder="Position" v-model="profile.position" />
-        </div>
-      </template>
-      <a-button class="register-button" type="primary" @click="register">
-        Register
-      </a-button>
+
+    <div v-else class="one-box">
+      <!-- <div v-if="profile.name !== ''" class="one-box"> -->
+      <div class="profile">
+        <!-- <img src="~/assets/IMG.jpg" alt="" /> -->
+        <img v-if="profile.profileImage == ''" src="~/assets/IMG.jpg" alt="" />
+        <img v-else :src="profile.profileImage" alt="" />
+        <p class="display-name">{{ profile.displayName }}</p>
+      </div>
+      <div class="container-input">
+        <template>
+          <div class="box-input">
+            <p class="text-input name">Name</p>
+            <a-input placeholder="Full name" v-model="profile.name" />
+          </div>
+          <div class="box-input">
+            <p class="text-input">Nickname&nbsp;</p>
+            <a-input placeholder="Nickname" v-model="profile.nickname" />
+          </div>
+          <div class="box-input">
+            <p class="text-input position">Positions</p>
+            <a-input placeholder="Position" v-model="profile.position" />
+          </div>
+        </template>
+        <a-button class="register-button" type="primary" @click="register">
+          Register
+        </a-button>
+      </div>
     </div>
   </div>
 </template>
@@ -75,7 +107,6 @@ export default {
         )
         .then((res) => {
           // console.log(res.data);
-
           if (res.data != null || res.data != undefined) {
             this.$router.push("/profile/_id");
           } else {
@@ -132,7 +163,8 @@ img {
   background-color: white;
   border-radius: 10px;
   padding: 20px;
-  box-shadow: 3px 4px 13px rgb(182 160 149 / 20%), 3px 4px 13px rgb(168 223 216 / 16%);
+  box-shadow: 3px 4px 13px rgb(182 160 149 / 20%),
+    3px 4px 13px rgb(168 223 216 / 16%);
 }
 .box-input {
   display: flex;
