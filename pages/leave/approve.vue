@@ -20,9 +20,9 @@
           <a-button
             class="approve-button btn2"
             type="danger"
-            @click="disapproval(leave.id)"
+            @click="reject(leave.id)"
           >
-            Disapproval
+            Reject
           </a-button>
         </div>
       </div>
@@ -120,7 +120,7 @@ export default {
       // console.log("status", this.leaves);
       this.putApprove(id);
     },
-    disapproval(id) {
+    reject(id) {
       this.leaves.status = "ไม่อนุมัติ";
       // this.$axios.put(`https://db-back.herokuapp.com/api/updateStatus/${id}`, {status: this.leaves.status});
       this.putApprove(id);

@@ -50,11 +50,11 @@ export default {
   data() {
     return {
       authors: [
+        "2019",
+        "2020",
         "2021",
         "2022",
         "2023",
-        "2024",
-        "2025",
       ],
       infos: null,
     };
