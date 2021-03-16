@@ -2,9 +2,9 @@
   <div v-if="leaves.length > 0" class="container-page-status">
     <p class="text-head">Status</p>
     <div class="box-card" v-for="leave in leaves" :key="leave.userId">
-      <p>หัวข้อการลา: {{ leave.leaveType }}</p>
-      <p>หมายเหตุการลา: {{ leave.reson }}</p>
-      <p>วันที่ลา: {{ leave.dateStart }} - {{ leave.dateEnd }}</p>
+      <p>Leave Topic: {{ leave.leaveType }}</p>
+      <p>Leave Note: {{ leave.reson }}</p>
+      <p>Date: {{ leave.dateStart }} - {{ leave.dateEnd }}</p>
       <p>{{ leave.status }}</p>
     </div>
   </div>

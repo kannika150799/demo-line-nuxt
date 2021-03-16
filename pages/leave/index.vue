@@ -94,7 +94,7 @@ export default {
         dateEnd: "",
         status: "รออนุมัติ",
       },
-      authors: ["ลากิจ", "ลาป่วย", "ลาบวช", "ลาพักร้อน", "ลาคลอด", "อื่นๆ"],
+      authors: ["Personal Leave", "Sick Leave", "Ordination Leave", "Vacation Leave", "Maternity Leave", "Other"],
     };
   },
   methods: {

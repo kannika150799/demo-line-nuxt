@@ -44,10 +44,10 @@
     <div class="box-card" v-for="info in infos" :key="info">
       <p>{{ info.info.inout.length > 0 ? info.info.name : '' }}</p>
       <div class="box-check" v-for="check in info.info.inout" :key="check">
-        <p>วันที่: {{ check.dateGet }}</p>
+        <p>Date: {{ check.dateGet }}</p>
         <div class="space">
-          <p>เข้า: {{ check.timeIn }}&nbsp;</p>
-          <p>&nbsp;ออก: {{ check.timeOut }}</p>
+          <p>In: {{ check.timeIn }}&nbsp;</p>
+          <p>&nbsp;Out: {{ check.timeOut }}</p>
         </div>
       </div>
     </div>

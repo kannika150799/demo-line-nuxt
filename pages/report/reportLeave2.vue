@@ -25,19 +25,19 @@
       <!-- <p>{{ info.info.leave.length > 0 ? info.info.name : "" }}</p> -->
       <p>{{ info.info.name }}</p>
       <div class="box-num-approve">
-        <p>จำนวนการลา(อนุมัติ):&nbsp;</p>
+        <p>Number of leave(Approve):&nbsp;</p>
         <p>{{ info.info.leave.length > 0 ? info.info.numApprove : "0" }}</p>
-        <p>&nbsp;ครั้ง</p>
+        <!-- <p>&nbsp;ครั้ง</p> -->
       </div>
       <div class="box-num-approve">
-        <p>จำนวนการลา(ไม่อนุมัติ):&nbsp;</p>
+        <p>Number of leave(Disapproval):&nbsp;</p>
         <p>{{ info.info.leave.length > 0 ? info.info.numDisapproval : "0" }}</p>
-        <p>&nbsp;ครั้ง</p>
+        <!-- <p>&nbsp;ครั้ง</p> -->
       </div>
       <div class="box-check" v-for="check in info.info.leave" :key="check">
-        <p>หัวข้อการลา: {{ check.leaveType }}</p>
-        <p>วันที่ลา: {{ check.dateStart }} - {{ check.dateEnd }}</p>
-        <p>สถานะ: {{ check.status }}</p>
+        <p>Leave Topic: {{ check.leaveType }}</p>
+        <p>Date: {{ check.dateStart }} - {{ check.dateEnd }}</p>
+        <p>Status: {{ check.status }}</p>
       </div>
     </div>
   </div>
