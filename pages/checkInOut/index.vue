@@ -6,7 +6,7 @@
 
     <a-button
       :disabled="isActiveIn"
-      class="check-button btn1"
+      class="check-button"
       type="primary"
       @click="checkIn"
     >
@@ -14,7 +14,7 @@
     </a-button>
     <a-button
       :disabled="isActiveOut"
-      class="check-button btn2"
+      class="check-button"
       type="danger"
       @click="checkOut"
     >
