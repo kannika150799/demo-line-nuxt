@@ -190,7 +190,9 @@ p {
 }
 .btn1 {
   color: blue;
+  border: 1px solid blue;
 }
+
 .btn2 {
   color: red;
 }

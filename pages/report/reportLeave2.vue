@@ -61,9 +61,9 @@ export default {
   },
   mounted() {
     liff.init({ liffId: "1655736391-Dok3LZo2" });
-    this.$nextTick(() => {
-      this.$nuxt.$loading.start();
-    });
+    // this.$nextTick(() => {
+    //   this.$nuxt.$loading.start();
+    // });
     // this.getData();  
   },
   methods: {
