@@ -23,7 +23,7 @@
 
     <div class="box-card" v-for="info in infos" :key="info">
       <!-- <p>{{ info.info.leave.length > 0 ? info.info.name : "" }}</p> -->
-      <p>{{ info.info.name }}</p>
+      <p style="font-size:18px">{{ info.info.name }}</p>
       <div class="box-num-approve">
         <p>Number of leave(Approve):&nbsp;</p>
         <p>{{ info.info.leave.length > 0 ? info.info.numApprove : "0" }}</p>
@@ -35,7 +35,7 @@
         <!-- <p>&nbsp;ครั้ง</p> -->
       </div>
       <div class="box-check" v-for="check in info.info.leave" :key="check">
-        <p>Leave Topic: {{ check.leaveType }}</p>
+        <p>Topic: {{ check.leaveType }}</p>
         <p>Date: {{ check.dateStart }} - {{ check.dateEnd }}</p>
         <p>Status: {{ check.status }}</p>
       </div>
@@ -60,15 +60,15 @@ export default {
     };
   },
   mounted() {
-    // liff.init({ liffId: "1655736391-Dok3LZo2" });
-    // this.$nextTick(() => {
-    //   this.$nuxt.$loading.start();
-    // });
-    // this.getData();
+    liff.init({ liffId: "1655736391-Dok3LZo2" });
+    this.$nextTick(() => {
+      this.$nuxt.$loading.start();
+    });
+    // this.getData();  
   },
   methods: {
     handleChange(value) {
-      axios .get(`https://db-back.herokuapp.com/report/leave/${value}`)
+      axios.get(`https://db-back.herokuapp.com/report/leave/${value}`)
         .then((res) => {
           this.infos = res.data;
           // console.log("get", this.infos);
@@ -101,30 +101,39 @@ export default {
 
 <style scoped>
 .container-page-status {
+  font-family: Dosis;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 15px;
+  margin: 0px 0px 15px;
 }
 .box-num-approve {
   display: flex;
+  margin-left: 20px;
 }
 .text-head {
-  font-size: 34px;
+  font-size: 28px;
   font-weight: 700;
+  margin-bottom: 20px;
 }
 .box-card {
   /* border: 2px solid navy; */
   padding: 10px;
   /* border-radius: 10px; */
-  box-shadow: 3px 4px 13px rgb(188 229 238 / 20%),
-    3px 4px 13px rgb(168 223 216 / 16%);
-  border-radius: 5px;
-  margin-bottom: 30px;
+  /* box-shadow: 3px 4px 13px rgb(188 229 238 / 20%),
+    3px 4px 13px rgb(168 223 216 / 16%); */
+  /* border-radius: 5px; */
+  margin-bottom: 20px;
   width: 80%;
+  border-bottom: 1px solid black;
 }
 .box-check {
-  margin: 10px;
+  margin:0px 40px;
+  border-top: 1px solid gainsboro;
+}
+.text{
+  font-size: 18px;
+  margin-right: 10px;
 }
 .space {
   display: flex;

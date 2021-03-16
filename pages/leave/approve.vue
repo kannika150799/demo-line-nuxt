@@ -186,7 +186,7 @@ p {
   margin: 0.25em;
 }
 .btn {
-  text-align-last: center;
+  text-align: center;
 }
 .btn1 {
   color: blue;
