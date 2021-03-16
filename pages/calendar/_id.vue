@@ -134,6 +134,9 @@ export default {
 .date-picker {
   margin-right: 40px;
 }
+.select-date {
+  /* display: flex; */
+}
 .ant-input{
   border: 1px solid #d9d9d9;
 }

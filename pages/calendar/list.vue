@@ -75,7 +75,7 @@
 import axios from "axios";
 export default {
   mounted() {
-    // liff.init({liffId: "1655736391-6XYv2JDo"})
+    liff.init({liffId: "1655736391-6XYv2JDo"})
     // .then(() => {
     //   if (liff.isLoggedIn()) {
     //     liff.getProfile().then((profile) => {
@@ -156,7 +156,7 @@ export default {
 
 <style scoped>
 .container-page-calendar {
-  /* font-family: Dosis; */
+  font-family: Dosis;
   /* position: relative; */
   padding: 0px 0px 30px;
   margin: 0px 0px 15px;
