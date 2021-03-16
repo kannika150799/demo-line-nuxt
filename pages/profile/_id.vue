@@ -34,9 +34,9 @@
 import axios from "axios";
 export default {
   mounted() {
-    this.$nextTick(() => {
-      this.$nuxt.$loading.start();
-    });
+    // this.$nextTick(() => {
+    //   this.$nuxt.$loading.start();
+    // });
     liff.init({ liffId: "1655743042-JBp6ZRM1" })
     .then(() => {
       if (liff.isLoggedIn()) {
@@ -76,9 +76,9 @@ export default {
     async makeGetRequest() {
       await axios.get(`https://db-back.herokuapp.com/api/get/user/${this.profile.userId}`)
         .then((res) => {
-          this.$nextTick(() => {
-            this.$nuxt.$loading.finish();
-          });
+          // this.$nextTick(() => {
+          //   this.$nuxt.$loading.finish();
+          // });
           this.profile = res.data;
         });
     },
