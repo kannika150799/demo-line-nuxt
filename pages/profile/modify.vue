@@ -2,9 +2,9 @@
   <div class="one-box">
     <div class="profile">
       <!-- <img src="~/assets/IMG.jpg" alt="" /> -->
-      <img v-if="pf_line.profileImage == ''" src="~/assets/IMG.jpg" alt="" />
+      <img v-if="pf_line.profileImage == ''" src="~/assets/white.jpg" alt="" />
       <img v-else :src="pf_line.profileImage" alt="" />
-      <p class="display-name">{{pf_line.displayName}}</p>
+      <!-- <p class="display-name">{{pf_line.displayName}}</p> -->
     </div>
     <div class="container-input">
       <template>
@@ -89,7 +89,7 @@ export default {
 img {
   width: 25%;
   border-radius: 50%;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 .display-name {
   font-size: 16px;

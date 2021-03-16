@@ -4,9 +4,9 @@
       <!-- <div v-if="profile.name !== ''" class="one-box"> -->
       <div class="profile">
         <!-- <img src="~/assets/IMG.jpg" alt="" /> -->
-        <img v-if="profile.profileImage == ''" src="~/assets/IMG.jpg" alt="" />
+        <img v-if="profile.profileImage == ''" src="~/assets/white.jpg" alt="" />
         <img v-else :src="profile.profileImage" alt="" />
-        <p class="display-name">{{ profile.displayName }}</p>
+        <!-- <p class="display-name">{{ profile.displayName }}</p> -->
       </div>
       <div class="container-input">
         <template>
@@ -101,10 +101,7 @@ export default {
   },
   methods: {
     isDone() {
-      this.$axios
-        .get(
-          `https://db-back.herokuapp.com/api/get/user/${this.profile.userId}`
-        )
+      this.$axios.get(`https://db-back.herokuapp.com/api/get/user/${this.profile.userId}`)
         .then((res) => {
           // console.log(res.data);
           if (res.data != null || res.data != undefined) {
@@ -117,10 +114,7 @@ export default {
         });
     },
     register() {
-      this.$axios.post(
-        "https://db-back.herokuapp.com/api/post/user",
-        this.profile
-      );
+      this.$axios.post("https://db-back.herokuapp.com/api/post/user",this.profile);
       this.$router.push(`/profile/${this.profile.userId}`);
       console.log(this.profile);
     },
@@ -139,7 +133,7 @@ export default {
 img {
   width: 25%;
   border-radius: 50%;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 .display-name {
   font-size: 16px;

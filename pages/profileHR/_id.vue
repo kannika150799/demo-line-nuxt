@@ -1,10 +1,10 @@
 <template>
-  <div v-if="pf_line" class="one-box">
+  <div v-if="profile" class="one-box">
     <div class="profile">
       <!-- <img src="~/assets/IMG.jpg" alt="" /> -->
-      <img v-if="pf_line.profileImage == ''" src="~/assets/IMG.jpg" alt="" />
+      <img v-if="pf_line.profileImage == ''" src="~/assets/white.jpg" alt="" />
       <img v-else :src="pf_line.profileImage" alt="" />
-      <p class="display-name">{{ pf_line.displayName }}</p>
+      <!-- <p class="display-name">{{ pf_line.displayName }}</p> -->
     </div>
     <div v-if="profile" class="container-input">
       <template>
@@ -25,6 +25,7 @@
         Edit
       </a-button>
     </div>
+    <div v-else>hiooo</div>
   </div>
 </template>
 
@@ -32,9 +33,9 @@
 import axios from "axios";
 export default {
   mounted() {
-    this.$nextTick(() => {
-      this.$nuxt.$loading.start();
-    });
+    // this.$nextTick(() => {
+    //   this.$nuxt.$loading.start();
+    // });
     liff.init({ liffId: "1655736391-enZgDWla" }).then(() => {
       if (liff.isLoggedIn()) {
         liff.getProfile().then((profile) => {
@@ -44,9 +45,9 @@ export default {
           this.makeGetRequest();
         });
       } else {
-        this.$nextTick(() => {
-          this.$nuxt.$loading.finish();
-        });
+        // this.$nextTick(() => {
+        //   this.$nuxt.$loading.finish();
+        // });
         liff.login();
       }
     });
@@ -72,9 +73,9 @@ export default {
     async makeGetRequest() {
       await axios.get(`https://db-back.herokuapp.com/api/get/user/${this.profile.userId}`)
         .then((res) => {
-          this.$nextTick(() => {
-            this.$nuxt.$loading.finish();
-          });
+          // this.$nextTick(() => {
+          //   this.$nuxt.$loading.finish();
+          // });
           this.profile = res.data;
         });
       // this.profile = res.data;
@@ -95,7 +96,7 @@ export default {
 img {
   width: 25%;
   border-radius: 50%;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 .display-name {
   font-size: 16px;

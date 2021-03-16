@@ -1,29 +1,61 @@
 <template>
-  <div v-if="profile.name !== ''" class="one-box">
-    <div class="profile">
-      <!-- <img src="~/assets/IMG.jpg" alt="" /> -->
-      <img v-if="profile.profileImage == ''" src="~/assets/IMG.jpg" alt="" />
-      <img v-else :src="profile.profileImage" alt="" />
-      <p class="display-name">{{ profile.displayName }}</p>
+  <div>
+    <div v-if="profile.name !== ''" class="one-box">
+      <!-- <div v-if="profile.name !== ''" class="one-box"> -->
+      <div class="profile">
+        <!-- <img src="~/assets/IMG.jpg" alt="" /> -->
+        <img v-if="profile.profileImage == ''" src="~/assets/white.jpg" alt="" />
+        <img v-else :src="profile.profileImage" alt="" />
+        <!-- <p class="display-name">{{ profile.displayName }}</p> -->
+      </div>
+      <div class="container-input">
+        <template>
+          <div class="box-input">
+            <p class="text-input name">Name</p>
+            <a-input placeholder="Full name" v-model="profile.name" />
+          </div>
+          <div class="box-input">
+            <p class="text-input">Nickname&nbsp;</p>
+            <a-input placeholder="Nickname" v-model="profile.nickname" />
+          </div>
+          <div class="box-input">
+            <p class="text-input position">Positions</p>
+            <a-input placeholder="Position" v-model="profile.position" />
+          </div>
+        </template>
+        <a-button class="register-button" type="primary" @click="register">
+          Register
+        </a-button>
+      </div>
     </div>
-    <div class="container-input">
-      <template>
-        <div class="box-input">
-          <p class="text-input name">Name</p>
-          <a-input placeholder="Full name" v-model="profile.name" />
-        </div>
-        <div class="box-input">
-          <p class="text-input">Nickname&nbsp;</p>
-          <a-input placeholder="Nickname" v-model="profile.nickname" />
-        </div>
-        <div class="box-input">
-          <p class="text-input position">Position</p>
-          <a-input placeholder="Position" v-model="profile.position" />
-        </div>
-      </template>
-      <a-button class="register-button" type="primary" @click="register">
-        Register
-      </a-button>
+
+    <div v-else class="one-box">
+      <!-- <div v-if="profile.name !== ''" class="one-box"> -->
+      <div class="profile">
+        <!-- <img src="~/assets/IMG.jpg" alt="" /> -->
+        <img v-if="profile.profileImage == ''" src="~/assets/IMG.jpg" alt="" />
+        <img v-else :src="profile.profileImage" alt="" />
+        <p class="display-name">{{ profile.displayName }}</p>
+      </div>
+      <div class="container-input">
+        <template>
+          <div class="box-input">
+            <p class="text-input name">Name</p>
+            <a-input placeholder="Full name" v-model="profile.name" />
+          </div>
+          <div class="box-input">
+            <p class="text-input">Nickname&nbsp;</p>
+            <a-input placeholder="Nickname" v-model="profile.nickname" />
+          </div>
+          <div class="box-input">
+            <p class="text-input position">Positions</p>
+            <a-input placeholder="Position" v-model="profile.position" />
+          </div>
+        </template>
+        <a-button class="register-button" type="primary" @click="register">
+          Register
+        </a-button>
+      </div>
     </div>
   </div>
 </template>
@@ -69,7 +101,7 @@ export default {
     isDone() {
       this.$axios.get(`https://db-back.herokuapp.com/api/get/user/${this.profile.userId}`)
         .then((res) => {
-          if (res.data != null) {
+          if (res.data != null || res.data != undefined) {
             this.$router.push("/profileHR/_id");
           } else {
             this.$nextTick(() => {
@@ -79,10 +111,7 @@ export default {
         });
     },
     register() {
-      this.$axios.post(
-        "https://db-back.herokuapp.com/api/post/user/hr",
-        this.profile
-      );
+      this.$axios.post("https://db-back.herokuapp.com/api/post/user/hr",this.profile);
       this.$router.push(`/profileHR/${this.profile.userId}`);
       console.log(this.profile);
     },
@@ -101,7 +130,7 @@ export default {
 img {
   width: 25%;
   border-radius: 50%;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 .display-name {
   font-size: 16px;
