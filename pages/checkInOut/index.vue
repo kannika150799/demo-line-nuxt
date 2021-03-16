@@ -137,8 +137,8 @@ export default {
 
 <style scoped>
 .bg {
-  background: #0f3854;
-    background: radial-gradient(ellipse at center,  #0a2e38  0%, #000000 70%);
+  /* background: lavender;; */
+    /* background: radial-gradient(ellipse at center,  #0a2e38  0%, #000000 70%); */
     background-size: 100%;
 }
 .text-date2 {
@@ -148,7 +148,7 @@ export default {
   width: 100%;
   height: 100%;
   /* margin-top: 30px; */
-  color: #e3e8ec;
+  color: #020202;
   text-align: center;
   text-align: -webkit-center;
   position: absolute;
@@ -156,7 +156,7 @@ export default {
   top: 50%;
   padding-top: 30px;
   transform: translate(-50%, -50%);
-  text-shadow: 0 0 20px rgb(10 175 230), 0 0 20px rgb(10 175 230 / 0%);
+  /* text-shadow: 0 0 20px rgb(10 175 230), 0 0 20px rgb(10 175 230 / 0%); */
 }
 .date {
   font-family: Dosis;

@@ -59,28 +59,29 @@ export default {
 
 <style scoped>
 .container {
+  font-family: Dosis;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 .text-head {
-  font-size: 34px;
+  font-size: 28px;
   font-weight: 700;
-  margin: 10px 0px 30px;
+  margin: 0px 0px 20px;
 }
 .container-activity {
-  width: 300px;
+  width: 75%;
   font-size: 18px;
   padding: 20px 0px;
-  background-color: whitesmoke;
+  background-color: white;
   border-radius: 10px;
-  margin-bottom: 30px;
-  box-shadow: 3px 4px 13px rgb(17 15 14 / 20%),
+  margin-bottom: 20px;
+  box-shadow: 3px 4px 13px rgb(17 15 14 / 5%),
     3px 4px 13px rgb(168 223 216 / 16%);
 }
 .activity {
   text-align: center;
-  font-size: 30px;
+  font-size: 18px;
   margin: 0px;
 }
 .date-activity {

@@ -1,9 +1,10 @@
 <template>
-  <div v-if="leaves.length > 0" class="container-page-status">
+  <div class="container-page-status">
+    <!-- <div v-if="leaves.length > 0" class="container-page-status"> -->
     <p class="text-head">Status</p>
     <div class="box-card" v-for="leave in leaves" :key="leave.userId">
-      <p>Leave Topic: {{ leave.leaveType }}</p>
-      <p>Leave Note: {{ leave.reson }}</p>
+      <p>Topic: {{ leave.leaveType }}</p>
+      <p>Note: {{ leave.reson }}</p>
       <p>Date: {{ leave.dateStart }} - {{ leave.dateEnd }}</p>
       <p>{{ leave.status }}</p>
     </div>
@@ -14,12 +15,12 @@
 import axios from "axios";
 export default {
   mounted() {
+    this.$nextTick(() => {
+      this.$nuxt.$loading.start();
+    });
     liff.init({ liffId: "1655743042-do9lERxa" }).then(() => {
       if (liff.isLoggedIn()) {
         liff.getProfile().then((profile) => {
-          this.$nextTick(() => {
-            this.$nuxt.$loading.start();
-          });
           this.leaves.userId = profile.userId;
           this.getData();
         });
@@ -45,9 +46,16 @@ export default {
   },
   methods: {
     async getData() {
-      await axios.get(`https://db-back.herokuapp.com/api/get/leaveByUser/${this.leaves.userId}`).then((res) => {
+      await axios
+        .get(
+          `https://db-back.herokuapp.com/api/get/leaveByUser/${this.leaves.userId}`
+        )
+        .then((res) => {
           this.$nextTick(() => {
-            setTimeout(() => this.$nuxt.$loading.finish(),(this.leaves = res.data));
+            setTimeout(
+              () => this.$nuxt.$loading.finish(),
+              (this.leaves = res.data)
+            );
           });
         });
       // this.leaves = res.data;
@@ -59,13 +67,15 @@ export default {
 
 <style scoped>
 .container-page-status {
+  font-family: Dosis;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 15px;
+  /* margin-top: 15px; */
 }
 .text-head {
-  font-size: 34px;
+  margin: 0px 0px 20px;
+  font-size: 28px;
   font-weight: 600;
 }
 .box-card {
@@ -73,12 +83,15 @@ export default {
   padding: 10px;
   border-radius: 10px;
   margin-bottom: 15px; */
-  background-color: whitesmoke;
-  padding: 20px;
+  background-color: white;
+  padding: 10px;
   border-radius: 10px;
-  box-shadow: 3px 4px 13px rgb(17 15 14 / 20%),
+  box-shadow: 3px 4px 13px rgb(42 90 90 / 20%),
     3px 4px 13px rgb(168 223 216 / 16%);
-  width: 70%;
-  margin-bottom: 30px;
+  width: 75%;
+  margin-bottom: 20px;
+}
+p {
+  font-size: 16px;
 }
 </style>

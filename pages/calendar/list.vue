@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container-page-calendar container">
+    <div class="container-page-calendar container css1">
       <p class="text-head">Setting Calendar</p>
       <div class="container-input">
         <template>
@@ -15,7 +15,7 @@
           </div>
         </template>
 
-        <div>
+        <div class="box-input">
           <p class="text-input">Date</p>
           <div class="select-date inputx">
             <a-date-picker
@@ -31,7 +31,7 @@
       </div>
     </div>
 
-    <div class="container">
+    <div class="container css2">
       <!-- <p class="text-head">Special days</p> -->
       <div
         class="container container-activity"
@@ -129,7 +129,10 @@ export default {
         .get("https://db-back.herokuapp.com/api/get/calendar")
         .then((res) => {
           this.$nextTick(() => {
-            setTimeout(() => this.$nuxt.$loading.finish(),(this.calendars = res.data));
+            setTimeout(
+              () => this.$nuxt.$loading.finish(),
+              (this.calendars = res.data)
+            );
           });
         });
       // console.log("get", this.calendars);
@@ -153,42 +156,47 @@ export default {
 
 <style scoped>
 .container-page-calendar {
+  font-family: Dosis;
+  /* position: relative; */
   padding: 0px 0px 30px;
   margin: 0px 0px 15px;
   /* border-bottom: 1px solid black; */
 }
 .container-input {
+  /* font-family: Dosis; */
+  /* position: relative; */
+  /* position: fixed; */
   display: flex;
   flex-direction: column;
-  width: 80%;
-  padding: 20px;
-  box-shadow: 3px 4px 13px rgb(17 15 14 / 20%),
+  width: 100%;
+  padding: 20px 30px;
+  background-color: white;
+  box-shadow: 0px 0px 0px rgb(17 15 14 / 20%),
     3px 4px 13px rgb(168 223 216 / 16%);
   border-radius: 5px;
 }
 .text-head {
-  font-size: 34px;
+  font-size: 28px;
   font-weight: 700;
-  color: #1e2a78;
+  color: #040408;
   width: 100%;
-  background-color: whitesmoke;
-  height: 110px;
-  /* margin: 0px; */
+  background-color: white;
+  /* height: 110px; */
+  margin: 0px;
   text-align: center;
-  padding: 25px;
-  box-shadow: 0px 4px 0px rgb(17 15 14 / 16%),
-    3px 4px 13px rgb(168 223 216 / 16%);
+  /* padding: 25px; */  
+  /* box-shadow: 0px 4px 0px rgb(17 15 14 / 16%), 3px 4px 13px rgb(168 223 216 / 16%);*/
 }
 .box-input {
-  /* display: flex; */
-  margin-bottom: 15px;
+  display: flex;
+  margin-bottom: 16px;
   /* width: 300px; */
 }
 .input {
-  /* margin-left: 10px; */
+  margin-left: 15px;
   resize: none;
-  /* width: 185px; */
-  /* height: 50px; */
+  width: 230px;
+  height: 32px;
 }
 .ant-input {
   /* border: 1px solid #1e2a78; */
@@ -198,11 +206,12 @@ export default {
 }
 .text-input {
   margin: 0px 0px 5px;
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 600;
   align-self: center;
 }
 .select-date {
+  margin-left: 20px;
   /* display: flex; */
   /* flex-direction: column; */
   /* text-align: center; */
@@ -217,7 +226,7 @@ export default {
 } */
 .add-button {
   align-self: center;
-  margin: 40px 0px 0px;
+  margin: 5px 0px;
   color: aliceblue;
   background-color: rgb(45, 209, 146);
   border-color: transparent;
@@ -247,6 +256,7 @@ export default {
 
 /* show list */
 .container {
+  font-family: Dosis;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -256,22 +266,32 @@ export default {
   font-weight: 600;
 } */
 .container-activity {
+  /* position: relative; */
   width: 80%;
   font-size: 18px;
-  padding: 20px 0px;
+  padding: 10px 0px;
   /* border-bottom: 1px solid rgb(170, 168, 168); */
-  box-shadow: 3px 4px 13px rgb(17 15 14 / 16%),
-    3px 4px 13px rgb(168 223 216 / 16%);
+  box-shadow: 3px 4px 13px rgb(17 15 14 / 10%),
+    3px 4px 13px rgb(168 223 216 / 10%);
   border-radius: 5px;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 .activity {
   text-align: center;
-  font-size: 30px;
+  /* font-size: 18px; */
   margin: 0px;
 }
 /* .list-button {
   width: 100px;
   height: 44px;
 } */
+.css1 {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+}
+.css2 {
+  position: relative;
+  top: 250px;
+}
 </style>

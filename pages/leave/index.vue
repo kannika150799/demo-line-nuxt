@@ -1,5 +1,6 @@
 <template>
   <div v-if="profile.name !== ''" class="container-page-leave">
+    <!-- <div v-if="profile.name !== ''" class="container-page-leave"> -->
     <p class="text-head">Leave</p>
     <div class="containar-detail">
       <div class="containar-title">
@@ -7,13 +8,13 @@
         <p class="text txt-title">{{ profile.name }}</p>
       </div>
       <div class="container-head">
-        <p class="text-leave text">Leave Topic</p>
+        <p class="text-leave text">Topic</p>
         <div>
           <a-select
             show-search
-            placeholder="Leave topic"
+            placeholder="topic"
             option-filter-prop="children"
-            style="width: 120px"
+            style="width: 95%"
             :filter-option="filterOption"
             class="breed_select"
             @change="handleChange"
@@ -25,10 +26,10 @@
         </div>
       </div>
       <div>
-        <p class="text">Leave Note</p>
+        <p class="text">Note</p>
         <template>
           <a-textarea
-            placeholder="Leave Note"
+            placeholder="Note"
             :rows="2"
             class="textarea"
             v-model="leave.reson"
@@ -36,7 +37,7 @@
         </template>
       </div>
       <div class="container-date">
-        <p class="text-leave text">Leave Date</p>
+        <p class="text-leave text">Date</p>
         <div class="date-leave">
           <div class="container-date box-date">
             <a-date-picker format="DD/MM/YYYY" @change="onChangeStart" />
@@ -69,14 +70,6 @@ export default {
       } else {
         liff.login();
       }
-      // if (liff.isLoggedIn()) {
-      //   liff.getProfile().then((profile) => {
-      //     this.leave.userId = profile.userId;
-      //     this.makeGetRequest();
-      //   });
-      // } else {
-      //   liff.login();
-      // }
     });
   },
   data() {
@@ -94,14 +87,26 @@ export default {
         dateEnd: "",
         status: "รออนุมัติ",
       },
-      authors: ["Personal Leave", "Sick Leave", "Ordination Leave", "Vacation Leave", "Maternity Leave", "Other"],
+      authors: [
+        "Personal Leave",
+        "Sick Leave",
+        "Ordination Leave",
+        "Vacation Leave",
+        "Maternity Leave",
+        "Other",
+      ],
     };
   },
   methods: {
     async makeGetRequest() {
-      await axios.get(`https://db-back.herokuapp.com/api/get/user/${this.leave.userId}`).then((res) => {
+      await axios
+        .get(`https://db-back.herokuapp.com/api/get/user/${this.leave.userId}`)
+        .then((res) => {
           this.$nextTick(() => {
-            setTimeout(() => this.$nuxt.$loading.finish(),(this.profile = res.data));
+            setTimeout(
+              () => this.$nuxt.$loading.finish(),
+              (this.profile = res.data)
+            );
           });
         });
       // this.profile = res.data;
@@ -143,29 +148,32 @@ export default {
 
 <style scoped>
 .container-page-leave {
+  /* font-family: Dosis; */
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 15px;
+  /* margin-top: 15px; */
   font-family: inherit;
 }
 .containar-detail {
-  width: 280px;
-  padding: 20px 20px 35px;
-  background-color: whitesmoke;
+  font-family: Dosis;
+  width: 80%;
+  padding: 20px 20px 20px 30px;
+  background-color: white;
   border-radius: 10px;
-  box-shadow: 3px 4px 13px rgb(17 15 14 / 20%),
+  box-shadow: 3px 4px 13px rgb(128 153 156 / 20%),
     3px 4px 13px rgb(168 223 216 / 16%);
 }
 .ant-calendar-picker-input {
-  width: 240px;
+  width: 100%;
   margin-bottom: 20px;
 }
 .containar-title {
   display: flex;
 }
 .text-head {
-  font-size: 34px;
+  font-family: Dosis;
+  font-size: 28px;
   font-weight: 700;
 }
 /* .container-head {
@@ -183,20 +191,21 @@ export default {
   /* margin: 0px 5px 20px 0px; */
 }
 .ant-select-selection--single {
-  width: 138px;
+  width: 92%;
 }
 .textarea {
-  margin: 5px 0px 20px;
-  width: 240px;
+  /* margin: 5px 0px 5px; */
+  width: 95%;
   resize: none;
 }
 .send-button {
-  width: 100px;
+  font-family: Dosis;
+  width: 120px;
   height: 44px;
   font-size: 18px;
   font-weight: 600;
-  margin-top: 40px;
-  border-radius: 25px;
+  margin-top: 30px;
+  border-radius: 10px;
   box-shadow: 3px 4px 13px rgb(17 15 14 / 5%),
     3px 4px 13px rgb(168 223 216 / 16%);
 }
@@ -208,6 +217,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin: 0px 20px;
 }
 .span {
   margin: 5px 0px 5px;

@@ -10,9 +10,12 @@
               <p class="text-input text-show" style="color:red">*&nbsp;{{calendars.activity}}</p>
               <!-- <p>{{calendars.dateActivity}}</p> -->
             </div>
-            <!-- <a-textarea class="input" placeholder="Topic" v-model="calendar.activity">{{calendars.activity}}</a-textarea> -->
-            <a-input class="input">{{calendars.activity}}</a-input>
-            <!-- <a-input v-model="profile.nickname" >{{ profile.Nickname }}</a-input> -->
+            <a-textarea
+              class="input"
+              placeholder="Topic"
+              v-model="calendar.activity"
+            />
+            <!-- <a-input v-model="calendar.activity" >{{ calendars.activity }}</a-input> -->
           </div>
       </template>
       <div class="select-date">
@@ -25,7 +28,7 @@
           <a-date-picker format="DD/MM/YYYY" @change="onChange" />
         </div>
       </div>
-      <div>
+      <div class="btn-center">
         <a-button class="button btnconf" type="primary" @click="confirmCalendar">
           <img src="~/assets/6272187461582545599-16.png" alt="" 
           style="margin-right:10px"
@@ -94,15 +97,17 @@ export default {
 
 <style scoped>
 .container-page-calendar {
+  font-family: Dosis;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 30px;
+  /* margin:0px 30px; */
 }
 .text-head {
-  font-size: 34px;
+  font-size: 28px;
   font-weight: 700;
-  color: #1e2a78;
+  margin-bottom: 15px;
+  color: #000;
 }
 .box-input {
   /* display: flex; */
@@ -133,10 +138,10 @@ export default {
   /* display: flex; */
 }
 .ant-input{
-  border: 1px solid #1e2a78;
+  border: 1px solid #d9d9d9;
 }
 .button {
-  margin-top: 40px;
+  margin-top: 30px;
   height: 44px;
   width: 120px;
   font-size: 16px;
@@ -156,5 +161,11 @@ background-color: transparent;
   /* border-color: transparent; */
   border-radius: 10px;
 
+}
+.container-input{
+  width: 75%;
+}
+.btn-center{
+  text-align: center;
 }
 </style>

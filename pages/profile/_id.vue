@@ -88,6 +88,7 @@ export default {
 
 <style scoped>
 .one-box {
+  font-family: Dosis;
   text-align: -webkit-center;
 }
 .profile {
@@ -116,12 +117,11 @@ img {
 }
 .container-input {
   text-align: -webkit-center;
-  width: 280px;
-  background-color: whitesmoke;
+  width: 75%;
+  background-color: white;
   border-radius: 10px;
   padding: 20px;
-  box-shadow: 3px 4px 13px rgb(17 15 14 / 20%),
-    3px 4px 13px rgb(168 223 216 / 16%);
+  box-shadow: 3px 4px 13px rgb(182 160 149 / 20%), 3px 4px 13px rgb(168 223 216 / 16%);
 }
 .box-input {
   display: flex;
