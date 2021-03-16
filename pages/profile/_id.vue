@@ -1,5 +1,5 @@
 <template>
-  <div v-if="pf_line" class="one-box">
+  <div v-if="profile" class="one-box">
     <div class="profile">
       <!-- <img src="~/assets/IMG.jpg" alt="" /> -->
       <img v-if="pf_line.profileImage == ''" src="~/assets/IMG.jpg" alt="" />
