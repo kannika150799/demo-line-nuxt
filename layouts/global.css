@@ -1,7 +1,7 @@
 @font-face {
     font-family: "Dosis";
-    src: local("/assets/font/static/Dosis-Medium.ttf"),
-     url(~assets/font/static/Dosis-Medium.ttf) format("truetype");
+    src: local("/assets/font/Nunito/Nunito-Bold.ttf"),
+     url(~assets/font/Nunito/Nunito-Bold.ttf) format("truetype");
 }
 /* @font-face {
     font-family: "Nunito";
