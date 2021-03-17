@@ -62,17 +62,17 @@ export default {
   },
   data() {
     return {
-      leaves: null,
-      // leaves: {
-      //   userId: "",
-      //   leaveType: "",
-      //   reson: "",
-      //   startValue: "",
-      //   endValue: "",
-      //   dateStart: "",
-      //   dateEnd: "",
-      //   status: "",
-      // },
+      // leaves: null,
+      leaves: {
+        userId: "",
+        leaveType: "",
+        reson: "",
+        startValue: "",
+        endValue: "",
+        dateStart: "",
+        dateEnd: "",
+        status: "",
+      },
     };
   },
   methods: {
