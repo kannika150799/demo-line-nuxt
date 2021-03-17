@@ -43,16 +43,20 @@
     <a-button class="x2" @click="confirm" type="primary">Search</a-button>
 
     <div class="box-card" v-for="info in infos" :key="info">
-      <p style="font-size: 18px">
-        {{ info.info.inout.length > 0 ? info.info.name : "" }}
-      </p>
-      <div class="box-check" v-for="check in info.info.inout" :key="check">
-        <p>Date: {{ check.dateGet }}</p>
-        <div class="space">
-          <p style="margin-left: 20px">In: {{ check.timeIn }}&nbsp;</p>
-          <p>&nbsp;Out: {{ check.timeOut }}</p>
+      <button v-on:click="isHidden = !isHidden">
+        <p style="font-size: 18px">
+          {{ info.info.inout.length > 0 ? info.info.name : "" }}
+        </p>
+      </button>
+      <button v-if="!isHidden">
+        <div class="box-check" v-for="check in info.info.inout" :key="check">
+          <p>Date: {{ check.dateGet }}</p>
+          <div class="space">
+            <p style="margin-left: 20px">In: {{ check.timeIn }}&nbsp;</p>
+            <p>&nbsp;Out: {{ check.timeOut }}</p>
+          </div>
         </div>
-      </div>
+      </button>
     </div>
   </div>
 </template>
@@ -62,6 +66,7 @@ import axios from "axios";
 export default {
   data() {
     return {
+      isHidden: false,
       months: [
         "All",
         "January",
@@ -77,7 +82,7 @@ export default {
         "November",
         "December",
       ],
-      years: ["2021", "2022", "2023", "2024", "2025"],
+      years: ["2017", "2018", "2019", "2020", "2021"],
       infos: null,
       select: {
         monthValue: "",
@@ -119,8 +124,8 @@ export default {
     },
     confirm() {
       this.select.allValue =
-        `${this.select.monthValue}` + "|" + `${this.select.yearValue}`;
-      console.log("ttt", this.select.allValue);
+        `${this.select.monthValue}` + "ABCDE" + `${this.select.yearValue}`;
+      // console.log("ttt", this.select.allValue);
       axios
         .get(`https://db-back.herokuapp.com/get/user1/${this.select.allValue}`)
         .then((res) => {

@@ -1,12 +1,43 @@
 <template>
-  <div class="container-page-status">
-    <!-- <div v-if="leaves.length > 0" class="container-page-status"> -->
-    <p class="text-head">Status</p>
-    <div class="box-card" v-for="leave in leaves" :key="leave.userId">
-      <p>Topic: {{ leave.leaveType }}</p>
-      <p>Note: {{ leave.reson }}</p>
-      <p>Date: {{ leave.dateStart }} - {{ leave.dateEnd }}</p>
-      <p>{{ leave.status }}</p>
+  <div class="one">
+    <div class="box">
+      <a-tabs default-active-key="1">
+        <a-tab-pane key="1" tab="Wait">
+          <div v-for="leave in leaves" :key="leave.id">
+            <div v-for="pass in leave.info.wait" :key="pass.id">
+              <div class="box-detail">
+                <p>Topic : {{ pass.leaveType }}</p>
+                <p>Note : {{ pass.reson }}</p>
+                <p>Date : {{ pass.dateStart }} - {{ pass.dateEnd }}</p>
+              </div>
+            </div>
+          </div>
+        </a-tab-pane>
+
+        <a-tab-pane key="2" tab="Approve" force-render>
+          <div v-for="leave in leaves" :key="leave.id">
+            <div v-for="pass in leave.info.yes" :key="pass.id">
+              <div class="box-detail">
+                <p>Topic : {{ pass.leaveType }}</p>
+                <p>Note : {{ pass.reson }}</p>
+                <p>Date : {{ pass.dateStart }} - {{ pass.dateEnd }}</p>
+              </div>
+            </div>
+          </div>
+        </a-tab-pane>
+
+        <a-tab-pane key="3" tab="Reject">
+          <div v-for="leave in leaves" :key="leave.id">
+            <div v-for="pass in leave.info.no" :key="pass.id">
+              <div class="box-detail">
+                <p>Topic : {{ pass.leaveType }}</p>
+                <p>Note : {{ pass.reson }}</p>
+                <p>Date : {{ pass.dateStart }} - {{ pass.dateEnd }}</p>
+              </div>
+            </div>
+          </div>
+        </a-tab-pane>
+      </a-tabs>
     </div>
   </div>
 </template>
@@ -31,17 +62,17 @@ export default {
   },
   data() {
     return {
-      // leaves: null
-      leaves: {
-        userId: "",
-        leaveType: "",
-        reson: "",
-        startValue: "",
-        endValue: "",
-        dateStart: "",
-        dateEnd: "",
-        status: "",
-      },
+      leaves: null,
+      // leaves: {
+      //   userId: "",
+      //   leaveType: "",
+      //   reson: "",
+      //   startValue: "",
+      //   endValue: "",
+      //   dateStart: "",
+      //   dateEnd: "",
+      //   status: "",
+      // },
     };
   },
   methods: {
@@ -66,6 +97,26 @@ export default {
 </script>
 
 <style scoped>
+.one {
+  display: flex;
+  justify-content: center;
+}
+.box {
+  width: 280px;
+}
+.ant-tabs-nav-scroll {
+  overflow: auto;
+  white-space: initial;
+  display: flex;
+  justify-content: space-evenly;
+  /* width: 8px; */
+}
+.box-detail {
+  border-bottom: 1px solid lightblue;
+  margin-bottom: 10px;
+  padding-left: 20px;
+}
+
 .container-page-status {
   /* font-family: Dosis; */
   display: flex;

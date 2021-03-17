@@ -5,7 +5,7 @@
     <p class="time" v-text="currentTimeIn"></p>
 
     <a-button
-      :block="isActiveIn"
+      :disabled="isActiveIn"
       class="check-button"
       type="primary"
       @click="checkIn"
@@ -13,7 +13,7 @@
       Check in
     </a-button>
     <a-button
-      :block="isActiveOut"
+      :disabled="isActiveOut"
       class="check-button"
       type="danger"
       @click="checkOut"
@@ -48,8 +48,7 @@ export default {
     this.$nextTick(() => {
       this.$nuxt.$loading.start();
     });
-    liff.init({ liffId: "1655743042-1qqDlBON" })
-    .then(() => {
+    liff.init({ liffId: "1655743042-1qqDlBON" }).then(() => {
       if (liff.isLoggedIn()) {
         liff.getProfile().then((profile) => {
           this.inOut.userId = profile.userId;

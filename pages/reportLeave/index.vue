@@ -24,7 +24,7 @@
     </div>
 
     <div class="box-card" v-for="info in infos" :key="info">
-      <div @click="boxName(info.info.name, author)">
+      <div @click="boxName(info.info.userId, author)">
         <!-- <p>{{ info.info.leave.length > 0 ? info.info.name : "" }}</p> -->
         <p style="font-size: 18px">{{ info.info.name }}</p>
         <div class="box-num-approve">
@@ -55,7 +55,7 @@ import axios from "axios";
 export default {
   data() {
     return {
-      authors: ["2019", "2020", "2021", "2022", "2023"],
+      authors: ["2017", "2018", "2019", "2020", "2021"],
       infos: null,
       select: ""
     };
@@ -87,7 +87,7 @@ export default {
       console.log("select", this.select);
     },
     boxName(name) {
-      let deteil = `${this.select}` + "|" + name
+      let deteil = `${this.select}` + "ABCDE" + name
       console.log(deteil);
       this.$router.push(`reportLeave/${deteil}`);
     },
