@@ -1,7 +1,7 @@
 @font-face {
     font-family: "Dosis";
-    src: local("/assets/font/Balsamiq_Sans/BalsamiqSans-Regular.ttf"),
-     url(~assets/font/Balsamiq_Sans/BalsamiqSans-Regular.ttf) format("truetype");
+    src: local("/assets/font/M_PLUS_Rounded_1c/MPLUSRounded1c-Medium.ttf"),
+     url(~assets/font/M_PLUS_Rounded_1c/MPLUSRounded1c-Medium.ttf) format("truetype");
 }
 /* @font-face {
     font-family: "Nunito";

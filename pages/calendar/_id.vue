@@ -7,15 +7,15 @@
         <div class="box-input">
             <p class="text-input">Topic</p>
             <div class="select-date"> 
-              <p class="text-input text-show" style="color:red">*&nbsp;{{calendars.activity}}</p>
+              <!-- <p class="text-input text-show" style="color:red">*&nbsp;{{calendars.activity}}</p> -->
               <!-- <p>{{calendars.dateActivity}}</p> -->
             </div>
-            <a-textarea
+            <!-- <a-textarea
               class="input"
               placeholder="Topic"
               v-model="calendar.activity"
-            />
-            <!-- <a-input v-model="calendar.activity" >{{ calendars.activity }}</a-input> -->
+            /> -->
+            <a-input v-model="calendars.activity" >{{ calendars.activity }}</a-input>
           </div>
       </template>
       <div class="select-date">
@@ -25,7 +25,12 @@
         <!-- <p>{{calendars.dateActivity}}</p> -->
       </div>
         <div class="date-picker">
-          <a-date-picker format="DD/MM/YYYY" @change="onChange" />
+          <a-date-picker 
+          :value="moment(calendars.dateActivity, dateFormat)" 
+          :format="dateFormat"
+           @change="onChange"
+           :allowClear="false"
+            />
         </div>
       </div>
       <div class="btn-center">
@@ -47,45 +52,51 @@
 </template>
 
 <script>
+import moment from 'moment';
 import axios from "axios";
 export default {
   data() {
     return {
+      dateFormat: 'DD/MM/YYYY',
       id: this.$route.params.id,
-      calendars: {
+      calendars : {
         activity: "",
-        dateActivity: "",
+        // dateActivity: null,
+        dateActivity: moment(),
         date: "",
       },
-      calendar: {
-        activity: "",
-        dateActivity: "",
-        date: "",
-      }
     };
   },
   mounted() {
     this.getData();
   },
   methods: {
+    moment,
     onChange(date, dateString) {
       console.log(date, dateString);
-      this.calendar.dateActivity = dateString;
-      this.calendar.date = date;
+      this.calendars.dateActivity = dateString;
+      this.calendars.date = date;
     },
     async getData() {
-      const res = await axios.get(
-        `https://db-back.herokuapp.com/api/get/calendar/1/${this.id}`
-      );
+      const res = await axios.get(`https://db-back.herokuapp.com/api/get/calendar/1/${this.id}`);
       this.calendars = res.data;
-      console.log("get", this.calendars);
+      this.calendars.dateActivity = res.data.dateActivity;
+      console.log("get", this.calendars.dateActivity);
+
     },
+    // confirmCalendar() {
+    //   this.$axios.put(`https://db-back.herokuapp.com/api/edit/calendar/${this.id}`,this.calendar).then(()=>{
+    //     // this.$router.push("/calendar/listCalendar");
+    //     this.$router.push("/calendar/list");
+    //   });
+    //   console.log("put", this.calendar);
+    // },
     confirmCalendar() {
-      this.$axios.put(`https://db-back.herokuapp.com/api/edit/calendar/${this.id}`,this.calendar).then(()=>{
+      this.$axios.put(`https://db-back.herokuapp.com/api/edit/calendar/${this.id}`,this.calendars).then(()=>{
         // this.$router.push("/calendar/listCalendar");
         this.$router.push("/calendar/list");
       });
-      console.log("put", this.calendar);
+      console.log("put", this.calendars);
     },
     cancelCalendar() {
       // this.$router.push("/calendar/listCalendar");

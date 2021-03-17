@@ -85,7 +85,7 @@ export default {
         endValue: "",
         dateStart: "",
         dateEnd: "",
-        status: "รออนุมัติ",
+        status: "Wait",
       },
       authors: [
         "Personal Leave",

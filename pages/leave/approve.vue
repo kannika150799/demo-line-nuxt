@@ -114,14 +114,14 @@ export default {
       // console.log("get", this.leaves);
     },
     approve(id) {
-      this.leaves.status = "อนุมัติ";
+      this.leaves.status = "Approve";
       // this.$axios.put(`https://db-back.herokuapp.com/api/updateStatus/${id}`, {status: this.leaves.status});
       // console.log("id", id);
       // console.log("status", this.leaves);
       this.putApprove(id);
     },
     reject(id) {
-      this.leaves.status = "ไม่อนุมัติ";
+      this.leaves.status = "Reject";
       // this.$axios.put(`https://db-back.herokuapp.com/api/updateStatus/${id}`, {status: this.leaves.status});
       this.putApprove(id);
     },
