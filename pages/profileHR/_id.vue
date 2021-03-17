@@ -18,7 +18,7 @@
           <p class="text-input name">{{ profile.nickname }}</p>
         </div>
         <div class="box-input">
-          <p class="text-input position">Position</p>
+          <p class="text-input position">Positions</p>
           <p class="text-input name">{{ profile.position }}</p>
         </div>
       </template>
