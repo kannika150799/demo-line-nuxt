@@ -6,7 +6,8 @@
       <img v-else :src="pf_line.profileImage" alt="" />
       <!-- <p class="display-name">{{ pf_line.displayName }}</p> -->
     </div>
-    <div v-if="profile" class="container-input">
+    <div class="container-input">
+      <!-- <div v-if="profile" class="container-input"> -->
       <template>
         <div class="box-input">
           <p class="text-input name">Name</p>
