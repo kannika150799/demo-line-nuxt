@@ -1,6 +1,6 @@
 <template>
   <div class="container-page-status">
-    <p class="text-head">Report requset for leave</p>
+    <p class="text-head">Report requset for leaves</p>
     <div class="box-card">
       <p>ชื่อ: (ชื่อ)</p>
       <p>หัวข้อการลา: (หัวข้อการลา)</p>

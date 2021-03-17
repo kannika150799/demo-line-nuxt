@@ -40,8 +40,8 @@
         <p class="text-leave text">Date</p>
         <div class="date-leave">
           <div class="container-date box-date">
-            <a-date-picker format="DD/MM/YYYY" @change="onChangeStart" />
-            <a-date-picker format="DD/MM/YYYY" @change="onChangeEnd" />
+            <a-date-picker placeholder="Start" format="DD/MM/YYYY" @change="onChangeStart" />
+            <a-date-picker placeholder="End" format="DD/MM/YYYY" @change="onChangeEnd" />
           </div>
         </div>
       </div>

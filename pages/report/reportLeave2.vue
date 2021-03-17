@@ -1,6 +1,6 @@
 <template>
   <div class="container-page-status">
-    <p class="text-head">Report for Leave</p>
+    <p class="text-head">Report for Leaves</p>
 
     <div class="space">
       <p class="text">Year</p>
@@ -30,7 +30,7 @@
         <!-- <p>&nbsp;ครั้ง</p> -->
       </div>
       <div class="box-num-approve">
-        <p>Number of leave(Disapproval):&nbsp;</p>
+        <p>Number of leave(Reject):&nbsp;</p>
         <p>{{ info.info.leave.length > 0 ? info.info.numDisapproval : "0" }}</p>
         <!-- <p>&nbsp;ครั้ง</p> -->
       </div>
