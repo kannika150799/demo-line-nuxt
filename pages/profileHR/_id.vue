@@ -1,5 +1,5 @@
 <template>
-  <div v-if="profile" class="one-box">
+  <div class="one-box">
     <div class="profile">
       <!-- <img src="~/assets/IMG.jpg" alt="" /> -->
       <img v-if="pf_line.profileImage == ''" src="~/assets/white.jpg" alt="" />
@@ -25,7 +25,7 @@
         Edit
       </a-button>
     </div>
-    <div v-else>hiooo</div>
+    <!-- <div v-else>hiooo</div> -->
   </div>
 </template>
 

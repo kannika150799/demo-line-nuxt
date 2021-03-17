@@ -119,7 +119,7 @@ export default {
     },
     confirm() {
       this.select.allValue =
-        `${this.select.monthValue}` + "S" + `${this.select.yearValue}`;
+        `${this.select.monthValue}` + "|" + `${this.select.yearValue}`;
       console.log("ttt", this.select.allValue);
       axios
         .get(`https://db-back.herokuapp.com/get/user1/${this.select.allValue}`)

@@ -35,7 +35,7 @@
         <!-- <img src="~/assets/IMG.jpg" alt="" /> -->
         <img v-if="profile.profileImage == ''" src="~/assets/IMG.jpg" alt="" />
         <img v-else :src="profile.profileImage" alt="" />
-        <p class="display-name">{{ profile.displayName }}</p>
+        <!-- <p class="display-name">{{ profile.displayName }}</p> -->
       </div>
       <div class="container-input">
         <template>
