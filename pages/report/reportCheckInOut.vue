@@ -1,5 +1,5 @@
 <template>
-<div class="container-page-status">
+  <div class="container-page-status">
     <p class="text-head">Report for check-in/out</p>
     <div class="x1">
       <div class="space">
@@ -43,11 +43,13 @@
     <a-button class="x2" @click="confirm" type="primary">Search</a-button>
 
     <div class="box-card" v-for="info in infos" :key="info">
-      <p style="font-size:18px">{{ info.info.inout.length > 0 ? info.info.name : '' }}</p>
+      <p style="font-size: 18px">
+        {{ info.info.inout.length > 0 ? info.info.name : "" }}
+      </p>
       <div class="box-check" v-for="check in info.info.inout" :key="check">
         <p>Date: {{ check.dateGet }}</p>
         <div class="space">
-          <p style="margin-left:20px">In: {{ check.timeIn }}&nbsp;</p>
+          <p style="margin-left: 20px">In: {{ check.timeIn }}&nbsp;</p>
           <p>&nbsp;Out: {{ check.timeOut }}</p>
         </div>
       </div>
@@ -75,19 +77,13 @@ export default {
         "November",
         "December",
       ],
-      years: [
-        "2021",
-        "2022",
-        "2023",
-        "2024",
-        "2025",
-      ],
+      years: ["2021", "2022", "2023", "2024", "2025"],
       infos: null,
       select: {
         monthValue: "",
         yearValue: "",
-        allValue: ""
-      }
+        allValue: "",
+      },
     };
   },
   mounted() {
@@ -96,7 +92,7 @@ export default {
   methods: {
     //Month
     handleChangeMonth(valueM) {
-      this.select.monthValue = valueM
+      this.select.monthValue = valueM;
       console.log(valueM);
       // axios.get(`https://db-back.herokuapp.com/get/user1/${value}`)
       //   .then((res) => {
@@ -107,7 +103,7 @@ export default {
     },
     //Year
     handleChangeYear(valueY) {
-      this.select.yearValue = valueY
+      this.select.yearValue = valueY;
       console.log(valueY);
       // axios.get(`https://db-back.herokuapp.com/get/user1/${value}`)
       //   .then((res) => {
@@ -122,32 +118,33 @@ export default {
         .includes(input.toLowerCase());
     },
     confirm() {
-      this.select.allValue = `${this.select.monthValue}`+"S"+`${this.select.yearValue}`
-      console.log("ttt",this.select.allValue);
-      axios.get(`https://db-back.herokuapp.com/get/user1/${this.select.allValue}`)
+      this.select.allValue =
+        `${this.select.monthValue}` + "S" + `${this.select.yearValue}`;
+      console.log("ttt", this.select.allValue);
+      axios
+        .get(`https://db-back.herokuapp.com/get/user1/${this.select.allValue}`)
         .then((res) => {
           this.infos = res.data;
           // console.log("get", this.infos);
           // console.log(`selected ${value}`);
         });
-    }
-    
+    },
   },
 };
 </script>
 
 <style scoped>
 .container-page-status {
-  font-family: Dosis;
+  /* font-family: Dosis; */
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 15px;
 }
 .text-head {
-font-size: 28px;
-    font-weight: 600;
-    margin-bottom: 20px;
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 20px;
 }
 .text {
   margin-right: 10px;
@@ -155,8 +152,8 @@ font-size: 28px;
   font-size: 18px;
 }
 .ant-select-selection--single {
-    height: 36px;
-    width: 110px;
+  height: 36px;
+  width: 110px;
 }
 .box-card {
   /* border: 2px solid navy; */
@@ -176,13 +173,13 @@ font-size: 28px;
   margin: 10px;
   border-top: 1px solid whitesmoke;
 }
-.x1{
+.x1 {
   display: flex;
   flex-direction: row;
   width: 90%;
-      justify-content: space-around;
+  justify-content: space-around;
 }
-.x2{
+.x2 {
   left: 34%;
   width: 99px;
   height: 40px;

@@ -138,8 +138,8 @@ export default {
 <style scoped>
 .bg {
   /* background: lavender;; */
-    /* background: radial-gradient(ellipse at center,  #0a2e38  0%, #000000 70%); */
-    background-size: 100%;
+  /* background: radial-gradient(ellipse at center,  #0a2e38  0%, #000000 70%); */
+  background-size: 100%;
 }
 .text-date2 {
   margin-top: 20px;
@@ -159,18 +159,18 @@ export default {
   /* text-shadow: 0 0 20px rgb(10 175 230), 0 0 20px rgb(10 175 230 / 0%); */
 }
 .date {
-  font-family: Dosis;
+  /* font-family: Dosis; */
   font-size: 30px;
   font-weight: 600;
 }
 .time {
-  font-family: Dosis;
+  /* font-family: Dosis; */
   margin: 0px 0px 60px;
   font-size: 40px;
   font-weight: 600;
 }
 .check-button {
-  font-family: Dosis;
+  /* font-family: Dosis; */
   width: 120px;
   height: 50px;
   margin: 0 10px;
@@ -178,7 +178,8 @@ export default {
   font-weight: 600;
   border-radius: 27px;
   border: 2px solid;
-      box-shadow: 3px 4px 13px rgb(255 255 255 / 10%), 3px 4px 13px rgb(168 223 216 / 20%);
+  box-shadow: 3px 4px 13px rgb(255 255 255 / 10%),
+    3px 4px 13px rgb(168 223 216 / 20%);
 }
 .btn1 {
   background-color: transparent;

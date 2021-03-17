@@ -59,7 +59,7 @@ export default {
 
 <style scoped>
 .container {
-  font-family: Dosis;
+  /* font-family: Dosis; */
   display: flex;
   flex-direction: column;
   align-items: center;

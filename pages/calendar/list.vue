@@ -156,7 +156,7 @@ export default {
 
 <style scoped>
 .container-page-calendar {
-  font-family: Dosis;
+  /* font-family: Dosis; */
   /* position: relative; */
   padding: 0px 0px 30px;
   margin: 0px 0px 15px;
