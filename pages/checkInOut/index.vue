@@ -45,23 +45,23 @@ export default {
     };
   },
   mounted() {
-    // this.$nextTick(() => {
-    //   this.$nuxt.$loading.start();
-    // });
+    this.$nextTick(() => {
+      this.$nuxt.$loading.start();
+    });
     liff.init({ liffId: "1655743042-1qqDlBON" })
-    // .then(() => {
-    //   if (liff.isLoggedIn()) {
-    //     liff.getProfile().then((profile) => {
-    //       this.inOut.userId = profile.userId;
-    //       this.isDone();
-    //     });
-    //   } else {
-    //     this.$nextTick(() => {
-    //       this.$nuxt.$loading.finish();
-    //     });
-    //     liff.login();
-    //   }
-    // });
+    .then(() => {
+      if (liff.isLoggedIn()) {
+        liff.getProfile().then((profile) => {
+          this.inOut.userId = profile.userId;
+          this.isDone();
+        });
+      } else {
+        this.$nextTick(() => {
+          this.$nuxt.$loading.finish();
+        });
+        liff.login();
+      }
+    });
   },
   created() {
     setInterval(() => this.updateCurrentTimeIn(), 1 * 1000);
