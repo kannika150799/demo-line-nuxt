@@ -133,8 +133,7 @@ export default {
       this.leave.dateEnd = dateString2;
     },
     send() {
-      this.$axios
-        .post("https://db-back.herokuapp.com/api/post/leave", this.leave)
+      this.$axios.post("https://db-back.herokuapp.com/api/post/leave", this.leave)
         .then((res) => {
           liff.closeWindow();
         });

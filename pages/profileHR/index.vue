@@ -111,9 +111,11 @@ export default {
         });
     },
     register() {
-      this.$axios.post("https://db-back.herokuapp.com/api/post/user/hr",this.profile);
-      this.$router.push(`/profileHR/${this.profile.userId}`);
-      console.log(this.profile);
+      this.$axios.post("https://db-back.herokuapp.com/api/post/user/hr",this.profile).then((res) => {
+          liff.closeWindow();
+        });
+      // this.$router.push(`/profileHR/${this.profile.userId}`);
+      // console.log(this.profile);
     },
   },
 };
