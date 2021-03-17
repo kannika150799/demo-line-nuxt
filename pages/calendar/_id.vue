@@ -35,15 +35,15 @@
       </div>
       <div class="btn-center">
         <a-button class="button btnconf" type="primary" @click="confirmCalendar">
-          <img src="~/assets/6272187461582545599-16.png" alt="" 
+          <!-- <img src="~/assets/6272187461582545599-16.png" alt="" 
           style="margin-right:10px"
-          >
+          > -->
           Confirm
         </a-button>
         <a-button class="button btncanc" type="danger" @click="cancelCalendar">
-          <img src="~/assets/2130497621541068760-16.png" alt="" 
+          <!-- <img src="~/assets/2130497621541068760-16.png" alt="" 
           style="margin-right:10px"
-          >
+          > -->
           Cancel
         </a-button>
       </div>

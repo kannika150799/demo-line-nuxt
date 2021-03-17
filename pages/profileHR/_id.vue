@@ -72,13 +72,15 @@ export default {
       this.$router.push(`/profile/modify`);
     },
     async makeGetRequest() {
-      let res = await axios.get(`https://db-back.herokuapp.com/api/get/user/${this.profile.userId}`)
-        // .then((res) => {
-        //   this.$nextTick(() => {
-        //     this.$nuxt.$loading.finish();
-        //   });
-        //   this.profile = res.data;
-        // });
+      let res = await axios.get(
+        `https://db-back.herokuapp.com/api/get/user/${this.profile.userId}`
+      );
+      // .then((res) => {
+      //   this.$nextTick(() => {
+      //     this.$nuxt.$loading.finish();
+      //   });
+      //   this.profile = res.data;
+      // });
       this.profile = res.data;
       // console.log("get", this.profile);
     },
@@ -98,6 +100,8 @@ img {
   width: 25%;
   border-radius: 50%;
   margin-bottom: 40px;
+  z-index: 5;
+  position: relative;
 }
 .display-name {
   font-size: 16px;
@@ -117,16 +121,27 @@ img {
 }
 .container-input {
   text-align: -webkit-center;
+  position: relative;
   width: 75%;
   background-color: white;
   border-radius: 10px;
-  padding: 20px;
-  box-shadow: 3px 4px 13px rgb(182 160 149 / 20%), 3px 4px 13px rgb(168 223 216 / 16%);
+  padding: 68px 20px 20px;
+  box-shadow: 3px 4px 13px rgb(182 160 149 / 20%),
+    3px 4px 13px rgb(168 223 216 / 16%);
+  top: -88px;
+  z-index: 1;
 }
 .box-input {
   display: flex;
   margin-bottom: 15px;
-  width: 280px;
+  width: 90%;
+  justify-content: space-between;
+}
+.ant-input {
+  width: 160px;
+  border: 1px solid transparent;
+  border-radius: 0px;
+  border-bottom-color: lightblue;
 }
 .text-input {
   margin: 0px;

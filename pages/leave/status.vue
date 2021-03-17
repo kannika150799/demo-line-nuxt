@@ -9,6 +9,7 @@
                 <p>Topic : {{ pass.leaveType }}</p>
                 <p>Note : {{ pass.reson }}</p>
                 <p>Date : {{ pass.dateStart }} - {{ pass.dateEnd }}</p>
+                <p>Status : {{ pass.status }}</p>
               </div>
             </div>
           </div>

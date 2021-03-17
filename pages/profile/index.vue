@@ -133,15 +133,17 @@ export default {
   text-align: center;
 }
 img {
-  width: 25%;
-  border-radius: 50%;
-  margin-bottom: 40px;
+      width: 25%;
+    border-radius: 50%;
+    margin-bottom: 40px;
+    z-index: 5;
+    position: relative;
 }
 .display-name {
   font-size: 16px;
   font-weight: 600;
   font-family: inherit;
-  margin-bottom: 41px;
+  margin-bottom: 40px;
 }
 .register-button {
   margin-top: 25px;
@@ -155,21 +157,26 @@ img {
 }
 .container-input {
   text-align: -webkit-center;
-  width: 75%;
-  background-color: white;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 3px 4px 13px rgb(182 160 149 / 20%),
-    3px 4px 13px rgb(168 223 216 / 16%);
+    position: relative;
+    width: 75%;
+    background-color: white;
+    border-radius: 10px;
+    padding: 68px 20px 20px;
+    box-shadow: 3px 4px 13px rgb(182 160 149 / 20%), 3px 4px 13px rgb(168 223 216 / 16%);
+    top: -88px;
+    z-index: 1;
 }
 .box-input {
   display: flex;
-  margin-bottom: 15px;
-  width: 300px;
+    margin-bottom: 15px;
+    width: 90%;
+    justify-content: space-between;
 }
 .ant-input {
   width: 160px;
   border: 1px solid transparent;
+  border-radius: 0px;
+  border-bottom-color: lightblue;
 }
 .text-input {
   margin: 0px;

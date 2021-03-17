@@ -46,11 +46,11 @@
             type="primary"
             @click="editList(calendar.id)"
           >
-            <img
+            <!-- <img
               src="~/assets/10171190771582793670-16.png"
               alt=""
               style="margin-right: 10px"
-            />
+            /> -->
             Edit
           </a-button>
           <a-button
@@ -58,11 +58,11 @@
             type="danger"
             @click="deleteList(calendar.id)"
           >
-            <img
+            <!-- <img
               src="~/assets/2130497621541068760-16.png"
               alt=""
               style="margin-right: 10px"
-            />
+            /> -->
             Delete
           </a-button>
         </div>

@@ -165,7 +165,7 @@ export default {
 }
 .ant-calendar-picker-input {
   width: 100%;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 .containar-title {
   display: flex;
