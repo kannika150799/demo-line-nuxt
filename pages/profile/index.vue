@@ -169,7 +169,7 @@ img {
 .box-input {
   display: flex;
     margin-bottom: 15px;
-    width: 90%;
+    /* width: 90%; */
     justify-content: space-between;
 }
 .ant-input {
@@ -185,9 +185,9 @@ img {
   align-self: center;
 }
 .name {
-  margin-right: 34px;
+  /* margin-right: 34px; */
 }
 .position {
-  margin-right: 20px;
+  /* margin-right: 20px; */
 }
 </style>

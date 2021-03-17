@@ -34,6 +34,6 @@ export default {
   display: flex;
   align-items: center;
   background: whitesmoke;
-  z-index: 5;
+  z-index: 10;
 }
 </style>

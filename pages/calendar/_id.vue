@@ -21,7 +21,7 @@
       <div class="select-date">
         <p class="text-input">Date</p>
         <div class="select-date"> 
-        <p class="text-input text-show" style="color:red">*&nbsp;{{calendars.dateActivity}}</p>
+        <!-- <p class="text-input text-show" style="color:red">*&nbsp;{{calendars.dateActivity}}</p> -->
         <!-- <p>{{calendars.dateActivity}}</p> -->
       </div>
         <div class="date-picker">
