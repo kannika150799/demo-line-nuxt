@@ -15,29 +15,35 @@
           @change="handleChange"
         >
           <a-select-option v-for="author in authors" :key="author">
-            {{ author }}
+            <div @click="selectOption(author)">
+              {{ author }}
+            </div>
           </a-select-option>
         </a-select>
       </div>
     </div>
 
     <div class="box-card" v-for="info in infos" :key="info">
-      <!-- <p>{{ info.info.leave.length > 0 ? info.info.name : "" }}</p> -->
-      <p style="font-size:18px">{{ info.info.name }}</p>
-      <div class="box-num-approve">
-        <p>Number of leave(Approve):&nbsp;</p>
-        <p>{{ info.info.leave.length > 0 ? info.info.numApprove : "0" }}</p>
-        <!-- <p>&nbsp;ครั้ง</p> -->
-      </div>
-      <div class="box-num-approve">
-        <p>Number of leave(Reject):&nbsp;</p>
-        <p>{{ info.info.leave.length > 0 ? info.info.numDisapproval : "0" }}</p>
-        <!-- <p>&nbsp;ครั้ง</p> -->
-      </div>
-      <div class="box-check" v-for="check in info.info.leave" :key="check">
+      <div @click="boxName(info.info.name, author)">
+        <!-- <p>{{ info.info.leave.length > 0 ? info.info.name : "" }}</p> -->
+        <p style="font-size: 18px">{{ info.info.name }}</p>
+        <div class="box-num-approve">
+          <p>Number of leave(Approve):&nbsp;</p>
+          <p>{{ info.info.leave.length > 0 ? info.info.numApprove : "0" }}</p>
+          <!-- <p>&nbsp;ครั้ง</p> -->
+        </div>
+        <div class="box-num-approve">
+          <p>Number of leave(Reject):&nbsp;</p>
+          <p>
+            {{ info.info.leave.length > 0 ? info.info.numDisapproval : "0" }}
+          </p>
+          <!-- <p>&nbsp;ครั้ง</p> -->
+        </div>
+        <!-- <div class="box-check" v-for="check in info.info.leave" :key="check">
         <p>Topic: {{ check.leaveType }}</p>
         <p>Date: {{ check.dateStart }} - {{ check.dateEnd }}</p>
         <p>Status: {{ check.status }}</p>
+      </div> -->
       </div>
     </div>
   </div>
@@ -49,14 +55,9 @@ import axios from "axios";
 export default {
   data() {
     return {
-      authors: [
-        "2019",
-        "2020",
-        "2021",
-        "2022",
-        "2023",
-      ],
+      authors: ["2019", "2020", "2021", "2022", "2023"],
       infos: null,
+      select: ""
     };
   },
   mounted() {
@@ -64,11 +65,12 @@ export default {
     // this.$nextTick(() => {
     //   this.$nuxt.$loading.start();
     // });
-    // this.getData();  
+    // this.getData();
   },
   methods: {
     handleChange(value) {
-      axios.get(`https://db-back.herokuapp.com/report/leave/${value}`)
+      axios
+        .get(`https://db-back.herokuapp.com/report/leave/${value}`)
         .then((res) => {
           this.infos = res.data;
           // console.log("get", this.infos);
@@ -79,6 +81,15 @@ export default {
       return option.componentOptions.children[0].text
         .toLowerCase()
         .includes(input.toLowerCase());
+    },
+    selectOption(author) {
+      this.select = author
+      console.log("select", this.select);
+    },
+    boxName(name) {
+      let deteil = `${this.select}` + "|" + name
+      console.log(deteil);
+      this.$router.push(`reportLeave/${deteil}`);
     },
     // ...mapMutations({
     //   startLoading: 'loading/startLoading',
@@ -128,10 +139,10 @@ export default {
   border-bottom: 1px solid black;
 }
 .box-check {
-  margin:0px 40px;
+  margin: 0px 40px;
   border-top: 1px solid gainsboro;
 }
-.text{
+.text {
   font-size: 18px;
   margin-right: 10px;
 }
