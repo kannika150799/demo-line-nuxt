@@ -5,7 +5,7 @@
     <p class="time" v-text="currentTimeIn"></p>
 
     <a-button
-      :disabled="isActiveIn"
+      :block="isActiveIn"
       class="check-button"
       type="primary"
       @click="checkIn"
@@ -13,7 +13,7 @@
       Check in
     </a-button>
     <a-button
-      :disabled="isActiveOut"
+      :block="isActiveOut"
       class="check-button"
       type="danger"
       @click="checkOut"
