@@ -159,18 +159,18 @@ export default {
   /* text-shadow: 0 0 20px rgb(10 175 230), 0 0 20px rgb(10 175 230 / 0%); */
 }
 .date {
-  /* font-family: Dosis; */
+  font-family: Dosis;
   font-size: 30px;
   font-weight: 600;
 }
 .time {
-  /* font-family: Dosis; */
+  font-family: Dosis;
   margin: 0px 0px 60px;
   font-size: 40px;
   font-weight: 600;
 }
 .check-button {
-  /* font-family: Dosis; */
+  font-family: Dosis;
   width: 120px;
   height: 50px;
   margin: 0 10px;

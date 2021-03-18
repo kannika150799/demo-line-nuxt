@@ -123,7 +123,7 @@ export default {
 
 <style scoped>
 .one-box {
-  /* font-family: Dosis; */
+  font-family: Dosis;
   text-align: -webkit-center;
 }
 .profile {

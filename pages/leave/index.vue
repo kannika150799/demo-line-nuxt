@@ -147,7 +147,7 @@ export default {
 
 <style scoped>
 .container-page-leave {
-  /* font-family: Dosis; */
+  font-family: Dosis;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -209,14 +209,14 @@ export default {
     3px 4px 13px rgb(168 223 216 / 16%);
 }
 .container-date {
-  width: 220px;
+  width: 236px;
 }
 .box-date {
   height: 70px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin: 0px 20px;
+  /* margin: 0px 20px; */
 }
 .span {
   margin: 5px 0px 5px;

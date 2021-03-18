@@ -85,11 +85,12 @@ export default {
 
 <style scoped>
 .one {
+  font-family: Dosis;
   display: flex;
   justify-content: center;
 }
 .box {
-  width: 280px;
+  width: 320px;
 }
 .ant-tabs-nav-scroll {
   overflow: auto;

@@ -156,14 +156,14 @@ export default {
 
 <style scoped>
 .container-page-calendar {
-  /* font-family: Dosis; */
+  font-family: Dosis;
   /* position: relative; */
   padding: 0px 0px 30px;
   margin: 0px 0px 15px;
   /* border-bottom: 1px solid black; */
 }
 .container-input {
-  /* font-family: Dosis; */
+  font-family: Dosis;
   /* position: relative; */
   /* position: fixed; */
   display: flex;
