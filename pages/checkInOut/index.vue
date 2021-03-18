@@ -102,7 +102,6 @@ export default {
       this.currentDate2 = moment().format("MMMM Do YYYY");
       this.currentDateFormat1 = moment().format();
       this.currentDateFormat2 = moment().format("l");
-
       this.inOut.momentDate = this.currentDate;
       this.inOut.momentDate2 = this.currentDate2;
       this.inOut.dateShow = this.currentDateFormat1;
@@ -134,6 +133,7 @@ export default {
   },
 };
 </script>
+
 
 <style scoped>
 .bg {
