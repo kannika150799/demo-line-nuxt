@@ -77,7 +77,7 @@ export default {
         "November",
         "December",
       ],
-      years: ["2021", "2022", "2023", "2024", "2025"],
+      years: ["2017", "2018", "2019", "2020", "2021"],
       infos: null,
       select: {
         monthValue: "",
@@ -119,7 +119,7 @@ export default {
     },
     confirm() {
       this.select.allValue =
-        `${this.select.monthValue}` + "|" + `${this.select.yearValue}`;
+        `${this.select.monthValue}` + "ABCDE" + `${this.select.yearValue}`;
       console.log("ttt", this.select.allValue);
       axios
         .get(`https://db-back.herokuapp.com/get/user1/${this.select.allValue}`)
