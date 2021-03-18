@@ -55,6 +55,7 @@ export default {
           this.isDone();
         });
       } else {
+        // this.$router.push("/profile");
         this.$nextTick(() => {
           this.$nuxt.$loading.finish();
         });
@@ -68,33 +69,25 @@ export default {
     setInterval(() => this.updateCurrentDate(), 200);
   },
   methods: {
-    isDone() {
-      this.$axios.get(`https://db-back.herokuapp.com/api/get/user/${this.inOut.userId}`)
-        .then((res1) => {
-          console.log(res1.data);
-          if (res.data1 == null || res1.data == undefined) {
-            this.$router.push("/profile");
-          } else {
-            this.$axios.get(`https://db-back.herokuapp.com/api/get/check/${this.inOut.userId}`)
-              .then((res2) => {
-                this.$nextTick(() => {
-                  setTimeout(() => this.$nuxt.$loading.finish(), 1000);
-                });
-                if (res2.data == null) {
-                  // console.log("res1", res.data);
-                  this.isActiveIn = false;
-                  this.isActiveOut = true;
-                } else if (res2.data != null) {
-                  // console.log("res2", res.data);
-                  if (res.data2.timeOut != "") {
-                    this.isActiveIn = false;
-                    this.isActiveOut = true;
-                  } else {
-                    this.isActiveIn = true;
-                    this.isActiveOut = false;
-                  }
-                }
-              });
+    async isDone() {
+      await axios.get(`https://db-back.herokuapp.com/api/get/check/${this.inOut.userId}`)
+        .then((res) => {
+          this.$nextTick(() => {
+            setTimeout(() => this.$nuxt.$loading.finish(), 1000);
+          });
+          if (res.data == null) {
+            console.log("res1", res.data);
+            this.isActiveIn = false;
+            this.isActiveOut = true;
+          } else if (res.data != null) {
+            console.log("res2", res.data);
+            if (res.data.timeOut != "") {
+              this.isActiveIn = false;
+              this.isActiveOut = true;
+            } else {
+              this.isActiveIn = true;
+              this.isActiveOut = false;
+            }
           }
         });
     },
@@ -138,9 +131,9 @@ export default {
         });
     },
   },
-  head: {
-    title: "Check-in/out",
-  },
+  head:{
+    title: 'Check-in/out'
+  }
 };
 </script>
 

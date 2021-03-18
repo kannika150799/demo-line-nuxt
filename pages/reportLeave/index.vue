@@ -7,7 +7,7 @@
       <div>
         <a-select
           show-search
-          placeholder="year"
+          placeholder="Select the year"
           option-filter-prop="children"
           style="width: 120px"
           :filter-option="filterOption"
@@ -23,8 +23,8 @@
       </div>
     </div>
 
-    <div class="box-card" v-for="info in infos" :key="info">
-      <div @click="boxName(info.info.userId, author)">
+    <div class="box-card" v-for="info in infos" :key="info.id">
+      <div @click="boxName(info.info.userId)">
         <!-- <p>{{ info.info.leave.length > 0 ? info.info.name : "" }}</p> -->
         <p style="font-size: 18px">{{ info.info.name }}</p>
         <div class="box-num-approve">
@@ -112,7 +112,7 @@ export default {
 
 <style scoped>
 .container-page-status {
-  font-family: Dosis;
+  /* font-family: Dosis; */
   display: flex;
   flex-direction: column;
   align-items: center;
