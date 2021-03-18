@@ -38,15 +38,16 @@
           <div v-for="leave in leaves" :key="leave.id">
             
             <div v-for="pass in leave.info.leaveNoPass" :key="pass.id">
-              <div class="box-detail" v-if="pass.info.leaveNoPass > 0">
+              <div class="box-detail">
+                <!-- <div class="box-detail" v-if="pass.info.leaveNoPass > 0"> -->
                 <p>Topic : {{ pass.leaveType }}</p>
                 <p>Note : {{ pass.reson }}</p>
                 <p>Date : {{ pass.dateStart }} - {{ pass.dateEnd }}</p>
               </div>
-              <div v-else>
+              <!-- <div v-else>
                 hhhhjjjjjj
-                <!-- <a-empty /> -->
-              </div>
+                <a-empty />
+              </div> -->
             </div>
           </div>
         </a-tab-pane>
@@ -76,9 +77,7 @@ export default {
       this.leaves = res.data;
       console.log("get", this.leaves);
     },
-    // callback(key) {
-    //   console.log(key);
-    // },
+
   },
 };
 </script>

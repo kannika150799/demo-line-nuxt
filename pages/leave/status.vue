@@ -103,7 +103,7 @@ export default {
   justify-content: center;
 }
 .box {
-  width: 280px;
+  width: 320px;
 }
 .ant-tabs-nav-scroll {
   overflow: auto;

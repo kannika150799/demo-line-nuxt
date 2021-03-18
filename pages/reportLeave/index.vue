@@ -7,7 +7,7 @@
       <div>
         <a-select
           show-search
-          placeholder="Select the year"
+          placeholder="year"
           option-filter-prop="children"
           style="width: 120px"
           :filter-option="filterOption"
