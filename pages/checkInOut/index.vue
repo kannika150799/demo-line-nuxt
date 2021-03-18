@@ -55,7 +55,6 @@ export default {
           this.isDone();
         });
       } else {
-        // this.$router.push("/profile");
         this.$nextTick(() => {
           this.$nuxt.$loading.finish();
         });
@@ -76,26 +75,27 @@ export default {
           if (res.data != null || res.data != undefined) {
             this.$router.push("/profile");
           } else {
-            this.$axios.get(`https://db-back.herokuapp.com/api/get/check/${this.inOut.userId}`)
-              .then((res) => {
-                this.$nextTick(() => {
-                  setTimeout(() => this.$nuxt.$loading.finish(), 1000);
-                });
-                if (res.data == null) {
-                  console.log("res1", res.data);
-                  this.isActiveIn = false;
-                  this.isActiveOut = true;
-                } else if (res.data != null) {
-                  console.log("res2", res.data);
-                  if (res.data.timeOut != "") {
-                    this.isActiveIn = false;
-                    this.isActiveOut = true;
-                  } else {
-                    this.isActiveIn = true;
-                    this.isActiveOut = false;
-                  }
-                }
-              });
+            console.log("else");
+            // this.$axios.get(`https://db-back.herokuapp.com/api/get/check/${this.inOut.userId}`)
+            //   .then((res) => {
+            //     this.$nextTick(() => {
+            //       setTimeout(() => this.$nuxt.$loading.finish(), 1000);
+            //     });
+            //     if (res2.data == null) {
+            //       console.log("res1", res.data);
+            //       this.isActiveIn = false;
+            //       this.isActiveOut = true;
+            //     } else if (res2.data != null) {
+            //       console.log("res2", res.data);
+            //       if (res.data.timeOut != "") {
+            //         this.isActiveIn = false;
+            //         this.isActiveOut = true;
+            //       } else {
+            //         this.isActiveIn = true;
+            //         this.isActiveOut = false;
+            //       }
+            //     }
+            //   });
           }
         });
     },
