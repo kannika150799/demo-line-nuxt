@@ -146,7 +146,7 @@ export default {
   font-size: 14px;
 }
 .date-picker {
-  margin-right: 40px;
+  /* margin-right: 40px; */
 }
 .select-date {
   /* display: flex; */
