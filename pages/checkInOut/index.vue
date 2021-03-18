@@ -70,24 +70,23 @@ export default {
   methods: {
     isDone() {
       this.$axios.get(`https://db-back.herokuapp.com/api/get/user/${this.inOut.userId}`)
-        .then((res) => {
-          console.log(res.data);
-          if (res.data == null || res.data == undefined) {
+        .then((res1) => {
+          console.log(res1.data);
+          if (res.data1 == null || res1.data == undefined) {
             this.$router.push("/profile");
           } else {
-            
             this.$axios.get(`https://db-back.herokuapp.com/api/get/check/${this.inOut.userId}`)
-              .then((res) => {
+              .then((res2) => {
                 this.$nextTick(() => {
                   setTimeout(() => this.$nuxt.$loading.finish(), 1000);
                 });
                 if (res2.data == null) {
-                  console.log("res1", res.data);
+                  // console.log("res1", res.data);
                   this.isActiveIn = false;
                   this.isActiveOut = true;
                 } else if (res2.data != null) {
-                  console.log("res2", res.data);
-                  if (res.data.timeOut != "") {
+                  // console.log("res2", res.data);
+                  if (res.data2.timeOut != "") {
                     this.isActiveIn = false;
                     this.isActiveOut = true;
                   } else {
