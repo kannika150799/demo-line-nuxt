@@ -14,7 +14,7 @@
             show-search
             placeholder="topic"
             option-filter-prop="children"
-            style="width: 95%"
+            style="width: 100%"
             :filter-option="filterOption"
             class="breed_select"
             @change="handleChange"
@@ -194,7 +194,7 @@ export default {
 }
 .textarea {
   /* margin: 5px 0px 5px; */
-  width: 95%;
+  width: 100%;
   resize: none;
 }
 .send-button {
@@ -209,7 +209,7 @@ export default {
     3px 4px 13px rgb(168 223 216 / 16%);
 }
 .container-date {
-  width: 236px;
+  width: 100%;
 }
 .box-date {
   height: 70px;

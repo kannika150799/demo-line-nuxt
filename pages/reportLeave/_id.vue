@@ -39,7 +39,7 @@
             
             <div v-for="pass in leave.info.leaveNoPass" :key="pass.id">
               <div class="box-detail">
-                <!-- <div class="box-detail" v-if="pass.info.leaveNoPass > 0"> -->
+                <!-- <div class="box-detail" v-if="pass.leaveType.length > 0"> -->
                 <p>Topic : {{ pass.leaveType }}</p>
                 <p>Note : {{ pass.reson }}</p>
                 <p>Date : {{ pass.dateStart }} - {{ pass.dateEnd }}</p>

@@ -10,15 +10,15 @@
       <!-- <div v-if="profile" class="container-input"> -->
       <template>
         <div class="box-input">
-          <p class="text-input name">Name</p>
+          <p class="text-input name p1">Name</p>
           <p class="text-input name">{{ profile.name }}</p>
         </div>
         <div class="box-input">
-          <p class="text-input">Nickname&nbsp;</p>
+          <p class="text-input p1">Nickname&nbsp;</p>
           <p class="text-input name">{{ profile.nickname }}</p>
         </div>
         <div class="box-input">
-          <p class="text-input position">Positions</p>
+          <p class="text-input position p1">Positions</p>
           <p class="text-input name">{{ profile.position }}</p>
         </div>
       </template>
@@ -90,7 +90,7 @@ export default {
 
 <style scoped>
 .one-box {
-  font-family: Dosis;
+  /* font-family: Dosis; */
   text-align: -webkit-center;
 }
 .profile {
@@ -100,8 +100,6 @@ img {
   width: 25%;
   border-radius: 50%;
   margin-bottom: 40px;
-  z-index: 5;
-  position: relative;
 }
 .display-name {
   font-size: 16px;
@@ -121,38 +119,34 @@ img {
 }
 .container-input {
   text-align: -webkit-center;
-  position: relative;
   width: 75%;
   background-color: white;
   border-radius: 10px;
-  padding: 68px 20px 20px;
-  box-shadow: 3px 4px 13px rgb(182 160 149 / 20%),
-    3px 4px 13px rgb(168 223 216 / 16%);
-  top: -88px;
-  z-index: 1;
+  padding: 20px;
+  box-shadow: 3px 4px 13px rgb(182 160 149 / 20%), 3px 4px 13px rgb(168 223 216 / 16%);
 }
 .box-input {
   display: flex;
   margin-bottom: 15px;
-  /* width: 90%; */
-  justify-content: space-between;
-}
-.ant-input {
-  width: 160px;
-  border: 1px solid transparent;
-  border-radius: 0px;
-  border-bottom-color: lightblue;
+  width: 280px;
 }
 .text-input {
   margin: 0px;
   font-size: 16px;
   font-weight: 600;
-  align-self: center;
+  /* align-self: center; */
 }
-/* .name {
-  margin-right: 34px;
+.name {
+  /* margin-right: 34px; */
 }
 .position {
-  margin-right: 20px;
-} */
+  /* margin-right: 20px; */
+}
+.p1{
+  width: 87px;
+    display: inline-flex;
+}
+p{
+  text-align: left;
+}
 </style>
