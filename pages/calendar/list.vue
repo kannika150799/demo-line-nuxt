@@ -177,6 +177,7 @@ export default {
   box-shadow: 0px 0px 0px rgb(17 15 14 / 20%),
     3px 4px 13px rgb(168 223 216 / 16%);
   border-radius: 5px;
+  align-items: center;
 }
 .text-head {
   font-size: 28px;
@@ -193,12 +194,13 @@ export default {
 .box-input {
   display: flex;
   margin-bottom: 16px;
+  width: 82%;
   /* width: 300px; */
 }
 .input {
   margin-left: 15px;
   resize: none;
-  width: 230px;
+  /* width: 230px; */
   height: 32px;
 }
 .ant-input {
@@ -212,6 +214,7 @@ export default {
   font-size: 18px;
   font-weight: 600;
   align-self: center;
+  align-items: center;
 }
 .select-date {
   margin-left: 20px;
@@ -256,7 +259,6 @@ export default {
   font-size: 16px;
   font-weight: 400;
 }
-
 /* show list */
 .container {
   font-family: Dosis;
