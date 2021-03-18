@@ -55,11 +55,11 @@ export default {
           this.isDone();
         });
       } else {
-        this.$router.push("/profile");
-        // this.$nextTick(() => {
-        //   this.$nuxt.$loading.finish();
-        // });
-        // liff.login();
+        // this.$router.push("/profile");
+        this.$nextTick(() => {
+          this.$nuxt.$loading.finish();
+        });
+        liff.login();
       }
     });
   },
@@ -70,25 +70,38 @@ export default {
   },
   methods: {
     async isDone() {
-      await axios
-        .get(`https://db-back.herokuapp.com/api/get/check/${this.inOut.userId}`)
+      await $axios
+        .get(
+          `https://db-back.herokuapp.com/api/get/user/${this.profile.userId}`
+        )
         .then((res) => {
-          this.$nextTick(() => {
-            setTimeout(() => this.$nuxt.$loading.finish(), 1000);
-          });
-          if (res.data == null) {
-            console.log("res1", res.data);
-            this.isActiveIn = false;
-            this.isActiveOut = true;
-          } else if (res.data != null) {
-            console.log("res2", res.data);
-            if (res.data.timeOut != "") {
-              this.isActiveIn = false;
-              this.isActiveOut = true;
-            } else {
-              this.isActiveIn = true;
-              this.isActiveOut = false;
-            }
+          // console.log(res.data);
+          if (res.data != null || res.data != undefined) {
+            this.$router.push("/profile");
+          } else {
+            axios
+              .get(
+                `https://db-back.herokuapp.com/api/get/check/${this.inOut.userId}`
+              )
+              .then((res) => {
+                this.$nextTick(() => {
+                  setTimeout(() => this.$nuxt.$loading.finish(), 1000);
+                });
+                if (res.data == null) {
+                  console.log("res1", res.data);
+                  this.isActiveIn = false;
+                  this.isActiveOut = true;
+                } else if (res.data != null) {
+                  console.log("res2", res.data);
+                  if (res.data.timeOut != "") {
+                    this.isActiveIn = false;
+                    this.isActiveOut = true;
+                  } else {
+                    this.isActiveIn = true;
+                    this.isActiveOut = false;
+                  }
+                }
+              });
           }
         });
     },
@@ -132,9 +145,9 @@ export default {
         });
     },
   },
-  head:{
-    title: 'Check-in/out'
-  }
+  head: {
+    title: "Check-in/out",
+  },
 };
 </script>
 
