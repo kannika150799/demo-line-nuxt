@@ -118,6 +118,9 @@ export default {
       // console.log(this.profile);
     },
   },
+  head:{
+    title: 'Profile'
+  }
 };
 </script>
 

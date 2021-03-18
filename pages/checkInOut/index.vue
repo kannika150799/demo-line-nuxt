@@ -131,6 +131,9 @@ export default {
         });
     },
   },
+  head:{
+    title: 'Check-in/out'
+  }
 };
 </script>
 

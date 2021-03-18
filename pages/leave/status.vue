@@ -94,6 +94,9 @@ export default {
       // console.log("get", this.leaves);
     },
   },
+  head:{
+    title: 'Leave'
+  }
 };
 </script>
 

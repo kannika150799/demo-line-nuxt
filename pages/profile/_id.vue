@@ -84,6 +84,9 @@ export default {
         });
     },
   },
+  head:{
+    title: 'Profile'
+  }
 };
 </script>
 

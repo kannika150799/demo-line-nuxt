@@ -85,6 +85,9 @@ export default {
       // console.log("get", this.profile);
     },
   },
+  head:{
+    title: 'Profile'
+  }
 };
 </script>
 

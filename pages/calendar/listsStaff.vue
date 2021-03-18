@@ -54,6 +54,9 @@ export default {
       })
     },
   },
+  head:{
+    title: 'Calendar'
+  }
 };
 </script>
 

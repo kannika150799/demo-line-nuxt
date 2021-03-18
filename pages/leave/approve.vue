@@ -135,6 +135,9 @@ export default {
         });
     },
   },
+   head:{
+    title: 'Approve'
+  }
 };
 </script>
 

@@ -103,6 +103,9 @@ export default {
       this.$router.push("/calendar/list");
     },
   },
+  head:{
+    title: 'Calendar'
+  }
 };
 </script>
 

@@ -142,6 +142,9 @@ export default {
       console.log("leave", this.leave);
     },
   },
+  head:{
+    title: 'Leave'
+  }
 };
 </script>
 
