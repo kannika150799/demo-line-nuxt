@@ -55,10 +55,11 @@ export default {
           this.isDone();
         });
       } else {
-        this.$nextTick(() => {
-          this.$nuxt.$loading.finish();
-        });
-        liff.login();
+        this.$router.push("/profile");
+        // this.$nextTick(() => {
+        //   this.$nuxt.$loading.finish();
+        // });
+        // liff.login();
       }
     });
   },
