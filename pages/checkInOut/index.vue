@@ -71,7 +71,7 @@ export default {
   methods: {
     async isDone() {
       await axios.get(
-          `https://db-back.herokuapp.com/api/get/user/${this.profile.userId}`
+          `https://db-back.herokuapp.com/api/get/user/${this.inOut.userId}`
         )
         .then((res) => {
           // console.log(res.data);
