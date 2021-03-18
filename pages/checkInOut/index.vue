@@ -70,8 +70,7 @@ export default {
   },
   methods: {
     async isDone() {
-      await $axios
-        .get(
+      await $axios.get(
           `https://db-back.herokuapp.com/api/get/user/${this.profile.userId}`
         )
         .then((res) => {
@@ -79,10 +78,7 @@ export default {
           if (res.data != null || res.data != undefined) {
             this.$router.push("/profile");
           } else {
-            axios
-              .get(
-                `https://db-back.herokuapp.com/api/get/check/${this.inOut.userId}`
-              )
+            this.axios.get(`https://db-back.herokuapp.com/api/get/check/${this.inOut.userId}`)
               .then((res) => {
                 this.$nextTick(() => {
                   setTimeout(() => this.$nuxt.$loading.finish(), 1000);
