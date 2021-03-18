@@ -69,7 +69,7 @@ export default {
   },
   methods: {
     isDone() {
-      this.$xios.get(`https://db-back.herokuapp.com/api/get/user/${this.inOut.userId}`)
+      this.$axios.get(`https://db-back.herokuapp.com/api/get/user/${this.inOut.userId}`)
         .then((res) => {
           console.log(res.data);
           if (res.data != null || res.data != undefined) {
