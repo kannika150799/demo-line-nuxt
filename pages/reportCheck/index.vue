@@ -43,12 +43,12 @@
     <a-button class="x2" @click="confirm" type="primary">Search</a-button>
 
     <div class="box-card" v-for="info in infos" :key="info">
-      <button v-on:click="isHidden = !isHidden">
+      <!-- <button v-on:click="isHidden = !isHidden"> -->
         <p style="font-size: 18px">
           {{ info.info.inout.length > 0 ? info.info.name : "" }}
         </p>
-      </button>
-      <button v-if="!isHidden">
+      <!-- </button> -->
+      <!-- <button v-if="!isHidden"> -->
         <div class="box-check" v-for="check in info.info.inout" :key="check">
           <p>Date: {{ check.dateGet }}</p>
           <div class="space">
@@ -56,7 +56,7 @@
             <p>&nbsp;Out: {{ check.timeOut }}</p>
           </div>
         </div>
-      </button>
+      <!-- </button> -->
     </div>
   </div>
 </template>
