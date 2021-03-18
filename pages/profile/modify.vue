@@ -72,12 +72,11 @@ export default {
       console.log("get", this.profile);
     },
     confirm() {
-      this.$axios.put(
-        `https://db-back.herokuapp.com/api/edit/user/${this.profile.userId}`,
-        this.profile
-      );
-      this.$router.push(`/profile/${this.profile.userId}`);
-      console.log("put", this.profile);
+      this.$axios.put(`https://db-back.herokuapp.com/api/edit/user/${this.profile.userId}`,this.profile)
+        .then(() => {
+          this.$router.push(`/profile/${this.profile.userId}`);
+          console.log("put", this.profile);
+        });
     },
   },
 };
@@ -116,23 +115,24 @@ img {
 }
 .container-input {
   text-align: -webkit-center;
-    position: relative;
-    width: 75%;
-    background-color: white;
-    border-radius: 10px;
-    padding: 68px 20px 20px;
-    box-shadow: 3px 4px 13px rgb(182 160 149 / 20%), 3px 4px 13px rgb(168 223 216 / 16%);
-    top: -88px;
-    z-index: 1;
+  position: relative;
+  width: 75%;
+  background-color: white;
+  border-radius: 10px;
+  padding: 68px 20px 20px;
+  box-shadow: 3px 4px 13px rgb(182 160 149 / 20%),
+    3px 4px 13px rgb(168 223 216 / 16%);
+  top: -88px;
+  z-index: 1;
 }
 .box-input {
   display: flex;
-    margin-bottom: 15px;
-    /* width: 90%; */
-    justify-content: space-between;
+  margin-bottom: 15px;
+  /* width: 90%; */
+  justify-content: space-between;
 }
 .ant-input {
- width: 160px;
+  width: 160px;
   border: 1px solid transparent;
   border-radius: 0px;
   border-bottom-color: lightblue;

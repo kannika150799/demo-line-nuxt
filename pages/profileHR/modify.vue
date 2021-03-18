@@ -14,14 +14,16 @@
         </div>
         <div class="box-input">
           <p class="text-input">Nickname&nbsp;</p>
-          <a-input v-model="profile.nickname" >{{ profile.Nickname }}</a-input>
+          <a-input v-model="profile.nickname">{{ profile.Nickname }}</a-input>
         </div>
         <div class="box-input">
           <p class="text-input position">Position</p>
-          <a-input v-model="profile.position" >{{ profile.position }}</a-input>
+          <a-input v-model="profile.position">{{ profile.position }}</a-input>
         </div>
       </template>
-      <a-button class="confirm-button" type="primary" @click="confirm"> Confirm </a-button>
+      <a-button class="confirm-button" type="primary" @click="confirm">
+        Confirm
+      </a-button>
     </div>
   </div>
 </template>
@@ -51,13 +53,13 @@ export default {
     return {
       pf_line: {
         profileImage: "",
-        displayName: ""
+        displayName: "",
       },
       profile: {
         userId: "",
         name: "",
         nickname: "",
-        position: ""
+        position: "",
       },
     };
   },
@@ -69,12 +71,14 @@ export default {
       this.profile = res.data;
       console.log("get", this.profile);
     },
-    confirm(){
+    confirm() {
       this.$axios.put(`https://db-back.herokuapp.com/api/edit/user/${this.profile.userId}`,this.profile)
-      this.$router.push(`/profileHR/${this.profile.userId}`)
-      console.log("put",this.profile);
-    }
-  }
+        .then(() => {
+          this.$router.push(`/profileHR/${this.profile.userId}`);
+          console.log("put", this.profile);
+        });
+    },
+  },
 };
 </script>
 
@@ -111,23 +115,24 @@ img {
 }
 .container-input {
   text-align: -webkit-center;
-    position: relative;
-    width: 75%;
-    background-color: white;
-    border-radius: 10px;
-    padding: 68px 20px 20px;
-    box-shadow: 3px 4px 13px rgb(182 160 149 / 20%), 3px 4px 13px rgb(168 223 216 / 16%);
-    top: -88px;
-    z-index: 1;
+  position: relative;
+  width: 75%;
+  background-color: white;
+  border-radius: 10px;
+  padding: 68px 20px 20px;
+  box-shadow: 3px 4px 13px rgb(182 160 149 / 20%),
+    3px 4px 13px rgb(168 223 216 / 16%);
+  top: -88px;
+  z-index: 1;
 }
 .box-input {
   display: flex;
-    margin-bottom: 15px;
-    /* width: 90%; */
-    justify-content: space-between;
+  margin-bottom: 15px;
+  /* width: 90%; */
+  justify-content: space-between;
 }
 .ant-input {
- width: 160px;
+  width: 160px;
   border: 1px solid transparent;
   border-radius: 0px;
   border-bottom-color: lightblue;
