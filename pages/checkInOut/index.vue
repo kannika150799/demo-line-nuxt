@@ -69,12 +69,10 @@ export default {
     setInterval(() => this.updateCurrentDate(), 200);
   },
   methods: {
-    async isDone() {
-      await axios.get(
-          `https://db-back.herokuapp.com/api/get/user/${this.inOut.userId}`
-        )
+    isDone() {
+      this.$xios.get(`https://db-back.herokuapp.com/api/get/user/${this.inOut.userId}`)
         .then((res) => {
-          // console.log(res.data);
+          console.log(res.data);
           if (res.data != null || res.data != undefined) {
             this.$router.push("/profile");
           } else {
