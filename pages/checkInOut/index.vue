@@ -71,7 +71,7 @@ export default {
   methods: {
     async isDone() {
       await axios
-        .get(`https://db-back.herokuapp.com/api/get/check/${this.inOut.userId}`)
+        .get(`https://db-line.herokuapp.com/api/get/check/${this.inOut.userId}`)
         .then((res) => {
           this.$nextTick(() => {
             setTimeout(() => this.$nuxt.$loading.finish(), 1000);
