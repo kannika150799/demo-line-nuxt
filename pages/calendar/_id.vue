@@ -78,7 +78,7 @@ export default {
       this.calendars.date = date;
     },
     async getData() {
-      const res = await axios.get(`https://db-back.herokuapp.com/api/get/calendar/1/${this.id}`);
+      const res = await axios.get(`https://db-line.herokuapp.com/api/get/calendar/1/${this.id}`);
       this.calendars = res.data;
       this.calendars.dateActivity = res.data.dateActivity;
       console.log("get", this.calendars.dateActivity);
@@ -92,7 +92,7 @@ export default {
     //   console.log("put", this.calendar);
     // },
     confirmCalendar() {
-      this.$axios.put(`https://db-back.herokuapp.com/api/edit/calendar/${this.id}`,this.calendars).then(()=>{
+      this.$axios.put(`https://db-line.herokuapp.com/api/edit/calendar/${this.id}`,this.calendars).then(()=>{
         // this.$router.push("/calendar/listCalendar");
         this.$router.push("/calendar/list");
       });

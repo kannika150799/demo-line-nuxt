@@ -100,7 +100,7 @@ export default {
   methods: {
     async makeGetRequest() {
       await axios
-        .get(`https://db-back.herokuapp.com/api/get/user/${this.leave.userId}`)
+        .get(`https://db-line.herokuapp.com/api/get/user/${this.leave.userId}`)
         .then((res) => {
           this.$nextTick(() => {
             setTimeout(
@@ -133,7 +133,7 @@ export default {
       this.leave.dateEnd = dateString2;
     },
     send() {
-      this.$axios.post("https://db-back.herokuapp.com/api/post/leave", this.leave)
+      this.$axios.post("https://db-line.herokuapp.com/api/post/leave", this.leave)
         .then((res) => {
           liff.closeWindow();
         });

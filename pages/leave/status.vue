@@ -79,7 +79,7 @@ export default {
     async getData() {
       await axios
         .get(
-          `https://db-back.herokuapp.com/api/get/leaveByUser/${this.leaves.userId}`
+          `https://db-line.herokuapp.com/api/get/leaveByUser/${this.leaves.userId}`
         )
         .then((res) => {
           this.$nextTick(() => {

@@ -118,7 +118,7 @@ export default {
     },
     addCalendar() {
       this.$axios
-        .post("https://db-back.herokuapp.com/api/post/calendar", this.calendar)
+        .post("https://db-line.herokuapp.com/api/post/calendar", this.calendar)
         .then(() => {
           window.location.reload();
         });
@@ -126,7 +126,7 @@ export default {
     //show list
     async getData() {
       await axios
-        .get("https://db-back.herokuapp.com/api/get/calendar")
+        .get("https://db-line.herokuapp.com/api/get/calendar")
         .then((res) => {
           this.$nextTick(() => {
             setTimeout(
@@ -143,7 +143,7 @@ export default {
     },
     deleteList(id) {
       this.$axios
-        .delete(`https://db-back.herokuapp.com/api/delete/calendar/${id}`)
+        .delete(`https://db-line.herokuapp.com/api/delete/calendar/${id}`)
         .then((res) => {
           window.location.reload();
           console.log("delete", id);

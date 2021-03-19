@@ -72,7 +72,7 @@ export default {
     async getData() {
       console.log(this.id);
       let res = await axios.get(
-        `https://db-back.herokuapp.com/report/leave/userid/${this.id}`
+        `https://db-line.herokuapp.com/report/leave/userid/${this.id}`
       );
       this.leaves = res.data;
       console.log("get", this.leaves);

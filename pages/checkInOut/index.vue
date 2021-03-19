@@ -111,7 +111,7 @@ export default {
     checkIn() {
       this.inOut.timeIn = this.currentTimeIn;
       this.$axios
-        .post("https://db-back.herokuapp.com/api/post/checkIn", this.inOut)
+        .post("https://db-line.herokuapp.com/api/post/checkIn", this.inOut)
         .then((res) => {
           window.location.reload();
           console.log("checkIn", this.inOut);
@@ -122,7 +122,7 @@ export default {
       this.inOut.timeOut = this.currentTime;
       this.$axios
         .put(
-          `https://db-back.herokuapp.com/api/update/checkout/${this.inOut.userId}`,
+          `https://db-line.herokuapp.com/api/update/checkout/${this.inOut.userId}`,
           { timeOut: this.inOut.timeOut }
         )
         .then((res) => {

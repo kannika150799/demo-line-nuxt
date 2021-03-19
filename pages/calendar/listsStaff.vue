@@ -44,7 +44,7 @@ export default {
     async getData() {
       //await this.startLoading()
       await axios.get(
-        "https://db-back.herokuapp.com/api/get/calendar"
+        "https://db-line.herokuapp.com/api/get/calendar"
       ).then((res) => {
             this.$nextTick(() => {
               //  this.calendars = res.data;

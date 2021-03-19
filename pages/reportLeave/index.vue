@@ -70,7 +70,7 @@ export default {
   methods: {
     handleChange(value) {
       axios
-        .get(`https://db-back.herokuapp.com/report/leave/${value}`)
+        .get(`https://db-line.herokuapp.com/report/leave/${value}`)
         .then((res) => {
           this.infos = res.data;
           // console.log("get", this.infos);

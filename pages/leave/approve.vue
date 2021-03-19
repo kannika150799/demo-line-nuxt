@@ -99,7 +99,7 @@ export default {
   methods: {
     async getData() {
       const res = await axios
-        .get("https://db-back.herokuapp.com/api/get/approve")
+        .get("https://db-line.herokuapp.com/api/get/approve")
         .then((res) => {
           this.$nextTick(() => {
             //  this.calendars = res.data;
@@ -127,7 +127,7 @@ export default {
     },
     putApprove(id) {
       this.$axios
-        .put(`https://db-back.herokuapp.com/api/updateStatus/${id}`, {
+        .put(`https://db-line.herokuapp.com/api/updateStatus/${id}`, {
           status: this.leaves.status,
         })
         .then(() => {

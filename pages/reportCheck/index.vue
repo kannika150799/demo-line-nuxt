@@ -122,7 +122,7 @@ export default {
         `${this.select.monthValue}` + "ABCDE" + `${this.select.yearValue}`;
       console.log("ttt", this.select.allValue);
       axios
-        .get(`https://db-back.herokuapp.com/get/user1/${this.select.allValue}`)
+        .get(`https://db-line.herokuapp.com/get/user1/${this.select.allValue}`)
         .then((res) => {
           this.infos = res.data;
           // console.log("get", this.infos);

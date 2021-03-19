@@ -73,7 +73,7 @@ export default {
     },
     async makeGetRequest() {
       let res = await axios.get(
-        `https://db-back.herokuapp.com/api/get/user/${this.profile.userId}`
+        `https://db-line.herokuapp.com/api/get/user/${this.profile.userId}`
       );
       // .then((res) => {
       //   this.$nextTick(() => {
