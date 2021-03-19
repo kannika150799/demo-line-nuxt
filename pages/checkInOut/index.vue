@@ -70,7 +70,8 @@ export default {
   },
   methods: {
     async isDone() {
-      await axios.get(`https://db-back.herokuapp.com/api/get/check/${this.inOut.userId}`)
+      await axios
+        .get(`https://db-back.herokuapp.com/api/get/check/${this.inOut.userId}`)
         .then((res) => {
           this.$nextTick(() => {
             setTimeout(() => this.$nuxt.$loading.finish(), 1000);
@@ -131,9 +132,9 @@ export default {
         });
     },
   },
-  head:{
-    title: 'Check-in/out'
-  }
+  head: {
+    title: "Check-in/out",
+  },
 };
 </script>
 

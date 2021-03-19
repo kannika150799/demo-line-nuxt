@@ -101,7 +101,7 @@ export default {
   },
   methods: {
     isDone() {
-      this.$axios.get(`https://db-back.herokuapp.com/api/get/user/${this.profile.userId}`)
+      this.$axios.get(`https://db-line.herokuapp.com/api/get/user/${this.profile.userId}`)
         .then((res) => {
           // console.log(res.data);
           if (res.data != null || res.data != undefined) {
@@ -114,7 +114,7 @@ export default {
         });
     },
     register() {
-      this.$axios.post("https://db-back.herokuapp.com/api/post/user",this.profile).then((res) => {
+      this.$axios.post("https://db-line.herokuapp.com/api/post/user",this.profile).then((res) => {
           liff.closeWindow();
         });
       // this.$router.push(`/profile/${this.profile.userId}`);
